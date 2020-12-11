@@ -1,0 +1,31 @@
+{
+  "name": "@finn-no/fabric-elements",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Custom elements for Fabric",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "format": "prettier src/* --write",
+    "serve": "es-dev-server --node-resolve --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.schibsted.io:finn/fabric-elements.git"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.11.1",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.4",
+    "es-dev-server": "^2.0.2",
+    "eslint": "^7.15.0",
+    "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.1.2"
+  },
+  "dependencies": {
+    "lit-element": "^2.4.0"
+  }
+}
