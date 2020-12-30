@@ -4,7 +4,7 @@
     "module": "es2015",
     "lib": ["es2017", "dom", "dom.iterable"],
     "declaration": true,
-    "declarationMap": true,
+    "emitDeclarationOnly": true,
 
     "sourceMap": true,
     "strict": true,

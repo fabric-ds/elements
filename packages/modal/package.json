@@ -8,7 +8,9 @@
   ],
   "types": "dist/fabric-modal.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "yarn build:js && yarn build:css",
+    "build:js": "tsc && esbuild --format=esm --outfile=dist/fabric-modal.js src/fabric-modal.ts",
+    "build:css": "postcss -r dist/fabric-modal.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,7 @@
   "license": "ISC",
   "devDependencies": {},
   "dependencies": {
+    "dom-focus-lock": "^1.0.4",
     "lit-element": "^2.4.0"
   }
 }
