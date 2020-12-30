@@ -1,0 +1,22 @@
+{
+  "name": "@finn-no/fabric-element-modal",
+  "version": "0.1.0-alpha.0",
+  "description": "Custom elements for fabric",
+  "module": "dist/fabric-modal.js",
+  "files": [
+    "dist/"
+  ],
+  "types": "dist/fabric-modal.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.schibsted.io/finn/fabric-elements"
+  },
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "lit-element": "^2.4.0"
+  }
+}

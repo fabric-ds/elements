@@ -1,0 +1,6 @@
+{
+  "npmClient": "yarn",
+  "registry": "https://npm.finntech.no",
+  "useWorkspaces": true,
+  "version": "independent"
+}

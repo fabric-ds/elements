@@ -3,20 +3,22 @@
   "version": "0.0.0",
   "private": true,
   "description": "Custom elements for Fabric",
-  "main": "index.js",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "build": "tsc",
+    "build": "lerna run build --stream",
     "build:watch": "tsc --watch",
-    "format": "prettier --write .",
+    "format": "prettier --write . --ignore-path .gitignore",
     "lint": "npm run lint:format && npm run lint:eslint",
-    "lint:format": "prettier --check .",
-    "lint:eslint": "eslint 'src/**/*.ts'",
+    "lint:format": "prettier --check . --ignore-path .gitignore",
+    "lint:eslint": "eslint 'packages/**/*.ts' --ignore-path .gitignore",
     "serve": "es-dev-server --node-resolve --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.schibsted.io:finn/fabric-elements.git"
+    "url": "https://github.schibsted.io/finn/fabric-elements"
   },
   "license": "ISC",
   "devDependencies": {
@@ -26,6 +28,7 @@
     "@typescript-eslint/parser": "^4.11.1",
     "es-dev-server": "^2.0.2",
     "eslint": "^7.15.0",
+    "lerna": "^3.8.4",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
     "typescript": "^4.1.2"

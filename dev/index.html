@@ -4,7 +4,14 @@
     <head>
         <meta charset="utf-8" />
         <title>&lt;my-element> Demo</title>
-        <script type="module" src="../fabric-icon.js"></script>
+        <script
+            type="module"
+            src="../packages/modal/dist/fabric-modal.js"
+        ></script>
+        <script
+            type="module"
+            src="../packages/icon/dist/fabric-icon.js"
+        ></script>
         <style>
             p {
                 border: solid 1px blue;
@@ -13,6 +20,7 @@
         </style>
     </head>
     <body>
+        <fabric-modal></fabric-modal>
         <fabric-icon name="camera"></fabric-icon>
     </body>
 </html>

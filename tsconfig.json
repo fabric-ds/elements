@@ -7,8 +7,6 @@
     "declarationMap": true,
 
     "sourceMap": true,
-    "outDir": "./",
-    "rootDir": "./src",
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -25,6 +23,5 @@
       }
     ]
   },
-  "include": ["src/**/*.ts"],
   "exclude": []
 }

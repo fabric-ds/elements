@@ -108,6 +108,7 @@ function getSvgContent(url: string) {
                 });
             }
             icons.set(url, '');
+            return undefined;
         });
 
         // cache for the same requests
