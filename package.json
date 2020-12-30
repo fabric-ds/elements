@@ -7,7 +7,10 @@
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch",
-    "format": "prettier src/* --write",
+    "format": "prettier --write .",
+    "lint": "npm run lint:format && npm run lint:eslint",
+    "lint:format": "prettier --check .",
+    "lint:eslint": "eslint 'src/**/*.ts'",
     "serve": "es-dev-server --node-resolve --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,6 +22,8 @@
   "devDependencies": {
     "@11ty/eleventy": "^0.11.1",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.4",
+    "@typescript-eslint/eslint-plugin": "^4.11.1",
+    "@typescript-eslint/parser": "^4.11.1",
     "es-dev-server": "^2.0.2",
     "eslint": "^7.15.0",
     "prettier": "^2.2.1",
