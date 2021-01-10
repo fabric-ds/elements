@@ -4424,9 +4424,9 @@ es6-promisify@^5.0.0:
     es6-promise "^4.0.3"
 
 esbuild@^0.8.29:
-  version "0.8.29"
-  resolved "https://npm.finntech.no/esbuild/-/esbuild-0.8.29.tgz#cc20fb752e0905a3546d68ae1be58f9b97044c39"
-  integrity sha1-zCD7dS4JBaNUbWiuG+WPm5cETDk=
+  version "0.8.31"
+  resolved "https://npm.finntech.no/esbuild/-/esbuild-0.8.31.tgz#c21e7adb3ad283c951a53de7ad64a5ae2df2ed34"
+  integrity sha1-wh562zrSg8lRpT3nrWSlri3y7TQ=
 
 escalade@^3.1.1:
   version "3.1.1"
