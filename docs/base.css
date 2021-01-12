@@ -1,0 +1,10 @@
+code[class*="language-"],
+pre[class*="language-"] {
+    font-family: Monaco, Ubuntu Mono, Consolas, monospace;
+}
+
+pre[class*="language-"] {
+    color: rgb(57, 58, 52);
+    background-color: rgb(246, 248, 250);
+    padding: 20px 20px 0px;
+}

@@ -1,0 +1,50 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "fabric-icon",
+      "path": "./packages/icon/src/fabric-icon.ts",
+      "description": "An example element.",
+      "attributes": [
+        {
+          "name": "name",
+          "description": "The name of the icon",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "styles",
+          "type": "CSSResult",
+          "default": "\"css`\\n        :host {\\n            display: block;\\n            max-width: 800px;\\n            width: 24px;\\n            height: 24px;\\n        }\\n    `\""
+        },
+        {
+          "name": "name",
+          "attribute": "name",
+          "description": "The name of the icon",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "fabric-modal",
+      "path": "./packages/modal/src/fabric-modal.ts",
+      "description": "A modal dialog.",
+      "properties": [
+        {
+          "name": "styles",
+          "type": "CSSResult",
+          "default": "\"css`\\n        @tailwind utilities;\\n\\n        .max-height {\\n            max-height: 80vh;\\n        }\\n\\n        .width {\\n            width: 300px;\\n        }\\n    `\""
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "description": "Default content placed in the modal"
+        }
+      ]
+    }
+  ]
+}

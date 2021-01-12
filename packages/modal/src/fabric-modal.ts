@@ -2,6 +2,11 @@ import { LitElement, html, customElement, css } from 'lit-element';
 // @ts-ignore
 import focusLock from 'dom-focus-lock';
 
+/**
+ * A modal dialog.
+ *
+ * @slot - Default content placed in the modal
+ */
 @customElement('fabric-modal')
 export class FabricModal extends LitElement {
     static styles = css`
@@ -31,7 +36,7 @@ export class FabricModal extends LitElement {
     /**
      * Open the modal dialog.
      */
-    open() {
+    public open(): void {
         if (this.hidden) {
             this.removeAttribute('hidden');
         }
@@ -40,7 +45,7 @@ export class FabricModal extends LitElement {
     /**
      * Close the modal dialog.
      */
-    close() {
+    public close(): void {
         if (!this.hidden) {
             this.setAttribute('hidden', '');
         }

@@ -8,7 +8,9 @@
   ],
   "types": "dist/fabric-icon.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "yarn build:js && yarn build:css",
+    "build:js": "tsc && esbuild src/fabric-icon.ts --format=esm --outfile=dist/fabric-icon.js",
+    "build:css": "postcss -r dist/fabric-icon.js"
   },
   "repository": {
     "type": "git",

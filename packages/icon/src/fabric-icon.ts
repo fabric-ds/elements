@@ -11,8 +11,6 @@ import { unsafeSVG } from 'lit-html/directives/unsafe-svg';
 /**
  * An example element.
  *
- * @slot - This element has a slot
- * @csspart button - The button
  */
 @customElement('fabric-icon')
 export class FabricIcon extends LitElement {

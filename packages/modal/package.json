@@ -9,7 +9,7 @@
   "types": "dist/fabric-modal.d.ts",
   "scripts": {
     "build": "yarn build:js && yarn build:css",
-    "build:js": "tsc && esbuild --format=esm --outfile=dist/fabric-modal.js src/fabric-modal.ts",
+    "build:js": "tsc && esbuild src/fabric-modal.ts --format=esm --outfile=dist/fabric-modal.js",
     "build:css": "postcss -r dist/fabric-modal.js"
   },
   "repository": {
