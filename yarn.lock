@@ -7,7 +7,7 @@
   resolved "https://npm.finntech.no/@11ty/dependency-tree/-/dependency-tree-1.0.0.tgz#b1fa53da49aafe0ab3fe38bc6b6058b704aa59a1"
   integrity sha1-sfpT2kmq/gqz/ji8a2BYtwSqWaE=
 
-"@11ty/eleventy-plugin-syntaxhighlight@^3.0.5":
+"@11ty/eleventy-plugin-syntaxhighlight@^3.0.6":
   version "3.0.6"
   resolved "https://npm.finntech.no/@11ty/eleventy-plugin-syntaxhighlight/-/eleventy-plugin-syntaxhighlight-3.0.6.tgz#9163d9021d8e1419329741c918ecf1539eeacfe7"
   integrity sha1-kWPZAh2OFBkyl0HJGOzxU57qz+c=
