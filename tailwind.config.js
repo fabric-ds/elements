@@ -1,7 +1,7 @@
 /* eslint-env node */
 
-// TODO: Use fabric's Tailwind config here
 module.exports = {
+    presets: [require('@finn-no/fabric-tailwind-config')],
     purge: {
         // Always purge. So we don't add all of Tailwind in our custom elements.
         enabled: true,

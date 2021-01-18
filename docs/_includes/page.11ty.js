@@ -17,7 +17,7 @@ module.exports = function (data) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${pageTitle}</title>
     <link
-    href="https://assets.finn.no/pkg/fabric-css/v0/fabric.min.css"
+    href="https://assets.finn.no/pkg/@finn-no/fabric-css/v0/fabric.min.css"
     rel="stylesheet"
     />
     <link rel="stylesheet" href="https://unpkg.com/prism-themes@1.5.0/themes/prism-ghcolors.css">
