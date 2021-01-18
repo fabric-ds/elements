@@ -1,7 +1,9 @@
 {
   "name": "@finn-no/fabric-element-modal",
-  "version": "0.1.0-alpha.0",
+  "version": "0.0.0",
   "description": "Custom elements for fabric",
+  "type": "module",
+  "exports": "./dist/index.js",
   "module": "dist/fabric-modal.js",
   "files": [
     "dist/"
@@ -9,7 +11,7 @@
   "types": "dist/fabric-modal.d.ts",
   "scripts": {
     "build": "yarn build:js && yarn build:css",
-    "build:js": "tsc && esbuild src/fabric-modal.ts --format=esm --outfile=dist/fabric-modal.js",
+    "build:js": "esbuild src/fabric-modal.js --format=esm --outfile=dist/fabric-modal.js",
     "build:css": "postcss -r dist/fabric-modal.js"
   },
   "repository": {
@@ -20,6 +22,7 @@
   "devDependencies": {},
   "dependencies": {
     "dom-focus-lock": "^1.0.4",
-    "lit-element": "^2.4.0"
+    "lit-element": "^2.4.0",
+    "lit-html": "^1.3.0"
   }
 }

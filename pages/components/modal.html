@@ -1,0 +1,267 @@
+<html lang="en">
+    <%- include('head.html'); -%>
+    <body>
+        <%- include('nav.html'); -%>
+
+        <main>
+            <h1>&lt;fabric-modal&gt;</h1>
+
+            <p class="u-t4 mt-32 text-blueGray-600">
+                Modals are dialogs for contextual information, tasks, or
+                workflows that appear over the user interface.
+            </p>
+
+            <h2 class="mt-64">Example</h2>
+
+            <button class="button button--primary mt-64" data-show>
+                Show modal
+            </button>
+
+            <fabric-modal hidden>
+                <h1 class="h3 mb-16">Modal title</h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                </p>
+
+                <button class="button button--primary" slot="footer" data-hide>
+                    Close
+                </button>
+            </fabric-modal>
+
+            <h2 class="mt-64">Installation</h2>
+            <syntax-highlight>
+                npm install @finn-no/fabric-element-modal
+            </syntax-highlight>
+
+            <h2 class="mt-64">Usage</h2>
+
+            <syntax-highlight>
+                <fabric-modal>
+                    <h1 class="h3 mb-16">Modal title</h1>
+
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore
+                        magna
+                    </p>
+
+                    <button slot="footer">Close</button>
+                </fabric-modal>
+            </syntax-highlight>
+
+            <p>
+                Usually you only want the modal to appear after a certain action
+                has been taken, eg. clicking a button that will delete
+                something. To achieve this you can use the
+                <code>hidden</code> attribute on element, then show the modal at
+                the appropriate time.
+            </p>
+
+            <h2 class="mt-64 mb-16">Dismissing</h2>
+
+            <p>
+                The modal can be dismissed by calling <code>hide()</code> on the
+                element.
+            </p>
+
+            <p>
+                If the user clicks the backdrops, or hits <kbd>esc</kbd>, an
+                event, <code>dismiss</code>, is emitted. You can prevent this
+                event if you don't want to allow the user to cancel the modal
+                until a specific action has been taken.
+            </p>
+
+            <h2 class="mt-64">Properties</h2>
+
+            <table class="doc-advanced">
+                <thead>
+                    <tr>
+                        <th colspan="2">
+                            <code>hidden</code>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Description</th>
+                        <td>Toggle the visibility of the dialog</td>
+                    </tr>
+                    <tr>
+                        <th>Attribute</th>
+                        <td><code>hidden</code></td>
+                    </tr>
+                    <tr>
+                        <th>Type</th>
+                        <td><code>boolean</code></td>
+                    </tr>
+                    <tr>
+                        <th>Default</th>
+                        <td><code>false</code></td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th colspan="2">
+                            <code>ariaLabel</code>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Description</th>
+                        <td>
+                            Defines a string value that labels the current
+                            element
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Attribute</th>
+                        <td><code>aria-label</code></td>
+                    </tr>
+                    <tr>
+                        <th>Type</th>
+                        <td><code>string</code></td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th colspan="2">
+                            <code>ariaLabelledby</code>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Description</th>
+                        <td>
+                            Identifies the element (or elements) that labels the
+                            current element.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Attribute</th>
+                        <td><code>aria-labelledby</code></td>
+                    </tr>
+                    <tr>
+                        <th>Type</th>
+                        <td><code>string</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Events</h2>
+            <table class="tabledoc">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>dismiss</code></td>
+                        <td>
+                            Emitted when a user presses <kbd>esc</kbd> or clicks
+                            outside the dialog content.
+                            <code>preventDefault()</code> cancels the dismissal.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Methods</h2>
+            <table class="tabledoc">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>show</code></td>
+                        <td>Show the modal dialog</td>
+                    </tr>
+                    <tr>
+                        <td><code>hide</code></td>
+                        <td>Hides the modal dialog</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Custom Properties</h2>
+            <table class="tabledoc">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>--padding</code></td>
+                        <td>The inner padding of the modal dialog container</td>
+                    </tr>
+                    <tr>
+                        <td><code>--max-height</code></td>
+                        <td>The max height of the modal dialog</td>
+                    </tr>
+                    <tr>
+                        <td><code>--max-width</code></td>
+                        <td>The max width of the modal dialog</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Slots</h2>
+            <table class="tabledoc">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td>The default slot. Primary content of the modal.</td>
+                    </tr>
+                    <tr>
+                        <td><code>"footer"</code></td>
+                        <td>
+                            A right aligned flexed footer. Usuallly used
+                            together with actionable buttons for the modal. It
+                            automatically spaces the footer items.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+
+        <script
+            type="module"
+            src="../../packages/modal/src/fabric-modal.js"
+        ></script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                document
+                    .querySelector('[data-show]')
+                    .addEventListener('click', () => {
+                        modal.hidden = false;
+                    });
+
+                const modal = document.querySelector('fabric-modal');
+
+                modal
+                    .querySelector('[data-hide]')
+                    .addEventListener('click', () => {
+                        modal.hidden = true;
+                    });
+            });
+        </script>
+
+        <%- include('footer.html'); -%>
+    </body>
+</html>
