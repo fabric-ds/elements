@@ -3,4 +3,15 @@ node_js: lts/*
 script:
     - yarn lint
     - yarn build
+    - yarn build:docs
+deploy:
+    provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    github_url: github.schibsted.io
+    local_dir: ./site
+    email: travis@schibsted.com
+    name: Travis CI
+    on:
+        branch: master
 group: container
