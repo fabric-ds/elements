@@ -2898,6 +2898,16 @@ fs-extra@^9.0.0, fs-extra@^9.0.1:
     jsonfile "^6.0.1"
     universalify "^1.0.0"
 
+fs-extra@^9.1.0:
+  version "9.1.0"
+  resolved "https://npm.finntech.no/fs-extra/-/fs-extra-9.1.0.tgz#5954460c764a8da2094ba3554bf839e6b9a7c86d"
+  integrity sha1-WVRGDHZKjaIJS6NVS/g55rmnyG0=
+  dependencies:
+    at-least-node "^1.0.0"
+    graceful-fs "^4.2.0"
+    jsonfile "^6.0.1"
+    universalify "^2.0.0"
+
 fs-minipass@^1.2.5:
   version "1.2.7"
   resolved "https://npm.finntech.no/fs-minipass/-/fs-minipass-1.2.7.tgz#ccff8570841e7fe4265693da88936c55aed7f7c7"
@@ -6524,11 +6534,12 @@ verror@1.10.0:
     extsprintf "^1.2.0"
 
 vite-plugin-html@^2.0.0-beta.6:
-  version "2.0.0-beta.6"
-  resolved "https://npm.finntech.no/vite-plugin-html/-/vite-plugin-html-2.0.0-beta.6.tgz#468c7f0af73ae32f2018265e3b1314b12466ff20"
-  integrity sha1-Rox/Cvc64y8gGCZeOxMUsSRm/yA=
+  version "2.0.0-rc.3"
+  resolved "https://npm.finntech.no/vite-plugin-html/-/vite-plugin-html-2.0.0-rc.3.tgz#7e0ef3227e4f55583cabeba20f3525e87666c25e"
+  integrity sha1-fg7zIn5PVVg8q+uiDzUl6HZmwl4=
   dependencies:
     ejs "^3.1.5"
+    fs-extra "^9.1.0"
     html-minifier-terser "^5.1.1"
 
 vite@^2.0.0-beta.56:
