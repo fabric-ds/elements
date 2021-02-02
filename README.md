@@ -4,7 +4,7 @@
 
 ## Development
 
-The project uses [https://vitejs.dev/](Vite) for "unbundled" local development.
+The project uses [Vite](https://vitejs.dev/) for "unbundled" local development.
 Start a local dev server by running the following command:
 
 ```sh
