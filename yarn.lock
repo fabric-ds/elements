@@ -2488,9 +2488,9 @@ es6-promisify@^5.0.0:
     es6-promise "^4.0.3"
 
 esbuild@^0.8.34:
-  version "0.8.39"
-  resolved "https://npm.finntech.no/esbuild/-/esbuild-0.8.39.tgz#18b84a3d56173c55ee8f45bc6c7b5374b0a98ecb"
-  integrity sha1-GLhKPVYXPFXuj0W8bHtTdLCpjss=
+  version "0.8.43"
+  resolved "https://npm.finntech.no/esbuild/-/esbuild-0.8.43.tgz#19d79f8c6d1cc6dadd50942057a5aff906a1ecf2"
+  integrity sha1-GdefjG0cxtrdUJQgV6Wv+Qah7PI=
 
 esbuild@^0.8.36:
   version "0.8.42"
@@ -2943,9 +2943,9 @@ fsevents@~2.1.2:
   integrity sha1-+3OHA66NL5/pAMM4Nt3r7ouX8j4=
 
 fsevents@~2.3.1:
-  version "2.3.1"
-  resolved "https://npm.finntech.no/fsevents/-/fsevents-2.3.1.tgz#b209ab14c61012636c8863507edf7fb68cc54e9f"
-  integrity sha1-sgmrFMYQEmNsiGNQft9/tozFTp8=
+  version "2.3.2"
+  resolved "https://npm.finntech.no/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
+  integrity sha1-ilJveLj99GI7cJ4Ll1xSwkwC/Ro=
 
 function-bind@^1.1.1:
   version "1.1.1"
@@ -5153,7 +5153,7 @@ postcss@^7.0.0:
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
-postcss@^8.1.6, postcss@^8.2.1:
+postcss@^8.1.6:
   version "8.2.4"
   resolved "https://npm.finntech.no/postcss/-/postcss-8.2.4.tgz#20a98a39cf303d15129c2865a9ec37eda0031d04"
   integrity sha1-IKmKOc8wPRUSnChlqew37aADHQQ=
@@ -5162,7 +5162,7 @@ postcss@^8.1.6, postcss@^8.2.1:
     nanoid "^3.1.20"
     source-map "^0.6.1"
 
-postcss@^8.2.4:
+postcss@^8.2.1, postcss@^8.2.4:
   version "8.2.5"
   resolved "https://npm.finntech.no/postcss/-/postcss-8.2.5.tgz#3c75149ada4e93db9521913654c0144517f77c9a"
   integrity sha1-PHUUmtpOk9uVIZE2VMAURRf3fJo=
@@ -5625,9 +5625,9 @@ rimraf@^3.0.2:
     glob "^7.1.3"
 
 rollup@^2.35.1:
-  version "2.38.3"
-  resolved "https://npm.finntech.no/rollup/-/rollup-2.38.3.tgz#2a0b6cc6eab1da4431aab875a31a401fa2988c10"
-  integrity sha1-Kgtsxuqx2kQxqrh1oxpAH6KYjBA=
+  version "2.38.5"
+  resolved "https://npm.finntech.no/rollup/-/rollup-2.38.5.tgz#be41ad4fe0c103a8794377afceb5f22b8f603d6a"
+  integrity sha1-vkGtT+DBA6h5Q3evzrXyK49gPWo=
   optionalDependencies:
     fsevents "~2.3.1"
 
@@ -6559,9 +6559,9 @@ vite-plugin-html@^2.0.0-beta.6:
     html-minifier-terser "^5.1.1"
 
 vite@^2.0.0-beta.56:
-  version "2.0.0-beta.61"
-  resolved "https://npm.finntech.no/vite/-/vite-2.0.0-beta.61.tgz#da605152999cf8943672202ab6b38b68f4c7b9e4"
-  integrity sha1-2mBRUpmc+JQ2ciAqtrOLaPTHueQ=
+  version "2.0.0-beta.65"
+  resolved "https://npm.finntech.no/vite/-/vite-2.0.0-beta.65.tgz#e4e4576c01b9906d5fb3568e4068c80354107a70"
+  integrity sha1-5ORXbAG5kG1fs1aOQGjIA1QQenA=
   dependencies:
     esbuild "^0.8.34"
     postcss "^8.2.1"
