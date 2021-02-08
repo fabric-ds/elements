@@ -2384,9 +2384,9 @@ ecc-jsbn@~0.1.1:
     safer-buffer "^2.1.0"
 
 ejs@^3.1.5:
-  version "3.1.5"
-  resolved "https://npm.finntech.no/ejs/-/ejs-3.1.5.tgz#aed723844dc20acb4b170cd9ab1017e476a0d93b"
-  integrity sha1-rtcjhE3CCstLFwzZqxAX5Hag2Ts=
+  version "3.1.6"
+  resolved "https://npm.finntech.no/ejs/-/ejs-3.1.6.tgz#5bfd0a0689743bb5268b3550cceeebbc1702822a"
+  integrity sha1-W/0KBol0O7UmizVQzO7rvBcCgio=
   dependencies:
     jake "^10.6.1"
 
@@ -2768,9 +2768,9 @@ file-entry-cache@^6.0.0:
     flat-cache "^3.0.4"
 
 filelist@^1.0.1:
-  version "1.0.1"
-  resolved "https://npm.finntech.no/filelist/-/filelist-1.0.1.tgz#f10d1a3ae86c1694808e8f20906f43d4c9132dbb"
-  integrity sha1-8Q0aOuhsFpSAjo8gkG9D1MkTLbs=
+  version "1.0.2"
+  resolved "https://npm.finntech.no/filelist/-/filelist-1.0.2.tgz#80202f21462d4d1c2e214119b1807c1bc0380e5b"
+  integrity sha1-gCAvIUYtTRwuIUEZsYB8G8A4Dls=
   dependencies:
     minimatch "^3.0.4"
 
@@ -3159,10 +3159,15 @@ globby@^9.2.0:
     pify "^4.0.1"
     slash "^2.0.0"
 
-graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.2:
+graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.2.2:
   version "4.2.4"
   resolved "https://npm.finntech.no/graceful-fs/-/graceful-fs-4.2.4.tgz#2256bde14d3632958c465ebc96dc467ca07a29fb"
   integrity sha1-Ila94U02MpWMRl68ltxGfKB6Kfs=
+
+graceful-fs@^4.1.6, graceful-fs@^4.2.0:
+  version "4.2.5"
+  resolved "https://npm.finntech.no/graceful-fs/-/graceful-fs-4.2.5.tgz#bc18864a6c9fc7b303f2e2abdb9155ad178fbe29"
+  integrity sha1-vBiGSmyfx7MD8uKr25FVrRePvik=
 
 handlebars@^4.7.6:
   version "4.7.6"
@@ -6550,9 +6555,9 @@ verror@1.10.0:
     extsprintf "^1.2.0"
 
 vite-plugin-html@^2.0.0-beta.6:
-  version "2.0.0-rc.3"
-  resolved "https://npm.finntech.no/vite-plugin-html/-/vite-plugin-html-2.0.0-rc.3.tgz#7e0ef3227e4f55583cabeba20f3525e87666c25e"
-  integrity sha1-fg7zIn5PVVg8q+uiDzUl6HZmwl4=
+  version "2.0.0"
+  resolved "https://npm.finntech.no/vite-plugin-html/-/vite-plugin-html-2.0.0.tgz#de39b99ce7df4d0e1234bfae5c23215647d71a28"
+  integrity sha1-3jm5nOffTQ4SNL+uXCMhVkfXGig=
   dependencies:
     ejs "^3.1.5"
     fs-extra "^9.1.0"
