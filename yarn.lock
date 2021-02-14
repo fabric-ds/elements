@@ -2493,9 +2493,9 @@ esbuild@^0.8.34:
   integrity sha1-GdefjG0cxtrdUJQgV6Wv+Qah7PI=
 
 esbuild@^0.8.36:
-  version "0.8.42"
-  resolved "https://npm.finntech.no/esbuild/-/esbuild-0.8.42.tgz#26101cf17fe4c4602c7c767e3177cf0c538073ac"
-  integrity sha1-JhAc8X/kxGAsfHZ+MXfPDFOAc6w=
+  version "0.8.46"
+  resolved "https://npm.finntech.no/esbuild/-/esbuild-0.8.46.tgz#8fc7230ce3019b12e2553399f0c03875a729c26b"
+  integrity sha1-j8cjDOMBmxLiVTOZ8MA4dacpwms=
 
 escalade@^3.1.1:
   version "3.1.1"
