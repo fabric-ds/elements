@@ -5167,10 +5167,19 @@ postcss@^8.1.6:
     nanoid "^3.1.20"
     source-map "^0.6.1"
 
-postcss@^8.2.1, postcss@^8.2.4:
+postcss@^8.2.1:
   version "8.2.5"
   resolved "https://npm.finntech.no/postcss/-/postcss-8.2.5.tgz#3c75149ada4e93db9521913654c0144517f77c9a"
   integrity sha1-PHUUmtpOk9uVIZE2VMAURRf3fJo=
+  dependencies:
+    colorette "^1.2.1"
+    nanoid "^3.1.20"
+    source-map "^0.6.1"
+
+postcss@^8.2.4:
+  version "8.2.6"
+  resolved "https://npm.finntech.no/postcss/-/postcss-8.2.6.tgz#5d69a974543b45f87e464bc4c3e392a97d6be9fe"
+  integrity sha1-XWmpdFQ7Rfh+RkvEw+OSqX1r6f4=
   dependencies:
     colorette "^1.2.1"
     nanoid "^3.1.20"
