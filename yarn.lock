@@ -2487,12 +2487,7 @@ es6-promisify@^5.0.0:
   dependencies:
     es6-promise "^4.0.3"
 
-esbuild@^0.8.34:
-  version "0.8.46"
-  resolved "https://npm.finntech.no/esbuild/-/esbuild-0.8.46.tgz#8fc7230ce3019b12e2553399f0c03875a729c26b"
-  integrity sha1-j8cjDOMBmxLiVTOZ8MA4dacpwms=
-
-esbuild@^0.8.36:
+esbuild@^0.8.34, esbuild@^0.8.36:
   version "0.8.50"
   resolved "https://npm.finntech.no/esbuild/-/esbuild-0.8.50.tgz#ebf24fde0cdad1a369789dd6fd7a820b0a01e46c"
   integrity sha1-6/JP3gza0aNpeJ3W/XqCCwoB5Gw=
@@ -6558,9 +6553,9 @@ vite-plugin-html@^2.0.0-beta.6:
     html-minifier-terser "^5.1.1"
 
 vite@^2.0.0-beta.56:
-  version "2.0.0-beta.70"
-  resolved "https://npm.finntech.no/vite/-/vite-2.0.0-beta.70.tgz#ec0d4f2bfd02f31d2c59aa9760f27c26647f41ce"
-  integrity sha1-7A1PK/0C8x0sWaqXYPJ8JmR/Qc4=
+  version "2.0.1"
+  resolved "https://npm.finntech.no/vite/-/vite-2.0.1.tgz#348fc5c0de510aa90bd01ecf87df210ce741b38e"
+  integrity sha1-NI/FwN5RCqkL0B7Ph98hDOdBs44=
   dependencies:
     esbuild "^0.8.34"
     postcss "^8.2.1"
