@@ -2391,7 +2391,7 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
 
-ejs@^3.1.5:
+ejs@^3.1.6:
   version "3.1.6"
   resolved "https://npm.finntech.no/ejs/-/ejs-3.1.6.tgz#5bfd0a0689743bb5268b3550cceeebbc1702822a"
   integrity sha1-W/0KBol0O7UmizVQzO7rvBcCgio=
@@ -6587,11 +6587,11 @@ verror@1.10.0:
     extsprintf "^1.2.0"
 
 vite-plugin-html@^2.0.0-beta.6:
-  version "2.0.0"
-  resolved "https://npm.finntech.no/vite-plugin-html/-/vite-plugin-html-2.0.0.tgz#de39b99ce7df4d0e1234bfae5c23215647d71a28"
-  integrity sha1-3jm5nOffTQ4SNL+uXCMhVkfXGig=
+  version "2.0.3"
+  resolved "https://npm.finntech.no/vite-plugin-html/-/vite-plugin-html-2.0.3.tgz#9c610042b4181e95ec6c7d4b4125f3c00cbbd84b"
+  integrity sha1-nGEAQrQYHpXsbH1LQSXzwAy72Es=
   dependencies:
-    ejs "^3.1.5"
+    ejs "^3.1.6"
     fs-extra "^9.1.0"
     html-minifier-terser "^5.1.1"
 
