@@ -2495,12 +2495,7 @@ es6-promisify@^5.0.0:
   dependencies:
     es6-promise "^4.0.3"
 
-esbuild@^0.8.52:
-  version "0.8.57"
-  resolved "https://npm.finntech.no/esbuild/-/esbuild-0.8.57.tgz#a42d02bc2b57c70bcd0ef897fe244766bb6dd926"
-  integrity sha1-pC0CvCtXxwvNDviX/iRHZrtt2SY=
-
-esbuild@^0.9.0:
+esbuild@^0.9.0, esbuild@^0.9.3:
   version "0.9.6"
   resolved "https://npm.finntech.no/esbuild/-/esbuild-0.9.6.tgz#2cae519e7ce2328ecf57ae738090d07ce7245850"
   integrity sha1-LK5RnnziMo7PV65zgJDQfOckWFA=
@@ -5651,9 +5646,9 @@ rimraf@^3.0.2:
     glob "^7.1.3"
 
 rollup@^2.38.5:
-  version "2.41.0"
-  resolved "https://npm.finntech.no/rollup/-/rollup-2.41.0.tgz#b2a398bbabbf227738dedaef099e494aed468982"
-  integrity sha1-sqOYu6u/Inc43trvCZ5JSu1GiYI=
+  version "2.42.1"
+  resolved "https://npm.finntech.no/rollup/-/rollup-2.42.1.tgz#6d675b7971e3bee510935326a0f7e556bb7d43de"
+  integrity sha1-bWdbeXHjvuUQk1MmoPflVrt9Q94=
   optionalDependencies:
     fsevents "~2.3.1"
 
@@ -6599,11 +6594,11 @@ vite-plugin-html@^2.0.0-beta.6:
     html-minifier-terser "^5.1.1"
 
 vite@^2.0.0-beta.56:
-  version "2.0.5"
-  resolved "https://npm.finntech.no/vite/-/vite-2.0.5.tgz#ac46857a3fa8686d077921e61bd48a986931df1d"
-  integrity sha1-rEaFej+oaG0HeSHmG9SKmGkx3x0=
+  version "2.1.2"
+  resolved "https://npm.finntech.no/vite/-/vite-2.1.2.tgz#0aecaf6d34112b24536df1a14cd8d74fdcab6e20"
+  integrity sha1-CuyvbTQRKyRTbfGhTNjXT9yrbiA=
   dependencies:
-    esbuild "^0.8.52"
+    esbuild "^0.9.3"
     postcss "^8.2.1"
     resolve "^1.19.0"
     rollup "^2.38.5"
