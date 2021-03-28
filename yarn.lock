@@ -281,10 +281,10 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
-"@finn-no/fabric-tailwind-config@^0.5.10":
-  version "0.5.10"
-  resolved "https://npm.finntech.no/@finn-no/fabric-tailwind-config/-/fabric-tailwind-config-0.5.10.tgz#5eefcc321956191196492d24c11e497c5659de54"
-  integrity sha1-Xu/MMhlWGRGWSS0kwR5JfFZZ3lQ=
+"@finn-no/fabric-tailwind-config@^0.5.12":
+  version "0.5.12"
+  resolved "https://npm.finntech.no/@finn-no/fabric-tailwind-config/-/fabric-tailwind-config-0.5.12.tgz#e698743bf1e3182fd61ed96d2f2720563d82fb1e"
+  integrity sha1-5ph0O/HjGC/WHtltLycgVj2C+x4=
 
 "@fullhuman/postcss-purgecss@^3.1.3":
   version "3.1.3"
