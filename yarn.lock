@@ -1488,9 +1488,9 @@ babel-eslint@^10.1.0:
     resolve "^1.12.0"
 
 balanced-match@^1.0.0:
-  version "1.0.0"
-  resolved "https://npm.finntech.no/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
-  integrity sha1-ibTRmasr7kneFk6gK4nORi1xt2c=
+  version "1.0.2"
+  resolved "https://npm.finntech.no/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
+  integrity sha1-6D46fj8wCzTLnYf2FfoMvzV2kO4=
 
 base@^0.11.1:
   version "0.11.2"
@@ -2553,9 +2553,9 @@ eslint-visitor-keys@^2.0.0:
   integrity sha1-If3I+82ceVzAMh8FY3AglXUVEag=
 
 eslint@^7.18.0:
-  version "7.23.0"
-  resolved "https://npm.finntech.no/eslint/-/eslint-7.23.0.tgz#8d029d252f6e8cf45894b4bee08f5493f8e94325"
-  integrity sha1-jQKdJS9ujPRYlLS+4I9Uk/jpQyU=
+  version "7.24.0"
+  resolved "https://npm.finntech.no/eslint/-/eslint-7.24.0.tgz#2e44fa62d93892bfdb100521f17345ba54b8513a"
+  integrity sha1-LkT6Ytk4kr/bEAUh8XNFulS4UTo=
   dependencies:
     "@babel/code-frame" "7.12.11"
     "@eslint/eslintrc" "^0.4.0"
@@ -3144,9 +3144,9 @@ globals@^12.1.0:
     type-fest "^0.8.1"
 
 globals@^13.6.0:
-  version "13.7.0"
-  resolved "https://npm.finntech.no/globals/-/globals-13.7.0.tgz#aed3bcefd80ad3ec0f0be2cf0c895110c0591795"
-  integrity sha1-rtO879gK0+wPC+LPDIlREMBZF5U=
+  version "13.8.0"
+  resolved "https://npm.finntech.no/globals/-/globals-13.8.0.tgz#3e20f504810ce87a8d72e55aecf8435b50f4c1b3"
+  integrity sha1-PiD1BIEM6HqNcuVa7PhDW1D0wbM=
   dependencies:
     type-fest "^0.20.2"
 
