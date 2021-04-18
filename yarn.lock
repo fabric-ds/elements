@@ -6701,9 +6701,9 @@ verror@1.10.0:
     extsprintf "^1.2.0"
 
 vite-plugin-html@^2.0.0-beta.6:
-  version "2.0.6"
-  resolved "https://npm.finntech.no/vite-plugin-html/-/vite-plugin-html-2.0.6.tgz#223fad84f499e763c1e17ff9286c2a0fd1cf9982"
-  integrity sha1-Ij+thPSZ52PB4X/5KGwqD9HPmYI=
+  version "2.0.7"
+  resolved "https://npm.finntech.no/vite-plugin-html/-/vite-plugin-html-2.0.7.tgz#55139ff8a843ba3b3d5cd48610ca6f6afdf7c23d"
+  integrity sha1-VROf+KhDujs9XNSGEMpvav33wj0=
   dependencies:
     ejs "^3.1.6"
     fs-extra "^9.1.0"
