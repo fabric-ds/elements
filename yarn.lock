@@ -1253,9 +1253,9 @@ ajv@^6.10.0, ajv@^6.12.3, ajv@^6.12.4:
     uri-js "^4.2.2"
 
 ajv@^8.0.1:
-  version "8.0.5"
-  resolved "https://npm.finntech.no/ajv/-/ajv-8.0.5.tgz#f07d6fdeffcdbb80485570ce3f1bc845fcc812b9"
-  integrity sha1-8H1v3v/Nu4BIVXDOPxvIRfzIErk=
+  version "8.1.0"
+  resolved "https://npm.finntech.no/ajv/-/ajv-8.1.0.tgz#45d5d3d36c7cdd808930cc3e603cf6200dbeb736"
+  integrity sha1-RdXT02x83YCJMMw+YDz2IA2+tzY=
   dependencies:
     fast-deep-equal "^3.1.1"
     json-schema-traverse "^1.0.0"
@@ -2558,9 +2558,9 @@ eslint-visitor-keys@^2.0.0:
   integrity sha1-If3I+82ceVzAMh8FY3AglXUVEag=
 
 eslint@^7.18.0:
-  version "7.24.0"
-  resolved "https://npm.finntech.no/eslint/-/eslint-7.24.0.tgz#2e44fa62d93892bfdb100521f17345ba54b8513a"
-  integrity sha1-LkT6Ytk4kr/bEAUh8XNFulS4UTo=
+  version "7.25.0"
+  resolved "https://npm.finntech.no/eslint/-/eslint-7.25.0.tgz#1309e4404d94e676e3e831b3a3ad2b050031eb67"
+  integrity sha1-EwnkQE2U5nbj6DGzo60rBQAx62c=
   dependencies:
     "@babel/code-frame" "7.12.11"
     "@eslint/eslintrc" "^0.4.0"
@@ -6267,19 +6267,17 @@ supports-color@^7.1.0:
     has-flag "^4.0.0"
 
 table@^6.0.4:
-  version "6.0.9"
-  resolved "https://npm.finntech.no/table/-/table-6.0.9.tgz#790a12bf1e09b87b30e60419bafd6a1fd85536fb"
-  integrity sha1-eQoSvx4JuHsw5gQZuv1qH9hVNvs=
+  version "6.5.1"
+  resolved "https://npm.finntech.no/table/-/table-6.5.1.tgz#930885a7430f15f8766b35cd1e36de40793db523"
+  integrity sha1-kwiFp0MPFfh2azXNHjbeQHk9tSM=
   dependencies:
     ajv "^8.0.1"
-    is-boolean-object "^1.1.0"
-    is-number-object "^1.0.4"
-    is-string "^1.0.5"
     lodash.clonedeep "^4.5.0"
     lodash.flatten "^4.4.0"
     lodash.truncate "^4.4.2"
     slice-ansi "^4.0.0"
     string-width "^4.2.0"
+    strip-ansi "^6.0.0"
 
 tailwindcss@^2.0.2:
   version "2.1.1"
