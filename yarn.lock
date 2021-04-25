@@ -2513,9 +2513,9 @@ es6-promisify@^5.0.0:
     es6-promise "^4.0.3"
 
 esbuild@^0.11.0:
-  version "0.11.12"
-  resolved "https://npm.finntech.no/esbuild/-/esbuild-0.11.12.tgz#8cbe15bcb44212624c3e77c896a835f74dc71c3c"
-  integrity sha1-jL4VvLRCEmJMPnfIlqg1903HHDw=
+  version "0.11.14"
+  resolved "https://npm.finntech.no/esbuild/-/esbuild-0.11.14.tgz#0f4beba211d6d23e2825f61a89ccff1eef96361b"
+  integrity sha1-D0vrohHW0j4oJfYaicz/Hu+WNhs=
 
 esbuild@^0.9.3:
   version "0.9.7"
