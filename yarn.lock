@@ -5253,7 +5253,7 @@ postcss@^7.0.0:
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
-postcss@^8.1.6, postcss@^8.2.4:
+postcss@^8.1.6:
   version "8.2.12"
   resolved "https://npm.finntech.no/postcss/-/postcss-8.2.12.tgz#81248a1a87e0f575cc594a99a08207fd1c4addc4"
   integrity sha1-gSSKGofg9XXMWUqZoIIH/RxK3cQ=
@@ -5262,7 +5262,7 @@ postcss@^8.1.6, postcss@^8.2.4:
     nanoid "^3.1.22"
     source-map "^0.6.1"
 
-postcss@^8.2.1:
+postcss@^8.2.1, postcss@^8.2.4:
   version "8.2.13"
   resolved "https://npm.finntech.no/postcss/-/postcss-8.2.13.tgz#dbe043e26e3c068e45113b1ed6375d2d37e2129f"
   integrity sha1-2+BD4m48Bo5FETse1jddLTfiEp8=
