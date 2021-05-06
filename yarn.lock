@@ -4005,13 +4005,18 @@ lines-and-columns@^1.1.6:
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
 lit-element@^2.4.0:
-  version "2.5.0"
-  resolved "https://npm.finntech.no/lit-element/-/lit-element-2.5.0.tgz#218773185d30cab8cb7baabcddd9182f6e7bc14b"
-  integrity sha1-IYdzGF0wyrjLe6q83dkYL257wUs=
+  version "2.5.1"
+  resolved "https://npm.finntech.no/lit-element/-/lit-element-2.5.1.tgz#3fa74b121a6cd22902409ae3859b7847d01aa6b6"
+  integrity sha1-P6dLEhps0ikCQJrjhZt4R9AaprY=
   dependencies:
     lit-html "^1.1.1"
 
-lit-html@^1.1.1, lit-html@^1.3.0:
+lit-html@^1.1.1:
+  version "1.4.1"
+  resolved "https://npm.finntech.no/lit-html/-/lit-html-1.4.1.tgz#0c6f3ee4ad4eb610a49831787f0478ad8e9ae5e0"
+  integrity sha1-DG8+5K1OthCkmDF4fwR4rY6a5eA=
+
+lit-html@^1.3.0:
   version "1.4.0"
   resolved "https://npm.finntech.no/lit-html/-/lit-html-1.4.0.tgz#5f18c08d11b52b1d01ceb263df42f115aecef5ca"
   integrity sha1-XxjAjRG1Kx0BzrJj30LxFa7O9co=
