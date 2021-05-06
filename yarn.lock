@@ -4011,15 +4011,10 @@ lit-element@^2.4.0:
   dependencies:
     lit-html "^1.1.1"
 
-lit-html@^1.1.1:
+lit-html@^1.1.1, lit-html@^1.3.0:
   version "1.4.1"
   resolved "https://npm.finntech.no/lit-html/-/lit-html-1.4.1.tgz#0c6f3ee4ad4eb610a49831787f0478ad8e9ae5e0"
   integrity sha1-DG8+5K1OthCkmDF4fwR4rY6a5eA=
-
-lit-html@^1.3.0:
-  version "1.4.0"
-  resolved "https://npm.finntech.no/lit-html/-/lit-html-1.4.0.tgz#5f18c08d11b52b1d01ceb263df42f115aecef5ca"
-  integrity sha1-XxjAjRG1Kx0BzrJj30LxFa7O9co=
 
 load-json-file@^1.0.0:
   version "1.1.0"
