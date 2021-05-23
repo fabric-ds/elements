@@ -4533,10 +4533,10 @@ mz@^2.5.0:
     object-assign "^4.0.1"
     thenify-all "^1.0.0"
 
-nanoid@^3.1.22:
-  version "3.1.22"
-  resolved "https://npm.finntech.no/nanoid/-/nanoid-3.1.22.tgz#b35f8fb7d151990a8aebd5aa5015c03cf726f844"
-  integrity sha1-s1+Pt9FRmQqK69WqUBXAPPcm+EQ=
+nanoid@^3.1.22, nanoid@^3.1.23:
+  version "3.1.23"
+  resolved "https://npm.finntech.no/nanoid/-/nanoid-3.1.23.tgz#f744086ce7c2bc47ee0a8472574d5c78e4183a81"
+  integrity sha1-90QIbOfCvEfuCoRyV01ceOQYOoE=
 
 nanomatch@^1.2.9:
   version "1.2.13"
@@ -5286,7 +5286,7 @@ postcss@^8.1.6:
     nanoid "^3.1.22"
     source-map "^0.6.1"
 
-postcss@^8.2.1, postcss@^8.2.4:
+postcss@^8.2.1:
   version "8.2.13"
   resolved "https://npm.finntech.no/postcss/-/postcss-8.2.13.tgz#dbe043e26e3c068e45113b1ed6375d2d37e2129f"
   integrity sha1-2+BD4m48Bo5FETse1jddLTfiEp8=
@@ -5294,6 +5294,15 @@ postcss@^8.2.1, postcss@^8.2.4:
     colorette "^1.2.2"
     nanoid "^3.1.22"
     source-map "^0.6.1"
+
+postcss@^8.2.4:
+  version "8.3.0"
+  resolved "https://npm.finntech.no/postcss/-/postcss-8.3.0.tgz#b1a713f6172ca427e3f05ef1303de8b65683325f"
+  integrity sha1-sacT9hcspCfj8F7xMD3otlaDMl8=
+  dependencies:
+    colorette "^1.2.2"
+    nanoid "^3.1.23"
+    source-map-js "^0.6.2"
 
 prelude-ls@^1.2.1:
   version "1.2.1"
@@ -5981,6 +5990,11 @@ sort-keys@^2.0.0:
   integrity sha1-ZYU1WEhh7JfXMNbPQYIuH1ZoQSg=
   dependencies:
     is-plain-obj "^1.0.0"
+
+source-map-js@^0.6.2:
+  version "0.6.2"
+  resolved "https://npm.finntech.no/source-map-js/-/source-map-js-0.6.2.tgz#0bb5de631b41cfbda6cfba8bd05a80efdfd2385e"
+  integrity sha1-C7XeYxtBz72mz7qL0FqA79/SOF4=
 
 source-map-resolve@^0.5.0:
   version "0.5.3"
