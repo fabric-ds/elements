@@ -2515,9 +2515,9 @@ esbuild@^0.11.23:
   integrity sha1-xCU09jLhZRIGcdZNtniDY0MztLg=
 
 esbuild@^0.12.0:
-  version "0.12.1"
-  resolved "https://npm.finntech.no/esbuild/-/esbuild-0.12.1.tgz#f652d5b3b9432dbb42fc2c034ddd62360296e03d"
-  integrity sha1-9lLVs7lDLbtC/CwDTd1iNgKW4D0=
+  version "0.12.5"
+  resolved "https://npm.finntech.no/esbuild/-/esbuild-0.12.5.tgz#36076a6bc1966ba2741981d30512e95e8aaff495"
+  integrity sha1-Ngdqa8GWa6J0GYHTBRLpXoqv9JU=
 
 escalade@^3.1.1:
   version "3.1.1"
