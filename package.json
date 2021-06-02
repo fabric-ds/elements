@@ -19,11 +19,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.schibsted.io/finn/fabric-elements"
+    "url": "git@github.com:finn-no/fabric-elements.git"
   },
   "license": "ISC",
   "devDependencies": {
-    "@finn-no/fabric-tailwind-config": "^0.5.13",
+    "@finn-no/fabric-tailwind-config": "^0.5.14",
     "@stylelint/postcss-css-in-js": "^0.37.2",
     "autoprefixer": "^10.2.3",
     "babel-eslint": "^10.1.0",
@@ -38,7 +38,6 @@
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
     "tailwindcss": "^2.0.2",
-    "typescript": "^4.1.3",
     "vite": "^2.0.0-beta.56",
     "vite-plugin-html": "^2.0.0-beta.6"
   },

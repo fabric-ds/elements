@@ -1,0 +1,32 @@
+name: Fabric Elements
+
+on: push
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Install Dependencies
+        run: |
+          npm install
+      -
+        name: Build Packages
+        run: |
+          npm run build
+      -
+        name: Build Docs
+        run: |
+          npm run build:docs
+      -
+        name: Deploy to GitHub Pages
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          target_branch: gh-pages
+          build_dir: site
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
