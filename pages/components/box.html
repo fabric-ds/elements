@@ -1,0 +1,42 @@
+<html lang="en">
+    <%- include('head.html'); -%>
+    <body>
+        <%- include('nav.html'); -%>
+
+        <main>
+            <h1>&lt;fabric-box&gt;</h1>
+
+            <h2>Examples</h2>
+
+            <fabric-box class="mt-10">
+                This example content is in a box
+            </fabric-box>
+
+            <fabric-box info class="mt-10">
+                This example content is in an info box
+            </fabric-box>
+
+            <fabric-box info clickable class="mt-10" onclick="console.log('clicked!');">
+                This example content is in a clickable info box
+            </fabric-box>
+
+            <fabric-box neutral class="mt-10">
+                This example content is in a neutral box
+            </fabric-box>
+
+            <fabric-box neutral clickable class="mt-10">
+                This example content is in a neutral clickable box
+            </fabric-box>
+
+            <fabric-box bordered class="mt-10">
+                This example content is in a bordered box
+            </fabric-box>
+
+            <fabric-box clickable class="mt-10">
+                This example content is in a clickable box
+            </fabric-box>
+        </main>
+
+        <%- include('footer.html'); -%>
+    </body>
+</html>

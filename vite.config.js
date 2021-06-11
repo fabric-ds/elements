@@ -2,8 +2,8 @@
 import html from 'vite-plugin-html';
 import path from 'path';
 import glob from 'glob';
-import postcss from 'postcss';
-import cssInJS from '@stylelint/postcss-css-in-js';
+// import postcss from 'postcss';
+// import cssInJS from '@stylelint/postcss-css-in-js';
 
 export default ({ mode }) => {
     let input = {};
@@ -29,7 +29,7 @@ export default ({ mode }) => {
     return {
         base: isProduction ? '/fabric-elements/' : '',
         plugins: [
-            litElementTailwindPlugin({ mode }),
+            // litElementTailwindPlugin({ mode }),
             html({
                 inject: {
                     injectOptions: { views: ['pages/includes'] },
@@ -49,42 +49,42 @@ export default ({ mode }) => {
 
 // Tiny plugin to to use Tailwind classes with lit-element
 // See postcss.config.js
-function litElementTailwindPlugin({ mode }) {
-    // FIXME: This is to simple a check... if we start adding utility files etc that we import in our web components we'll process them as well
-    function shouldProcess(id) {
-        // try to match all JS files that follows this pattern ./packages/*/src/*.js
-        return id.match(/(.*)\/packages\/(.*)\/src\/(.*).js$/);
-        // return !id.includes('node_modules') && id.endsWith('.js');
-    }
+// function litElementTailwindPlugin({ mode }) {
+//     // FIXME: This is to simple a check... if we start adding utility files etc that we import in our web components we'll process them as well
+//     function shouldProcess(id) {
+//         // try to match all JS files that follows this pattern ./packages/*/src/*.js
+//         return id.match(/(.*)\/packages\/(.*)\/src\/(.*).js$/);
+//         // return !id.includes('node_modules') && id.endsWith('.js');
+//     }
 
-    return {
-        name: 'lit-element-tailwind-plugin',
-        async transform(code, id) {
-            if (shouldProcess(id)) {
-                // postcss context
-                const context = {
-                    env: mode,
-                    file: {
-                        extname: path.extname(id),
-                        dirname: path.dirname(id),
-                        basename: path.basename(id),
-                    },
-                };
+//     return {
+//         name: 'lit-element-tailwind-plugin',
+//         async transform(code, id) {
+//             if (shouldProcess(id)) {
+//                 // postcss context
+//                 const context = {
+//                     env: mode,
+//                     file: {
+//                         extname: path.extname(id),
+//                         dirname: path.dirname(id),
+//                         basename: path.basename(id),
+//                     },
+//                 };
 
-                const result = await postcss(
-                    require('./postcss.config')(context).plugins,
-                ).process(code, {
-                    from: undefined,
-                    syntax: cssInJS,
-                });
+//                 const result = await postcss(
+//                     require('./postcss.config')(context).plugins,
+//                 ).process(code, {
+//                     from: undefined,
+//                     syntax: cssInJS,
+//                 });
 
-                return {
-                    code: result.css,
-                };
-            }
-        },
-    };
-}
+//                 return {
+//                     code: result.css,
+//                 };
+//             }
+//         },
+//     };
+// }
 /**
  * Since we deploy the site to github pages we need to prefix all the interal links with a base path
  * We do this with a simple regex
