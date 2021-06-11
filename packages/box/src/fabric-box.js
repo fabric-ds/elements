@@ -3,6 +3,16 @@ import { box } from '@finn-no/fabric-component-classes';
 import { classes } from '../../utils/index.js';
 
 export class FabricBox extends LitElement {
+    static get properties() {
+        return {
+            bleed: { type: Boolean, reflect: true },
+            clickable: { type: Boolean, reflect: true },
+            info: { type: Boolean, reflect: true },
+            neutral: { type: Boolean, reflect: true },
+            bordered: { type: Boolean, reflect: true },
+        };
+    }
+
     static get styles() {
         return css`
             :host {
@@ -16,15 +26,15 @@ export class FabricBox extends LitElement {
         if (!this.hasAttribute('tabindex') && this.clickable)
             this.setAttribute('tabindex', 0);
         console.log(this.onclick);
-        this.addEventListener('keydown', this._handleKeyDown);
+        this.addEventListener('keydown', this.handleKeyDown);
     }
 
     disconnectedCallback() {
-        this.removeEventListener('keydown', this._handleKeyDown);
+        this.removeEventListener('keydown', this.handleKeyDown);
         super.disconnectedCallback();
     }
 
-    _handleKeyDown(event) {
+    handleKeyDown(event) {
         if (!this.clickable) return;
         // Manually mapping Enter and Space keydown events to the click event (if there is one).
         // The browser doesn't do this automatically unless the element is a button or an a-element.
@@ -37,41 +47,27 @@ export class FabricBox extends LitElement {
         }
     }
 
-    static get properties() {
-        return {
-            bleed: { type: Boolean, reflect: true },
-            clickable: { type: Boolean, reflect: true },
-            info: { type: Boolean, reflect: true },
-            neutral: { type: Boolean, reflect: true },
-            bordered: { type: Boolean, reflect: true },
-        };
-    }
-
-    setup() {
-        return {
-            classes: classes({
-                [box.box]: true,
-                [box.bleed]: this.bleed,
-                [box.clickable]: this.clickable,
-                'bg-aqua-50': this.info,
-                'hover:bg-aqua-100 active:bg-aqua-200':
-                    this.info && this.clickable,
-                'bg-bluegray-100': this.neutral,
-                'hover:bg-bluegray-200 active:bg-bluegray-300':
-                    this.neutral && this.clickable,
-                'border-2 border-bluegray-300': this.bordered,
-            }),
-        };
+    get classes() {
+        return classes({
+            [box.box]: true,
+            [box.bleed]: this.bleed,
+            [box.clickable]: this.clickable,
+            'bg-aqua-50': this.info,
+            'hover:bg-aqua-100 active:bg-aqua-200': this.info && this.clickable,
+            'bg-bluegray-100': this.neutral,
+            'hover:bg-bluegray-200 active:bg-bluegray-300':
+                this.neutral && this.clickable,
+            'border-2 border-bluegray-300': this.bordered,
+        });
     }
 
     render() {
-        const { classes } = this.setup();
         return html`<link
                 rel="stylesheet"
                 type="text/css"
                 href="https://assets.finn.no/pkg/@finn-no/fabric-css/v0/fabric.min.css"
             />
-            <div class="${classes}">
+            <div class="${this.classes}">
                 ${this.clickable
                     ? html`<div><slot></slot></div>
                           <span role="button" aria-label="Les mer"></span>`
