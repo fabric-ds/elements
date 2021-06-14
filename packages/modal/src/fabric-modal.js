@@ -149,4 +149,3 @@ export class FabricModal extends LitElement {
     }
 }
 
-customElements.define('fabric-modal', FabricModal);
