@@ -1,0 +1,21 @@
+{
+  "name": "@finn-no/fabric-element-breadcrumbs",
+  "version": "0.0.0",
+  "description": "Custom elements for fabric",
+  "type": "module",
+  "exports": "./dist/fabric-breadcrumbs.js",
+  "module": "dist/fabric-breadcrumbs.js",
+  "files": [
+    "dist/"
+  ],
+  "types": "dist/fabric-breadcrumbs.d.ts",
+  "scripts": {
+    "build": "yarn build:js",
+    "build:js": "esbuild src/fabric-breadcrumbs.js --format=esm --outfile=dist/fabric-breadcrumbs.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/finn-no/fabric-elements"
+  },
+  "license": "ISC"
+}
