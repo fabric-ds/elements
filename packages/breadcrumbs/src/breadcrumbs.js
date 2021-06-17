@@ -1,4 +1,4 @@
-export class FBreadcrumbs extends HTMLElement {
+export class Breadcrumbs extends HTMLElement {
     connectedCallback() {
         const children = Array.from(this.children)
             .map((child) => child.outerHTML)
