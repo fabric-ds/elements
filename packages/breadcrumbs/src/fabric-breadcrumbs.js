@@ -6,6 +6,6 @@ export class FabricBreadcrumbs extends FabricWebComponent {
             .map((child) => child.outerHTML)
             .join('<span class="select-none" aria-hidden>/</span>');
 
-        this.innerHTML = `<nav class="flex space-x-8">${children}</nav>`;
+        this.shadowRoot.innerHTML += `<nav class="flex space-x-8">${children}</nav>`;
     }
 }

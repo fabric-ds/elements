@@ -1,0 +1,25 @@
+{
+  "name": "@finn-no/fabric-element-toast",
+  "version": "0.0.0",
+  "type": "module",
+  "exports": "./dist/fabric-toast.js",
+  "module": "dist/fabric-toast.js",
+  "files": [
+    "dist/"
+  ],
+  "types": "dist/fabric-toast.d.ts",
+  "scripts": {
+    "build": "yarn build:js",
+    "build:js": "esbuild src/fabric-toast.js --format=esm --outfile=dist/fabric-toast.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/finn-no/fabric-elements"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@chbphone55/classnames": "^2.0.0",
+    "@finn-no/fabric-component-classes": "^0.0.27",
+    "element-collapse": "^0.9.1"
+  }
+}

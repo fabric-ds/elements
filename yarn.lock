@@ -208,6 +208,11 @@
     "@babel/helper-validator-identifier" "^7.14.5"
     to-fast-properties "^2.0.0"
 
+"@chbphone55/classnames@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@chbphone55/classnames/-/classnames-2.0.0.tgz#fb0c6d122c3ba2030614613a5fe959b0e61f1a41"
+  integrity sha512-tR9ph9yRNOHyZZveFs3hhUGmaeck5MTGvNKm6ACAy6+mKu46YeMN/1U1ZRcYfRNEmwV4iDAWQ839PFDmpZ3YnA==
+
 "@eslint/eslintrc@^0.4.2":
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-0.4.2.tgz#f63d0ef06f5c0c57d76c4ab5f63d3835c51b0179"
@@ -301,6 +306,11 @@
   version "0.0.22"
   resolved "https://registry.yarnpkg.com/@finn-no/fabric-component-classes/-/fabric-component-classes-0.0.22.tgz#321bcd9aa5ea6b660e4dbc1120c4c4c2702de4d4"
   integrity sha512-ylNRKJYW7PqeuV1ECtL5oSY0ev9KSpvyezDWvnAQ00a4xqCld9lNiPJK6GtU4UGF2xno1z3YkMpML578+klTbg==
+
+"@finn-no/fabric-component-classes@^0.0.27":
+  version "0.0.27"
+  resolved "https://registry.yarnpkg.com/@finn-no/fabric-component-classes/-/fabric-component-classes-0.0.27.tgz#397e220328e7469f7adf185c81977a2174395014"
+  integrity sha512-5xCXI4B89R0sHKC7mhG2GyT550P0wcrgYX6IZuqNZcL3XwiEf9zFg3u4uGau5lJ+GGTY32L6qAtxYA6s18XGaA==
 
 "@finn-no/fabric-tailwind-config@^0.5.14":
   version "0.5.14"
@@ -2425,6 +2435,11 @@ electron-to-chromium@^1.3.723:
   version "1.3.752"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.752.tgz#0728587f1b9b970ec9ffad932496429aef750d09"
   integrity sha512-2Tg+7jSl3oPxgsBsWKh5H83QazTkmWG/cnNwJplmyZc7KcN61+I10oUgaXSVk/NwfvN3BdkKDR4FYuRBQQ2v0A==
+
+element-collapse@^0.9.1:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/element-collapse/-/element-collapse-0.9.1.tgz#70547120606b0b8858799b7e9a126f028c70520e"
+  integrity sha512-gkkpfDyme8j9iutpBjICxuZJZsqldxm7ibfmMsW2fFvrcTFoBe3qEHkqgiFjXaxUPSZ3RwnxGppapfZw4qxxEA==
 
 emoji-regex@^7.0.1:
   version "7.0.3"
