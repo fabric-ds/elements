@@ -2,7 +2,7 @@ import { FabricWebComponent } from '../../utils';
 import { classNames } from '@chbphone55/classnames';
 import { toast as c } from '@finn-no/fabric-component-classes';
 import { expand, collapse } from 'element-collapse';
-import { useToast } from './api';
+import { removeToast } from './api';
 
 const ALLOWED_TYPES = ['success', 'warning', 'error', 'info'];
 export class FabricToast extends FabricWebComponent {
@@ -176,8 +176,6 @@ export class FabricToast extends FabricWebComponent {
     }
 
     handleSetup(updated) {
-        const { removeToast } = useToast();
-
         const el = this.shadowRoot.getElementById(`toast-${this.id}-wrapper`);
         const button = this.shadowRoot.getElementById(
             `toast-${this.id}-button`,

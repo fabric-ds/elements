@@ -6,4 +6,4 @@ if (!customElements.get('f-toast')) {
     customElements.define('f-toast', FabricToast);
 }
 
-export { useToast } from './api';
+export { toast, removeToast, updateToast } from './api';

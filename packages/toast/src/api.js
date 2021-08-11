@@ -37,8 +37,13 @@ export function initToasts() {
  * @property   {Function}                             [onClose]   Dismiss handler
  */
 
-/** A set of Toast helper methods */
-export function useToast() {
+/**
+ * Create a new toast
+ * @param {String}       message Message
+ * @param {ToastOptions} [options] Toast options
+ * @returns {ToastOptions} Toast details
+ */
+export function toast(message, options) {
     const toasts = window.fabricToasts;
     const container = document.querySelector('f-toast-container');
     const list = container.shadowRoot.getElementById('f-toast-container-list');
@@ -49,82 +54,85 @@ export function useToast() {
         );
     }
 
-    return {
-        /**
-         * Create a new toast
-         * @param {String}       message Message
-         * @param {ToastOptions} [options] Toast options
-         * @returns {ToastOptions} Toast details
-         */
-        toast: function (message, options) {
-            const id =
-                Date.now().toString(36) +
-                Math.random().toString(36).slice(2, 5);
+    const id = Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
 
-            const toast = {
-                id,
-                programmatic: true,
-                text: message,
-                duration: 2400,
-                type: 'success' || options.type,
-                ...options,
-            };
-
-            const el = document.createElement('f-toast');
-            el.className = 'w-full';
-            Object.entries(toast).forEach((t) => {
-                el.setAttribute(t[0], t[1]);
-            });
-            list.appendChild(el);
-
-            toasts.toasts = [...toasts.toasts, toast];
-
-            return toast;
-        },
-
-        /**
-         * Remove an existing toast
-         * @param {String} id Toast identifier
-         * @return {Boolean} True if deleted, false if not found
-         */
-        removeToast: function (id) {
-            toasts.toasts = toasts.toasts.filter((toast) => toast.id !== id);
-
-            const el = container.shadowRoot.getElementById(id);
-            if (!el) return false;
-
-            collapse(el);
-            setTimeout(() => {
-                el.remove();
-            }, 1000);
-
-            return true;
-        },
-
-        /**
-         * Update an existing toast
-         * @param {String}       id      Toast identifier
-         * @param {ToastOptions} options Toast options
-         * @returns {ToastOptions} Toast details
-         */
-        updateToast: function (id, options) {
-            const t = toasts.toasts.find((toast) => toast.id === id);
-
-            const toast = {
-                ...t,
-                ...options,
-            };
-
-            const el = container.shadowRoot.getElementById(id);
-            Object.entries(toast).forEach((t) => {
-                el.setAttribute(t[0], t[1]);
-            });
-
-            toasts.toasts = toasts.toasts.map((t) =>
-                t.id === toast.id ? toast : t,
-            );
-
-            return toast;
-        },
+    const toast = {
+        id,
+        programmatic: true,
+        text: message,
+        duration: 2400,
+        type: 'success' || options.type,
+        ...options,
     };
+
+    const el = document.createElement('f-toast');
+    el.className = 'w-full';
+    Object.entries(toast).forEach((t) => {
+        el.setAttribute(t[0], t[1]);
+    });
+    list.appendChild(el);
+
+    toasts.toasts = [...toasts.toasts, toast];
+
+    return toast;
+}
+
+/**
+ * Remove an existing toast
+ * @param {String} id Toast identifier
+ * @return {Boolean} True if deleted, false if not found
+ */
+export function removeToast(id) {
+    const toasts = window.fabricToasts;
+    const container = document.querySelector('f-toast-container');
+    if (!container && customElements.get('f-toast') && toasts) {
+        throw new Error(
+            'No toast container found. Make sure to call initToasts() first.',
+        );
+    }
+
+    toasts.toasts = toasts.toasts.filter((toast) => toast.id !== id);
+
+    const el = container.shadowRoot.getElementById(id);
+    if (!el) return false;
+
+    collapse(el);
+    setTimeout(() => {
+        el.remove();
+    }, 1000);
+
+    return true;
+}
+
+/**
+ * Update an existing toast
+ * @param {String}       id      Toast identifier
+ * @param {ToastOptions} options Toast options
+ * @returns {ToastOptions} Toast details
+ */
+export function updateToast(id, options) {
+    const toasts = window.fabricToasts;
+    const container = document.querySelector('f-toast-container');
+
+    if (!container && customElements.get('f-toast') && toasts) {
+        throw new Error(
+            'No toast container found. Make sure to call initToasts() first.',
+        );
+    }
+
+    const t = toasts.toasts.find((toast) => toast.id === id);
+
+    const toast = {
+        ...t,
+        ...options,
+    };
+
+    const el = container.shadowRoot.getElementById(id);
+    Object.entries(toast).forEach((t) => {
+        el.setAttribute(t[0], t[1]);
+    });
+
+    toasts.toasts = toasts.toasts.map((t) => (t.id === toast.id ? toast : t));
+
+    return toast;
 }
