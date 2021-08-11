@@ -1,16 +1,17 @@
 {
-  "name": "@finn-no/fabric-element-toast",
+  "name": "@finn-no/toast",
   "version": "0.0.0",
   "type": "module",
-  "exports": "./dist/fabric-toast.js",
-  "module": "dist/fabric-toast.js",
+  "main": ".dist/index.js",
+  "types": "./dist/toast/src/index.d.ts",
+  "exports": "./dist/index.js",
+  "module": "./dist/index.js",
   "files": [
     "dist/"
   ],
-  "types": "dist/fabric-toast.d.ts",
   "scripts": {
     "build": "yarn build:js",
-    "build:js": "esbuild src/fabric-toast.js --format=esm --outfile=dist/fabric-toast.js"
+    "build:js": "microbundle -i src/index.js -o dist/index.js --no-pkg-main --format modern"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,9 @@
     "@chbphone55/classnames": "^2.0.0",
     "@finn-no/fabric-component-classes": "^0.0.27",
     "element-collapse": "^0.9.1"
+  },
+  "devDependencies": {
+    "microbundle": "^0.13.3",
+    "typescript": "^4.3.5"
   }
 }

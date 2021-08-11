@@ -10,13 +10,23 @@ export class FabricToast extends FabricWebComponent {
         return ['type', 'text', 'duration', 'canclose', 'onclose'];
     }
 
+    attributeChangedCallback(name, _, newValue) {
+        switch (name) {
+            case 'onclose':
+                this[name] = new Function('return ' + newValue)();
+                break;
+            case 'canclose':
+                this[name] = newValue == 'false' ? false : true;
+                break;
+            default:
+                this[name] = newValue;
+        }
+
+        this.render(true);
+    }
+
     connectedCallback() {
         this.isProgrammatic = !!this.getAttribute('programmatic');
-        this.id = this.getAttribute('id');
-        this.type = this.getAttribute('type');
-        this.duration = this.getAttribute('duration');
-        this.onclose = this.getAttribute('onClose');
-        this.canclose = this.getAttribute('canClose');
 
         if (this.isProgrammatic && !ALLOWED_TYPES.includes(this.type)) {
             throw new Error(
@@ -30,78 +40,19 @@ export class FabricToast extends FabricWebComponent {
         }
 
         this.render();
-
-        if (
-            document.readyState === 'complete' ||
-            document.readyState === 'loaded'
-        ) {
-            this.handleSetup();
-        } else {
-            document.addEventListener('DOMContentLoaded', this.handleSetup());
-        }
-    }
-
-    attributeChangedCallback(name, oldValue, newValue) {
-        console.log(`this[${name}] = ${newValue};`);
-        this[name] = newValue;
-
-        this.render(true);
-    }
-
-    handleSetup() {
-        const { removeToast } = useToast();
-
-        const el = this.shadowRoot.getElementById(`toast-${this.id}-wrapper`);
-        const button = this.shadowRoot.getElementById(
-            `toast-${this.id}-button`,
-        );
-
-        if (button) {
-            const handleClose = () => {
-                new Function('return ' + this.onclose)();
-                if (this.isProgrammatic) {
-                    el && collapse(el);
-                    setTimeout(() => {
-                        removeToast(this.id);
-                    }, 1000);
-                }
-            };
-            button.addEventListener('click', handleClose);
-        }
-
-        // Expand element on mount
-        if (this.isProgrammatic && el) {
-            expand(el);
-        }
-
-        // If a duration is passed, handle auto dismiss
-        if ((this.duration || this.isProgrammatic) && el) {
-            if (this.duration === '0') return;
-
-            setTimeout(() => {
-                collapse(el);
-            }, Number(this.duration));
-
-            setTimeout(() => {
-                removeToast(this.id);
-            }, Number(this.duration) + 1000);
-        }
     }
 
     render(updated) {
         const exists = this.shadowRoot.getElementById(
             `toast-${this.id}-wrapper`,
         );
+        if (exists) exists.remove();
 
-        const isProgrammatic = !!this.getAttribute('programmatic');
+        const isProgrammatic = this.isProgrammatic;
         const isSuccess = this.type === 'success';
         const isWarning = this.type === 'warning';
         const isError = this.type === 'error';
         const isInfo = this.type === 'info';
-
-        if (exists) {
-            exists.remove();
-        }
 
         this.shadowRoot.innerHTML += `
             <div
@@ -209,5 +160,64 @@ export class FabricToast extends FabricWebComponent {
                 </div>
             </div>
         `;
+
+        if (
+            document.readyState === 'complete' ||
+            document.readyState === 'loaded' ||
+            updated
+        ) {
+            this.handleSetup(!!updated);
+        } else {
+            document.addEventListener(
+                'DOMContentLoaded',
+                this.handleSetup(!!updated),
+            );
+        }
+    }
+
+    handleSetup(updated) {
+        const { removeToast } = useToast();
+
+        const el = this.shadowRoot.getElementById(`toast-${this.id}-wrapper`);
+        const button = this.shadowRoot.getElementById(
+            `toast-${this.id}-button`,
+        );
+
+        if (button) {
+            const handleClose = () => {
+                if (!this.canclose) return;
+
+                this.onclose();
+
+                if (this.isProgrammatic) {
+                    el && collapse(el);
+                    setTimeout(() => {
+                        removeToast(this.id);
+                    }, 1000);
+                }
+            };
+            button.addEventListener('click', handleClose);
+        }
+
+        // Expand element on mount
+        if (this.isProgrammatic && el && !updated) {
+            expand(el);
+        }
+
+        // If a duration is passed, handle auto dismiss
+        if ((this.duration || this.isProgrammatic) && el) {
+            clearTimeout(this.c);
+            clearTimeout(this.r);
+
+            if (this.duration === '0') return;
+
+            this.c = setTimeout(() => {
+                collapse(el);
+            }, Number(this.duration));
+
+            this.r = setTimeout(() => {
+                removeToast(this.id);
+            }, Number(this.duration) + 1000);
+        }
     }
 }

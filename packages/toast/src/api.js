@@ -1,9 +1,9 @@
-import { toast, toaster as c } from '@finn-no/fabric-component-classes';
+import { toaster as c } from '@finn-no/fabric-component-classes';
 import { collapse } from 'element-collapse';
 
 export function initToasts() {
-    if (!window.fabricToasts) window.fabricToasts = { toasts: [] };
-    if (!document.getElementById('fabric-toast-container')) {
+    if (window && !window.fabricToasts) window.fabricToasts = { toasts: [] };
+    if (document && !document.getElementById('fabric-toast-container')) {
         const container = document.createElement('aside');
         container.id = 'fabric-toast-container';
         container.className = c.toasterContainer;
@@ -15,29 +15,39 @@ export function initToasts() {
         container.appendChild(div);
         document.querySelector('body').appendChild(container);
     }
-
-    return true;
 }
 
+/**
+ * Toast helper function options
+ * @typedef    {Object}                               ToastOptions
+ * @property   {(number|string)}                      [id]        Custom identifier
+ * @property   {('success'|'error'|'warning'|'info')} [type]      Type of alert
+ * @property   {String}                               [text]      The toast message. Only needed when updating text on existing toast
+ * @property   {(number|string)}                      [duration]  Duration of toast in milliseconds Set to 0 to disable auto-removal
+ * @property   {Boolean}                              [canClose]  Can toast be dismissed?
+ * @property   {Function}                             [onClose]   Dismiss handler
+ */
+
+/** A set of Toast helper methods */
 export function useToast() {
+    const toasts = window.fabricToasts;
     const container = document.getElementById('fabric-toast-container');
     const list = document.getElementById('fabric-toast-container-list');
-    if (!container) {
+
+    if (!container && customElements.get('f-toast') && toasts) {
         throw new Error(
             'No toast container found. Make sure to call initToasts() first.',
         );
     }
 
-    // eslint-disable-next-line no-undef
-    const toasts = new Proxy(window.fabricToasts, {
-        set: function (target, key, value) {
-            target[key] = value;
-            return true;
-        },
-    });
-
     return {
-        toast: (message, options) => {
+        /**
+         * Create a new toast
+         * @param {String}       message Message
+         * @param {ToastOptions} [options] Toast options
+         * @returns {ToastOptions} Toast details
+         */
+        toast: function (message, options) {
             const id =
                 Date.now().toString(36) +
                 Math.random().toString(36).slice(2, 5);
@@ -47,10 +57,10 @@ export function useToast() {
                 programmatic: true,
                 text: message,
                 duration: 2400,
+                type: 'success' || options.type,
                 ...options,
             };
 
-            // Add to container
             const el = document.createElement('f-toast');
             Object.entries(toast).forEach((t) => {
                 el.setAttribute(t[0], t[1]);
@@ -61,31 +71,33 @@ export function useToast() {
 
             return toast;
         },
-        removeToast: (id) => {
+
+        /**
+         * Remove an existing toast
+         * @param {String} id Toast identifier
+         * @return {Boolean} True if deleted, false if not found
+         */
+        removeToast: function (id) {
             toasts.toasts = toasts.toasts.filter((toast) => toast.id !== id);
 
             const el = document.getElementById(id);
-            if (!el) return;
+            if (!el) return false;
 
             collapse(el);
             setTimeout(() => {
                 el.remove();
             }, 1000);
+
+            return true;
         },
 
         /**
          * Update an existing toast
-         *
-         * @param {String}   id                Existing toast identifier
-         * @param {Object}   options
-         * @param {String}   options.id        Custom identifier
-         * @param {String}   options.type      Type of alert (success, error, warning, info)
-         * @param {String}   options.text      The toast message
-         * @param {String}   options.duration  Duration of toast in milliseconds Set to 0 to disable auto-removal
-         * @param {Boolean}  options.canClose  Can toast be dismissed?
-         * @param {Function} options.onClose   Dismiss handler
+         * @param {String}       id      Toast identifier
+         * @param {ToastOptions} options Toast options
+         * @returns {ToastOptions} Toast details
          */
-        updateToast: (id, options) => {
+        updateToast: function (id, options) {
             const t = toasts.toasts.find((toast) => toast.id === id);
 
             const toast = {
@@ -93,7 +105,6 @@ export function useToast() {
                 ...options,
             };
 
-            // Add to container
             const el = document.getElementById(id);
             Object.entries(toast).forEach((t) => {
                 el.setAttribute(t[0], t[1]);
