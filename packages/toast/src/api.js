@@ -1,18 +1,27 @@
 import { toaster as c } from '@finn-no/fabric-component-classes';
 import { collapse } from 'element-collapse';
+import { FabricWebComponent } from '../../utils';
 
 export function initToasts() {
     if (window && !window.fabricToasts) window.fabricToasts = { toasts: [] };
-    if (document && !document.getElementById('fabric-toast-container')) {
-        const container = document.createElement('aside');
-        container.id = 'fabric-toast-container';
-        container.className = c.toasterContainer;
+    if (document && !document.querySelector('f-toast-container')) {
+        class Container extends FabricWebComponent {
+            connectedCallback() {
+                const container = document.createElement('aside');
+                container.className = c.toasterContainer;
 
-        const div = document.createElement('div');
-        div.id = 'fabric-toast-container-list';
-        div.className = `${c.toaster} relative`;
+                const div = document.createElement('div');
+                div.id = 'f-toast-container-list';
+                div.className = `${c.toaster} relative`;
 
-        container.appendChild(div);
+                container.appendChild(div);
+
+                this.shadowRoot.appendChild(container);
+            }
+        }
+        customElements.define('f-toast-container', Container);
+
+        const container = document.createElement('f-toast-container');
         document.querySelector('body').appendChild(container);
     }
 }
@@ -31,8 +40,8 @@ export function initToasts() {
 /** A set of Toast helper methods */
 export function useToast() {
     const toasts = window.fabricToasts;
-    const container = document.getElementById('fabric-toast-container');
-    const list = document.getElementById('fabric-toast-container-list');
+    const container = document.querySelector('f-toast-container');
+    const list = container.shadowRoot.getElementById('f-toast-container-list');
 
     if (!container && customElements.get('f-toast') && toasts) {
         throw new Error(
@@ -62,6 +71,7 @@ export function useToast() {
             };
 
             const el = document.createElement('f-toast');
+            el.className = 'w-full';
             Object.entries(toast).forEach((t) => {
                 el.setAttribute(t[0], t[1]);
             });
@@ -80,7 +90,7 @@ export function useToast() {
         removeToast: function (id) {
             toasts.toasts = toasts.toasts.filter((toast) => toast.id !== id);
 
-            const el = document.getElementById(id);
+            const el = container.shadowRoot.getElementById(id);
             if (!el) return false;
 
             collapse(el);
@@ -105,7 +115,7 @@ export function useToast() {
                 ...options,
             };
 
-            const el = document.getElementById(id);
+            const el = container.shadowRoot.getElementById(id);
             Object.entries(toast).forEach((t) => {
                 el.setAttribute(t[0], t[1]);
             });
