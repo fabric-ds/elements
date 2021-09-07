@@ -1,32 +1,30 @@
-name: Fabric Elements
+name: Deploy to GitHub Pages
 
-on: push
+on:
+    push:
+        branches:
+            - main
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      -
-        name: Checkout
-        uses: actions/checkout@v2
-      -
-        name: Install Dependencies
-        run: |
-          yarn
-      -
-        name: Build Packages
-        run: |
-          yarn build
-      -
-        name: Build Docs
-        run: |
-          yarn build:docs
-      -
-        name: Deploy to GitHub Pages
-        if: success()
-        uses: crazy-max/ghaction-github-pages@v2
-        with:
-          target_branch: gh-pages
-          build_dir: site
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+            - name: Install Dependencies
+              run: |
+                  yarn
+            - name: Build Packages
+              run: |
+                  yarn build
+            - name: Build Docs
+              run: |
+                  yarn build:docs
+            - name: Deploy
+              if: success()
+              uses: crazy-max/ghaction-github-pages@v2
+              with:
+                  target_branch: gh-pages
+                  build_dir: site
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

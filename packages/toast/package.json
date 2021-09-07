@@ -1,0 +1,33 @@
+{
+  "name": "@finn-no/toast",
+  "version": "0.0.4",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/toast/src/index.d.ts",
+  "exports": "./dist/index.js",
+  "module": "./dist/index.js",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "yarn build:js",
+    "build:js": "microbundle -i src/index.js -o dist/index.js --no-pkg-main --format modern"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/finn-no/fabric-elements"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@chbphone55/classnames": "^2.0.0",
+    "@finn-no/fabric-component-classes": "^0.0.27",
+    "element-collapse": "^0.9.1"
+  },
+  "devDependencies": {
+    "microbundle": "^0.13.3",
+    "typescript": "^4.3.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -19,7 +19,7 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "@finn-no/fabric-component-classes": "^0.0.22"
+    "@finn-no/fabric-component-classes": "^0.0.27"
   },
   "dependencies": {
     "lit-element": "^2.4.0",
