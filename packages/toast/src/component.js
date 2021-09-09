@@ -53,14 +53,19 @@ export class FabricToast extends FabricWebComponent {
         const isWarning = this.type === 'warning';
         const isError = this.type === 'error';
         const isInfo = this.type === 'info';
+        const typeLabel = (
+            isSuccess ? 'Vellykket' :
+            isError   ? 'Feil' :
+            isWarning ? 'Varsel' :
+                        'Info'
+        );
 
         this.shadowRoot.innerHTML += `
-            <div
+            <section
                 ${this.id ? `id="toast-${this.id}-wrapper"` : ''}
                 ${isProgrammatic && !updated ? "style='height: 0;'" : ''}
                 class="${c.toastWrapper}"
-                role="status"
-                aria-live="polite"
+                aria-label="${typeLabel}"
             >
                 <div
                     class="${classNames({
@@ -84,6 +89,8 @@ export class FabricToast extends FabricWebComponent {
                             isSuccess
                                 ? `
                         <svg
+                            role="img"
+                            aria-label="${typeLabel}"
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
                             height="16"
@@ -100,6 +107,8 @@ export class FabricToast extends FabricWebComponent {
                         </svg>`
                                 : `
                         <svg
+                            role="img"
+                            aria-label="${typeLabel}"
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
                             height="16"
@@ -128,10 +137,13 @@ export class FabricToast extends FabricWebComponent {
                         </svg>`
                         }
                     </div>
-                    <div class="${c.toastContent}">
+                    <div
+                        role="${(isError || isWarning) ? 'alert' : 'status'}"
+                        class="${c.toastContent}"
+                    >
                         <p ${this.id ? `id="toast-${this.id}-text"` : ''}>${
-            this.text
-        }</p>
+                            this.text
+                        }</p>
                     </div>
                     ${
                         this.canclose
@@ -141,6 +153,8 @@ export class FabricToast extends FabricWebComponent {
                                 class="${c.toastClose}"
                             >
                                 <svg
+                                    role="img"
+                                    aria-label="Lukk"
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="16"
                                     height="16"
@@ -158,7 +172,7 @@ export class FabricToast extends FabricWebComponent {
                             : ``
                     }
                 </div>
-            </div>
+            </section>
         `;
 
         if (
