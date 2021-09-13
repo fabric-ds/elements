@@ -13,5 +13,7 @@ export class FabricBreadcrumbs extends FabricWebComponent {
             <h2 class="sr-only">Her er du</h2>
             ${children}
         </nav>`;
+
+        this.innerHTML = '';
     }
 }
