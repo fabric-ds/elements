@@ -5,10 +5,25 @@
         <main>
             <h1>&lt;f-toast&gt;</h1>
 
+            <h2>Success type</h2>
             <f-toast
-                id="test"
+                id="success"
                 type="success"
                 text="Hi! I'm an example toast!"
+            ></f-toast>
+
+            <h2 class="mt-20">Error type</h2>
+            <f-toast
+                id="error"
+                type="error"
+                text="Hi! I'm an example error message!"
+            ></f-toast>
+
+            <h2 class="mt-20">Can close</h2>
+            <f-toast
+                id="canclose"
+                canclose
+                text="Hi! I'm an example toast that can be dismissed! ... Maybe"
             ></f-toast>
         </main>
 
