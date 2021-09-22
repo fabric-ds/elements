@@ -11,7 +11,7 @@
   "types": "dist/fabric-breadcrumbs.d.ts",
   "scripts": {
     "build": "yarn build:js",
-    "build:js": "esbuild src/fabric-breadcrumbs.js --format=esm --outfile=dist/fabric-breadcrumbs.js"
+    "build:js": "esbuild src/breadcrumbs.js --format=esm --outfile=dist/breadcrumbs.js"
   },
   "repository": {
     "type": "git",
