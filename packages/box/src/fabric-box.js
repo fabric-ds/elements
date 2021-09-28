@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit-element';
-import { box } from '@finn-no/fabric-component-classes';
+import { box } from '@fabric-ds/component-classes';
 import { classes } from '../../utils/index.js';
 
 export class FabricBox extends LitElement {
@@ -65,7 +65,7 @@ export class FabricBox extends LitElement {
         return html`<link
                 rel="stylesheet"
                 type="text/css"
-                href="https://assets.finn.no/pkg/@finn-no/fabric-css/v0/fabric.min.css"
+                href="https://assets.finn.no/pkg/@fabric-ds/css/v0/fabric.min.css"
             />
             <div class="${this.classes}">
                 ${this.clickable

@@ -1,4 +1,4 @@
-# [Fabric Elements](https://opensource.finn.no/fabric-elements)
+# Fabric Elements
 
 ## Development
 

@@ -16,7 +16,7 @@ export class FabricWebComponent extends HTMLElement {
             <link
                 rel="stylesheet"
                 type="text/css"
-                href="https://assets.finn.no/pkg/@finn-no/fabric-css/v0/fabric.min.css"
+                href="https://assets.finn.no/pkg/@fabric-ds/css/v0/fabric.min.css"
             />
         `;
 

@@ -1,6 +1,6 @@
 import { FabricWebComponent } from '../../utils';
 import { classNames } from '@chbphone55/classnames';
-import { toast as c } from '@finn-no/fabric-component-classes';
+import { toast as c } from '@fabric-ds/component-classes';
 import { expand, collapse } from 'element-collapse';
 import { removeToast } from './api';
 

@@ -1,5 +1,5 @@
 {
-  "name": "@finn-no/toast",
+  "name": "@fabric-ds/toast",
   "version": "0.0.4",
   "type": "module",
   "main": "./dist/index.js",
@@ -15,12 +15,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/finn-no/fabric-elements"
+    "url": "https://github.com/fabric-ds/elements"
   },
   "license": "ISC",
   "dependencies": {
     "@chbphone55/classnames": "^2.0.0",
-    "@finn-no/fabric-component-classes": "^0.0.27",
+    "@fabric-ds/component-classes": "^0.0.27",
     "element-collapse": "^0.9.1"
   },
   "devDependencies": {

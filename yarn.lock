@@ -1185,14 +1185,14 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
-"@finn-no/fabric-component-classes@^0.0.27":
+"@fabric-ds/component-classes@^0.0.27":
   version "0.0.27"
-  resolved "https://registry.yarnpkg.com/@finn-no/fabric-component-classes/-/fabric-component-classes-0.0.27.tgz#397e220328e7469f7adf185c81977a2174395014"
+  resolved "https://registry.yarnpkg.com/@fabric-ds/component-classes/-/fabric-component-classes-0.0.27.tgz#397e220328e7469f7adf185c81977a2174395014"
   integrity sha512-5xCXI4B89R0sHKC7mhG2GyT550P0wcrgYX6IZuqNZcL3XwiEf9zFg3u4uGau5lJ+GGTY32L6qAtxYA6s18XGaA==
 
-"@finn-no/fabric-tailwind-config@^0.5.14":
+"@fabric-ds/tailwind-config@^0.5.14":
   version "0.5.14"
-  resolved "https://registry.yarnpkg.com/@finn-no/fabric-tailwind-config/-/fabric-tailwind-config-0.5.14.tgz#5a0138e43c7b89d5021269a1c5b9195d05ba21ec"
+  resolved "https://registry.yarnpkg.com/@fabric-ds/tailwind-config/-/fabric-tailwind-config-0.5.14.tgz#5a0138e43c7b89d5021269a1c5b9195d05ba21ec"
   integrity sha512-Igj3fEcj7fjRWWlIwROD7+N1N0Qa3rLH2m08yt8LxmnEZ3emRDhHhv+gLdGEmB8p+DUQvNVvTzxbi+22x39HaA==
 
 "@fullhuman/postcss-purgecss@^3.1.3":
