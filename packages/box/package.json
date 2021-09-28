@@ -1,5 +1,5 @@
 {
-  "name": "@finn-no/fabric-element-box",
+  "name": "@fabric-ds/elements-box",
   "version": "0.0.0",
   "description": "Custom elements for fabric",
   "type": "module",
@@ -15,11 +15,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/finn-no/fabric-elements"
+    "url": "https://github.com/fabric-ds/elements"
   },
   "license": "ISC",
   "devDependencies": {
-    "@finn-no/fabric-component-classes": "^0.0.27"
+    "@fabric-ds/component-classes": "^0.0.27"
   },
   "dependencies": {
     "lit-element": "^2.4.0",

@@ -1,5 +1,5 @@
 {
-  "name": "@finn-no/fabric-element-breadcrumbs",
+  "name": "@fabric-ds/elements-breadcrumbs",
   "version": "0.0.0",
   "description": "Custom elements for fabric",
   "type": "module",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/finn-no/fabric-elements"
+    "url": "https://github.com/fabric-ds/elements"
   },
   "license": "ISC"
 }

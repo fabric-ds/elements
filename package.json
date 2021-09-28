@@ -1,5 +1,5 @@
 {
-  "name": "@finn-no/fabric-elements",
+  "name": "@fabric-ds/elements",
   "version": "0.0.0",
   "private": true,
   "description": "Custom elements for Fabric",
@@ -19,11 +19,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:finn-no/fabric-elements.git"
+    "url": "git@github.com:fabric-ds/elements.git"
   },
   "license": "ISC",
   "devDependencies": {
-    "@finn-no/fabric-tailwind-config": "^0.5.14",
+    "@fabric-ds/tailwind-config": "^0.5.14",
     "@stylelint/postcss-css-in-js": "^0.37.2",
     "autoprefixer": "^10.2.3",
     "babel-eslint": "^10.1.0",

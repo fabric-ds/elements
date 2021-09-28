@@ -1,4 +1,4 @@
-import { toaster as c } from '@finn-no/fabric-component-classes';
+import { toaster as c } from '@fabric-ds/component-classes';
 import { collapse } from 'element-collapse';
 import { FabricWebComponent } from '../../utils';
 
