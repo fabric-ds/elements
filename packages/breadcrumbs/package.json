@@ -18,5 +18,8 @@
     "url": "https://github.com/fabric-ds/elements"
   },
   "license": "ISC",
-  "gitHead": "c01c19e0cb6c11c6ad2c993ec9b0112ae6d86719"
+  "gitHead": "a8154fa0605e4c7e3fa02f6058b10e4c38b0471b",
+  "publishConfig": {
+    "access": "public"
+  }
 }
