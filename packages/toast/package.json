@@ -20,7 +20,7 @@
   "license": "ISC",
   "dependencies": {
     "@chbphone55/classnames": "^2.0.0",
-    "@fabric-ds/component-classes": "^0.0.27",
+    "@fabric-ds/component-classes": "^0.0.31",
     "element-collapse": "^0.9.1"
   },
   "devDependencies": {

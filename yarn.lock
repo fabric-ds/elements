@@ -1060,7 +1060,7 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
-"@fabric-ds/component-classes@^0.0.27":
+"@fabric-ds/component-classes@^0.0.31":
   version "0.0.31"
   resolved "https://registry.yarnpkg.com/@fabric-ds/component-classes/-/component-classes-0.0.31.tgz#3e1e83264479cd442b98ca08c0e1419c72b5d3e0"
   integrity sha512-0BfgKBGop4aEFDwoherSr3YFYWCCwTF9HRwlYPG0PPPZi7dXBH0wgMm1SPfZ/xlSjExfkgrmR/Ls8ve2UCQ6Jg==
