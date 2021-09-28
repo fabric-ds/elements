@@ -1,6 +1,6 @@
 {
   "name": "@fabric-ds/elements-modal",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Custom elements for fabric",
   "type": "module",
   "exports": "./dist/index.js",
@@ -19,7 +19,6 @@
     "url": "https://github.com/fabric-ds/elements"
   },
   "license": "ISC",
-  "devDependencies": {},
   "dependencies": {
     "dom-focus-lock": "^1.0.4",
     "lit-element": "^2.4.0",
