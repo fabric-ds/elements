@@ -1,6 +1,6 @@
 {
   "name": "@fabric-ds/elements-box",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Custom elements for fabric",
   "type": "module",
   "exports": "./dist/fabric-box.js",
