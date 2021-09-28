@@ -27,7 +27,7 @@ export default ({ mode }) => {
     }
 
     return {
-        base: isProduction ? '/fabric-elements/' : '',
+        base: isProduction ? '/elements/' : '',
         plugins: [
             // litElementTailwindPlugin({ mode }),
             html({
@@ -96,7 +96,7 @@ function basePathFix() {
             // Regex matches href=", followed by a /, then any combination of \w, / or -, ending with .html
             return html.replace(
                 /href="\/([\w/-]*)\.html/g,
-                'href="/fabric-elements/$1.html',
+                'href="/elements/$1.html',
             );
         },
     };
