@@ -1,44 +1,42 @@
 <html lang="en">
-    <%- include('head.html'); -%>
-    <body>
-        <%- include('nav.html'); -%>
-        <main>
-            <h1>&lt;f-box&gt;</h1>
+  <%- include('head.html'); -%>
+  <body>
+    <f-docs-template>
+      <%- include('nav.html'); -%>
+      <main slot="content">
+        <h1>&lt;f-box&gt;</h1>
 
-            <h2>Examples</h2>
+        <h2>Examples</h2>
 
-            <f-box class="mt-10"> This example content is in a box </f-box>
+        <f-box class="mt-10"> This example content is in a box </f-box>
 
-            <f-box info class="mt-10">
-                This example content is in an info box
-            </f-box>
+        <f-box info class="mt-10">
+          This example content is in an info box
+        </f-box>
 
-            <f-box
-                info
-                clickable
-                class="mt-10"
-                onclick="console.log('clicked!');"
-            >
-                This example content is in a clickable info box
-            </f-box>
+        <f-box info clickable class="mt-10" onclick="console.log('clicked!');">
+          This example content is in a clickable info box
+        </f-box>
 
-            <f-box neutral class="mt-10">
-                This example content is in a neutral box
-            </f-box>
+        <f-box neutral class="mt-10">
+          This example content is in a neutral box
+        </f-box>
 
-            <f-box neutral clickable class="mt-10">
-                This example content is in a neutral clickable box
-            </f-box>
+        <f-box neutral clickable class="mt-10">
+          This example content is in a neutral clickable box
+        </f-box>
 
-            <f-box bordered class="mt-10">
-                This example content is in a bordered box
-            </f-box>
+        <f-box bordered class="mt-10">
+          This example content is in a bordered box
+        </f-box>
 
-            <f-box clickable class="mt-10">
-                This example content is in a clickable box
-            </f-box>
-        </main>
+        <f-box clickable class="mt-10">
+          This example content is in a clickable box
+        </f-box>
+      </main>
+      <%- include('footer.html'); -%>
+    </f-docs-template>
 
-        <%- include('footer.html'); -%>
-    </body>
+    <%- include('scripts.html'); -%>
+  </body>
 </html>
