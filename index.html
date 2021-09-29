@@ -1,19 +1,23 @@
 <html lang="en">
-    <%- include('head.html'); -%>
-    <body>
-        <%- include('nav.html'); -%>
+  <%- include('head.html'); -%>
+  <body>
+    <f-docs-template>
+      <%- include('nav.html'); -%>
+      <main slot="content">
+        <h1 class="mb-16">Fabric Elements</h1>
+        <p>
+          The web components, or custom elements, implementation of
+          <a href="https://fabric-ds.github.io/design">Fabric</a>, FINN's design
+          system.
+        </p>
+        <p class="mt-64">
+          <strong class="block">Here be dragons</strong> Both the elements here
+          and Fabric itself is early development. Breakage may occur.
+        </p>
+      </main>
+      <%- include('footer.html'); -%>
+    </f-docs-template>
 
-        <main>
-            <h1 class="mb-16">Fabric Elements</h1>
-            <p>
-                The web components, or custom elements, implementation of
-                <a href="https://opensource.finn.no/fabric-design">Fabric</a>,
-                FINN's design system.
-            </p>
-            <p class="mt-64">
-                <strong class="block">Here be dragons</strong> Both the elements
-                here and Fabric itself is early development. Breakage may occur.
-            </p>
-        </main>
-    </body>
+    <%- include('scripts.html'); -%>
+  </body>
 </html>
