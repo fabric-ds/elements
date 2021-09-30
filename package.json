@@ -15,7 +15,7 @@
     "lint:eslint": "eslint . --ext js,cjs,mjs --ignore-path .gitignore",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
-    "build:docs": "vite build"
+    "build:docs": "vite build && cp CNAME site"
   },
   "repository": {
     "type": "git",
