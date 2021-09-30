@@ -6,45 +6,45 @@ import glob from 'glob';
 // import cssInJS from '@stylelint/postcss-css-in-js';
 
 export default ({ mode }) => {
-    let input = {};
+  let input = {};
 
-    const isProduction = mode === 'production';
+  const isProduction = mode === 'production';
 
-    // For production we need to specify all our entry points
-    // See https://vitejs.dev/guide/build.html#multi-page-app
-    if (isProduction) {
-        input.main = path.resolve(__dirname, 'index.html');
+  // For production we need to specify all our entry points
+  // See https://vitejs.dev/guide/build.html#multi-page-app
+  if (isProduction) {
+    input.main = path.resolve(__dirname, 'index.html');
 
-        const pages = glob.sync('pages/components/**/*.html', {
-            absolute: true,
-        });
+    const pages = glob.sync('pages/components/**/*.html', {
+      absolute: true,
+    });
 
-        for (const page of pages) {
-            const fileName = path.parse(page).name;
+    for (const page of pages) {
+      const fileName = path.parse(page).name;
 
-            input[fileName] = page;
-        }
+      input[fileName] = page;
     }
+  }
 
-    return {
-        base: isProduction ? '/elements/' : '',
-        plugins: [
-            // litElementTailwindPlugin({ mode }),
-            html({
-                inject: {
-                    injectOptions: { views: ['pages/includes'] },
-                },
-                minify: false,
-            }),
-            isProduction && basePathFix(),
-        ],
-        build: {
-            outDir: 'site',
-            rollupOptions: {
-                input,
-            },
+  return {
+    // base: isProduction ? '/elements/' : '',
+    plugins: [
+      // litElementTailwindPlugin({ mode }),
+      html({
+        inject: {
+          injectOptions: { views: ['pages/includes'] },
         },
-    };
+        minify: false,
+      }),
+      isProduction && basePathFix(),
+    ],
+    build: {
+      outDir: 'site',
+      rollupOptions: {
+        input,
+      },
+    },
+  };
 };
 
 // Tiny plugin to to use Tailwind classes with lit-element
@@ -90,14 +90,11 @@ export default ({ mode }) => {
  * We do this with a simple regex
  */
 function basePathFix() {
-    return {
-        name: 'base-path-fix',
-        transformIndexHtml(html) {
-            // Regex matches href=", followed by a /, then any combination of \w, / or -, ending with .html
-            return html.replace(
-                /href="\/([\w/-]*)\.html/g,
-                'href="/elements/$1.html',
-            );
-        },
-    };
+  return {
+    name: 'base-path-fix',
+    transformIndexHtml(html) {
+      // Regex matches href=", followed by a /, then any combination of \w, / or -, ending with .html
+      return html.replace(/href="\/([\w/-]*)\.html/g, 'href="/$1.html');
+    },
+  };
 }
