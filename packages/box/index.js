@@ -25,7 +25,6 @@ class FabricBox extends LitElement {
     super.connectedCallback();
     if (!this.hasAttribute('tabindex') && this.clickable)
       this.setAttribute('tabindex', 0);
-    console.log(this.onclick);
     this.addEventListener('keydown', this.handleKeyDown);
   }
 
