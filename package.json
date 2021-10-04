@@ -1,7 +1,6 @@
 {
   "name": "@fabric-ds/elements",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.0.1",
   "description": "Custom elements for Fabric",
   "exports": "./dist/index.js",
   "module": "dist/index.js",
@@ -18,7 +17,11 @@
     "lint:eslint": "eslint . --ext js,cjs,mjs --ignore-path .gitignore",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
-    "build:docs": "vite build && cp CNAME site"
+    "build:docs": "vite build && cp CNAME site",
+    "eik:login": "npx @eik/cli login",
+    "eik:publish": "npx @eik/cli publish",
+    "posteik:publish": "npm run eik:alias",
+    "eik:alias": "npx @eik/cli pkg-alias"
   },
   "repository": {
     "type": "git",
@@ -56,5 +59,9 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "eik": {
+    "server": "https://assets.finn.no",
+    "files": "dist"
   }
 }
