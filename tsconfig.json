@@ -1,5 +1,7 @@
 {
-  "include": ["src/api.js"],
+  "include": [
+    "src/api.js"
+  ],
   "compilerOptions": {
     "allowJs": true,
     "declaration": true,
