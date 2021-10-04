@@ -15,11 +15,14 @@ export default ({ mode }) => {
   if (isProduction) {
     input.main = path.resolve(__dirname, 'index.html');
 
-    const pages = glob.sync('pages/components/**/*.html', {
+    const componentPages = glob.sync('pages/components/**/*.html', {
+      absolute: true,
+    });
+    const pages = glob.sync('pages/*.html', {
       absolute: true,
     });
 
-    for (const page of pages) {
+    for (const page of pages.concat(componentPages)) {
       const fileName = path.parse(page).name;
 
       input[fileName] = page;
