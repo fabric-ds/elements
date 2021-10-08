@@ -5,8 +5,6 @@ export class FabricBroadcast extends FabricWebComponent {
     // 300 000 ms is five minutes
     const REFETCH_INTERVAL = Number(this.getAttribute('interval')) || 300000;
 
-    console.log(REFETCH_INTERVAL);
-
     // Fetch broadcast on load and setup refetch
     await this.fetchMessage();
     setInterval(async () => await this.fetchMessage(), REFETCH_INTERVAL);
