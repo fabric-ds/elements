@@ -1,0 +1,48 @@
+<html lang="en">
+  <%- include('head.html'); -%>
+  <body>
+    <f-docs-template>
+      <%- include('nav.html'); -%>
+      <main slot="content">
+        <h1>&lt;f-broadcast&gt;</h1>
+
+        <h2>Examples</h2>
+        <p>Broadcast automatically checks the window location.</p>
+        <p>Uses f-toast under the hood.</p>
+
+        <h4>Props</h4>
+        <p>
+          Refetch interval: <strong>interval</strong> — default 300 000 (5
+          minutes)
+        </p>
+        <p>Environment: <strong>dev</strong> — default false</p>
+        <p>
+          Url to check for: <strong>path</strong> — default window.location.href
+        </p>
+
+        <syntax-highlight><f-broadcast></f-broadcast></syntax-highlight>
+        <syntax-highlight>
+          // Fetches from dev.finn.no instead of finn.no
+          <f-broadcast dev="true"></f-broadcast
+        ></syntax-highlight>
+        <syntax-highlight>
+          // 4 second refetch interval
+          <f-broadcast interval="4000"></f-broadcast>
+        </syntax-highlight>
+        <syntax-highlight>
+          // The path is automatically set through window.location.href, but you
+          can override this by passing path as a param
+          <f-broadcast path="finn.no/finn/travel"></f-broadcast>
+        </syntax-highlight>
+
+        <f-broadcast
+          dev="true"
+          path="http:/local.finn.no:8080/trygg-handel/bil?finnkode=2"
+        ></f-broadcast>
+      </main>
+      <%- include('footer.html'); -%>
+    </f-docs-template>
+
+    <%- include('scripts.html'); -%>
+  </body>
+</html>

@@ -1,17 +1,17 @@
 export function classes(defn) {
-    const classes = [];
-    for (const [key, value] of Object.entries(defn)) {
-        if (value) classes.push(key);
-    }
-    return classes.join(' ');
+  const classes = [];
+  for (const [key, value] of Object.entries(defn)) {
+    if (value) classes.push(key);
+  }
+  return classes.join(' ');
 }
 
 export class FabricWebComponent extends HTMLElement {
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        const fabricStylesTemplate = document.createElement('template');
-        fabricStylesTemplate.innerHTML = `
+    const fabricStylesTemplate = document.createElement('template');
+    fabricStylesTemplate.innerHTML = `
             <style>:host { display: block; }</style>
             <link
                 rel="stylesheet"
@@ -20,8 +20,8 @@ export class FabricWebComponent extends HTMLElement {
             />
         `;
 
-        this.attachShadow({ mode: 'open' }).appendChild(
-            fabricStylesTemplate.content,
-        );
-    }
+    this.attachShadow({ mode: 'open' }).appendChild(
+      fabricStylesTemplate.content,
+    );
+  }
 }
