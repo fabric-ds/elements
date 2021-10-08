@@ -2,8 +2,7 @@ import { FabricWebComponent } from '../utils';
 
 export class FabricBroadcast extends FabricWebComponent {
   async connectedCallback() {
-    // 300 000 ms is five minutes
-    const REFETCH_INTERVAL = Number(this.getAttribute('interval')) || 300000;
+    const REFETCH_INTERVAL = Number(this.getAttribute('interval')) || 300000; // 300 000 ms = 5 minutes
 
     // Fetch broadcast on load and setup refetch
     await this.fetchMessage();
@@ -21,27 +20,25 @@ export class FabricBroadcast extends FabricWebComponent {
     }`;
 
     // Fetch message
-    const res = await (await fetch(url.toString())).json();
+    const res = await (await fetch(url)).json();
 
     // If response exists
     if (res.length) {
       this.message = res[0].message;
 
-      // exists -> update text
-      // no -> create container
       if (existing) {
+        // Container exists, update toast message
         existing.setAttribute('text', this.message);
       } else {
+        // Setup container with toast
         this.shadowRoot.innerHTML += `
           <div id="broadcast" role="alert" aria-atomic="false">
             <f-toast id="broadcast-toast" type="warning" text="${this.message}"></f-toast>
           </div>
         `;
       }
-
-      this.message = res[0].message;
     } else {
-      // no broadcast exists, remove container
+      // No broadcast in response, remove container if broadcast previously existed
       this.message = '';
       if (existing) existing.remove();
     }
