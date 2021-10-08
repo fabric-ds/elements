@@ -16,7 +16,7 @@ export class FabricBroadcast extends FabricWebComponent {
     // Generate url
     const dev = Boolean(this.getAttribute('dev'));
     const url = `https://${dev ? 'dev' : 'www'}.finn.no/broadcasts?path=${
-      this.getAttribute('path') || window.location.href
+      this.getAttribute('url') || window.location.href
     }`;
 
     // Fetch message
