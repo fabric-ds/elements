@@ -22,6 +22,9 @@ export class FabricToast extends FabricWebComponent {
         this[name] = newValue;
     }
 
+    this.id =
+      this.id ||
+      Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
     this.render(true);
   }
 
