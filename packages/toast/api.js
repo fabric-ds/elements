@@ -128,9 +128,6 @@ export function updateToast(id, options) {
   };
 
   const el = container.shadowRoot.getElementById(id);
-  if (!el) {
-    throw new Error(`Could not find toast with id of ${id}`);
-  }
 
   Object.entries(toast).forEach((t) => {
     el.setAttribute(t[0], t[1]);
