@@ -197,7 +197,7 @@ export class FabricToast extends FabricWebComponent {
       const handleClose = () => {
         if (!this.canclose) return;
 
-        this.onclose();
+        this.onclose && this.onclose();
 
         if (this.isProgrammatic) {
           el && collapse(el);

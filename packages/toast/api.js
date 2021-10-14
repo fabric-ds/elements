@@ -128,6 +128,7 @@ export function updateToast(id, options) {
   };
 
   const el = container.shadowRoot.getElementById(id);
+
   Object.entries(toast).forEach((t) => {
     el.setAttribute(t[0], t[1]);
   });

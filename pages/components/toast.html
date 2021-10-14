@@ -4,28 +4,153 @@
     <f-docs-template>
       <%- include('nav.html'); -%>
       <main slot="content">
-        <h1>&lt;f-toast&gt;</h1>
+        <h1 class="mb-16">Toast</h1>
 
-        <h2>Success type</h2>
-        <f-toast
-          id="success"
-          type="success"
-          text="Hi! I'm an example toast!"
-        ></f-toast>
+        <h2 class="mt-24 mb-16">Props</h2>
+        <p>
+          Type of toast: <strong>type</strong> — default success (success,
+          warning, error, info)
+        </p>
+        <p>Text content: <strong>text</strong> — default undefined</p>
+        <p>
+          Auto removal: <strong>duration</strong> — default 2400 (only used for
+          programmatic toast duration)
+        </p>
+        <p>
+          Close handler: <strong>onClose</strong> — default undefined (not
+          needed, but will perform alongside close)
+        </p>
+        <p>
+          Toast message: <strong>text</strong> — default undefined (only used
+          when updating toast)
+        </p>
 
-        <h2 class="mt-20">Error type</h2>
-        <f-toast
-          id="error"
-          type="error"
-          text="Hi! I'm an example error message!"
-        ></f-toast>
+        <h2 class="mt-24 mb-16">Programmatic toasting</h2>
 
-        <h2 class="mt-20">Can close</h2>
-        <f-toast
-          id="canclose"
-          canclose
-          text="Hi! I'm an example toast that can be dismissed! ... Maybe"
-        ></f-toast>
+        <syntax-highlight>
+          import { toast, removeToast, updateToast } from '@fabric-ds/elements';
+        </syntax-highlight>
+
+        <p class="mt-4">
+          Easiest way to emit a successful toast with auto removal
+        </p>
+        <syntax-highlight> toast('message')</syntax-highlight>
+        <div class="example">
+          <button
+            class="button button--small"
+            onclick="window.toast('message')"
+          >
+            Emit toast
+          </button>
+        </div>
+
+        <p class="mt-4">
+          Setting duration to 0 will disable auto-removal. The canClose property
+          tells the toast that it can be closed, removing this and setting
+          duration to 0 creates a toast that never goes away.
+        </p>
+        <syntax-highlight>
+          toast('message', { type: 'warning', duration: 0, canClose: true
+          })</syntax-highlight
+        >
+        <div class="example">
+          <button
+            class="button button--small"
+            onclick="window.toast('message', { type: 'warning', duration: 0, canClose: true })"
+          >
+            Emit toast
+          </button>
+        </div>
+
+        <p class="mt-4">
+          The toast() function returns the toast, meaning you can assign this to
+          a variable and update / remove the toast later.
+        </p>
+
+        <syntax-highlight>
+          const toast = toast('message', { type: 'warning', duration: 0
+          })</syntax-highlight
+        >
+
+        <syntax-highlight class="-mt-20"
+          >updateToast(toast.id, { text: 'Updated the toast message and type',
+          type: 'error' });
+        </syntax-highlight>
+        <syntax-highlight class="-mt-20">
+          removeToast(toast.id):
+        </syntax-highlight>
+
+        <div class="example">
+          <button
+            class="button button--small"
+            onclick="window.toast('message', { id: 'test', type: 'warning', duration: 0 })"
+          >
+            Emit non-dismissable toast
+          </button>
+          <button
+            class="button button--small"
+            onclick="window.updateToast('test', { text: 'Updated the toast message and type', type: 'error' })"
+          >
+            Update toast
+          </button>
+          <button
+            class="button button--small"
+            onclick="window.removeToast('test')"
+          >
+            Remove toast
+          </button>
+        </div>
+
+        <h2 class="mt-24 mb-16">Manual toasting</h2>
+
+        <syntax-highlight>
+          <f-toast type="success" text="Hi! I'm an example toast!"></f-toast
+        ></syntax-highlight>
+        <div class="example">
+          <f-toast type="success" text="Hi! I'm an example toast!"></f-toast>
+        </div>
+
+        <syntax-highlight>
+          <f-toast
+            type="error"
+            text="Hi! I'm an example error message!"
+          ></f-toast
+        ></syntax-highlight>
+        <div class="example">
+          <f-toast
+            id="error"
+            type="error"
+            text="Hi! I'm an example error message!"
+          ></f-toast>
+        </div>
+
+        <syntax-highlight>
+          <f-toast
+            type="warning"
+            text="Hi! I'm an example error message!"
+          ></f-toast
+        ></syntax-highlight>
+        <div class="example">
+          <f-toast
+            type="warning"
+            text="Hi! I'm an example error message!"
+          ></f-toast>
+        </div>
+
+        <syntax-highlight>
+          <f-toast
+            type="info"
+            canclose
+            text="Hi! I'm an example toast that can be dismissed! ... Maybe"
+          ></f-toast
+        ></syntax-highlight>
+        <div class="example">
+          <f-toast
+            type="info"
+            canclose
+            text="Hi! I'm an example toast that can be dismissed! ... Maybe"
+          ></f-toast>
+        </div>
       </main>
       <%- include('footer.html'); -%>
     </f-docs-template>

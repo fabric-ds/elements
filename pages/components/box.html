@@ -4,15 +4,18 @@
     <f-docs-template>
       <%- include('nav.html'); -%>
       <main slot="content">
-        <h1>&lt;f-box&gt;</h1>
+        <h1 class="mb-16">Box</h1>
 
-        <h2>Examples</h2>
+        <h2 class="mt-24 mb-16">Props</h2>
+        <p><strong>clickable</strong> – Makes box clickable</p>
+        <p><strong>bleed</strong> – Styles box</p>
+        <p><strong>info</strong> – Styles box</p>
+        <p><strong>neutral</strong> – Styles box</p>
+        <p><strong>borded</strong> – Styles box</p>
+
+        <h2 class="mt-24 mb-16">Examples</h2>
 
         <f-box class="mt-10"> This example content is in a box </f-box>
-
-        <f-box info class="mt-10">
-          This example content is in an info box
-        </f-box>
 
         <f-box info clickable class="mt-10" onclick="console.log('clicked!');">
           This example content is in a clickable info box
