@@ -32,7 +32,7 @@ export class FabricBroadcast extends FabricWebComponent {
       } else {
         // Setup container with toast
         this.shadowRoot.innerHTML += `
-          <div id="broadcast" role="alert" aria-atomic="false">
+          <div id="broadcast">
             <f-toast id="broadcast-toast" type="warning" text="${this.message}"></f-toast>
           </div>
         `;
