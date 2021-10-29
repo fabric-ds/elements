@@ -1,4 +1,4 @@
-import { FabricWebComponent } from '../utils';
+import { FabricWebComponent, windowExists } from '../utils';
 
 export class FabricBroadcast extends FabricWebComponent {
   async connectedCallback() {
@@ -10,7 +10,7 @@ export class FabricBroadcast extends FabricWebComponent {
   }
 
   async fetchMessage() {
-    if (!window) return;
+    if (!windowExists) return;
     const existing = this.shadowRoot.querySelector('#broadcast-toast');
 
     // Generate url

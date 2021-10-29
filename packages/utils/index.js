@@ -25,3 +25,5 @@ export class FabricWebComponent extends HTMLElement {
     );
   }
 }
+
+export const windowExists = (typeof window !== 'undefined')
