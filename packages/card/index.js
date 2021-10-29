@@ -5,6 +5,9 @@ import { classNames } from '@chbphone55/classnames';
 class FabricCard extends FabricWebComponent {
   attributeChangedCallback(name, _, newValue) {
     switch (name) {
+      case 'onclick':
+        this[name] = new Function('return ' + newValue)();
+        break;
       case 'selected':
         this[name] = newValue == 'false' ? false : true;
         break;
@@ -12,6 +15,16 @@ class FabricCard extends FabricWebComponent {
         this[name] = newValue;
     }
 
+    this.render();
+  }
+
+  connectedCallback() {
+    this.as = this.getAttribute('as') || 'div';
+    this.selected = this.getAttribute('selected')
+      ? this.getAttribute('selected') == 'false'
+        ? false
+        : true
+      : undefined;
     this.id =
       this.id ||
       `card-${
@@ -21,20 +34,8 @@ class FabricCard extends FabricWebComponent {
     this.render();
   }
 
-  connectedCallback() {
-    this.as = this.getAttribute('as') || 'div';
-    this.onClick = this.getAttribute('onclick');
-    this.selected = this.getAttribute('selected')
-      ? this.getAttribute('selected') == 'false'
-        ? false
-        : true
-      : undefined;
-
-    this.render();
-  }
-
   render() {
-    const exists = this.shadowRoot.getElementById(`${this.id}`);
+    const exists = this.shadowRoot.getElementById(this.id);
     if (exists) exists.remove();
 
     this.shadowRoot.innerHTML += `
@@ -61,7 +62,7 @@ class FabricCard extends FabricWebComponent {
       }
   
       ${
-        !this.onClick && this.selected
+        !this.onclick && this.selected
           ? `
         <span role="checkbox" aria-checked="true" aria-disabled="true" />
         `
@@ -71,6 +72,26 @@ class FabricCard extends FabricWebComponent {
         ${this.innerHTML}
       </${this.as}>
       `;
+
+    this.handleSetup();
+  }
+
+  handleSetup() {
+    const el = this.shadowRoot.getElementById(`${this.id}`);
+
+    if (this.onclick) {
+      const handleKeyDown = (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          document
+            .getElementById(this.id)
+            .setAttribute('selected', !this.selected);
+          this.onclick && this.onclick();
+          return;
+        }
+      };
+      el.addEventListener('keydown', handleKeyDown);
+    }
   }
 }
 
