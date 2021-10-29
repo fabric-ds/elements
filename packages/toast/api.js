@@ -1,9 +1,10 @@
 import { toaster as c } from '@fabric-ds/component-classes';
 import { collapse } from 'element-collapse';
-import { FabricWebComponent } from '../utils';
+import { FabricWebComponent, windowExists } from '../utils';
 
 export function initToasts() {
-  if (window && !window.fabricToasts) window.fabricToasts = { toasts: [] };
+  if (!windowExists) return;
+  if (!window.fabricToasts) window.fabricToasts = { toasts: [] };
   if (document && !document.querySelector('f-toast-container')) {
     class Container extends FabricWebComponent {
       connectedCallback() {
@@ -44,6 +45,7 @@ export function initToasts() {
  * @returns {ToastOptions} Toast details
  */
 export function toast(message, options) {
+  if (!windowExists) return;
   const toasts = window.fabricToasts;
   const container = document.querySelector('f-toast-container');
   const list = container.shadowRoot.getElementById('f-toast-container-list');
@@ -83,6 +85,7 @@ export function toast(message, options) {
  * @return {Boolean} True if deleted, false if not found
  */
 export function removeToast(id) {
+  if (!windowExists) return;
   const toasts = window.fabricToasts;
   const container = document.querySelector('f-toast-container');
   if (!container && customElements.get('f-toast') && toasts) {
@@ -111,6 +114,7 @@ export function removeToast(id) {
  * @returns {ToastOptions} Toast details
  */
 export function updateToast(id, options) {
+  if (!windowExists) return;
   const toasts = window.fabricToasts;
   const container = document.querySelector('f-toast-container');
 
