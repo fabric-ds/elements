@@ -4,7 +4,7 @@ import { classNames } from '@chbphone55/classnames';
 
 class FabricCard extends FabricWebComponent {
   static get observedAttributes() {
-    return ['onlick', 'selected'];
+    return ['selected'];
   }
 
   attributeChangedCallback(name, _, newValue) {
