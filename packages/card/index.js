@@ -9,9 +9,6 @@ class FabricCard extends FabricWebComponent {
 
   attributeChangedCallback(name, _, newValue) {
     switch (name) {
-      case 'onclick':
-        this[name] = new Function('return ' + newValue)();
-        break;
       case 'selected':
         this[name] = newValue == 'false' ? false : true;
         break;
