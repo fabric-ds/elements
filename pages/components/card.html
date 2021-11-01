@@ -41,8 +41,13 @@
           </f-card>
         </div>
 
+        <h3>onClick example</h3>
+
         <syntax-highlight>
-          <f-card class="mt-10 mr-10">
+          <f-card
+            class="mt-10 mr-10"
+            onClick="this.setAttribute('selected', !this.selected)"
+          >
             <img
               class="h-128 w-full object-cover"
               src="https://source.unsplash.com/random/400x400"
@@ -90,7 +95,10 @@
           </f-card>
         </syntax-highlight>
         <div class="example flex flex-col md:flex-row justify-between">
-          <f-card class="mt-10 mr-10" onClick="alert('hi')">
+          <f-card
+            class="mt-10 mr-10"
+            onClick="this.setAttribute('selected', !this.selected)"
+          >
             <img
               class="h-128 w-full object-cover"
               src="https://source.unsplash.com/random/400x400"
@@ -136,7 +144,29 @@
               </p>
             </div>
           </f-card>
-          <f-card class="mt-10 mr-10" onClick="alert('hi')">
+        </div>
+
+        <h3>Anchor link example</h3>
+
+        <p>
+          Keep in mind that if you wish to make the Card a clickable anchor
+          card, you must add a div as the very first element with the attribute
+          <code>aria-owns</code> set to the id of the title element. In this
+          example we set it to the id of <code>title</code> and assign the
+          <code>h3</code> this id.
+        </p>
+
+        <p>You should follow these semantics, but styling is up to you.</p>
+
+        <syntax-highlight>
+          <h3 id="title">
+            <a href="..." title="content"> content </a>
+          </h3></syntax-highlight
+        >
+
+        <syntax-highlight>
+          <f-card class="mt-10 mr-10">
+            <div aria-owns="title"></div>
             <img
               class="h-128 w-full object-cover"
               src="https://source.unsplash.com/random/402x402"
@@ -158,10 +188,18 @@
             </p>
             <div class="p-16">
               <p class="text-12 text-gray-300">DNB Eiendom</p>
-              <p>
-                Stilfull og gjennomgående 3-roms m/balkong. Oppusset i 2019.
-                Inkl. bl.a. vv/fyring.
-              </p>
+              <h3 class="text-16 font-normal text-gray-800" id="title">
+                <a
+                  href="//finn.no"
+                  target="_blank"
+                  title="Stilfull og gjennomgående 3-roms m/balkong. Oppusset i 2019.
+                  Inkl. bl.a. vv/fyring."
+                  class="text-current hover:no-underline focus:no-underline"
+                >
+                  Stilfull og gjennomgående 3-roms m/balkong. Oppusset i 2019.
+                  Inkl. bl.a. vv/fyring.
+                </a>
+              </h3>
               <p class="text-14 text-gray-400 mb-4">Bøgata 25C, 0655 Oslo</p>
               <p class="font-bold my-8">
                 52 m
@@ -182,10 +220,13 @@
               </p>
             </div>
           </f-card>
-          <f-card class="mt-10 mr-10" onClick="alert('hi')">
+        </syntax-highlight>
+        <div class="example flex flex-col md:flex-row justify-between">
+          <f-card class="mt-10 mr-10">
+            <div aria-owns="title"></div>
             <img
               class="h-128 w-full object-cover"
-              src="https://source.unsplash.com/random/401x401"
+              src="https://source.unsplash.com/random/402x402"
               alt="Description"
             />
             <p
@@ -204,10 +245,18 @@
             </p>
             <div class="p-16">
               <p class="text-12 text-gray-300">DNB Eiendom</p>
-              <p>
-                Stilfull og gjennomgående 3-roms m/balkong. Oppusset i 2019.
-                Inkl. bl.a. vv/fyring.
-              </p>
+              <h3 class="text-16 font-normal text-gray-800" id="title">
+                <a
+                  href="//finn.no"
+                  target="_blank"
+                  title="Stilfull og gjennomgående 3-roms m/balkong. Oppusset i 2019.
+                  Inkl. bl.a. vv/fyring."
+                  class="text-current hover:no-underline focus:no-underline"
+                >
+                  Stilfull og gjennomgående 3-roms m/balkong. Oppusset i 2019.
+                  Inkl. bl.a. vv/fyring.
+                </a>
+              </h3>
               <p class="text-14 text-gray-400 mb-4">Bøgata 25C, 0655 Oslo</p>
               <p class="font-bold my-8">
                 52 m
