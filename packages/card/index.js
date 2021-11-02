@@ -16,11 +16,6 @@ class FabricCard extends FabricWebComponent {
         this[name] = newValue;
     }
 
-    this.id =
-      this.id ||
-      `card-${
-        Date.now().toString(36) + Math.random().toString(36).slice(2, 5)
-      }`;
     this.render();
   }
 
@@ -33,22 +28,16 @@ class FabricCard extends FabricWebComponent {
         : true
       : undefined;
 
-    this.id =
-      this.id ||
-      `card-${
-        Date.now().toString(36) + Math.random().toString(36).slice(2, 5)
-      }`;
-
     this.render();
     this.innerHTML = '';
   }
 
   render() {
-    const exists = this.shadowRoot.getElementById(this.id);
+    const exists = this.shadowRoot.querySelector('[data-root]');
     if (exists) exists.remove();
 
     this.shadowRoot.innerHTML += `
-      <${this.as} id="${this.id}" tabindex="0" class="${classNames(
+      <${this.as} data-root tabindex="0" class="${classNames(
       this.getAttribute('class'),
       {
         'outline-none focus:ring ring-offset-1 ring-aqua-200': true,
@@ -88,14 +77,14 @@ class FabricCard extends FabricWebComponent {
   }
 
   handleSetup() {
-    const el = this.shadowRoot.getElementById(`${this.id}`);
+    const el = this.shadowRoot.querySelector(this.as);
 
     if (this.onclick) {
       const handleKeyDown = (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           document
-            .getElementById(this.id)
+            .querySelector(this.as)
             .setAttribute('selected', !this.selected);
           this.onclick && this.onclick();
           return;
