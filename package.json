@@ -10,7 +10,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "prebuild": "rimraf packages/*/dist",
-    "build": "rimraf dist && NODE_ENV=production microbundle -i index.js -o dist/index.js --no-pkg-main --format modern",
+    "build": "rimraf dist && tsc && NODE_ENV=production microbundle -i index.js -o dist/index.js --no-pkg-main --format modern",
     "format": "prettier --write . --ignore-path .gitignore",
     "lint": "npm run lint:format && npm run lint:eslint",
     "lint:format": "prettier --check . --ignore-path .gitignore",
