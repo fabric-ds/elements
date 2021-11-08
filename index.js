@@ -1,4 +1,3 @@
-export * from './packages/box';
 export * from './packages/card';
 export * from './packages/breadcrumbs';
 export * from './packages/toast';
