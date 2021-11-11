@@ -1,7 +1,6 @@
 import { toaster as c } from '@fabric-ds/component-classes';
 import { collapse } from 'element-collapse';
-
-const windowExists = typeof window !== 'undefined';
+import { windowExists } from '../utils';
 
 export function initToasts() {
   if (!windowExists) return;
