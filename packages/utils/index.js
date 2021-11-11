@@ -26,4 +26,4 @@ export class FabricWebComponent extends HTMLElement {
   }
 }
 
-export const windowExists = (typeof window !== 'undefined')
+export const windowExists = typeof window !== 'undefined';

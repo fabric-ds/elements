@@ -1,12 +1,30 @@
 import { toaster as c } from '@fabric-ds/component-classes';
 import { collapse } from 'element-collapse';
-import { FabricWebComponent, windowExists } from '../utils';
+import { windowExists } from '../utils';
 
 export function initToasts() {
   if (!windowExists) return;
   if (!window.fabricToasts) window.fabricToasts = { toasts: [] };
   if (document && !document.querySelector('f-toast-container')) {
-    class Container extends FabricWebComponent {
+    class Container extends HTMLElement {
+      constructor() {
+        super();
+
+        const fabricStylesTemplate = document.createElement('template');
+        fabricStylesTemplate.innerHTML = `
+                <style>:host { display: block; }</style>
+                <link
+                    rel="stylesheet"
+                    type="text/css"
+                    href="https://assets.finn.no/pkg/@fabric-ds/css/v0/fabric.min.css"
+                />
+            `;
+
+        this.attachShadow({ mode: 'open' }).appendChild(
+          fabricStylesTemplate.content,
+        );
+      }
+
       connectedCallback() {
         const container = document.createElement('aside');
         container.className = c.toasterContainer;
