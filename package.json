@@ -4,7 +4,7 @@
   "version": "0.0.2",
   "description": "Custom elements for Fabric",
   "exports": {
-    "./": "./dist/index.js",
+    ".": "./dist/index.js",
     "./toast": "./dist/api.js"
   },
   "module": "dist/index.js",
@@ -13,8 +13,8 @@
   ],
   "types": "dist/index.d.ts",
   "scripts": {
-    "build:api": "npx esbuild ./packages/toast/api.js --outdir=dist --target=es2017 --bundle --sourcemap --format=esm",
-    "build:npm": "npx esbuild ./index.js --outdir=dist/ --target=es2017 --bundle --sourcemap --format=esm",
+    "build:api": "npx esbuild ./packages/toast/api.js --outdir=dist --target=es2017 --bundle --sourcemap --format=esm --minify",
+    "build:npm": "npx esbuild ./index.js --outdir=dist/ --target=es2017 --bundle --sourcemap --format=esm --minify",
     "build": "rimraf dist && tsc && npm run build:npm && npm run build:api",
     "format": "prettier --write . --ignore-path .gitignore",
     "lint": "npm run lint:format && npm run lint:eslint",
