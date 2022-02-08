@@ -8,12 +8,14 @@ import glob from 'glob';
 export default ({ mode }) => {
   let input = {};
 
+  const dirname = path.dirname(new URL(import.meta.url).pathname);
+
   const isProduction = mode === 'production';
 
   // For production we need to specify all our entry points
   // See https://vitejs.dev/guide/build.html#multi-page-app
   if (isProduction) {
-    input.main = path.resolve(__dirname, 'index.html');
+    input.main = path.resolve(dirname, 'index.html');
 
     const componentPages = glob.sync('pages/components/**/*.html', {
       absolute: true,
@@ -33,7 +35,7 @@ export default ({ mode }) => {
     // base: isProduction ? '/elements/' : '',
     plugins: [
       // litElementTailwindPlugin({ mode }),
-      html({
+      html.default({
         inject: {
           injectOptions: { views: ['pages/includes'] },
         },
