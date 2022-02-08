@@ -1,5 +1,5 @@
-import { html } from 'lit-element';
-import { classNames } from '@chbphone55/classnames';
+import { html } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
 
 export const successSVG = (options) => html`
     <svg
@@ -29,12 +29,10 @@ export const failureSVG = (options) => html`
         height="16"
         fill="none"
         viewBox="0 0 16 16"
-        class="${classNames(
-            'transition-transform duration-200',
-            {
-                'transform-rotate-180': options.isInfo,
-            },
-        )}"
+        class="${classMap({
+            'transition-transform duration-200': true,
+            'transform-rotate-180': options.isInfo,
+        })}"
     >
         <path
             stroke="currentColor"

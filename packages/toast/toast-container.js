@@ -1,5 +1,6 @@
-import { LitElement, css, html } from 'lit-element';
+import { LitElement, css, html } from 'lit';
 import { toaster as c } from '@fabric-ds/component-classes';
+import { repeat } from 'lit/directives/repeat.js';
 
 /**
  * Toast helper function options
@@ -26,10 +27,26 @@ export class FabricToastContainer extends LitElement {
     connectedCallback() {
         super.connectedCallback();
         if (this.duration !== Number.POSITIVE_INFINITY) {
-          this._interval = setInterval(() => {
-            const toasts = Array.from(this._toasts).filter(([,toast]) => Date.now() <= toast.duration);
-            if (toasts.length != this._toasts.size) this._toasts = new Map(toasts);
-          }, 500);
+            // regularly check if any toasts have expired
+            this._interval = setInterval(() => {
+                // sort toasts into keep and remove
+                const keep = [];
+                const remove = [];
+                for (const toast of this._toasts) {
+                    if (Date.now() <= toast[1].duration) keep.push(toast);
+                    else remove.push(toast);
+                }
+                // collapse toasts that will be removed
+                const collapseTasks = [];
+                for (const [id] of remove) {
+                    const el = this.renderRoot.querySelector(`#${id}`);
+                    collapseTasks.push(el.collapse());
+                }
+                // once all toasts that should be removed have been collapsed, remove them from the map
+                Promise.all(collapseTasks).then(() => {
+                    if (keep.length != this._toasts.size) this._toasts = new Map(keep);
+                });
+            }, 500);
         }
     }
     
@@ -45,6 +62,10 @@ export class FabricToastContainer extends LitElement {
             document.body.appendChild(el);
         }
         return el;
+    }
+
+    get _toastsArray() {
+        return Array.from(this._toasts).map(([,toast]) => toast);
     }
 
     /**
@@ -77,8 +98,10 @@ export class FabricToastContainer extends LitElement {
      * @param {String|Number} id
      * @returns {ToastOptions}
      */
-    del(id) {
+    async del(id) {
         if (!id) throw new Error('invalid or undefined "id" given when attempting to remove toast');
+        const el = this.renderRoot.querySelector(`#${id}`);
+        await el.collapse();
         const result = this._toasts.delete(id);
         this._toasts = new Map(Array.from(this._toasts));
         return result;
@@ -93,7 +116,7 @@ export class FabricToastContainer extends LitElement {
             />
             <aside class="${c.toasterContainer}">
                 <div class="${c.toaster}" id="f-toast-container-list"> 
-                    ${Array.from(this._toasts).map(([,toast]) => html`
+                    ${repeat(this._toastsArray, (toast) => toast.id, (toast) => html`
                     <f-toast
                         class="w-full"
                         id="${toast.id}"

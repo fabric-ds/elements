@@ -1,12 +1,16 @@
-import { LitElement, css, html } from 'lit-element';
-import { classNames } from '@chbphone55/classnames';
+import { LitElement, css, html } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
+import { when } from 'lit/directives/when.js';
 import { toast as c } from '@fabric-ds/component-classes';
-// import { expand, collapse } from 'element-collapse';
+import { expand, collapse } from 'element-collapse';
 import { closeSVG, successSVG, failureSVG } from './svgs';
-// import {animate} from '@lit-labs/motion';
 
 export class FabricToast extends LitElement {
-  static styles = css`:host { display: block; }`;
+  static styles = css`
+    :host {
+      display: block;
+    }
+  `;
 
   static properties = {
     id: { type: String, attribute: true },
@@ -27,23 +31,18 @@ export class FabricToast extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    if (this.duration !== Number.POSITIVE_INFINITY) {
-      // this._timeout = setTimeout(this.close.bind(this), this.duration);
-    }
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    // collapse(this._wrapper);
-    // if (this._timeout) clearTimeout(this._timeout);
   }
 
   updated() {
-    // expand(this._wrapper);
+    if (!this._expanded) expand(this._wrapper, () => this._expanded = true);
   }
 
   get _primaryClasses() {
-    return classNames({
+    return classMap({
       [c.toast]: true,
       [c.toastPositive]: this.type == 'success',
       [c.toastWarning]: this.type === 'warning',
@@ -53,7 +52,7 @@ export class FabricToast extends LitElement {
   }
 
   get _iconClasses() {
-    return classNames({
+    return classMap({
       [c.toastIcon]: true,
       [c.toastIconPositive]: this.type == 'success',
       [c.toastIconWarning]: this.type == 'warning',
@@ -87,9 +86,9 @@ export class FabricToast extends LitElement {
   }
 
   get _typeLabel() {
-    if(this._success) return 'Vellykket';
-    if(this._error) return 'Feil';
-    if(this._warning) return 'Varsel';
+    if (this._success) return 'Vellykket';
+    if (this._error) return 'Feil';
+    if (this._warning) return 'Varsel';
     return 'Info';
   }
 
@@ -99,15 +98,17 @@ export class FabricToast extends LitElement {
       : failureSVG({ typeLabel: this.typeLabel, isInfo: this._info });
   }
 
+  async collapse() {
+    return new Promise((resolve) => collapse(this._wrapper, resolve));
+  }
+
   close() {
-    // collapse(this._wrapper, () => {
-      const event = new CustomEvent('close', {
-        detail: { id: this.id },
-        bubbles: true,
-        composed: true,
-      });
-      this.updateComplete.then(() => this.dispatchEvent(event));
-    //});
+    const event = new CustomEvent('close', {
+      detail: { id: this.id },
+      bubbles: true,
+      composed: true,
+    });
+    this.updateComplete.then(() => this.dispatchEvent(event));
   }
 
   render() {
@@ -116,19 +117,20 @@ export class FabricToast extends LitElement {
         type="text/css"
         href="https://assets.finn.no/pkg/@fabric-ds/css/v1/fabric.min.css"
       />
-      <section class="${c.toastWrapper}" aria-label="${this._typeLabel}" >
+      <section class="${c.toastWrapper}" aria-label="${this._typeLabel}">
         <div class="${this._primaryClasses}">
-          <div class="${this._iconClasses}">
-            ${this._iconMarkup}
-          </div>
+          <div class="${this._iconClasses}">${this._iconMarkup}</div>
           <div role="${this._role}" class="${c.toastContent}">
             <p>${this.text}</p>
           </div>
-          ${this.canclose
-            ? html`<button class="${c.toastClose}" @click="${this.close}">
+          ${when(
+            this.canclose,
+            () =>
+              html`<button class="${c.toastClose}" @click="${this.close}">
                 ${closeSVG()}
-              </button>`
-            : html``}
+              </button>`,
+            () => html``,
+          )}
         </div>
       </section>`;
   }

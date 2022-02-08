@@ -36,7 +36,7 @@ export function toast(message, options) {
 /**
  * Remove an existing toast
  * @param {String|Number} id Toast identifier
- * @return {Boolean} True if deleted, false if not found
+ * @return {Promise<Boolean>} Resolves to true if deleted, false if not found
  */
 export function removeToast(id) {
   if (!windowExists) return;
