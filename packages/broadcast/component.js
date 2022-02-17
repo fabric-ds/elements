@@ -14,7 +14,7 @@ export class FabricBroadcast extends FabricWebComponent {
     const existing = this.shadowRoot.querySelector('#broadcast-toast');
 
     // Generate url
-    const dev = Boolean(this.getAttribute('dev'));
+    const dev = this.getAttribute('dev') === 'true';
     const url = `https://${dev ? 'dev' : 'www'}.finn.no/broadcasts?path=${
       this.getAttribute('url') || window.location.href
     }`;
