@@ -38,7 +38,7 @@ export class FabricToast extends LitElement {
   }
 
   updated() {
-    if (!this._expanded) expand(this._wrapper, () => this._expanded = true);
+    if (!this._expanded) expand(this._wrapper, () => (this._expanded = true));
   }
 
   get _primaryClasses() {
@@ -99,7 +99,10 @@ export class FabricToast extends LitElement {
   }
 
   async collapse() {
-    return new Promise((resolve) => collapse(this._wrapper, resolve));
+    return new Promise((resolve) => {
+      if (this._expanded) collapse(this._wrapper, resolve);
+      else resolve();
+    });
   }
 
   close() {
@@ -124,7 +127,7 @@ export class FabricToast extends LitElement {
             <p>${this.text}</p>
           </div>
           ${when(
-            this.canclose,
+            this.canclose !== false,
             () =>
               html`<button class="${c.toastClose}" @click="${this.close}">
                 ${closeSVG()}

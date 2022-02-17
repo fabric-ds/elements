@@ -8,11 +8,11 @@ import { windowExists } from '../utils';
  * @property   {('success'|'error'|'warning'|'info')} [type]      Type of alert
  * @property   {String}                               [text]      The toast message. Only needed when updating text on existing toast
  * @property   {(number|string)}                      [duration]  Duration of toast in milliseconds Set to 0 to disable auto-removal
- * @property   {Boolean}                              [canClose]  Can toast be dismissed?
+ * @property   {Boolean}                              [canclose]  Can toast be dismissed?
  */
 
 /**
- * Create a new toast
+ * Creates a new toast
  * @param {String}        message  Message
  * @param {ToastOptions?} options  Toast options
  * @returns {ToastOptions} Toast details
@@ -20,7 +20,7 @@ import { windowExists } from '../utils';
 export function toast(message, options) {
   if (!windowExists) return;
   const toast = FabricToastContainer.init();
-  
+
   const data = {
     id: Date.now().toString(36) + Math.random().toString(36).slice(2, 5),
     text: message,
@@ -46,7 +46,7 @@ export function removeToast(id) {
 
 /**
  * Update an existing toast
- * @param {String|Number}                  id      Toast identifier
+ * @param {String|Number}           id      Toast identifier
  * @param {ToastOptions?}           options Toast options
  * @returns {FabricToastContainer}          Toast details
  */
