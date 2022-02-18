@@ -13,11 +13,10 @@ export class FabricToast extends LitElement {
   `;
 
   static properties = {
-    id: { type: String, attribute: true },
-    type: { type: String, attribute: true },
-    text: { type: String, attribute: true },
-    duration: { type: Number, attribute: true },
-    canclose: { type: Boolean, attribute: true },
+    id: { type: String, attribute: true, reflect: true },
+    type: { type: String, attribute: true, reflect: true },
+    text: { type: String, attribute: true, reflect: true },
+    canclose: { type: Boolean, attribute: true, reflect: true },
   };
 
   constructor() {
@@ -25,7 +24,6 @@ export class FabricToast extends LitElement {
     this.id = Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
     this.type = 'success';
     this.text = '';
-    this.duration = Number.POSITIVE_INFINITY;
     this.canclose = false;
   }
 
@@ -38,13 +36,13 @@ export class FabricToast extends LitElement {
   }
 
   updated() {
-    if (!this._expanded) expand(this._wrapper, () => (this._expanded = true));
+    if (!this._expanded && this._wrapper) expand(this._wrapper, () => (this._expanded = true));
   }
 
   get _primaryClasses() {
     return classMap({
       [c.toast]: true,
-      [c.toastPositive]: this.type == 'success',
+      [c.toastPositive]: this.type === 'success',
       [c.toastWarning]: this.type === 'warning',
       [c.toastNegative]: this.type === 'error',
       [c.toastNeutral]: this.type === 'info',
@@ -55,9 +53,9 @@ export class FabricToast extends LitElement {
     return classMap({
       [c.toastIcon]: true,
       [c.toastIconPositive]: this.type == 'success',
-      [c.toastIconWarning]: this.type == 'warning',
-      [c.toastIconNegative]: this.type == 'error',
-      [c.toastIconNeutral]: this.type == 'info',
+      [c.toastIconWarning]: this.type === 'warning',
+      [c.toastIconNegative]: this.type === 'error',
+      [c.toastIconNeutral]: this.type === 'info',
     });
   }
 
@@ -100,7 +98,7 @@ export class FabricToast extends LitElement {
 
   async collapse() {
     return new Promise((resolve) => {
-      if (this._expanded) collapse(this._wrapper, resolve);
+      if (this._expanded && this._wrapper) collapse(this._wrapper, resolve);
       else resolve();
     });
   }
@@ -115,6 +113,7 @@ export class FabricToast extends LitElement {
   }
 
   render() {
+    if (!this.text) return html``;
     return html`<link
         rel="stylesheet"
         type="text/css"
