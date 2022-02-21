@@ -26,6 +26,45 @@ test('API: first call to toast adds toast container to the dom', async () => {
   ).to.equal(1);
 });
 
+test('API: toast method: options: duration is set correctly', async () => {
+  toast('This is a toast', { duration: 50 });
+  await wait();
+  expect(
+    document
+      .querySelector('f-toast-container')
+      .renderRoot.querySelectorAll('f-toast').length,
+  ).to.equal(1);
+  await wait(1000);
+  expect(
+    document
+      .querySelector('f-toast-container')
+      .renderRoot.querySelectorAll('f-toast').length,
+  ).to.equal(0);
+});
+
+test('API: toast method: options: canclose creates close button', async () => {
+  toast('This is a toast', { canclose: true });
+  await wait();
+  expect(
+    !!document
+      .querySelector('f-toast-container')
+      .renderRoot.querySelector('f-toast')
+      .renderRoot.querySelector('button'),
+  ).to.equal(true);
+});
+
+test('API: toast method: options: type changes visual appearance', async () => {
+  toast('This is a toast', { type: 'error' });
+  await wait();
+  const classes = document
+    .querySelector('f-toast-container')
+    .renderRoot.querySelector('f-toast')
+    .renderRoot.querySelector('section > div').classList;
+  expect(classes.contains('bg-red-50')).to.equal(true);
+  expect(classes.contains('border-red-200')).to.equal(true);
+  expect(classes.contains('text-red-800')).to.equal(true);
+});
+
 test('API: update toast modifies existing toast', async () => {
   const el = toast('This is a toast');
   expect(!!el.id).to.equal(true);
@@ -35,7 +74,8 @@ test('API: update toast modifies existing toast', async () => {
   expect(
     document
       .querySelector('f-toast-container')
-      .renderRoot.querySelector('f-toast').getAttribute('text'),
+      .renderRoot.querySelector('f-toast')
+      .getAttribute('text'),
   ).to.equal('This is an updated toast');
 });
 
@@ -56,4 +96,3 @@ test('API: remove toast removes existing toast', async () => {
       .renderRoot.querySelectorAll('f-toast').length,
   ).to.equal(0);
 });
-
