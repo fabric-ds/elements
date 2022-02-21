@@ -1,20 +1,11 @@
-import { LitElement, css, html } from 'lit-element';
+import { LitElement } from 'lit-element';
 import { windowExists } from '../utils';
+import { FabricToastContainer } from '../..';
 
 export class FabricBroadcast extends LitElement {
-  static styles = css`
-    <style>:host { display: block; }</style>
-    <link
-        rel="stylesheet"
-        type="text/css"
-        href="https://assets.finn.no/pkg/@fabric-ds/css/v1/fabric.min.css"
-    />
-  `;
-
   static properties = {
-    messages: {
-      type: Array,
-      attribute: true,
+    _messages: {
+      state: true,
       hasChanged(newVal, oldVal) {
         if (!oldVal) return true;
         const newIds = newVal.map(({ id }) => id).sort();
@@ -23,18 +14,17 @@ export class FabricBroadcast extends LitElement {
       },
     },
     interval: { type: Number, attribute: true },
-    dev: { type: Boolean, attribute: true },
     url: { type: String, attribute: true },
     api: { type: String, attribute: true },
   };
 
   constructor() {
     super();
-    this.messages = [];
+    this._messages = [];
     this.interval = 30000;
-    this.dev = false;
     this.url = windowExists ? window.location.href : '';
     this.api = 'https://www.finn.no/broadcasts';
+    this._toastContainer = FabricToastContainer.init();
   }
 
   async connectedCallback() {
@@ -48,16 +38,12 @@ export class FabricBroadcast extends LitElement {
   async fetchMessage() {
     const url = `${this.api}?path=${this.url}`;
     const res = await (await fetch(url)).json();
-    this.messages = res.length ? res : [];
-  }
-
-  close(id) {
-    this.messages = this.messages.filter((message) => message.id !== id);
+    this._messages = res.length ? res : [];
   }
 
   render() {
-    return html`<div id="broadcast">
-      ${this.messages.map(m => html`<f-toast id="${m.id}" type="warning" text="${m.message}"></f-toast>`)}
-    </div>`;
+    for (const { id, message: text } of this._messages) {
+      this._toastContainer.set({ id: `broadcast-${id}`, text, type: 'warning', canclose: true });
+    }
   }
 }

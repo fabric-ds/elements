@@ -23,30 +23,7 @@
         </p>
 
         <h2 class="mt-24 mb-16">Example usages</h2>
-        <syntax-highlight><f-broadcast></f-broadcast></syntax-highlight>
-        <syntax-highlight>
-          // Fetches from dev.finn.no instead of finn.no
-          <f-broadcast dev="true"></f-broadcast
-        ></syntax-highlight>
-        <syntax-highlight>
-          // 4 second refetch interval
-          <f-broadcast interval="4000"></f-broadcast>
-        </syntax-highlight>
-        <syntax-highlight>
-          // The url is automatically set through window.location.href, but you
-          can override this by passing url as a param
-          <f-broadcast url="finn.no/finn/travel"></f-broadcast>
-        </syntax-highlight>
-
         <f-broadcast api="https://dev.finn.no/broadcasts" url="https:/dev.finn.no/meldinger" interval="5000"></f-broadcast>
-
-        <div class="example">
-          <f-toast
-            id="broadcast-toast"
-            type="warning"
-            text="Oops! Vi opplever fortiden serverproblemer og beklager for eventuelle ulemper dette kan medføre."
-          ></f-toast>
-        </div>
       </main>
       <%- include('footer.html'); -%>
     </f-docs-template>
