@@ -74,7 +74,8 @@ export class FabricToastContainer extends LitElement {
      * @returns {ToastOptions}
      */
     get(id) {
-        if (!id) throw new Error('invalid or undefined "id" giving when attempting to retrieve toast');
+        if (!id) throw new Error('undefined "id" given when attempting to retrieve toast');
+        if (typeof id !== 'string' && !Number.isInteger(id)) throw new Error('"id" must be number or string when attempting to retrieve toast');
         return this._toasts.get(id);
     }
 
@@ -99,7 +100,8 @@ export class FabricToastContainer extends LitElement {
      * @returns {ToastOptions}
      */
     async del(id) {
-        if (!id) throw new Error('invalid or undefined "id" given when attempting to remove toast');
+        if (!id) throw new Error('undefined "id" given when attempting to retrieve toast');
+        if (typeof id !== 'string' && !Number.isInteger(id)) throw new Error('"id" must be number or string when attempting to retrieve toast');
         const el = this.renderRoot.querySelector(`#${id}`);
         await el.collapse();
         const result = this._toasts.delete(id);
