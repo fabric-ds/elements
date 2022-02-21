@@ -2,8 +2,10 @@
 import { html, fixture, expect } from '@open-wc/testing';
 import '../../dist/index.js';
 
-describe('Toast component tests', () => {
-    it('Setting all properties', async () => {
+const test = it;
+
+
+    test('Setting all properties', async () => {
         const el = await fixture(html`
             <f-toast id="abc" type="success" canclose text="This is my toast"></f-toast>
         `);
@@ -13,7 +15,7 @@ describe('Toast component tests', () => {
         expect(el.getAttribute('text')).to.equal('This is my toast');
     });
 
-    it('Id assigned when not provided', async () => {
+    test('Id assigned when not provided', async () => {
         const el = await fixture(html`
             <f-toast text="This is my toast"></f-toast>
         `);
@@ -21,35 +23,35 @@ describe('Toast component tests', () => {
         expect(el.getAttribute('id').length).to.equal(11);
     });
 
-    it('Type defaults to success', async () => {
+    test('Type defaults to success', async () => {
         const el = await fixture(html`
             <f-toast text="This is my toast"></f-toast>
         `);
         expect(el.getAttribute('type')).to.equal('success');
     });
 
-    it('Setting type to warning', async () => {
+    test('Setting type to warning', async () => {
         const el = await fixture(html`
             <f-toast text="This is my toast" type="warning"></f-toast>
         `);
         expect(el.getAttribute('type')).to.equal('warning');
     });
 
-    it('Setting type to info', async () => {
+    test('Setting type to info', async () => {
         const el = await fixture(html`
             <f-toast text="This is my toast" type="info"></f-toast>
         `);
         expect(el.getAttribute('type')).to.equal('info');
     });
 
-    it('Setting type to error', async () => {
+    test('Setting type to error', async () => {
         const el = await fixture(html`
             <f-toast text="This is my toast" type="error"></f-toast>
         `);
         expect(el.getAttribute('type')).to.equal('error');
     });
 
-    it('Close button shows when canclose=true', async () => {
+    test('Close button shows when canclose=true', async () => {
         const el = await fixture(html`
             <f-toast text="This is my toast" canclose></f-toast>
         `);
@@ -57,7 +59,7 @@ describe('Toast component tests', () => {
         expect(el.shadowRoot.innerHTML).to.contain('button');
     });
 
-    it('Close button does not show when canclose is not applied', async () => {
+    test('Close button does not show when canclose is not applied', async () => {
         const el = await fixture(html`
             <f-toast text="This is my toast"></f-toast>
         `);
@@ -65,14 +67,14 @@ describe('Toast component tests', () => {
         expect(el.shadowRoot.innerHTML).to.not.contain('button');
     });
 
-    it('Nothing shows when text not provided', async () => {
+    test('Nothing shows when text not provided', async () => {
         const el = await fixture(html`
             <f-toast></f-toast>
         `);
         expect(el.shadowRoot.innerHTML).to.equal('<!----><!--?-->');
     });
     
-    it('Collapse method collapses markup', async () => {
+    test('Collapse method collapses markup', async () => {
         const el = await fixture(html`
             <f-toast text="This is my toast" canclose></f-toast>
         `);
@@ -86,7 +88,7 @@ describe('Toast component tests', () => {
         expect(el.renderRoot.querySelector('section').style.height).to.equal('0px');
     });
 
-    it('Emits close even when close button clicked', (done) => {
+    test('Emits close even when close button clicked', (done) => {
         fixture(html`
             <f-toast text="This is my toast" canclose></f-toast>
         `).then(el => {
@@ -98,5 +100,3 @@ describe('Toast component tests', () => {
         })
     });
 
-
-})
