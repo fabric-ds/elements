@@ -13,9 +13,9 @@ export class FabricBroadcast extends LitElement {
         return JSON.stringify(newIds) !== JSON.stringify(oldIds);
       },
     },
-    interval: { type: Number, attribute: true },
-    url: { type: String, attribute: true },
-    api: { type: String, attribute: true },
+    interval: { type: Number, attribute: true, reflect: true },
+    url: { type: String, attribute: true, reflect: true },
+    api: { type: String, attribute: true, reflect: true },
   };
 
   constructor() {
@@ -23,12 +23,15 @@ export class FabricBroadcast extends LitElement {
     this._messages = [];
     this.interval = 30000;
     this.url = windowExists ? window.location.href : '';
-    this.api = 'https://www.finn.no/broadcasts';
     this._toastContainer = FabricToastContainer.init();
   }
 
   async connectedCallback() {
     super.connectedCallback();
+    if (!this.api) {
+      console.error('Broadcast "api" attribute invalid or undefined');
+      return;
+    }
     if (windowExists) {
       await this.fetchMessage();
       setInterval(() => this.fetchMessage(), this.interval);
@@ -37,8 +40,12 @@ export class FabricBroadcast extends LitElement {
 
   async fetchMessage() {
     const url = `${this.api}?path=${this.url}`;
-    const res = await (await fetch(url)).json();
-    this._messages = res.length ? res : [];
+    try {
+      const res = await (await fetch(url)).json();
+      this._messages = res.length ? res : [];
+    } catch (err) {
+      console.error(`failed to fetch broadcasts from given url (${url})`)
+    }
   }
 
   render() {
