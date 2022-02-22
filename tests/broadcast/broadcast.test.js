@@ -7,7 +7,7 @@ const wait = (duration = 0) => new Promise((resolve) => setTimeout(resolve, dura
 
 test('Basic broadcast with defaults', async () => {
   await fixture(html`<f-broadcast api="http://localhost:4053/single-broadcast"></f-broadcast>`);
-  await wait(50);
+  await wait(500);
   const broadcasts = document
     .querySelector('f-toast-container')
     .renderRoot.querySelectorAll('f-toast');
