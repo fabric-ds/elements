@@ -14,7 +14,7 @@ jobs:
                   yarn build
             - name: Start Mock backend
               run: |
-                  yarn test:mock-backend
+                  yarn test:mock-backend &
             - name: Run Tests
               run: |
                   yarn test
