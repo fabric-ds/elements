@@ -5,6 +5,16 @@ import { toast as c } from '@fabric-ds/component-classes';
 import { expand, collapse } from 'element-collapse';
 import { closeSVG, successSVG, failureSVG } from './svgs';
 
+const classes = (definition) => {
+  const defn = {};
+  for(const [key, value] of Object.entries(definition)) {
+    for (const className of key.split(' ')) {
+      defn[className] = value;
+    }
+  }
+  return classMap(defn);
+}
+
 export class FabricToast extends LitElement {
   static styles = css`
     :host {
@@ -40,7 +50,7 @@ export class FabricToast extends LitElement {
   }
 
   get _primaryClasses() {
-    return classMap({
+    return classes({
       [c.toast]: true,
       [c.toastPositive]: this.type === 'success',
       [c.toastWarning]: this.type === 'warning',
@@ -50,7 +60,7 @@ export class FabricToast extends LitElement {
   }
 
   get _iconClasses() {
-    return classMap({
+    return classes({
       [c.toastIcon]: true,
       [c.toastIconPositive]: this.type == 'success',
       [c.toastIconWarning]: this.type === 'warning',

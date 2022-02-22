@@ -128,3 +128,16 @@ test('API: scheduling: toasts automatically deleted after duration', async () =>
       .renderRoot.querySelectorAll('f-toast').length,
   ).to.equal(1);
 });
+
+test('API: updating toast type', async () => {
+  const container = await FabricToastContainer.init();
+  container.set({ id: 'aaa', text: 'This is a toast' });
+  await wait();
+  container.set({ id: 'aaa', text: 'This is a toast', type: 'error' });
+  await wait();
+  expect(
+    document
+      .querySelector('f-toast-container')
+      .renderRoot.querySelector('f-toast').type,
+  ).to.equal('error');
+});
