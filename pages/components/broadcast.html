@@ -5,25 +5,35 @@
       <%- include('nav.html'); -%>
       <main slot="content">
         <h1 class="mb-16">Broadcast</h1>
+        <p>Broadcast automatically fetches broadcast messages for the current (or a given) url.</p>
+        <p>Uses toast apis under the hood.</p>
 
         <p>
-          Broadcast automatically fetches broadcast messages for the current
-          url.
-        </p>
-        <p>Uses f-toast under the hood.</p>
-
-        <h2 class="mt-24 mb-16">Props</h2>
-        <p>
-          Refetch interval: <strong>interval</strong> — default 300 000 (5
-          minutes)
-        </p>
-        <p>Environment: <strong>dev</strong> — default false</p>
-        <p>
-          Url to check for: <strong>url</strong> — default window.location.href
+          <strong>N.B.</strong> Broadcast should only be included once per page to avoid duplicate
+          broadcast messages being displayed. The preferred method for including broadcast will soon
+          be a podlet provided by the communication team. In the meantime this component can be used
+          directly.
         </p>
 
-        <h2 class="mt-24 mb-16">Example usages</h2>
-        <f-broadcast api="https://dev.finn.no/broadcasts" url="https:/dev.finn.no/meldinger" interval="5000"></f-broadcast>
+        <h2 class="mt-24 mb-16">Component Attributes</h2>
+        <p><strong>interval</strong> — Refetch interval - <i>default: 300 000 (5 minutes)</i></p>
+        <p>
+          <strong>api</strong> - API endpoint to fetch broadcasts from. Use
+          `https://dev.finn.no/broadcasts` on dev and `https://finn.no/broadcasts` on prod. -
+          <i>Required</i>
+        </p>
+        <p>
+          <strong>url</strong> — Page (itentified by its url) to check for registered broadcasts
+          against - <i>default window.location.href</i>
+        </p>
+
+        <h2 class="mt-24 mb-16">Example usage</h2>
+
+        <f-broadcast
+          api="https://dev.finn.no/broadcasts"
+          url="https:/dev.finn.no/meldinger"
+          interval="30000"
+        ></f-broadcast>
       </main>
       <%- include('footer.html'); -%>
     </f-docs-template>
