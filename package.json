@@ -28,7 +28,8 @@
     "posteik:publish": "npm run eik:alias",
     "eik:alias": "npx @eik/cli pkg-alias",
     "test:mock-backend": "node ./tests/utils/broadcast-backend.js",
-    "test:run-once": "web-test-runner tests/**/*.test.js --node-resolve",
+    "test:mock-backend:ci": "node ./tests/utils/broadcast-backend.js &",
+    "test:run-once": "web-test-runner tests/**/*.test.js --node-resolve --static-logging",
     "test:run-watch": "web-test-runner tests/**/*.test.js --node-resolve --watch",
     "test": "npm run test:run-once",
     "watch:test": "npm run test:run-watch"

@@ -12,9 +12,6 @@ jobs:
             - name: Build Packages
               run: |
                   yarn build
-            - name: Start Mock backend
-              run: |
-                  yarn test:mock-backend &
             - name: Run Tests
               run: |
-                  yarn test
+                  yarn test:mock-backend:ci && yarn test
