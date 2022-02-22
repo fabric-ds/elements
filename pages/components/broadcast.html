@@ -15,11 +15,11 @@
           directly.
         </p>
 
-        <h2 class="mt-24 mb-16">Component Attributes</h2>
+        <h2 class="mt-24 mb-16">Attributes</h2>
         <p><strong>interval</strong> — Refetch interval - <i>default: 300 000 (5 minutes)</i></p>
         <p>
           <strong>api</strong> - API endpoint to fetch broadcasts from. Use
-          `https://dev.finn.no/broadcasts` on dev and `https://finn.no/broadcasts` on prod. -
+          <code>https://dev.finn.no/broadcasts</code> on dev and <code>https://finn.no/broadcasts</code> on prod. -
           <i>Required</i>
         </p>
         <p>
@@ -29,11 +29,13 @@
 
         <h2 class="mt-24 mb-16">Example usage</h2>
 
+        <syntax-highlight>
         <f-broadcast
           api="https://dev.finn.no/broadcasts"
           url="https:/dev.finn.no/meldinger"
           interval="30000"
         ></f-broadcast>
+        </syntax-highlight>
       </main>
       <%- include('footer.html'); -%>
     </f-docs-template>
