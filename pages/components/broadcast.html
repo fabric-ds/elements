@@ -5,46 +5,37 @@
       <%- include('nav.html'); -%>
       <main slot="content">
         <h1 class="mb-16">Broadcast</h1>
+        <p>Broadcast automatically fetches broadcast messages for the current (or a given) url.</p>
+        <p>Uses toast apis under the hood.</p>
 
         <p>
-          Broadcast automatically fetches broadcast messages for the current
-          url.
-        </p>
-        <p>Uses f-toast under the hood.</p>
-
-        <h2 class="mt-24 mb-16">Props</h2>
-        <p>
-          Refetch interval: <strong>interval</strong> — default 300 000 (5
-          minutes)
-        </p>
-        <p>Environment: <strong>dev</strong> — default false</p>
-        <p>
-          Url to check for: <strong>url</strong> — default window.location.href
+          <strong>N.B.</strong> Broadcast should only be included once per page to avoid duplicate
+          broadcast messages being displayed. The preferred method for including broadcast will soon
+          be a podlet provided by the communication team. In the meantime this component can be used
+          directly.
         </p>
 
-        <h2 class="mt-24 mb-16">Example usages</h2>
-        <syntax-highlight><f-broadcast></f-broadcast></syntax-highlight>
+        <h2 class="mt-24 mb-16">Attributes</h2>
+        <p><strong>interval</strong> — Refetch interval - <i>default: 300 000 (5 minutes)</i></p>
+        <p>
+          <strong>api</strong> - API endpoint to fetch broadcasts from. Use
+          <code>https://dev.finn.no/broadcasts</code> on dev and <code>https://finn.no/broadcasts</code> on prod. -
+          <i>Required</i>
+        </p>
+        <p>
+          <strong>url</strong> — Page (identified by its url) to check for registered broadcasts
+          against - <i>default window.location.href</i>
+        </p>
+
+        <h2 class="mt-24 mb-16">Example usage</h2>
+
         <syntax-highlight>
-          // Fetches from dev.finn.no instead of finn.no
-          <f-broadcast dev="true"></f-broadcast
-        ></syntax-highlight>
-        <syntax-highlight>
-          // 4 second refetch interval
-          <f-broadcast interval="4000"></f-broadcast>
+        <f-broadcast
+          api="https://dev.finn.no/broadcasts"
+          url="https:/dev.finn.no/meldinger"
+          interval="30000"
+        ></f-broadcast>
         </syntax-highlight>
-        <syntax-highlight>
-          // The url is automatically set through window.location.href, but you
-          can override this by passing url as a param
-          <f-broadcast url="finn.no/finn/travel"></f-broadcast>
-        </syntax-highlight>
-
-        <div class="example">
-          <f-toast
-            id="broadcast-toast"
-            type="warning"
-            text="Oops! Vi opplever fortiden serverproblemer og beklager for eventuelle ulemper dette kan medføre."
-          ></f-toast>
-        </div>
       </main>
       <%- include('footer.html'); -%>
     </f-docs-template>
