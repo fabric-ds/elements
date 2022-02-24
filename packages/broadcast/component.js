@@ -15,12 +15,13 @@ export class FabricBroadcast extends FabricWebComponent {
 
     // Generate url
     const dev = Boolean(this.getAttribute('dev'));
-    const url = `https://${dev ? 'dev' : 'www'}.finn.no/broadcasts?path=${
-      this.getAttribute('url') || window.location.href
-    }`;
+    const broadcastUrl = `https://${dev ? 'dev' : 'www'}.finn.no/broadcasts`;
+    const pageUrl = this.getAttribute('url') || window.location.href;
+    const url = new URL(broadcastUrl);
+    url.searchParams.set('path', pageUrl);
 
     // Fetch message
-    const res = await (await fetch(url)).json();
+    const res = await (await fetch(url.href)).json();
 
     // If response exists
     if (res.length) {
