@@ -15,6 +15,11 @@ test('Custom Element: Initially no toasts are present', async () => {
   expect(el._toasts.size).to.equal(0);
 });
 
+test('Accessibility', async () => {
+  const el = await fixture(html`<f-toast-container></f-toast-container>`);
+  await expect(el).to.be.accessible();
+});
+
 test('API: Initialization adds toast container to the dom', async () => {
   const before = document.querySelector('f-toast-container');
   const el = await FabricToastContainer.init();

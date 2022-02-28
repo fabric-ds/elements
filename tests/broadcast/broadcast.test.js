@@ -14,6 +14,12 @@ test('Basic broadcast with defaults', async () => {
   expect(broadcasts.length).to.equal(1);
 });
 
+test('Basic broadcast accessibility', async () => {
+  const el = await fixture(html`<f-broadcast api="http://localhost:4053/single-broadcast"></f-broadcast>`);
+  await wait(500);
+  await expect(el).to.be.accessible();
+});
+
 test('Basic broadcast with defined URL and interval', async () => {
   const el = await fixture(
     html`<f-broadcast

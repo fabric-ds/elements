@@ -14,6 +14,13 @@ test('Setting all properties', async () => {
   expect(el.getAttribute('text')).to.equal('This is my toast');
 });
 
+test('Accessibility', async () => {
+  const el = await fixture(html`
+    <f-toast id="abc" type="success" canclose text="This is my toast"></f-toast>
+  `);
+  await expect(el).to.be.accessible();
+});
+
 test('Id assigned when not provided', async () => {
   const el = await fixture(html` <f-toast text="This is my toast"></f-toast> `);
   expect(typeof el.getAttribute('id')).to.equal('string');
