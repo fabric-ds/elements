@@ -19,7 +19,8 @@
         <p><strong>interval</strong> — Refetch interval - <i>default: 300 000 (5 minutes)</i></p>
         <p>
           <strong>api</strong> - API endpoint to fetch broadcasts from. Use
-          <code>https://dev.finn.no/broadcasts</code> on dev and <code>https://finn.no/broadcasts</code> on prod. -
+          <code>https://dev.finn.no/broadcasts</code> on dev and
+          <code>https://finn.no/broadcasts</code> on prod. -
           <i>Required</i>
         </p>
         <p>
@@ -30,12 +31,25 @@
         <h2 class="mt-24 mb-16">Example usage</h2>
 
         <syntax-highlight>
+          <f-broadcast
+            api="https://dev.finn.no/broadcasts"
+            url="https:/dev.finn.no/meldinger"
+            interval="30000"
+          ></f-broadcast>
+        </syntax-highlight>
+
         <f-broadcast
           api="https://dev.finn.no/broadcasts"
           url="https:/dev.finn.no/meldinger"
           interval="30000"
         ></f-broadcast>
-        </syntax-highlight>
+
+        <button
+          class="button button--small mt-10"
+          onclick="window.localStorage.removeItem('ignored-broadcasts'); location.href = location.href;"
+        >
+          Restore Deleted Broadcasts
+        </button>
       </main>
       <%- include('footer.html'); -%>
     </f-docs-template>
