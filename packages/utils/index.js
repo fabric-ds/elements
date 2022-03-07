@@ -1,3 +1,5 @@
+import { LitElement } from 'lit';
+
 export function classes(defn) {
   const classes = [];
   for (const [key, value] of Object.entries(defn)) {
@@ -23,6 +25,12 @@ export class FabricWebComponent extends HTMLElement {
     this.attachShadow({ mode: 'open' }).appendChild(
       fabricStylesTemplate.content,
     );
+  }
+}
+
+export class FabricElement extends LitElement {
+  createRenderRoot() {
+    return this;
   }
 }
 
