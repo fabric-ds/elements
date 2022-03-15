@@ -47,18 +47,9 @@ export class FabricBroadcast extends LitElement {
     }
   }
 
-  get _broadcasts() {
-    if (!windowExists) return this._messages;
-    const ignoredBroadcasts = JSON.parse(window.localStorage.getItem('ignored-broadcasts')) || [];
-    return this._messages.filter(({ id }) => !ignoredBroadcasts.includes(id));
-  }
-
   async _del(id) {
     const el = this.renderRoot.querySelector(`#${id}`);
     await el.collapse();
-    const ignoredBroadcasts = JSON.parse(window.localStorage.getItem('ignored-broadcasts')) || [];
-    ignoredBroadcasts.push(id.split('-')[1]);
-    window.localStorage.setItem('ignored-broadcasts', JSON.stringify(ignoredBroadcasts));
   }
 
   render() {
@@ -70,7 +61,7 @@ export class FabricBroadcast extends LitElement {
       />
       <aside>
         ${repeat(
-          this._broadcasts,
+          this._messages,
           ({ id }) => `broadcast-${id}`,
           ({ id, message }) => html`<f-toast
             class="w-full"
