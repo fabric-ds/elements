@@ -1,11 +1,13 @@
-import { html } from 'lit';
-import { FabricElement } from '../utils';
+import { LitElement, html } from 'lit';
+import styles from '@fabric-ds/css';
 
 const separator = html`<span class="select-none" aria-hidden="true">/</span>`;
 const interleave = (arr) =>
   [].concat(...arr.map((el) => [el, separator])).slice(0, -1);
 
-class FabricBreadcrumbs extends FabricElement {
+class FabricBreadcrumbs extends LitElement {
+  static styles = styles;
+
   connectedCallback() {
     super.connectedCallback();
     // Grab existing children at the point that the component is added to the page
