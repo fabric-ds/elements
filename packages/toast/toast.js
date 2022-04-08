@@ -7,13 +7,13 @@ import { closeSVG, successSVG, failureSVG } from './svgs';
 
 const classes = (definition) => {
   const defn = {};
-  for(const [key, value] of Object.entries(definition)) {
+  for (const [key, value] of Object.entries(definition)) {
     for (const className of key.split(' ')) {
       defn[className] = value;
     }
   }
   return classMap(defn);
-}
+};
 
 export class FabricToast extends LitElement {
   static styles = css`
@@ -103,7 +103,7 @@ export class FabricToast extends LitElement {
   get _iconMarkup() {
     return this._success
       ? successSVG({ typeLabel: this._typeLabel })
-      : failureSVG({ typeLabel: this.typeLabel, isInfo: this._info });
+      : failureSVG({ typeLabel: this._typeLabel, isInfo: this._info });
   }
 
   async collapse() {
@@ -138,9 +138,7 @@ export class FabricToast extends LitElement {
           ${when(
             this.canclose !== false,
             () =>
-              html`<button class="${c.toastClose}" @click="${this.close}">
-                ${closeSVG()}
-              </button>`,
+              html`<button class="${c.toastClose}" @click="${this.close}">${closeSVG()}</button>`,
             () => html``,
           )}
         </div>

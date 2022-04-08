@@ -9,7 +9,7 @@ test('Basic broadcast with defaults', async () => {
   await fixture(html`<f-broadcast api="http://localhost:4053/single-broadcast"></f-broadcast>`);
   await wait(500);
   const broadcasts = document
-    .querySelector('f-toast-container')
+    .querySelector('f-broadcast')
     .renderRoot.querySelectorAll('f-toast');
   expect(broadcasts.length).to.equal(1);
 });
@@ -37,7 +37,7 @@ test('Multiple broadcasts', async () => {
   await fixture(html`<f-broadcast api="http://localhost:4053/multiple-broadcasts"></f-broadcast>`);
   await wait(50);
   const broadcasts = document
-    .querySelector('f-toast-container')
+    .querySelector('f-broadcast')
     .renderRoot.querySelectorAll('f-toast');
   expect(broadcasts.length).to.equal(2);
 });
