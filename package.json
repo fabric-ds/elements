@@ -56,7 +56,7 @@
     "@chbphone55/classnames": "^2.0.0",
     "@fabric-ds/component-classes": "^0.0.31",
     "element-collapse": "^0.9.1",
-    "microbundle": "^0.13.3",
+    "microbundle": "^0.14.0",
     "typescript": "^4.3.5"
   },
   "dependencies": {
