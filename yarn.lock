@@ -566,10 +566,10 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
-"@fabric-ds/component-classes@^0.0.31":
-  version "0.0.31"
-  resolved "https://registry.yarnpkg.com/@fabric-ds/component-classes/-/component-classes-0.0.31.tgz#3e1e83264479cd442b98ca08c0e1419c72b5d3e0"
-  integrity sha512-0BfgKBGop4aEFDwoherSr3YFYWCCwTF9HRwlYPG0PPPZi7dXBH0wgMm1SPfZ/xlSjExfkgrmR/Ls8ve2UCQ6Jg==
+"@fabric-ds/component-classes@^0.0.38":
+  version "0.0.38"
+  resolved "https://registry.yarnpkg.com/@fabric-ds/component-classes/-/component-classes-0.0.38.tgz#336b2af73f81858df81f4af12543ec4b62953c21"
+  integrity sha512-TH3VUkzkZPxbfwBu8YfCtyJUfL/ArvAdnKsYK0QGc6CabOxn1CJEExmMC6x6iLIVO2rnY/ZFNtSSfoeeyPBeOQ==
 
 "@fabric-ds/tailwind-config@^0.5.20":
   version "0.5.24"
