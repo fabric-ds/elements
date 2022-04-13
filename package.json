@@ -40,7 +40,7 @@
   "license": "ISC",
   "devDependencies": {
     "@chbphone55/classnames": "^2.0.0",
-    "@fabric-ds/component-classes": "^0.0.31",
+    "@fabric-ds/component-classes": "^0.0.38",
     "@fabric-ds/tailwind-config": "^0.5.20",
     "@open-wc/testing-helpers": "^2.0.4",
     "@stylelint/postcss-css-in-js": "^0.37.2",
