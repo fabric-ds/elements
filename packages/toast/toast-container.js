@@ -87,7 +87,7 @@ export class FabricToastContainer extends LitElement {
         if (!toast.id) throw new Error('invalid or undefined "id" on toast object');
         const result = this._toasts.set(toast.id, {
             ...toast,
-            duration: Date.now() + toast.duration || 5000,
+            duration: Date.now() + (toast.duration || 5000),
         });
         this._toasts = new Map(Array.from(this._toasts));
         return result;
