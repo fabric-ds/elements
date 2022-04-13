@@ -1,46 +1,79 @@
-import { FabricWebComponent, windowExists } from '../utils';
+import { LitElement, html } from 'lit';
+import { repeat } from 'lit/directives/repeat.js';
+import { windowExists } from '../utils';
 
-export class FabricBroadcast extends FabricWebComponent {
-  async connectedCallback() {
-    const REFETCH_INTERVAL = Number(this.getAttribute('interval')) || 300000; // 300 000 ms = 5 minutes
+export class FabricBroadcast extends LitElement {
+  static properties = {
+    _messages: {
+      state: true,
+      hasChanged(newVal, oldVal) {
+        if (!oldVal) return true;
+        const newIds = newVal.map(({ id }) => id).sort();
+        const oldIds = oldVal.map(({ id }) => id).sort();
+        return JSON.stringify(newIds) !== JSON.stringify(oldIds);
+      },
+    },
+    interval: { type: Number, attribute: true, reflect: true },
+    url: { type: String, attribute: true, reflect: true },
+    api: { type: String, attribute: true, reflect: true },
+  };
 
-    // Fetch broadcast on load and setup refetch
-    await this.fetchMessage();
-    setInterval(async () => await this.fetchMessage(), REFETCH_INTERVAL);
+  constructor() {
+    super();
+    this._messages = [];
+    this.interval = 30000;
+    this.url = windowExists ? window.location.href : '';
   }
 
-  async fetchMessage() {
-    if (!windowExists) return;
-    const existing = this.shadowRoot.querySelector('#broadcast-toast');
-
-    // Generate url
-    const dev = Boolean(this.getAttribute('dev'));
-    const url = `https://${dev ? 'dev' : 'www'}.finn.no/broadcasts?path=${
-      this.getAttribute('url') || window.location.href
-    }`;
-
-    // Fetch message
-    const res = await (await fetch(url)).json();
-
-    // If response exists
-    if (res.length) {
-      this.message = res[0].message;
-
-      if (existing) {
-        // Container exists, update toast message
-        existing.setAttribute('text', this.message);
-      } else {
-        // Setup container with toast
-        this.shadowRoot.innerHTML += `
-          <div id="broadcast">
-            <f-toast id="broadcast-toast" type="warning" text="${this.message}"></f-toast>
-          </div>
-        `;
-      }
-    } else {
-      // No broadcast in response, remove container if broadcast previously existed
-      this.message = '';
-      if (existing) existing.remove();
+  async connectedCallback() {
+    super.connectedCallback();
+    if (!this.api) {
+      console.error('Broadcast "api" attribute invalid or undefined');
+      return;
     }
+    if (windowExists) {
+      await this._fetchMessage();
+      setInterval(() => this._fetchMessage(), this.interval);
+    }
+  }
+
+  async _fetchMessage() {
+    const url = `${this.api}?path=${this.url}`;
+    try {
+      const res = await (await fetch(url)).json();
+      this._messages = res.length ? res : [];
+    } catch (err) {
+      console.error(`failed to fetch broadcasts from given url (${url})`);
+    }
+  }
+
+  async _del(id) {
+    const el = this.renderRoot.querySelector(`#${id}`);
+    await el.collapse();
+  }
+
+  render() {
+    return html`
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://assets.finn.no/pkg/@fabric-ds/css/v1/fabric.min.css"
+      />
+      <aside>
+        ${repeat(
+          this._messages,
+          ({ id }) => `broadcast-${id}`,
+          ({ id, message }) => html`<f-toast
+            class="w-full"
+            id="broadcast-${id}"
+            type="warning"
+            text="${message}"
+            canclose
+            @close=${() => this._del(`broadcast-${id}`)}
+          >
+          </f-toast>`,
+        )}
+      </aside>
+    `;
   }
 }

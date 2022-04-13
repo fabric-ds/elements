@@ -8,6 +8,7 @@
     "sourceType": "module"
   },
   "rules": {
-    "no-unexpected-multiline": "off"
+    "no-unexpected-multiline": "off",
+    "no-undef": "off"
   }
 }
