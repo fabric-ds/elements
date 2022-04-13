@@ -7,8 +7,8 @@ import { windowExists } from '../utils';
  * @property   {(number|string)}                      [id]        Custom identifier
  * @property   {('success'|'error'|'warning'|'info')} [type]      Type of alert
  * @property   {String}                               [text]      The toast message. Only needed when updating text on existing toast
- * @property   {(number|string)}                      [duration]  Duration of toast in milliseconds Set to 0 to disable auto-removal
- * @property   {Boolean}                              [canclose]  Can toast be dismissed?
+ * @property   {(number|string)}                      [duration]  Duration of toast in milliseconds. Defaults to 5000. For accessibility reasons, toasts should never be interactive and therefore need to auto remove. If you must disable auto remove, set duration to Number.POSITIVE_INFINITY.
+ * @property   {Boolean}                              [canclose]  Whether the toast can be dismissed. Defaults to false. WARNING! For accessibility reasons, toasts should not be interactive and canclose should always be false. If the toast absolutely must be dismissble, set this to true.
  */
 
 /**
@@ -24,7 +24,7 @@ export function toast(message, options) {
   const data = {
     id: Date.now().toString(36) + Math.random().toString(36).slice(2, 5),
     text: message,
-    duration: Number.POSITIVE_INFINITY,
+    duration: 5000,
     type: 'success',
     ...options,
   };
