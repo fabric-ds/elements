@@ -8,8 +8,8 @@ import { repeat } from 'lit/directives/repeat.js';
  * @property   {(number|string)}                      [id]        Custom identifier
  * @property   {('success'|'error'|'warning'|'info')} [type]      Type of alert
  * @property   {String}                               [text]      The toast message. Only needed when updating text on existing toast
- * @property   {(number|string)}                      [duration]  Duration of toast in milliseconds Set to 0 to disable auto-removal
- * @property   {Boolean}                              [canClose]  Can toast be dismissed?
+ * @property   {(number|string)}                      [duration]  Duration of toast in milliseconds. Defaults to 5000. For accessibility reasons, toasts should never be interactive and therefore need to auto remove. If you must disable auto remove, set duration to Number.POSITIVE_INFINITY.
+ * @property   {Boolean}                              [canClose]  Whether the toast can be dismissed. Defaults to false. WARNING! For accessibility reasons, toasts should not be interactive and canclose should always be false. If the toast absolutely must be dismissble, set this to true.
  */
 
 export class FabricToastContainer extends LitElement {
@@ -26,28 +26,27 @@ export class FabricToastContainer extends LitElement {
 
     connectedCallback() {
         super.connectedCallback();
-        if (this.duration !== Number.POSITIVE_INFINITY) {
-            // regularly check if any toasts have expired
-            this._interval = setInterval(() => {
-                // sort toasts into keep and remove
-                const keep = [];
-                const remove = [];
-                for (const toast of this._toasts) {
-                    if (Date.now() <= toast[1].duration) keep.push(toast);
-                    else remove.push(toast);
-                }
-                // collapse toasts that will be removed
-                const collapseTasks = [];
-                for (const [id] of remove) {
-                    const el = this.renderRoot.querySelector(`#${id}`);
-                    collapseTasks.push(el.collapse());
-                }
-                // once all toasts that should be removed have been collapsed, remove them from the map
-                Promise.all(collapseTasks).then(() => {
-                    if (keep.length != this._toasts.size) this._toasts = new Map(keep);
-                });
-            }, 500);
-        }
+
+        // regularly check if any toasts have expired
+        this._interval = setInterval(() => {
+            // sort toasts into keep and remove
+            const keep = [];
+            const remove = [];
+            for (const toast of this._toasts) {
+                if (Date.now() <= toast[1].duration) keep.push(toast);
+                else remove.push(toast);
+            }
+            // collapse toasts that will be removed
+            const collapseTasks = [];
+            for (const [id] of remove) {
+                const el = this.renderRoot.querySelector(`#${id}`);
+                collapseTasks.push(el.collapse());
+            }
+            // once all toasts that should be removed have been collapsed, remove them from the map
+            Promise.all(collapseTasks).then(() => {
+                if (keep.length != this._toasts.size) this._toasts = new Map(keep);
+            });
+        }, 500);
     }
     
     disconnectedCallback() {
@@ -88,7 +87,7 @@ export class FabricToastContainer extends LitElement {
         if (!toast.id) throw new Error('invalid or undefined "id" on toast object');
         const result = this._toasts.set(toast.id, {
             ...toast,
-            duration: Date.now() + toast.duration || Number.POSITIVE_INFINITY,
+            duration: Date.now() + toast.duration || 5000,
         });
         this._toasts = new Map(Array.from(this._toasts));
         return result;
@@ -124,7 +123,7 @@ export class FabricToastContainer extends LitElement {
                         id="${toast.id}"
                         type="${toast.type}"
                         text="${toast.text}"
-                        ?canclose=${toast.canclose === false ? false : true }
+                        ?canclose=${toast.canclose}
                         @close=${() => this.del(toast.id)}>
                     </f-toast>`)}
                 </div>
