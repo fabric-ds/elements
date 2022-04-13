@@ -572,9 +572,12 @@
   integrity sha512-TH3VUkzkZPxbfwBu8YfCtyJUfL/ArvAdnKsYK0QGc6CabOxn1CJEExmMC6x6iLIVO2rnY/ZFNtSSfoeeyPBeOQ==
 
 "@fabric-ds/tailwind-config@^0.5.20":
-  version "0.5.24"
-  resolved "https://registry.yarnpkg.com/@fabric-ds/tailwind-config/-/tailwind-config-0.5.24.tgz#ecf057e02462b6e1e67e97bad79621457fac63a4"
-  integrity sha512-Ne04a1XRcZCdc732No4EVIXiRaA9u/bYRESah1BbbUgaMUjHBWPeGzSFA44ms/TXaFQD4ssDJxM38G36H4NWXg==
+  version "0.5.32"
+  resolved "https://registry.yarnpkg.com/@fabric-ds/tailwind-config/-/tailwind-config-0.5.32.tgz#8f95fd9b68fa8e3c3a3621ffb5cd4fb024dbdce4"
+  integrity sha512-0AAy+LhcCdSf1sJfBiAlOXzAFGDLA3uAeDfFPs4VBYVDb/FRoZ2plIAW3YxnkDScVfwo4s1kN6jBLOx0Z27mkA==
+  dependencies:
+    "@tailwindcss/aspect-ratio" "^0.3.0"
+    tailwindcss "^2.2.19"
 
 "@humanwhocodes/config-array@^0.5.0":
   version "0.5.0"
@@ -1568,6 +1571,11 @@
   integrity sha512-nEhsFoJurt8oUmieT8qy4nk81WRHmJynmVwn/Vts08PL9fhgIsMhk1GId5yAN643OzqEEb5S/6At2TZW7pqPDA==
   dependencies:
     "@babel/core" ">=7.9.0"
+
+"@tailwindcss/aspect-ratio@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/aspect-ratio/-/aspect-ratio-0.3.0.tgz#f779ab3f07cac848fb844122d6662ba6560010b8"
+  integrity sha512-DMgWskNJR6FNPLbQ8Xoq/PKV/9DfNKh5dvKB+SM8x7lVl4+pnxlZ3Ns4+yGmurA/ze708HrnCG1tXk85HolJmw==
 
 "@types/accepts@*":
   version "1.3.5"
@@ -8903,6 +8911,44 @@ tailwindcss@^2.0.2:
   version "2.2.17"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-2.2.17.tgz#c6332731f9ff1b6628ff589c95c38685347775e3"
   integrity sha512-WgRpn+Pxn7eWqlruxnxEbL9ByVRWi3iC10z4b6dW0zSdnkPVC4hPMSWLQkkW8GCyBIv/vbJ0bxIi9dVrl4CfoA==
+  dependencies:
+    arg "^5.0.1"
+    bytes "^3.0.0"
+    chalk "^4.1.2"
+    chokidar "^3.5.2"
+    color "^4.0.1"
+    cosmiconfig "^7.0.1"
+    detective "^5.2.0"
+    didyoumean "^1.2.2"
+    dlv "^1.1.3"
+    fast-glob "^3.2.7"
+    fs-extra "^10.0.0"
+    glob-parent "^6.0.1"
+    html-tags "^3.1.0"
+    is-color-stop "^1.1.0"
+    is-glob "^4.0.1"
+    lodash "^4.17.21"
+    lodash.topath "^4.5.2"
+    modern-normalize "^1.1.0"
+    node-emoji "^1.11.0"
+    normalize-path "^3.0.0"
+    object-hash "^2.2.0"
+    postcss-js "^3.0.3"
+    postcss-load-config "^3.1.0"
+    postcss-nested "5.0.6"
+    postcss-selector-parser "^6.0.6"
+    postcss-value-parser "^4.1.0"
+    pretty-hrtime "^1.0.3"
+    purgecss "^4.0.3"
+    quick-lru "^5.1.1"
+    reduce-css-calc "^2.1.8"
+    resolve "^1.20.0"
+    tmp "^0.2.1"
+
+tailwindcss@^2.2.19:
+  version "2.2.19"
+  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-2.2.19.tgz#540e464832cd462bb9649c1484b0a38315c2653c"
+  integrity sha512-6Ui7JSVtXadtTUo2NtkBBacobzWiQYVjYW0ZnKaP9S1ZCKQ0w7KVNz+YSDI/j7O7KCMHbOkz94ZMQhbT9pOqjw==
   dependencies:
     arg "^5.0.1"
     bytes "^3.0.0"
