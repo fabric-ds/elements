@@ -1512,16 +1512,7 @@
     "@types/chai" "^4.2.11"
     "@web/test-runner-commands" "^0.5.7"
 
-"@open-wc/testing-helpers@^2.0.4":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@open-wc/testing-helpers/-/testing-helpers-2.1.1.tgz#a8d1d37761ab002c9b76e5fffef1e46ee031a070"
-  integrity sha512-PFE+nd5IYSUgjIvmjV5PwjrBcTjLPOzvPrBk29krCVgwbgU4SS5WIxaHuxxGzpRn0SYDNlop5e/BMNjL2i4bsg==
-  dependencies:
-    "@open-wc/scoped-elements" "^2.0.1"
-    lit "^2.0.0"
-    lit-html "^2.0.0"
-
-"@open-wc/testing-helpers@^2.1.2":
+"@open-wc/testing-helpers@^2.0.4", "@open-wc/testing-helpers@^2.1.2":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@open-wc/testing-helpers/-/testing-helpers-2.1.2.tgz#25ebc06074ea1d46633c3d1252dc5f7e1092244d"
   integrity sha512-NEdsV47DnOWaw3Wpp85p4qZ6bdubtGPdlTiblk8vSf2HJ2sR4b3ckyRWzsj/k+pcxrDGt8z0Awz71p+048Rrfg==
