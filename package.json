@@ -31,11 +31,12 @@
     "test:run-once": "web-test-runner tests/**/*.test.js --node-resolve --static-logging",
     "test:run-watch": "web-test-runner tests/**/*.test.js --node-resolve --watch",
     "test": "npm run test:run-once",
-    "watch:test": "npm run test:run-watch"
+    "watch:test": "npm run test:run-watch",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:fabric-ds/elements.git"
+    "url": "https://github.com/fabric-ds/elements.git"
   },
   "license": "ISC",
   "devDependencies": {
@@ -43,11 +44,14 @@
     "@fabric-ds/component-classes": "^0.0.38",
     "@fabric-ds/tailwind-config": "^0.5.20",
     "@open-wc/testing-helpers": "^2.0.4",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
     "@stylelint/postcss-css-in-js": "^0.37.2",
     "@web/test-runner": "^0.13.27",
     "autoprefixer": "^10.2.3",
     "babel-eslint": "^10.1.0",
     "cors": "^2.8.5",
+    "cz-conventional-changelog": "^3.3.0",
     "element-collapse": "^0.9.1",
     "esbuild": "^0.14.0",
     "eslint": "^7.18.0",
@@ -63,6 +67,8 @@
     "postcss-syntax": "^0.36.2",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
+    "semantic-release": "^19.0.2",
+    "semantic-release-slack-bot": "^3.5.2",
     "tailwindcss": "^2.0.2",
     "tap": "^15.1.6",
     "typescript": "^4.3.5",
@@ -79,5 +85,10 @@
   "eik": {
     "server": "https://assets.finn.no",
     "files": "dist"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
