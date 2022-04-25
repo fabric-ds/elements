@@ -1,13 +1,10 @@
 import { LitElement, html } from 'lit';
-import styles from '@fabric-ds/css';
 
 const separator = html`<span class="select-none" aria-hidden="true">/</span>`;
 const interleave = (arr) =>
   [].concat(...arr.map((el) => [el, separator])).slice(0, -1);
 
 class FabricBreadcrumbs extends LitElement {
-  static styles = styles;
-
   connectedCallback() {
     super.connectedCallback();
     // Grab existing children at the point that the component is added to the page
@@ -17,6 +14,9 @@ class FabricBreadcrumbs extends LitElement {
 
   render() {
     return html`
+      <style>
+        @import "https://assets.finn.no/pkg/@fabric-ds/css/v1/fabric.min.css";
+      </style>
       <nav aria-label="Her er du" class="flex space-x-8">
         <h2 class="sr-only">Her er du</h2>
         ${this._children}
