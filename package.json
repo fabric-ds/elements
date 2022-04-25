@@ -52,7 +52,7 @@
     "babel-eslint": "^10.1.0",
     "cors": "^2.8.5",
     "cz-conventional-changelog": "^3.3.0",
-    "element-collapse": "^0.9.1",
+    "element-collapse": "1.0.1",
     "esbuild": "^0.14.0",
     "eslint": "^7.18.0",
     "express": "^4.17.3",
