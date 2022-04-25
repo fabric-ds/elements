@@ -1,7 +1,7 @@
 {
   "name": "@fabric-ds/elements",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.1.1",
   "description": "Custom elements for Fabric",
   "exports": {
     ".": "./dist/index.js",
@@ -15,39 +15,53 @@
   "scripts": {
     "build:api": "npx esbuild ./packages/toast/api.js --outdir=dist --target=es2017 --bundle --sourcemap --format=esm --minify",
     "build:npm": "npx esbuild ./index.js --outdir=dist/ --target=es2017 --bundle --sourcemap --format=esm --minify",
+    "watch:npm": "npx esbuild ./index.js --outdir=dist/ --target=es2017 --bundle --sourcemap --format=esm --minify --watch",
     "build": "rimraf dist && tsc && npm run build:npm && npm run build:api",
     "format": "prettier --write . --ignore-path .gitignore",
     "lint": "npm run lint:format && npm run lint:eslint",
     "lint:format": "prettier --check . --ignore-path .gitignore",
     "lint:eslint": "eslint . --ext js,cjs,mjs --ignore-path .gitignore",
-    "test": "tap ./packages/**/test.js --no-check-coverage",
     "dev": "vite",
     "build:docs": "vite build && cp CNAME site",
     "eik:login": "npx @eik/cli login",
     "eik:publish": "npx @eik/cli publish",
-    "posteik:publish": "npm run eik:alias",
-    "eik:alias": "npx @eik/cli pkg-alias"
+    "eik:alias": "npx @eik/cli pkg-alias",
+    "test:mock-backend": "node ./tests/utils/broadcast-backend.js",
+    "test:mock-backend:ci": "node ./tests/utils/broadcast-backend.js &",
+    "test:run-once": "web-test-runner tests/**/*.test.js --node-resolve --static-logging",
+    "test:run-watch": "web-test-runner tests/**/*.test.js --node-resolve --watch",
+    "test": "npm run test:run-once && tap ./packages/**/test.js --no-check-coverage",
+    "watch:test": "npm run test:run-watch",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:fabric-ds/elements.git"
+    "url": "https://github.com/fabric-ds/elements.git"
   },
   "license": "ISC",
   "devDependencies": {
     "@chbphone55/classnames": "^2.0.0",
-    "@fabric-ds/component-classes": "^0.0.31",
+    "@fabric-ds/component-classes": "^0.0.38",
     "@fabric-ds/tailwind-config": "^0.5.20",
+    "@open-wc/testing-helpers": "^2.0.4",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
     "@stylelint/postcss-css-in-js": "^0.37.2",
+    "@web/test-runner": "^0.13.27",
     "autoprefixer": "^10.2.3",
     "babel-eslint": "^10.1.0",
     "element-collapse": "^0.9.1",
-    "esbuild": "^0.12.0",
     "eslint": "^7.18.0",
     "fastify": "^3.27.3",
-    "lerna": "^3.22.1",
     "lit-element": "^2.4.0",
     "lit-html": "^1.3.0",
     "playwright": "^1.19.2",
+    "cors": "^2.8.5",
+    "cz-conventional-changelog": "^3.3.0",
+    "esbuild": "^0.14.0",
+    "express": "^4.17.3",
+    "lerna": "^3.22.1",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.2.4",
     "postcss-cli": "^8.3.1",
     "postcss-discard-comments": "^4.0.2",
@@ -55,6 +69,8 @@
     "postcss-syntax": "^0.36.2",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
+    "semantic-release": "^19.0.2",
+    "semantic-release-slack-bot": "^3.5.2",
     "tailwindcss": "^2.0.2",
     "tap": "^16.0.0",
     "typescript": "^4.3.5",
@@ -62,6 +78,7 @@
     "vite-plugin-html": "^2.0.0-beta.6"
   },
   "dependencies": {
+    "@open-wc/testing": "^3.0.4",
     "html-format": "^1.0.1"
   },
   "publishConfig": {
@@ -70,5 +87,10 @@
   "eik": {
     "server": "https://assets.finn.no",
     "files": "dist"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
