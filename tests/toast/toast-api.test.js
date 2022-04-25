@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import { expect } from '@open-wc/testing';
-import { updateToast, removeToast, toast } from '../../dist/index.js';
+import '../../dist/index.js';
+import { updateToast, removeToast, toast } from '../../dist/api.js';
 
 const test = it;
 const wait = (duration = 0) =>
