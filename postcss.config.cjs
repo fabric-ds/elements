@@ -1,7 +1,6 @@
 /* eslint-env node */
 module.exports = (ctx) => {
     const plugins = [
-        require('tailwindcss')({ ...tailwindConfig }),
         require('postcss-discard-comments')(),
         require('postcss-discard-empty')(),
     ];
