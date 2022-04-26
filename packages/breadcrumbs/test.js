@@ -49,7 +49,7 @@ test('Breadcrumb component interleaves / characters between breadcrumb items', a
   const { page } = t.context;
   await page.setContent(component);
   await page.addScriptTag({ path: './dist/index.js', type: 'module' });
-  
+
   // THEN: a single divider should have been interleaved with the breadcrumbs
   t.equal(await page.innerText('f-breadcrumbs span'), '/', 'Divider slashes should be added');
 });
@@ -72,9 +72,21 @@ test('Breadcrumb component with anchor child elements', async (t) => {
   // THEN: there should be three breadcrumbs in the DOM
   t.equal(await page.locator('f-breadcrumbs a').count(), 3, '3 a tags should be present');
   t.equal(await page.locator('f-breadcrumbs span').count(), 2, '2 span tags should be present');
-  t.match(await page.innerText(':nth-match(f-breadcrumbs a, 1)'), 'Eiendom', 'The first segment should be Eiendom');
-  t.match(await page.innerText(':nth-match(f-breadcrumbs a, 2)'), 'Torget', 'The second segment should be Torget');
-  t.match(await page.innerText(':nth-match(f-breadcrumbs a, 3)'), 'Oslo', 'The third segment should be Oslo');
+  t.match(
+    await page.innerText(':nth-match(f-breadcrumbs a, 1)'),
+    'Eiendom',
+    'The first segment should be Eiendom',
+  );
+  t.match(
+    await page.innerText(':nth-match(f-breadcrumbs a, 2)'),
+    'Torget',
+    'The second segment should be Torget',
+  );
+  t.match(
+    await page.innerText(':nth-match(f-breadcrumbs a, 3)'),
+    'Oslo',
+    'The third segment should be Oslo',
+  );
 });
 
 test('Breadcrumb component with last element as a span', async (t) => {
@@ -94,5 +106,9 @@ test('Breadcrumb component with last element as a span', async (t) => {
 
   // THEN: there should be three breadcrumbs in the DOM
   t.equal(await page.locator('f-breadcrumbs a').count(), 2, '2 child a tags should be present');
-  t.equal(await page.locator('f-breadcrumbs span').count(), 3, '3 child span tags should be present');
+  t.equal(
+    await page.locator('f-breadcrumbs span').count(),
+    3,
+    '3 child span tags should be present',
+  );
 });
