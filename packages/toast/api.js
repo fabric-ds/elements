@@ -1,4 +1,3 @@
-import { FabricToastContainer } from './toast-container';
 import { windowExists } from '../utils';
 
 /**
@@ -19,7 +18,7 @@ import { windowExists } from '../utils';
  */
 export function toast(message, options) {
   if (!windowExists) return;
-  const toast = FabricToastContainer.init();
+  const toast = customElements.get('f-toast-container').init();
 
   const data = {
     id: Date.now().toString(36) + Math.random().toString(36).slice(2, 5),
@@ -40,7 +39,7 @@ export function toast(message, options) {
  */
 export function removeToast(id) {
   if (!windowExists) return;
-  const toast = FabricToastContainer.init();
+  const toast = customElements.get('f-toast-container').init();
   return toast.del(id);
 }
 
@@ -52,7 +51,7 @@ export function removeToast(id) {
  */
 export function updateToast(id, options) {
   if (!windowExists) return;
-  const toast = FabricToastContainer.init();
+  const toast = customElements.get('f-toast-container').init();
   toast.set({ ...toast.get(id), ...options });
   return toast.get(id);
 }

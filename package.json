@@ -1,7 +1,7 @@
 {
   "name": "@fabric-ds/elements",
   "type": "module",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Custom elements for Fabric",
   "exports": {
     ".": "./dist/index.js",
@@ -50,7 +50,6 @@
     "@web/test-runner": "^0.13.27",
     "autoprefixer": "^10.2.3",
     "babel-eslint": "^10.1.0",
-    "element-collapse": "^0.9.1",
     "eslint": "^7.18.0",
     "fastify": "^3.27.3",
     "lit-element": "^2.4.0",
@@ -58,6 +57,7 @@
     "playwright": "^1.19.2",
     "cors": "^2.8.5",
     "cz-conventional-changelog": "^3.3.0",
+    "element-collapse": "1.0.1",
     "esbuild": "^0.14.0",
     "express": "^4.17.3",
     "lerna": "^3.22.1",
