@@ -13,7 +13,7 @@ export class FabricBroadcast extends LitElement {
         return JSON.stringify(newIds) !== JSON.stringify(oldIds);
       },
     },
-    hiddenMessageIds: {
+    _hiddenMessageIds: {
       state: true,
       type: Array,
     },
@@ -26,7 +26,7 @@ export class FabricBroadcast extends LitElement {
     super();
     this._messages = [];
     this.interval = 30000;
-    this.hiddenMessageIds = [];
+    this._hiddenMessageIds = [];
     this.url = windowExists ? window.location.href : '';
   }
 
@@ -55,14 +55,11 @@ export class FabricBroadcast extends LitElement {
   async _del(id) {
     const el = this.renderRoot.querySelector(`#broadcast-${id}`);
     await el.collapse();
-    this.hiddenMessageIds = [...this.hiddenMessageIds, id];
+    this._hiddenMessageIds = [...new Set([...this._hiddenMessageIds, id])];
   }
 
   render() {
-    const messages =
-      this.hiddenMessageIds.length > 0
-        ? this._messages.filter((item) => !this.hiddenMessageIds.includes(item.id))
-        : this._messages;
+    const messages = this._messages.filter((item) => !this._hiddenMessageIds.includes(item.id));
 
     return html`
       <link
