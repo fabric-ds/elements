@@ -20,9 +20,7 @@ export class FabricWebComponent extends HTMLElement {
             />
         `;
 
-    this.attachShadow({ mode: 'open' }).appendChild(
-      fabricStylesTemplate.content,
-    );
+    this.attachShadow({ mode: 'open' }).appendChild(fabricStylesTemplate.content);
   }
 }
 
