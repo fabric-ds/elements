@@ -40,19 +40,13 @@ export class SyntaxHighlight extends LitElement {
 
     let slotHtml = slot
       .assignedNodes()
-      .map((el) =>
-        el.nodeType === Node.TEXT_NODE ? el.textContent : el.outerHTML,
-      )
+      .map((el) => (el.nodeType === Node.TEXT_NODE ? el.textContent : el.outerHTML))
       .join('')
       .trim();
 
     slotHtml = htmlFormat(slotHtml);
 
-    const highlighted = window.Prism.highlight(
-      slotHtml,
-      window.Prism.languages.markup,
-      'html',
-    );
+    const highlighted = window.Prism.highlight(slotHtml, window.Prism.languages.markup, 'html');
 
     this.source = highlighted;
   }

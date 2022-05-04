@@ -40,6 +40,7 @@
   },
   "license": "ISC",
   "devDependencies": {
+    "@babel/eslint-parser": "^7.17.0",
     "@chbphone55/classnames": "2.0.0",
     "@fabric-ds/component-classes": "0.0.38",
     "@fabric-ds/tailwind-config": "0.5.32",
@@ -49,7 +50,6 @@
     "@stylelint/postcss-css-in-js": "0.37.2",
     "@web/test-runner": "0.13.27",
     "autoprefixer": "10.4.5",
-    "babel-eslint": "^10.1.0",
     "eslint": "^7.18.0",
     "fastify": "3.29.0",
     "lit-element": "2.5.1",
