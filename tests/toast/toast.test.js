@@ -33,30 +33,22 @@ test('Type defaults to success', async () => {
 });
 
 test('Setting type to warning', async () => {
-  const el = await fixture(html`
-    <f-toast text="This is my toast" type="warning"></f-toast>
-  `);
+  const el = await fixture(html` <f-toast text="This is my toast" type="warning"></f-toast> `);
   expect(el.getAttribute('type')).to.equal('warning');
 });
 
 test('Setting type to info', async () => {
-  const el = await fixture(html`
-    <f-toast text="This is my toast" type="info"></f-toast>
-  `);
+  const el = await fixture(html` <f-toast text="This is my toast" type="info"></f-toast> `);
   expect(el.getAttribute('type')).to.equal('info');
 });
 
 test('Setting type to error', async () => {
-  const el = await fixture(html`
-    <f-toast text="This is my toast" type="error"></f-toast>
-  `);
+  const el = await fixture(html` <f-toast text="This is my toast" type="error"></f-toast> `);
   expect(el.getAttribute('type')).to.equal('error');
 });
 
 test('Close button shows when canclose=true', async () => {
-  const el = await fixture(html`
-    <f-toast text="This is my toast" canclose></f-toast>
-  `);
+  const el = await fixture(html` <f-toast text="This is my toast" canclose></f-toast> `);
   expect(el.canclose).to.equal(true);
   expect(el.shadowRoot.innerHTML).to.contain('button');
 });
@@ -73,9 +65,7 @@ test('Nothing shows when text not provided', async () => {
 });
 
 test('Collapse method collapses markup', async () => {
-  const el = await fixture(html`
-    <f-toast text="This is my toast" canclose></f-toast>
-  `);
+  const el = await fixture(html` <f-toast text="This is my toast" canclose></f-toast> `);
 
   await new Promise((resolve) => {
     setTimeout(resolve, 500);
@@ -87,13 +77,11 @@ test('Collapse method collapses markup', async () => {
 });
 
 test('Emits close even when close button clicked', (done) => {
-  fixture(html` <f-toast text="This is my toast" canclose></f-toast> `).then(
-    (el) => {
-      el.addEventListener('close', (event) => {
-        expect(event.detail.id).to.equal(el.getAttribute('id'));
-        done();
-      });
-      el.renderRoot.querySelector('button').click();
-    },
-  );
+  fixture(html` <f-toast text="This is my toast" canclose></f-toast> `).then((el) => {
+    el.addEventListener('close', (event) => {
+      expect(event.detail.id).to.equal(el.getAttribute('id'));
+      done();
+    });
+    el.renderRoot.querySelector('button').click();
+  });
 });

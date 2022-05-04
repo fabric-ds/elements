@@ -37,17 +37,14 @@ class FabricCard extends FabricWebComponent {
     if (exists) exists.remove();
 
     this.shadowRoot.innerHTML += `
-      <${this.as} data-root tabindex="0" class="${classNames(
-      this.getAttribute('class'),
-      {
-        'outline-none focus:ring ring-offset-1 ring-aqua-200': true,
-        [c.card]: true,
-        [c.cardSelected]: this.selected,
-        [c.cardOutline]: true,
-        [this.selected ? c.cardOutlineSelected : c.cardOutlineUnselected]: true,
-        [this.selected ? 'focus:border-blue-500' : '']: true,
-      },
-    )}">
+      <${this.as} data-root tabindex="0" class="${classNames(this.getAttribute('class'), {
+      'outline-none focus:ring ring-offset-1 ring-aqua-200': true,
+      [c.card]: true,
+      [c.cardSelected]: this.selected,
+      [c.cardOutline]: true,
+      [this.selected ? c.cardOutlineSelected : c.cardOutlineUnselected]: true,
+      [this.selected ? 'focus:border-blue-500' : '']: true,
+    })}">
     
       <style>a::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; left: 0;  }</style>
   
@@ -83,9 +80,7 @@ class FabricCard extends FabricWebComponent {
       const handleKeyDown = (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          document
-            .querySelector(this.as)
-            .setAttribute('selected', !this.selected);
+          document.querySelector(this.as).setAttribute('selected', !this.selected);
           this.onclick && this.onclick();
           return;
         }

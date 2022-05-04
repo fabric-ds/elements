@@ -8,14 +8,14 @@ const wait = (duration = 0) => new Promise((resolve) => setTimeout(resolve, dura
 test('Basic broadcast with defaults', async () => {
   await fixture(html`<f-broadcast api="http://localhost:4053/single-broadcast"></f-broadcast>`);
   await wait(500);
-  const broadcasts = document
-    .querySelector('f-broadcast')
-    .renderRoot.querySelectorAll('f-toast');
+  const broadcasts = document.querySelector('f-broadcast').renderRoot.querySelectorAll('f-toast');
   expect(broadcasts.length).to.equal(1);
 });
 
 test('Basic broadcast accessibility', async () => {
-  const el = await fixture(html`<f-broadcast api="http://localhost:4053/single-broadcast"></f-broadcast>`);
+  const el = await fixture(
+    html`<f-broadcast api="http://localhost:4053/single-broadcast"></f-broadcast>`,
+  );
   await wait(500);
   await expect(el).to.be.accessible();
 });
@@ -36,8 +36,6 @@ test('Basic broadcast with defined URL and interval', async () => {
 test('Multiple broadcasts', async () => {
   await fixture(html`<f-broadcast api="http://localhost:4053/multiple-broadcasts"></f-broadcast>`);
   await wait(50);
-  const broadcasts = document
-    .querySelector('f-broadcast')
-    .renderRoot.querySelectorAll('f-toast');
+  const broadcasts = document.querySelector('f-broadcast').renderRoot.querySelectorAll('f-toast');
   expect(broadcasts.length).to.equal(2);
 });
