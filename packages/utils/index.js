@@ -28,7 +28,11 @@ export class FabricWebComponent extends HTMLElement {
 
 export class FabricElement extends LitElement {
   get _fabricStylesheet() {
-    return html`<link href="https://assets.finn.no/pkg/@fabric-ds/css/v1/fabric.min.css" rel="stylesheet" type="text/css">`;
+    return html`<link
+      href="https://assets.finn.no/pkg/@fabric-ds/css/v1/fabric.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />`;
   }
 }
 
