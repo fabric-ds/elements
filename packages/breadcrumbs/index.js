@@ -1,15 +1,15 @@
 import { html } from 'lit';
+import { interleave } from '@fabric-ds/core/breadcrumbs';
 import { FabricElement } from '../utils';
 
 const separator = html`<span class="select-none" aria-hidden="true">/</span>`;
-const interleave = (arr) => [].concat(...arr.map((el) => [el, separator])).slice(0, -1);
 
 class FabricBreadcrumbs extends FabricElement {
   connectedCallback() {
     super.connectedCallback();
     // Grab existing children at the point that the component is added to the page
     // Interleave "/" separator with breadcrumbs
-    this._children = interleave(Array.from(this.children));
+    this._children = interleave(Array.from(this.children), separator);
   }
 
   render() {
