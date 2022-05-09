@@ -1,92 +1,85 @@
-import { FabricWebComponent } from '../utils';
+import { html, css } from 'lit';
+import { FabricElement } from '../utils';
 import { card as c } from '@fabric-ds/component-classes';
-import { classNames } from '@chbphone55/classnames';
+import { fclasses } from '../utils';
 
-class FabricCard extends FabricWebComponent {
-  static get observedAttributes() {
-    return ['selected'];
-  }
-
-  attributeChangedCallback(name, _, newValue) {
-    switch (name) {
-      case 'selected':
-        this[name] = newValue == 'false' ? false : true;
-        break;
-      default:
-        this[name] = newValue;
+class FabricCard extends FabricElement {
+  static styles = css`
+    a::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
     }
+    :host {
+      display: block;
+    }
+  `;
 
-    this.render();
+  static properties = {
+    as: { type: String },
+    selected: { type: Boolean, reflect: true },
+    flat: { type: Boolean },
+    clickable: { type: Boolean },
+  };
+
+  constructor() {
+    super();
+    this.as = 'div';
+    this.selected = false;
+    this.flat = false;
+    this.clickable = false;
   }
 
-  connectedCallback() {
-    this.content = [...this.innerHTML].join('');
-    this.as = this.getAttribute('as') || 'div';
-    this.selected = this.getAttribute('selected')
-      ? this.getAttribute('selected') == 'false'
-        ? false
-        : true
-      : undefined;
+  get _outerClasses() {
+    return fclasses({
+      [c.card]: true,
+      [c.cardShadow]: !this.flat,
+      [c.cardSelected]: this.selected,
+      [c.cardFlat]: this.flat,
+      [this.selected ? c.cardFlatSelected : c.cardFlatUnselected]: this.flat
+    });
+  }
 
-    this.render();
-    this.innerHTML = '';
+  get _innerClasses() {
+    return fclasses({
+      [c.cardOutline]: true,
+      [this.selected ? c.cardOutlineSelected : c.cardOutlineUnselected]: true
+    });
+  }
+
+  get uuButton() {
+    return html`<button class="sr-only" aria-pressed="${this.selected}" tabindex="-1">
+      Velg
+    </button>`;
+  }
+
+  get uuSpan() {
+    return html`<span role="checkbox" aria-checked="true" aria-disabled="true"></span>`;
+  }
+
+  keypressed(e) {
+    if (this.clickable && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      this.dispatchEvent(new CustomEvent('click', {
+        bubbles: true,
+        composed: true,
+      }));
+    }
   }
 
   render() {
-    const exists = this.shadowRoot.querySelector('[data-root]');
-    if (exists) exists.remove();
-
-    this.shadowRoot.innerHTML += `
-      <${this.as} data-root tabindex="0" class="${classNames(this.getAttribute('class'), {
-      'outline-none focus:ring ring-offset-1 ring-aqua-200': true,
-      [c.card]: true,
-      [c.cardSelected]: this.selected,
-      [c.cardOutline]: true,
-      [this.selected ? c.cardOutlineSelected : c.cardOutlineUnselected]: true,
-      [this.selected ? 'focus:border-blue-500' : '']: true,
-    })}">
-    
-      <style>a::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; left: 0;  }</style>
-  
-      ${
-        this.onclick
-          ? `
-          <button class="sr-only" aria-pressed="${this.selected}" tabIndex="-1">
-            Velg
-          </button>
-        `
-          : ''
-      }
-  
-      ${
-        !this.onclick && this.selected
-          ? `
-        <span role="checkbox" aria-checked="true" aria-disabled="true" />
-        `
-          : ''
-      }
-  
-        ${this.content}
-      </${this.as}>
-      `;
-
-    this.handleSetup();
-  }
-
-  handleSetup() {
-    const el = this.shadowRoot.querySelector(this.as);
-
-    if (this.onclick) {
-      const handleKeyDown = (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          document.querySelector(this.as).setAttribute('selected', !this.selected);
-          this.onclick && this.onclick();
-          return;
-        }
-      };
-      el.addEventListener('keydown', handleKeyDown);
-    }
+    return html`
+      ${this._fabricStylesheet}
+      <div tabindex=${this.clickable ? "0" : ""} class="${this._outerClasses}" @keydown=${this.keypressed}>
+        ${this.clickable ? this.uuButton : ''}
+        ${!this.clickable && this.selected ? this.uuSpan : ''}
+        <div class="${this._innerClasses}"></div>
+        <slot></slot>
+      </div>
+    `;
   }
 }
 

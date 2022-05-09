@@ -1,4 +1,5 @@
 import { LitElement, html } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
 
 export function classes(defn) {
   const classes = [];
@@ -37,3 +38,13 @@ export class FabricElement extends LitElement {
 }
 
 export const windowExists = typeof window !== 'undefined';
+
+export function fclasses (definition) {
+  const defn = {};
+  for (const [key, value] of Object.entries(definition)) {
+    for (const className of key.split(' ')) {
+      defn[className] = value;
+    }
+  }
+  return classMap(defn);
+}
