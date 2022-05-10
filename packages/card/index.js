@@ -3,6 +3,11 @@ import { FabricElement } from '../utils';
 import { card as c } from '@fabric-ds/component-classes';
 import { fclasses } from '../utils';
 
+const keys = {
+  ENTER: 'Enter',
+  SPACE: ' '
+}
+
 class FabricCard extends FabricElement {
   static styles = css`
     a::after {
@@ -19,7 +24,6 @@ class FabricCard extends FabricElement {
   `;
 
   static properties = {
-    as: { type: String },
     selected: { type: Boolean, reflect: true },
     flat: { type: Boolean },
     clickable: { type: Boolean },
@@ -27,7 +31,6 @@ class FabricCard extends FabricElement {
 
   constructor() {
     super();
-    this.as = 'div';
     this.selected = false;
     this.flat = false;
     this.clickable = false;
@@ -61,12 +64,9 @@ class FabricCard extends FabricElement {
   }
 
   keypressed(e) {
-    if (this.clickable && (e.key === 'Enter' || e.key === ' ')) {
+    if (this.clickable && (e.key === keys.ENTER || e.key === keys.SPACE)) {
       e.preventDefault();
-      this.dispatchEvent(new CustomEvent('click', {
-        bubbles: true,
-        composed: true,
-      }));
+      this.click();
     }
   }
 
