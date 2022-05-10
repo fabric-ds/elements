@@ -1,6 +1,6 @@
 import { html, css } from 'lit';
 import { FabricElement } from '../utils';
-import { card as c } from '@fabric-ds/component-classes';
+import { card as c } from '@fabric-ds/css/component-classes';
 import { fclasses } from '../utils';
 
 const keys = {

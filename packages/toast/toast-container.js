@@ -1,5 +1,5 @@
 import { LitElement, css, html } from 'lit';
-import { toaster as c } from '@fabric-ds/component-classes';
+import { toaster as c } from '@fabric-ds/css/component-classes';
 import { repeat } from 'lit/directives/repeat.js';
 
 /**
