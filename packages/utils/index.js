@@ -39,7 +39,7 @@ export class FabricElement extends LitElement {
 
 export const windowExists = typeof window !== 'undefined';
 
-export function fclasses (definition) {
+export function fclasses(definition) {
   const defn = {};
   for (const [key, value] of Object.entries(definition)) {
     for (const className of key.split(' ')) {

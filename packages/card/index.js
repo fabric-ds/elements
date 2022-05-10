@@ -5,8 +5,8 @@ import { fclasses } from '../utils';
 
 const keys = {
   ENTER: 'Enter',
-  SPACE: ' '
-}
+  SPACE: ' ',
+};
 
 class FabricCard extends FabricElement {
   static styles = css`
@@ -42,14 +42,14 @@ class FabricCard extends FabricElement {
       [c.cardShadow]: !this.flat,
       [c.cardSelected]: this.selected,
       [c.cardFlat]: this.flat,
-      [this.selected ? c.cardFlatSelected : c.cardFlatUnselected]: this.flat
+      [this.selected ? c.cardFlatSelected : c.cardFlatUnselected]: this.flat,
     });
   }
 
   get _innerClasses() {
     return fclasses({
       [c.cardOutline]: true,
-      [this.selected ? c.cardOutlineSelected : c.cardOutlineUnselected]: true
+      [this.selected ? c.cardOutlineSelected : c.cardOutlineUnselected]: true,
     });
   }
 
@@ -73,7 +73,11 @@ class FabricCard extends FabricElement {
   render() {
     return html`
       ${this._fabricStylesheet}
-      <div tabindex=${this.clickable ? "0" : ""} class="${this._outerClasses}" @keydown=${this.keypressed}>
+      <div
+        tabindex=${this.clickable ? '0' : ''}
+        class="${this._outerClasses}"
+        @keydown=${this.keypressed}
+      >
         ${this.clickable ? this.uuButton : ''}
         ${!this.clickable && this.selected ? this.uuSpan : ''}
         <div class="${this._innerClasses}"></div>
