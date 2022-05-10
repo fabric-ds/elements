@@ -33,10 +33,28 @@ test('Card component with no attributes is rendered on the page', async (t) => {
 
   // THEN: the component is visible in the DOM and no attributes are set
   const locator = await page.locator('f-card');
-  t.equal((await locator.innerHTML()).trim(), '<div>This is an f-card</div>', 'HTML should be rendered');
+  t.equal(
+    (await locator.innerHTML()).trim(),
+    '<div>This is an f-card</div>',
+    'HTML should be rendered',
+  );
   t.equal(await locator.getAttribute('selected'), null, 'Selected attribute should be null');
   t.equal(await locator.getAttribute('flat'), null, 'Flat attribute should be null');
   t.equal(await locator.getAttribute('clickable'), null, 'Clickable attribute should be null');
+  t.equal(
+    await page.evaluate(
+      'document.querySelector("f-card").renderRoot.querySelector("div").tabIndex',
+    ),
+    -1,
+    'Tab index property should default to -1',
+  );
+  t.equal(
+    await page.evaluate(
+      'document.querySelector("f-card").renderRoot.querySelector("div").getAttribute("tabindex")',
+    ),
+    null,
+    'Tab index attribute should be undefined',
+  );
 });
 
 test('Card component with selected attribute', async (t) => {
@@ -54,11 +72,19 @@ test('Card component with selected attribute', async (t) => {
 
   // THEN: the component is visible in the DOM and the selected attribute and property are set
   const locator = await page.locator('f-card');
-  t.equal((await locator.innerHTML()).trim(), '<div>This is a selected f-card</div>', 'HTML should be rendered');
-  t.equal(await page.evaluate('document.querySelector("f-card").selected'), true, 'Selected property should be true');
-  t.equal(await locator.getAttribute('selected'), "", 'Selected attribute should be set');
+  t.equal(
+    (await locator.innerHTML()).trim(),
+    '<div>This is a selected f-card</div>',
+    'HTML should be rendered',
+  );
+  t.equal(
+    await page.evaluate('document.querySelector("f-card").selected'),
+    true,
+    'Selected property should be true',
+  );
+  t.equal(await locator.getAttribute('selected'), '', 'Selected attribute should be set');
   t.equal(await locator.getAttribute('flat'), null, 'Flat attribute should be null');
-  t.equal(await locator.getAttribute('clickable'), null, 'Clickable attribute should be null');  
+  t.equal(await locator.getAttribute('clickable'), null, 'Clickable attribute should be null');
 });
 
 test('Card component with flat attribute', async (t) => {
@@ -76,11 +102,19 @@ test('Card component with flat attribute', async (t) => {
 
   // THEN: the component is visible in the DOM and no attributes are set
   const locator = await page.locator('f-card');
-  t.equal((await locator.innerHTML()).trim(), '<div>This is a flat f-card</div>', 'HTML should be rendered');
-  t.equal(await page.evaluate('document.querySelector("f-card").flat'), true, 'Flat property should be true');
-  t.equal(await locator.getAttribute('flat'), "", 'Flat attribute should be set');
+  t.equal(
+    (await locator.innerHTML()).trim(),
+    '<div>This is a flat f-card</div>',
+    'HTML should be rendered',
+  );
+  t.equal(
+    await page.evaluate('document.querySelector("f-card").flat'),
+    true,
+    'Flat property should be true',
+  );
+  t.equal(await locator.getAttribute('flat'), '', 'Flat attribute should be set');
   t.equal(await locator.getAttribute('selected'), null, 'Selected attribute should be null');
-  t.equal(await locator.getAttribute('clickable'), null, 'Clickable attribute should be null');  
+  t.equal(await locator.getAttribute('clickable'), null, 'Clickable attribute should be null');
 });
 
 test('Card component with clickable attribute', async (t) => {
@@ -98,9 +132,31 @@ test('Card component with clickable attribute', async (t) => {
 
   // THEN: the component is visible in the DOM and no attributes are set
   const locator = await page.locator('f-card');
-  t.equal((await locator.innerHTML()).trim(), '<div>This is a clickable f-card</div>', 'HTML should be rendered');
-  t.equal(await page.evaluate('document.querySelector("f-card").clickable'), true, 'Clickable property should be true');
-  t.equal(await locator.getAttribute('clickable'), "", 'Clickable attribute should be set');
+  t.equal(
+    (await locator.innerHTML()).trim(),
+    '<div>This is a clickable f-card</div>',
+    'HTML should be rendered',
+  );
+  t.equal(
+    await page.evaluate('document.querySelector("f-card").clickable'),
+    true,
+    'Clickable property should be true',
+  );
+  t.equal(await locator.getAttribute('clickable'), '', 'Clickable attribute should be set');
+  t.equal(
+    await page.evaluate(
+      'document.querySelector("f-card").renderRoot.querySelector("div").tabIndex',
+    ),
+    0,
+    'Tab index should be set to 0',
+  );
+  t.equal(
+    await page.evaluate(
+      'document.querySelector("f-card").renderRoot.querySelector("div").getAttribute("tabindex")',
+    ),
+    '0',
+    'Tab index should be set to 0',
+  );
   t.equal(await locator.getAttribute('flat'), null, 'Flat attribute should be null');
   t.equal(await locator.getAttribute('selected'), null, 'Selected attribute should be null');
 });
@@ -122,5 +178,5 @@ test('Card component with clickable attribute is usable by keyboard', async (t) 
 
   // THEN: the component is visible in the DOM and no attributes are set
   const locator = await page.locator('f-card');
-  t.equal(await locator.getAttribute('selected'), "", 'Selected attribute should be set');
+  t.equal(await locator.getAttribute('selected'), '', 'Selected attribute should be set');
 });

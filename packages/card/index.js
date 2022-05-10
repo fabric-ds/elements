@@ -1,7 +1,7 @@
 import { html, css } from 'lit';
-import { FabricElement } from '../utils';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { card as c } from '@fabric-ds/css/component-classes';
-import { fclasses } from '../utils';
+import { FabricElement, fclasses } from '../utils';
 
 const keys = {
   ENTER: 'Enter',
@@ -74,7 +74,7 @@ class FabricCard extends FabricElement {
     return html`
       ${this._fabricStylesheet}
       <div
-        tabindex=${this.clickable ? '0' : ''}
+        tabindex=${ifDefined(this.clickable ? '0' : undefined)}
         class="${this._outerClasses}"
         @keydown=${this.keypressed}
       >
