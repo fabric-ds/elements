@@ -31,7 +31,7 @@ test('Card component with no attributes is rendered on the page', async (t) => {
   await page.setContent(component);
   await page.addScriptTag({ path: './dist/index.js', type: 'module' });
 
-  // THEN: the component is visible in the DOM and no attributes are set
+  // THEN:
   const locator = await page.locator('f-card');
   t.equal(
     (await locator.innerHTML()).trim(),
@@ -70,7 +70,7 @@ test('Card component with selected attribute', async (t) => {
   await page.setContent(component);
   await page.addScriptTag({ path: './dist/index.js', type: 'module' });
 
-  // THEN: the component is visible in the DOM and the selected attribute and property are set
+  // THEN:
   const locator = await page.locator('f-card');
   t.equal(
     (await locator.innerHTML()).trim(),
@@ -100,7 +100,7 @@ test('Card component with flat attribute', async (t) => {
   await page.setContent(component);
   await page.addScriptTag({ path: './dist/index.js', type: 'module' });
 
-  // THEN: the component is visible in the DOM and no attributes are set
+  // THEN:
   const locator = await page.locator('f-card');
   t.equal(
     (await locator.innerHTML()).trim(),
@@ -130,7 +130,7 @@ test('Card component with clickable attribute', async (t) => {
   await page.setContent(component);
   await page.addScriptTag({ path: './dist/index.js', type: 'module' });
 
-  // THEN: the component is visible in the DOM and no attributes are set
+  // THEN:
   const locator = await page.locator('f-card');
   t.equal(
     (await locator.innerHTML()).trim(),
@@ -176,7 +176,7 @@ test('Card component with clickable attribute is usable by keyboard', async (t) 
   await page.keyboard.press('Tab');
   await page.keyboard.press('Enter');
 
-  // THEN: the component is visible in the DOM and no attributes are set
+  // THEN: the card selected attribute is empty
   const locator = await page.locator('f-card');
   t.equal(await locator.getAttribute('selected'), '', 'Selected attribute should be set');
 });
