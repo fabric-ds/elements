@@ -1,3 +1,15 @@
+# [1.0.0-next.1](https://github.com/fabric-ds/elements/compare/v0.1.3-next.1...v1.0.0-next.1) (2022-05-11)
+
+
+### Code Refactoring
+
+* Rewrite card in Lit Element ([761fb5f](https://github.com/fabric-ds/elements/commit/761fb5fbc96f9bac8079536f591a70e525bf2e03))
+
+
+### BREAKING CHANGES
+
+* Rewrites the component so that it matches the React and Vue implementation and uses the Lit library to do so.
+
 ## [0.1.3-next.1](https://github.com/fabric-ds/elements/compare/v0.1.2...v0.1.3-next.1) (2022-04-28)
 
 ### Bug Fixes
