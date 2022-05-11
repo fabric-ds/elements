@@ -7,34 +7,100 @@
         <h1 class="mb-16">Card</h1>
 
         <h2 class="mt-24 mb-16">Props</h2>
-        <p><strong>as</strong> – default 'div' (The wrapping container element)</p>
-        <p><strong>selected</strong> – default false (If the card is selected)</p>
-        <p><strong>onclick</strong> – on click handler (When the card is clicked)</p>
+        <p><strong>selected</strong> – default false</p>
+        <p><strong>clickable</strong> – default false</p>
+        <p><strong>flat</strong> – default false</p>
+        
+        <h3>Selected</h3>
+
+        You can control whether the card looks "selected" by setting the `selected` attribute OR property.<br /><br />
+
+        <h4>Attribute</h4>
+        <syntax-highlight>
+          <f-card selected>
+            <div class="m-20">This example shows a card that looks selected</div>
+          </f-card>
+        </syntax-highlight>
+        <div class="example">
+          <f-card selected>
+            <div class="m-20">This example shows a card that looks selected</div>
+          </f-card>
+        </div>
+
+        <h4>Property</h4>
+        <syntax-highlight>
+          <f-card id="card-selected-property-example">
+            <div class="m-20">This example shows a card that looks selected</div>
+          </f-card>
+          <script>document.querySelector('#card-selected-property-example').selected = true;</script>
+        </syntax-highlight>
+        <div class="example" id="property-example">
+          <f-card>
+            <div class="m-20">This example shows a card that looks selected</div>
+          </f-card>
+          <script defer type="module">
+            window.addEventListener('load', () => {
+              const el = document.querySelector('#property-example f-card').selected = true;
+            })
+          </script>
+        </div>
+
+        <h3>Clickable</h3>
+
+        Whenever you add event listeners or use the onclick attribute, you should set the component's `clickable` attribute.
+        This ensures that things such as keyboard navigation works as expected.
+
+        <syntax-highlight>
+          <f-card clickable onclick="alert('clicked!');">
+            <div class="m-20">This example shows content as a clickable div</div>
+          </f-card>
+        </syntax-highlight>
+        <div class="example">
+          <f-card clickable onclick="alert('clicked!');">
+            <div class="m-20">This example shows content as a clickable div</div>
+          </f-card>
+        </div>
+
+        <h3>Flat</h3>
+
+        If you need to give the component a flat look, set the `flat` attribute.
+
+        <syntax-highlight>
+          <f-card flat>
+            <div class="m-20">This example shows content with a flat look</div>
+          </f-card>
+        </syntax-highlight>
+        <div class="example">
+          <f-card flat>
+            <div class="m-20">This example shows content with a flat look</div>
+          </f-card>
+        </div>
+
 
         <h2 class="mt-24 mb-16">Examples</h2>
 
-        <syntax-highlight>
-          <f-card as="section" selected="false"> This example content is in a section </f-card>
-        </syntax-highlight>
-        <div class="example">
-          <f-card as="section" selected="false"> This example content is in a section </f-card>
-        </div>
+        <h3>Semantics</h3>
+
+        When you need the component to behave like a section, article or what have you, you should set the `role` attribute.
 
         <syntax-highlight>
-          <f-card class="mt-10" onclick="alert('clicked!');" selected="true">
-            This example content is in a clickable div
+          <f-card role="section">
+            <div class="m-20">This example shows the card behaving like a section</div>
           </f-card>
         </syntax-highlight>
         <div class="example">
-          <f-card class="mt-10" onclick="alert('clicked!');" selected="true">
-            This example content is in a clickable div
+          <f-card role="section">
+            <div class="m-20">This example shows the card behaving like a section</div>
           </f-card>
         </div>
 
-        <h3>onClick example</h3>
+        <h3>Click event handler example</h3>
+
+        You can register click events with onclick or addEventListener as per any other HTML element.
+        When you do so, be sure to set the `clickable` attribute on the element for styling and accessibility reasons.
 
         <syntax-highlight>
-          <f-card class="mt-10 mr-10" onClick="this.setAttribute('selected', !this.selected)">
+          <f-card class="mt-10 mr-10" clickable onclick="this.selected=!this.selected">
             <img
               class="h-128 w-full object-cover"
               src="https://source.unsplash.com/random/402x402"
@@ -62,7 +128,7 @@
           </f-card>
         </syntax-highlight>
         <div class="example flex flex-col md:flex-row justify-between">
-          <f-card class="mt-10 mr-10" onClick="this.setAttribute('selected', !this.selected)">
+          <f-card class="mt-10 mr-10" clickable onclick="this.selected=!this.selected">
             <img
               class="h-128 w-full object-cover"
               src="https://source.unsplash.com/random/400x400"
@@ -88,7 +154,7 @@
               </p>
             </div>
           </f-card>
-          <f-card class="mt-10 mr-10" onClick="this.setAttribute('selected', !this.selected)">
+          <f-card class="mt-10 mr-10" clickable onclick="this.selected=!this.selected">
             <img
               class="h-128 w-full object-cover"
               src="https://source.unsplash.com/random/401x401"
@@ -114,7 +180,7 @@
               </p>
             </div>
           </f-card>
-          <f-card class="mt-10 mr-10" onClick="this.setAttribute('selected', !this.selected)">
+          <f-card class="mt-10 mr-10" onclick="this.selected=!this.selected">
             <img
               class="h-128 w-full object-cover"
               src="https://source.unsplash.com/random/403x403"
