@@ -53,7 +53,7 @@ test('Card component with no attributes is rendered on the page', async (t) => {
       'document.querySelector("f-card").renderRoot.querySelector("div").getAttribute("tabindex")',
     ),
     null,
-    'Tab index attribute should be undefined',
+    'Tab index attribute should be null',
   );
 });
 
@@ -183,5 +183,30 @@ test('Card component with clickable attribute is usable by keyboard', async (t) 
     await page.evaluate('document.querySelector("f-card").selected'),
     true,
     'Selected property should be true',
+  );
+});
+
+test('Card component with clickable attribute is usable by keyboard but alt+enter does not trigger', async (t) => {
+  // GIVEN: A card component
+  const component = `
+    <f-card clickable onclick="this.selected = true">
+      <div>This is a clickable f-card</div>
+    </f-card>
+  `;
+
+  // WHEN: the component is added to the page and page interaction is performed
+  const { page } = t.context;
+  await page.setContent(component);
+  await page.addScriptTag({ path: './dist/index.js', type: 'module' });
+  await page.keyboard.press('Tab');
+  await page.keyboard.press('Alt+Enter');
+
+  // THEN: the card selected attribute is empty
+  const locator = await page.locator('f-card');
+  t.equal(await locator.getAttribute('selected'), null, 'Selected attribute should not be set');
+  t.equal(
+    await page.evaluate('document.querySelector("f-card").selected'),
+    false,
+    'Selected property should be false',
   );
 });

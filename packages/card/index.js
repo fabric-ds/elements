@@ -64,7 +64,8 @@ class FabricCard extends FabricElement {
   }
 
   keypressed(e) {
-    if (this.clickable && (e.key === keys.ENTER || e.key === keys.SPACE)) {
+    if (!this.clickable || e.altKey || e.ctrlKey) return;
+    if (e.key === keys.ENTER || e.key === keys.SPACE) {
       e.preventDefault();
       this.click();
     }
