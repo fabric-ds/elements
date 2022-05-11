@@ -179,4 +179,9 @@ test('Card component with clickable attribute is usable by keyboard', async (t) 
   // THEN: the card selected attribute is empty
   const locator = await page.locator('f-card');
   t.equal(await locator.getAttribute('selected'), '', 'Selected attribute should be set');
+  t.equal(
+    await page.evaluate('document.querySelector("f-card").selected'),
+    true,
+    'Selected property should be true',
+  );
 });
