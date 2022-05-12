@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import tap, { test, beforeEach, teardown } from 'tap';
 import { chromium } from 'playwright';
+import { addContentToPage } from '../../tests/utils/index.js';
 
 tap.before(async () => {
   const browser = await chromium.launch({ headless: true });
@@ -27,9 +28,10 @@ test('Box component with no attributes is rendered on the page', async (t) => {
   `;
 
   // WHEN: the component is added to the page
-  const { page } = t.context;
-  await page.setContent(component);
-  await page.addScriptTag({ path: './dist/index.js', type: 'module' });
+  const page = await addContentToPage({
+    page: t.context.page,
+    content: component,
+  });
 
   // THEN: the component is visible in the DOM
   const locator = await page.locator('f-box');
@@ -49,9 +51,10 @@ test('Box component with bordered attribute', async (t) => {
   `;
 
   // WHEN: the component is added to the page
-  const { page } = t.context;
-  await page.setContent(component);
-  await page.addScriptTag({ path: './dist/index.js', type: 'module' });
+  const page = await addContentToPage({
+    page: t.context.page,
+    content: component,
+  });
 
   // THEN: the component is visible in the DOM
   const locator = await page.locator('f-box');
@@ -71,9 +74,10 @@ test('Box component with info attribute', async (t) => {
   `;
 
   // WHEN: the component is added to the page
-  const { page } = t.context;
-  await page.setContent(component);
-  await page.addScriptTag({ path: './dist/index.js', type: 'module' });
+  const page = await addContentToPage({
+    page: t.context.page,
+    content: component,
+  });
 
   // THEN: the component is visible in the DOM
   const locator = await page.locator('f-box');
@@ -90,9 +94,10 @@ test('Box component with neutral attribute', async (t) => {
   `;
 
   // WHEN: the component is added to the page
-  const { page } = t.context;
-  await page.setContent(component);
-  await page.addScriptTag({ path: './dist/index.js', type: 'module' });
+  const page = await addContentToPage({
+    page: t.context.page,
+    content: component,
+  });
 
   // THEN: the component is visible in the DOM
   const locator = await page.locator('f-box');
@@ -109,9 +114,10 @@ test('Box component with bleed attribute', async (t) => {
   `;
 
   // WHEN: the component is added to the page
-  const { page } = t.context;
-  await page.setContent(component);
-  await page.addScriptTag({ path: './dist/index.js', type: 'module' });
+  const page = await addContentToPage({
+    page: t.context.page,
+    content: component,
+  });
 
   // THEN: the component is visible in the DOM
   const locator = await page.locator('f-box');
@@ -130,9 +136,10 @@ test('Box component with paragraph child elements', async (t) => {
   `;
 
   // WHEN: the component is added to the page
-  const { page } = t.context;
-  await page.setContent(component);
-  await page.addScriptTag({ path: './dist/index.js', type: 'module' });
+  const page = await addContentToPage({
+    page: t.context.page,
+    content: component,
+  });
 
   // THEN: there should be three paragraphs in the DOM
   t.equal(await page.locator('f-box p').count(), 3, '3 p tags should be present');
