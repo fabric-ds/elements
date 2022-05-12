@@ -11,20 +11,42 @@ class FabricAttention extends FabricElement {
   `;
 
   static properties = {
+    tooltip: { type: Boolean },
+    callout: { type: Boolean },
+    popover: { type: Boolean },
+    noArrow: { type: Boolean },
+    attentionClass: {},
+    actualDirection: {},
   };
 
   constructor() {
     super();
   }
 
-  get _classes() {
-    return fclasses({});
+  get _wrapperClasses() {
+    return fclasses({
+      [a.base]: true,
+      [a.tooltip]: this.tooltip,
+      [a.callout]: this.callout,
+      [a.popover]: this.popover,
+    });
+  }
+
+  get _attentionArrow() {
+    return html`<f-attention-arrow direction="${this.actualDirection}"></f-attention-arrow>`;
   }
 
   render() {
     return html`
       ${this._fabricStylesheet}
-      <div class="${this._classes}"></div>
+      <div class="${fclasses({ 'absolute z-50': !this.callout, [this.attentionClass]: true })}">
+        <div class="${this._wrapperClasses}">
+          ${this.noArrow ? '' : this._attentionArrow}
+          <div class="last-child:mb-0">
+            <slot></slot>
+          </div>
+        </div>
+      </div>
     `;
   }
 }
