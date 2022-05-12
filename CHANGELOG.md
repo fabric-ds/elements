@@ -1,3 +1,10 @@
+# [1.0.0-next.2](https://github.com/fabric-ds/elements/compare/v1.0.0-next.1...v1.0.0-next.2) (2022-05-12)
+
+
+### Features
+
+* **packages:** Box component ([#68](https://github.com/fabric-ds/elements/issues/68)) ([cd66575](https://github.com/fabric-ds/elements/commit/cd6657522eb57fb068ec1beb46e74b8559ce2701))
+
 # [1.0.0-next.1](https://github.com/fabric-ds/elements/compare/v0.1.3-next.1...v1.0.0-next.1) (2022-05-11)
 
 
