@@ -1,4 +1,5 @@
 export * from './packages/card';
+export * from './packages/box';
 export * from './packages/breadcrumbs';
 export * from './packages/toast/toast';
 export * from './packages/toast/toast-container';

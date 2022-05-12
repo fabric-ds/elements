@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import tap, { test, beforeEach, teardown } from 'tap';
 import { chromium } from 'playwright';
+import { addContentToPage } from '../../tests/utils/index.js';
 
 tap.before(async () => {
   const browser = await chromium.launch({ headless: true });
@@ -27,9 +28,10 @@ test('Card component with no attributes is rendered on the page', async (t) => {
   `;
 
   // WHEN: the component is added to the page
-  const { page } = t.context;
-  await page.setContent(component);
-  await page.addScriptTag({ path: './dist/index.js', type: 'module' });
+  const page = await addContentToPage({
+    page: t.context.page,
+    content: component,
+  });
 
   // THEN:
   const locator = await page.locator('f-card');
@@ -66,9 +68,10 @@ test('Card component with selected attribute', async (t) => {
   `;
 
   // WHEN: the component is added to the page
-  const { page } = t.context;
-  await page.setContent(component);
-  await page.addScriptTag({ path: './dist/index.js', type: 'module' });
+  const page = await addContentToPage({
+    page: t.context.page,
+    content: component,
+  });
 
   // THEN:
   const locator = await page.locator('f-card');
@@ -96,9 +99,10 @@ test('Card component with flat attribute', async (t) => {
   `;
 
   // WHEN: the component is added to the page
-  const { page } = t.context;
-  await page.setContent(component);
-  await page.addScriptTag({ path: './dist/index.js', type: 'module' });
+  const page = await addContentToPage({
+    page: t.context.page,
+    content: component,
+  });
 
   // THEN:
   const locator = await page.locator('f-card');
@@ -126,9 +130,10 @@ test('Card component with clickable attribute', async (t) => {
   `;
 
   // WHEN: the component is added to the page
-  const { page } = t.context;
-  await page.setContent(component);
-  await page.addScriptTag({ path: './dist/index.js', type: 'module' });
+  const page = await addContentToPage({
+    page: t.context.page,
+    content: component,
+  });
 
   // THEN:
   const locator = await page.locator('f-card');
@@ -170,9 +175,10 @@ test('Card component with clickable attribute is usable by keyboard', async (t) 
   `;
 
   // WHEN: the component is added to the page and page interaction is performed
-  const { page } = t.context;
-  await page.setContent(component);
-  await page.addScriptTag({ path: './dist/index.js', type: 'module' });
+  const page = await addContentToPage({
+    page: t.context.page,
+    content: component,
+  });
   await page.keyboard.press('Tab');
   await page.keyboard.press('Enter');
 
@@ -195,9 +201,10 @@ test('Card component with clickable attribute is usable by keyboard but alt+ente
   `;
 
   // WHEN: the component is added to the page and page interaction is performed
-  const { page } = t.context;
-  await page.setContent(component);
-  await page.addScriptTag({ path: './dist/index.js', type: 'module' });
+  const page = await addContentToPage({
+    page: t.context.page,
+    content: component,
+  });
   await page.keyboard.press('Tab');
   await page.keyboard.press('Alt+Enter');
 
