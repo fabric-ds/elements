@@ -16,3 +16,6 @@ dist/
 .DS_Store
 
 .nyc_output
+
+localization/locales
+localization/locales.js

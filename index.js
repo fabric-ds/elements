@@ -5,3 +5,5 @@ export * from './packages/toast/toast';
 export * from './packages/toast/toast-container';
 export * from './packages/toast/api';
 export * from './packages/broadcast';
+export * from './localization/locales';
+export * as nb_NO from './localization/locales/nb-NO';

@@ -14,6 +14,7 @@ class FabricBreadcrumbs extends FabricElement {
   }
 
   render() {
+    console.log('its a re render', window.getLocale())
     return html`
       ${this._fabricStylesheet}
       <nav aria-label="${msg('You are here')}" class="flex space-x-8">
