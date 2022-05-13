@@ -1,4 +1,5 @@
 import { html } from 'lit';
+import { msg } from '@lit/localize';
 import { interleave } from '@fabric-ds/core/breadcrumbs';
 import { FabricElement } from '../utils';
 
@@ -15,8 +16,8 @@ class FabricBreadcrumbs extends FabricElement {
   render() {
     return html`
       ${this._fabricStylesheet}
-      <nav aria-label="Her er du" class="flex space-x-8">
-        <h2 class="sr-only">Her er du</h2>
+      <nav aria-label="${msg('You are here')}" class="flex space-x-8">
+        <h2 class="sr-only">${msg('You are here')}</h2>
         ${this._children}
       </nav>
     `;

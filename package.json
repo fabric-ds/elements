@@ -45,6 +45,7 @@
     "@eik/cli": "^2.0.22",
     "@fabric-ds/css": "^1.1.2",
     "@fabric-ds/tailwind-config": "0.5.32",
+    "@lit/localize-tools": "^0.6.3",
     "@open-wc/testing-helpers": "2.1.2",
     "@semantic-release/changelog": "6.0.1",
     "@semantic-release/git": "10.0.1",
@@ -80,6 +81,7 @@
   },
   "dependencies": {
     "@fabric-ds/core": "0.0.10",
+    "@lit/localize": "^0.11.2",
     "@open-wc/testing": "^3.0.4",
     "html-format": "^1.0.1"
   },

@@ -1,4 +1,5 @@
 import { LitElement, html } from 'lit';
+import { updateWhenLocaleChanges } from '@lit/localize';
 import { classMap } from 'lit/directives/class-map.js';
 
 export function classes(defn) {
@@ -28,6 +29,10 @@ export class FabricWebComponent extends HTMLElement {
 }
 
 export class FabricElement extends LitElement {
+  constructor() {
+    super();
+    updateWhenLocaleChanges(this);
+  }
   get _fabricStylesheet() {
     return html`<link
       href="https://assets.finn.no/pkg/@fabric-ds/css/v1/fabric.min.css"
