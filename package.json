@@ -79,7 +79,7 @@
     "vite-plugin-html": "2.1.2"
   },
   "dependencies": {
-    "@fabric-ds/core": "0.0.12",
+    "@fabric-ds/core": "0.0.13",
     "@open-wc/testing": "^3.0.4",
     "html-format": "^1.0.1"
   },
