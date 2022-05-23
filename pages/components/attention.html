@@ -7,8 +7,10 @@
         <h1 class="mb-16">Attention</h1>
 
         <h2 class="mt-24 mb-16">Props</h2>
-        
-        <f-attention></f-attention>
+        <div id="attention-anchor">This is a div</div>
+        <f-attention top show tooltip no-arrow target="#attention-anchor">
+          <span>No idea whats going on</span>
+        </f-attention>
         
       </main>
       <%- include('footer.html'); -%>

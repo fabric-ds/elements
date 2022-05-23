@@ -23,7 +23,7 @@ class FabricAttention extends FabricElement {
     left: { type: Boolean },
     attentionClass: { type: String },
     actualDirection: { type: String },
-
+    target: { type: String },
   };
 
   constructor() {
@@ -34,6 +34,11 @@ class FabricAttention extends FabricElement {
     this.bottom = false;
     this.left = false;
 
+    console.log('constructor called')
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
     this.attentionState = {
       isShowing: this.show,
       isCallout: this.callout,
@@ -41,13 +46,9 @@ class FabricAttention extends FabricElement {
       get directionName() {
         return directions.find(e => this[e]);
       },
-      get arrowEl() { 
-        return this.renderRoot.querySelector('f-attention-arrow') || null;
-      },
+      arrowEl: this.renderRoot.querySelector('f-attention-arrow') || null,
       attentionEl: this,
-      get targetEl() {
-        return document.querySelector(this.targetEl) || null;
-      },
+      targetEl: document.querySelector(this.target) || null,
       top: this.top,
       right: this.right,
       bottom: this.bottom,
@@ -57,9 +58,20 @@ class FabricAttention extends FabricElement {
       callout: this.callout,
       noArrow: this.noArrow,
       waitForDOM: () => new Promise(resolve => {
-        resolve();
+        console.log('waitForDOM called');
+        window.addEventListener('load', resolve);
       }),
     };
+  }
+
+  get arrowEl() {
+    console.log('arrow El called');
+    return this.renderRoot.querySelector('f-attention-arrow') || null;
+  }
+
+  get targetEl() {
+    console.log('targetEl called');
+    return document.querySelector(this.target) || null;
   }
 
   get _wrapperClasses() {
@@ -76,6 +88,7 @@ class FabricAttention extends FabricElement {
   }
 
   render() {
+    console.log('render called')
     return html`
       ${this._fabricStylesheet}
       <div class="${fclasses({ 'absolute z-50': !this.callout, [this.attentionClass]: true })}">
@@ -89,13 +102,34 @@ class FabricAttention extends FabricElement {
     `;
   }
 
-  updated(changedProperties) {
-    const top = changedProperties.get('top');
-    const right = changedProperties.get('right');
-    const bottom = changedProperties.get('bottom');
-    const left = changedProperties.get('left');
-    const targetEl = changedProperties.get('targetEl');
-    if (top || right || bottom || left || targetEl) {
+  // connectedCallback() {
+  //   super.connectedCallback();
+  //   const { top, right, left, bottom } = this;
+  //   if (top || right || bottom || left || this.targetEl) {
+  //     console.log('connected callback called', top, right, bottom, left, this.targetEl)
+  //     useRecompute(this.attentionState);
+  //   }
+  // }
+
+  // update(changedProperties) {
+  //   console.log('update called', changedProperties)
+  //   super.update();
+  // }
+
+  updated() {
+    // const top = changedProperties.get('top');
+    // const right = changedProperties.get('right');
+    // const bottom = changedProperties.get('bottom');
+    // const left = changedProperties.get('left');
+    // const targetEl = changedProperties.get('targetEl');
+    // console.log('updated called', top, right, bottom, left, targetEl)
+    // if (top || right || bottom || left || targetEl) {
+    //   console.log('updated called', top, right, bottom, left, targetEl)
+    //   useRecompute(this.attentionState);
+    // }
+    const { top, right, left, bottom } = this;
+    if (top || right || bottom || left || this.targetEl) {
+      console.log('updated called', top, right, bottom, left, this.targetEl)
       useRecompute(this.attentionState);
     }
   }
