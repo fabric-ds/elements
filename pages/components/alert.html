@@ -1,0 +1,159 @@
+<html lang="en">
+  <%- include('head.html'); -%>
+  <body>
+    <f-docs-template>
+      <%- include('nav.html'); -%>
+      <main slot="content">
+        <h1 class="mb-16">Alert</h1>
+        <p>Alert is an inline component used for displaying different types of messages.</p>
+
+        <h2 class="mt-24 mb-16">Props</h2>
+        <table class="w-full docs-table">
+          <thead>
+            <tr class="text-left text-gray-400 uppercase">
+              <th>prop</th>
+              <th>type</th>
+              <th>default</th>
+            </tr>
+          </thead>
+          <tbody class="align-top">
+            <tr>
+              <td>negative</td>
+              <td>boolean</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>positive</td>
+              <td>boolean</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>warning</td>
+              <td>boolean</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>info</td>
+              <td>boolean</td>
+              <td>false</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 class="mt-24 mb-16">Visual Options</h2>
+
+        <h3 class="my-16">Negative</h3>
+
+        <syntax-highlight>
+          <f-alert negative="true">
+            <p>This is the message text that can be short or a little bit long</p>
+          </f-alert>
+        </syntax-highlight>
+        <div class="example">
+          <f-alert negative>
+            <p>This is the message text that can be short or a little bit long</p>
+          </f-alert>
+        </div>
+
+        <h3 class="my-16">Positive</h3>
+
+        <syntax-highlight>
+          <f-alert positive="true">
+            <p>This is the message text that can be short or a little bit long</p>
+          </f-alert>
+        </syntax-highlight>
+        <div class="example">
+          <f-alert positive>
+            <p>This is the message text that can be short or a little bit long</p>
+          </f-alert>
+        </div>
+
+        <h3 class="my-16">Warning</h3>
+
+        <syntax-highlight>
+          <f-alert warning="true">
+            <p>This is the message text that can be short or a little bit long</p>
+          </f-alert>
+        </syntax-highlight>
+        <div class="example">
+          <f-alert warning>
+            <p>This is the message text that can be short or a little bit long</p>
+          </f-alert>
+        </div>
+
+        <h3 class="my-16">Info</h3>
+
+        <syntax-highlight>
+          <f-alert info="true">
+            <p>This is the message text that can be short or a little bit long</p>
+          </f-alert>
+        </syntax-highlight>
+        <div class="example">
+          <f-alert info>
+            <p>This is the message text that can be short or a little bit long</p>
+          </f-alert>
+        </div>
+
+        <h3 class="my-16">Other examples</h3>
+
+        <syntax-highlight>
+          <f-alert info="true">
+            <p class="font-bold">Title Caption-Strong</p>
+            <p>This is the message text that can be short or a little bit long</p>
+          </f-alert>
+        </syntax-highlight>
+        <div class="example">
+          <f-alert info>
+            <p class="font-bold">Title Caption-Strong</p>
+            <p>This is the message text that can be short or a little bit long</p>
+          </f-alert>
+        </div>
+
+        <syntax-highlight>
+          <f-alert info="true">
+            <p class="font-bold">Title Caption-Strong</p>
+            <p>This is the message text that can be short or a little bit long</p>
+            <a title="Link to more information">Link to more information</a>
+          </f-alert>
+        </syntax-highlight>
+        <div class="example">
+          <f-alert info>
+            <p class="font-bold">Title Caption-Strong</p>
+            <p>This is the message text that can be short or a little bit long</p>
+            <a title="Link to more information">Link to more information</a>
+          </f-alert>
+        </div>
+
+        <syntax-highlight>
+          <f-alert info="true">
+            <p class="font-bold">Title Caption-Strong</p>
+            <p>This is the message text that can be short or a little bit long</p>
+            <a title="Link to more information">Link to more information</a>
+            <div class="mt-8 space-x-8">
+              <button class="button button--small" onclick="alert('clicked!');">Primary CTA</button>
+              <button class="button button--small button--flat" onclick="alert('clicked!');">
+                Secondary
+              </button>
+            </div>
+          </f-alert>
+        </syntax-highlight>
+        <div class="example">
+          <f-alert info>
+            <p class="font-bold">Title Caption-Strong</p>
+            <p>This is the message text that can be short or a little bit long</p>
+            <a title="Link to more information">Link to more information</a>
+            <div class="mt-8 space-x-8">
+              <button class="button button--small" onclick="alert('clicked!');">Primary CTA</button>
+              <button class="button button--small button--flat" onclick="alert('clicked!');">
+                Secondary
+              </button>
+            </div>
+          </f-alert>
+        </div>
+      </main>
+      <%- include('footer.html'); -%>
+    </f-docs-template>
+
+    <%- include('scripts.html'); -%>
+  </body>
+</html>
