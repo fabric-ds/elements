@@ -8,6 +8,7 @@ class FabricAlert extends FabricElement {
     positive: { type: Boolean },
     warning: { type: Boolean },
     info: { type: Boolean },
+    show: { type: Boolean },
   };
 
   constructor() {
@@ -70,15 +71,17 @@ class FabricAlert extends FabricElement {
 
     return html`
       ${this._fabricStylesheet}
-      <div
-        class="${`flex p-16 border rounded-4 border-l-4 bg-${color}-50 border-${color}-300`}"
-        style="border-left-color:var(--f-${color}-600)"
-      >
-        <div class="mr-8 text-${color}-600">${icon}</div>
-        <div class="text-14">
-          <slot></slot>
+      <f-expand-transition ?show="${this.show}">
+        <div
+          class="${`flex p-16 border rounded-4 border-l-4 bg-${color}-50 border-${color}-300`}"
+          style="border-left-color:var(--f-${color}-600)"
+        >
+          <div class="mr-8 text-${color}-600">${icon}</div>
+          <div class="text-14">
+            <slot></slot>
+          </div>
         </div>
-      </div>
+      </f-expand-transition>
     `;
   }
 }
