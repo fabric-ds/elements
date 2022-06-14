@@ -39,37 +39,19 @@ class ExpandTransition extends FabricElement {
 
   async update() {
     super.update();
-
     if (!this._wrapper) {
       return;
     }
     console.log('THIS._EXPANDED IN UPDATE', this._expanded);
     if (this._expanded) {
       console.log('expanding');
-
-      this.shadowRoot.querySelector('div').classList.remove('h-0');
-      this.shadowRoot.querySelector('div').classList.remove('invisible');
       expand(this._wrapper);
     }
   }
 
   get setExpandedToFalse() {
-    console.log('SETTING EXPANDED');
-    setTimeout(() => {
-      this.shadowRoot.querySelector('div').classList.add('h-0');
-      this.shadowRoot.querySelector('div').classList.add('invisible');
-    }, 1000);
-
     return (this._expanded = false);
   }
-
-  get initialClass() {
-    if (!this.mounted && !this._expanded) {
-      return { 'h-0 invisible': true };
-    }
-    return {};
-  }
-
   get _wrapper() {
     return this ?? null;
   }
@@ -85,7 +67,7 @@ class ExpandTransition extends FabricElement {
       <div
         class="${fclasses({
           'overflow-hidden': true,
-          ...this.initialClass,
+          'h-0 invisible': !this._expanded,
         })}"
         aria-hidden="${!this._expanded}"
       >
