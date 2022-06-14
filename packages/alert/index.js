@@ -8,7 +8,7 @@ class FabricAlert extends FabricElement {
     positive: { type: Boolean },
     warning: { type: Boolean },
     info: { type: Boolean },
-    show: { type: Boolean },
+    show: { type: Boolean, reflect: true },
   };
 
   constructor() {
@@ -17,6 +17,7 @@ class FabricAlert extends FabricElement {
     this.positive = false;
     this.warning = false;
     this.info = false;
+    this.show = false;
   }
 
   // Slotted elements remain in lightDOM which allows for control of their style outside of shadowDOM.
@@ -71,7 +72,7 @@ class FabricAlert extends FabricElement {
 
     return html`
       ${this._fabricStylesheet}
-      <f-expand-transition ?show="${this.show}">
+      <f-expand-transition ?show=${this.show}>
         <div
           class="${`flex p-16 border rounded-4 border-l-4 bg-${color}-50 border-${color}-300`}"
           style="border-left-color:var(--f-${color}-600)"

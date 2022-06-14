@@ -50,12 +50,19 @@
           </f-alert>
         </syntax-highlight>
         <div class="example">
-          <f-alert negative>
+          <f-alert id="hello" negative>
             <p>This is the message text that can be short or a little bit long</p>
           </f-alert>
+          <button id="alertToggle" class="button button--small mt-16">Toggle</button>
+          <script>
+            document.getElementById('alertToggle').addEventListener('click', () => {
+              const alert = document.getElementById('hello');
+              alert.show = !alert.show;
+            });
+          </script>
         </div>
 
-        <h3 class="my-16">Positive</h3>
+        <!-- <h3 class="my-16">Positive</h3>
 
         <syntax-highlight>
           <f-alert positive="true">
@@ -149,7 +156,7 @@
               </button>
             </div>
           </f-alert>
-        </div>
+        </div> -->
       </main>
       <%- include('footer.html'); -%>
     </f-docs-template>

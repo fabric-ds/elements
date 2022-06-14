@@ -1,22 +1,77 @@
-import { LitElement, css, html } from 'lit';
+import { css, html } from 'lit';
 import { collapse, expand } from 'element-collapse';
-import { fclasses } from '.';
+import { FabricElement, fclasses } from '.';
 
-class ExpandTransition extends LitElement {
+class ExpandTransition extends FabricElement {
   static properties = {
-    show: { type: Boolean },
-    _isExpanded: {
-      state: true,
+    show: {
       type: Boolean,
-      /*  hasChanged(newVal, oldVal) {
-        if (!oldVal !== newVal) return newVal;
-      }, */
+      reflect: true,
     },
   };
 
+  constructor() {
+    super();
+    this.show = false;
+    this._mounted = false;
+  }
+
   connectedCallback() {
     super.connectedCallback();
-    this._isExpanded = this.show;
+    this._expanded = this.show;
+  }
+
+  async willUpdate() {
+    if (!this._mounted) {
+      this._mounted = true;
+      return;
+    }
+
+    if (this.show) {
+      this._expanded = true;
+    } else {
+      if (this._wrapper) {
+        console.log('collapsing');
+        collapse(this._wrapper, this.setExpandedToFalse);
+      }
+    }
+  }
+
+  async update() {
+    super.update();
+
+    if (!this._wrapper) {
+      return;
+    }
+    console.log('THIS._EXPANDED IN UPDATE', this._expanded);
+    if (this._expanded) {
+      console.log('expanding');
+
+      this.shadowRoot.querySelector('div').classList.remove('h-0');
+      this.shadowRoot.querySelector('div').classList.remove('invisible');
+      expand(this._wrapper);
+    }
+  }
+
+  get setExpandedToFalse() {
+    console.log('SETTING EXPANDED');
+    setTimeout(() => {
+      this.shadowRoot.querySelector('div').classList.add('h-0');
+      this.shadowRoot.querySelector('div').classList.add('invisible');
+    }, 1000);
+
+    return (this._expanded = false);
+  }
+
+  get initialClass() {
+    if (!this.mounted && !this._expanded) {
+      return { 'h-0 invisible': true };
+    }
+    return {};
+  }
+
+  get _wrapper() {
+    return this ?? null;
   }
 
   static styles = css`
@@ -25,46 +80,17 @@ class ExpandTransition extends LitElement {
     }
   `;
 
-  async collapseElement() {
-    await new Promise((resolve) => {
-      collapse(this, resolve);
-    });
-    this._isExpanded = false;
-  }
-
-  expandElement() {
-    expand(this);
-    this._isExpanded = true;
-  }
-
-  /*   useEffect(() => {
-    // Don't do anything at first render
-    if (!isMounted.current) {
-      isMounted.current = true;
-      return;
-    }
-
-    if (show) {
-      expandElement();
-    } else {
-      collapseElement();
-    }
-  }, [show]); */
-
   render() {
-    return html` <div
-      class="${fclasses({
-        'overflow-hidden': true,
-        'h-0 invisible': !this._isExpanded,
-      })}"
-      aria-hidden="${!this._isExpanded}"
-    >
-      ${this.children}
-    </div>`;
-  }
-
-  createRenderRoot() {
-    return this;
+    return html`${this._fabricStylesheet}
+      <div
+        class="${fclasses({
+          'overflow-hidden': true,
+          ...this.initialClass,
+        })}"
+        aria-hidden="${!this._expanded}"
+      >
+        <slot></slot>
+      </div>`;
   }
 }
 
