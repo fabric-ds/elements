@@ -1,7 +1,4 @@
-import { html, css } from 'lit';
-// import { ifDefined } from 'lit/directives/if-defined.js';
-import { attention as a } from '@fabric-ds/css/component-classes';
-import { useRecompute, directions } from '@fabric-ds/core/attention';
+import { css, html } from 'lit';
 import { FabricElement, fclasses } from '../utils';
 
 class FabricAttention extends FabricElement {
@@ -12,75 +9,51 @@ class FabricAttention extends FabricElement {
   `;
 
   static properties = {
-    tooltip: { type: Boolean },
-    callout: { type: Boolean },
-    popover: { type: Boolean },
+    actualDirection: { type: String, state: true },
+
+    // Render Attention element without arrow
     noArrow: { type: Boolean },
-    show: { type: Boolean },
-    top: { type: Boolean },
-    right: { type: Boolean },
-    bottom: { type: Boolean },
-    left: { type: Boolean },
-    attentionClass: { type: String },
-    actualDirection: { type: String },
-    target: { type: String },
+
+    // Whether Attention element is shown, used for tooltip
+    isShowing: { type: Boolean },
+
+    // Placement according to the target element
+    // Arrow would be on the opposite side of this position
+    placement: { type: String },
+
+    // Container the Attention component is rendered relatively to
+    targetEl: { type: String },
+
+    // Arrow props
+
+    // Opposite direction of which the arrow should point
+    direction: { type: String },
+
+    // Render tooltip
+    tooltip: { type: Boolean },
+
+    // Render callout
+    callout: { type: Boolean },
+
+    // Render popover
+    popover: { type: Boolean },
+
+    // Forward arrow ref so Attention element can use it
+    ref: { type: String },
   };
 
   constructor() {
     super();
 
-    this.top = false;
-    this.right = false;
-    this.bottom = false;
-    this.left = false;
+    this.isShowing = {};
 
-    console.log('constructor called')
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
     this.attentionState = {
-      isShowing: this.show,
-      isCallout: this.callout,
-      actualDirection: this.actualDirection,
-      get directionName() {
-        return directions.find(e => this[e]);
+      get isShowing() {
+        return this.isShowing;
       },
-      arrowEl: this.renderRoot.querySelector('f-attention-arrow') || null,
-      attentionEl: this,
-      targetEl: document.querySelector(this.target) || null,
-      top: this.top,
-      right: this.right,
-      bottom: this.bottom,
-      left: this.left,
-      tooltip: this.tooltip,
-      popover: this.popover,
-      callout: this.callout,
-      noArrow: this.noArrow,
-      waitForDOM: () => new Promise(resolve => {
-        console.log('waitForDOM called');
-        window.addEventListener('load', resolve);
-      }),
     };
-  }
 
-  get arrowEl() {
-    console.log('arrow El called');
-    return this.renderRoot.querySelector('f-attention-arrow') || null;
-  }
-
-  get targetEl() {
-    console.log('targetEl called');
-    return document.querySelector(this.target) || null;
-  }
-
-  get _wrapperClasses() {
-    return fclasses({
-      [a.base]: true,
-      [a.tooltip]: this.tooltip,
-      [a.callout]: this.callout,
-      [a.popover]: this.popover,
-    });
+    console.log(this.attentionState);
   }
 
   get _attentionArrow() {
@@ -88,7 +61,8 @@ class FabricAttention extends FabricElement {
   }
 
   render() {
-    console.log('render called')
+    console.log('render called');
+
     return html`
       ${this._fabricStylesheet}
       <div class="${fclasses({ 'absolute z-50': !this.callout, [this.attentionClass]: true })}">
@@ -100,38 +74,6 @@ class FabricAttention extends FabricElement {
         </div>
       </div>
     `;
-  }
-
-  // connectedCallback() {
-  //   super.connectedCallback();
-  //   const { top, right, left, bottom } = this;
-  //   if (top || right || bottom || left || this.targetEl) {
-  //     console.log('connected callback called', top, right, bottom, left, this.targetEl)
-  //     useRecompute(this.attentionState);
-  //   }
-  // }
-
-  // update(changedProperties) {
-  //   console.log('update called', changedProperties)
-  //   super.update();
-  // }
-
-  updated() {
-    // const top = changedProperties.get('top');
-    // const right = changedProperties.get('right');
-    // const bottom = changedProperties.get('bottom');
-    // const left = changedProperties.get('left');
-    // const targetEl = changedProperties.get('targetEl');
-    // console.log('updated called', top, right, bottom, left, targetEl)
-    // if (top || right || bottom || left || targetEl) {
-    //   console.log('updated called', top, right, bottom, left, targetEl)
-    //   useRecompute(this.attentionState);
-    // }
-    const { top, right, left, bottom } = this;
-    if (top || right || bottom || left || this.targetEl) {
-      console.log('updated called', top, right, bottom, left, this.targetEl)
-      useRecompute(this.attentionState);
-    }
   }
 }
 
