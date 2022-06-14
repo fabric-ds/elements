@@ -12,48 +12,35 @@ class ExpandTransition extends FabricElement {
 
   constructor() {
     super();
+
+    // Initialise fields
     this.show = false;
+    this._expanded = false;
     this._mounted = false;
   }
 
-  connectedCallback() {
-    super.connectedCallback();
+  willUpdate() {
     this._expanded = this.show;
-  }
-
-  async willUpdate() {
-    if (!this._mounted) {
-      this._mounted = true;
-      return;
-    }
 
     if (this.show) {
       this._expanded = true;
     } else {
       if (this._wrapper) {
-        console.log('collapsing');
-        collapse(this._wrapper, this.setExpandedToFalse);
+        collapse(this._wrapper);
       }
     }
   }
 
   async update() {
     super.update();
-    if (!this._wrapper) {
-      return;
-    }
-    console.log('THIS._EXPANDED IN UPDATE', this._expanded);
-    if (this._expanded) {
-      console.log('expanding');
+
+    // If `this` does not yet exist or component has not yet mounted
+    if (!this._wrapper || !this._mounted) return;
+
+    // Expand if show is true (set by user)
+    if (this.show) {
       expand(this._wrapper);
     }
-  }
-
-  get setExpandedToFalse() {
-    return (this._expanded = false);
-  }
-  get _wrapper() {
-    return this ?? null;
   }
 
   static styles = css`
@@ -67,12 +54,19 @@ class ExpandTransition extends FabricElement {
       <div
         class="${fclasses({
           'overflow-hidden': true,
-          'h-0 invisible': !this._expanded,
         })}"
         aria-hidden="${!this._expanded}"
       >
         <slot></slot>
       </div>`;
+  }
+
+  updated() {
+    this._mounted = true;
+  }
+
+  get _wrapper() {
+    return this ?? null;
   }
 }
 
