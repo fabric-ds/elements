@@ -15,19 +15,12 @@ class ExpandTransition extends FabricElement {
 
     // Initialise fields
     this.show = false;
-    this._expanded = false;
     this._mounted = false;
   }
 
   willUpdate() {
-    this._expanded = this.show;
-
-    if (this.show) {
-      this._expanded = true;
-    } else {
-      if (this._wrapper) {
-        collapse(this._wrapper);
-      }
+    if (this._wrapper && !this.show) {
+      collapse(this._wrapper);
     }
   }
 
@@ -55,7 +48,7 @@ class ExpandTransition extends FabricElement {
         class="${fclasses({
           'overflow-hidden': true,
         })}"
-        aria-hidden="${!this._expanded}"
+        aria-hidden="${!this.show}"
       >
         <slot></slot>
       </div>`;
