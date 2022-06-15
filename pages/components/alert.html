@@ -42,89 +42,82 @@
 
         <h2 class="mt-24 mb-16">Visual Options</h2>
 
-        <h3 class="my-16">Negative</h3>
-
         <syntax-highlight>
-          <f-alert negative="true">
+          <f-alert info="true" show>
             <p>This is the message text that can be short or a little bit long</p>
           </f-alert>
+          <div class="flex gap-8 flex-wrap mt-16">
+            <button class="button button--primary button--small">Toggle show</button>
+            <button class="button button--small">Negative alert</button>
+            <button class="button button--small">Positive alert</button>
+            <button class="button button--small">Warning alert</button>
+            <button class="button button--small">Info alert</button>
+          </div>
         </syntax-highlight>
         <div class="example">
-          <f-alert id="hello" negative>
+          <f-alert id="alert" info show>
             <p>This is the message text that can be short or a little bit long</p>
           </f-alert>
-          <button id="alertToggle" class="button button--small mt-16">Toggle</button>
+          <div class="flex gap-8 flex-wrap mt-16">
+            <button id="alertShowToggle" class="button button--primary button--small">
+              Toggle show
+            </button>
+            <button name="negative" class="alertTypeToggle button button--small">
+              Negative alert
+            </button>
+            <button name="positive" class="alertTypeToggle button button--small">
+              Positive alert
+            </button>
+            <button name="warning" class="alertTypeToggle button button--small">
+              Warning alert
+            </button>
+            <button name="info" class="alertTypeToggle button button--small">Info alert</button>
+          </div>
+
           <script>
-            document.getElementById('alertToggle').addEventListener('click', () => {
-              const alert = document.getElementById('hello');
-              alert.show = !alert.show;
+            function resetAlertTypes(alertElement) {
+              alertElement.negative = false;
+              alertElement.positive = false;
+              alertElement.info = false;
+              alertElement.warning = false;
+            }
+
+            const alertEl = document.getElementById('alert');
+
+            document.getElementById('alertShowToggle').addEventListener('click', () => {
+              alertEl.show = !alertEl.show;
+            });
+            document.querySelectorAll('.alertTypeToggle').forEach((el) => {
+              el.addEventListener('click', (event) => {
+                resetAlertTypes(alertEl);
+                alertEl[event.target.name] = true;
+              });
             });
           </script>
         </div>
 
-        <!-- <h3 class="my-16">Positive</h3>
-
         <syntax-highlight>
-          <f-alert positive="true">
-            <p>This is the message text that can be short or a little bit long</p>
-          </f-alert>
-        </syntax-highlight>
-        <div class="example">
-          <f-alert positive>
-            <p>This is the message text that can be short or a little bit long</p>
-          </f-alert>
-        </div>
-
-        <h3 class="my-16">Warning</h3>
-
-        <syntax-highlight>
-          <f-alert warning="true">
-            <p>This is the message text that can be short or a little bit long</p>
-          </f-alert>
-        </syntax-highlight>
-        <div class="example">
-          <f-alert warning>
-            <p>This is the message text that can be short or a little bit long</p>
-          </f-alert>
-        </div>
-
-        <h3 class="my-16">Info</h3>
-
-        <syntax-highlight>
-          <f-alert info="true">
-            <p>This is the message text that can be short or a little bit long</p>
-          </f-alert>
-        </syntax-highlight>
-        <div class="example">
-          <f-alert info>
-            <p>This is the message text that can be short or a little bit long</p>
-          </f-alert>
-        </div>
-
-        <h3 class="my-16">Other examples</h3>
-
-        <syntax-highlight>
-          <f-alert info="true">
+          <f-alert info="true" show>
             <p class="font-bold">Title Caption-Strong</p>
             <p>This is the message text that can be short or a little bit long</p>
           </f-alert>
         </syntax-highlight>
         <div class="example">
-          <f-alert info>
+          <f-alert info show>
             <p class="font-bold">Title Caption-Strong</p>
             <p>This is the message text that can be short or a little bit long</p>
           </f-alert>
         </div>
 
         <syntax-highlight>
-          <f-alert info="true">
+          <f-alert info="true" show>
             <p class="font-bold">Title Caption-Strong</p>
             <p>This is the message text that can be short or a little bit long</p>
             <a title="Link to more information">Link to more information</a>
           </f-alert>
         </syntax-highlight>
         <div class="example">
-          <f-alert info>
+          <f-alert info show>
             <p class="font-bold">Title Caption-Strong</p>
             <p>This is the message text that can be short or a little bit long</p>
             <a title="Link to more information">Link to more information</a>
@@ -132,7 +125,7 @@
         </div>
 
         <syntax-highlight>
-          <f-alert info="true">
+          <f-alert info="true" show>
             <p class="font-bold">Title Caption-Strong</p>
             <p>This is the message text that can be short or a little bit long</p>
             <a title="Link to more information">Link to more information</a>
@@ -145,7 +138,7 @@
           </f-alert>
         </syntax-highlight>
         <div class="example">
-          <f-alert info>
+          <f-alert info show>
             <p class="font-bold">Title Caption-Strong</p>
             <p>This is the message text that can be short or a little bit long</p>
             <a title="Link to more information">Link to more information</a>
@@ -156,7 +149,7 @@
               </button>
             </div>
           </f-alert>
-        </div> -->
+        </div>
       </main>
       <%- include('footer.html'); -%>
     </f-docs-template>
