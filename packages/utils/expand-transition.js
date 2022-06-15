@@ -31,6 +31,14 @@ class ExpandTransition extends FabricElement {
     }
   }
 
+  updated() {
+    this._mounted = true;
+  }
+
+  get _wrapper() {
+    return this ?? null;
+  }
+
   static styles = css`
     :host {
       display: block;
@@ -47,14 +55,6 @@ class ExpandTransition extends FabricElement {
       >
         <slot></slot>
       </div>`;
-  }
-
-  updated() {
-    this._mounted = true;
-  }
-
-  get _wrapper() {
-    return this ?? null;
   }
 }
 
