@@ -19,19 +19,14 @@ class ExpandTransition extends FabricElement {
   }
 
   willUpdate() {
-    if (this._wrapper && !this.show) {
+    if (!this._wrapper) return;
+
+    if (!this.show) {
       collapse(this._wrapper);
     }
-  }
 
-  async update() {
-    super.update();
-
-    // If `this` does not yet exist or component has not yet mounted
-    if (!this._wrapper || !this._mounted) return;
-
-    // Expand if show is true (set by user)
-    if (this.show) {
+    // If show is set to `true` by user, animate only after component is mount
+    if (this._mounted && this.show) {
       expand(this._wrapper);
     }
   }
