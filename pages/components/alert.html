@@ -37,15 +37,22 @@
               <td>boolean</td>
               <td>false</td>
             </tr>
+            <tr>
+              <td>show</td>
+              <td>boolean</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>role</td>
+              <td>string</td>
+              <td>"alert"</td>
+            </tr>
           </tbody>
         </table>
 
         <h2 class="mt-24 mb-16">Visual Options</h2>
 
         <syntax-highlight>
-          <f-alert info="true" show>
-            <p>This is the message text that can be short or a little bit long</p>
-          </f-alert>
           <div class="flex gap-8 flex-wrap mt-16">
             <button class="button button--primary button--small">Toggle show</button>
             <button class="button button--small">Negative alert</button>
@@ -53,12 +60,12 @@
             <button class="button button--small">Warning alert</button>
             <button class="button button--small">Info alert</button>
           </div>
-        </syntax-highlight>
-        <div class="example">
-          <f-alert id="alert" info show>
+          <f-alert info="true" show>
             <p>This is the message text that can be short or a little bit long</p>
           </f-alert>
-          <div class="flex gap-8 flex-wrap mt-16">
+        </syntax-highlight>
+        <div class="example">
+          <div class="flex gap-8 flex-wrap mb-16">
             <button id="alertShowToggle" class="button button--primary button--small">
               Toggle show
             </button>
@@ -73,6 +80,9 @@
             </button>
             <button name="info" class="alertTypeToggle button button--small">Info alert</button>
           </div>
+          <f-alert id="alert" info show>
+            <p>This is the message text that can be short or a little bit long</p>
+          </f-alert>
 
           <script>
             function resetAlertTypes(alertElement) {
@@ -149,6 +159,43 @@
               </button>
             </div>
           </f-alert>
+        </div>
+        <h2 class="mt-24 mb-16">Accessibility</h2>
+        <p>
+          Use the ARIA live region <code>role</code> attribute to provide meaning to the alert
+          element (defaults to "alert"). If you want to remove the role from the alert and assign it
+          to its particular child (e.g. title), you can do so by setting <code>role</code> attribute
+          to an empty string on <code>f-alert</code> element and assigning a respective
+          <code>role</code> on the child element. Read more about live region
+          <code>role</code> attribute
+          <a
+            target="_blank"
+            title="Read more about ARIA live region role attribute"
+            class="text-current hover:no-underline focus:no-underline"
+            href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions#roles_with_implicit_live_region_attributes"
+            ><u> on MDN</u></a
+          >.
+        </p>
+
+        <syntax-highlight>
+          <f-alert negative show role="">
+            <p role="alert" class="font-bold">This is a warning!</p>
+            <p>You see this warning because you did something wrong</p>
+            <button class="button button--primary button--small">Close</button>
+          </f-alert>
+        </syntax-highlight>
+        <div class="example">
+          <f-alert id="negativeAlert" negative show role="">
+            <p role="alert" class="font-bold">This is a warning!</p>
+            <p>You see this warning because you did something wrong</p>
+            <button id="hide" class="button button--primary button--small">Close</button>
+          </f-alert>
+          <script>
+            document.getElementById('hide').addEventListener('click', () => {
+              const negativeAlert = document.getElementById('negativeAlert');
+              negativeAlert.show = false;
+            });
+          </script>
         </div>
       </main>
       <%- include('footer.html'); -%>

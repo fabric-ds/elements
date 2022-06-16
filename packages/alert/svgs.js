@@ -1,7 +1,8 @@
 import { html } from 'lit';
 
 export const negativeSvg = () => html`<svg
-  aria-label="Feil"
+  aria-label="Rødt utropstegn"
+  role="img"
   xmlns="http://www.w3.org/2000/svg"
   width="16"
   height="16"
@@ -21,7 +22,8 @@ export const negativeSvg = () => html`<svg
 </svg>`;
 
 export const positiveSvg = () => html`<svg
-  aria-label="Vellykket"
+  aria-label="Grønt hake"
+  role="img"
   width="16"
   height="16"
   fill="none"
@@ -37,7 +39,8 @@ export const positiveSvg = () => html`<svg
 </svg> `;
 
 export const warningSvg = () => html`<svg
-  aria-label="Varsel"
+  aria-label="Gult utropstegn"
+  role="img"
   width="16"
   height="16"
   fill="none"
@@ -58,6 +61,7 @@ export const warningSvg = () => html`<svg
 
 export const infoSvg = () => html`<svg
   aria-label="Info"
+  role="img"
   width="16"
   height="16"
   fill="none"
