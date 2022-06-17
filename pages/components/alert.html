@@ -5,7 +5,10 @@
       <%- include('nav.html'); -%>
       <main slot="content">
         <h1 class="mb-16">Alert</h1>
-        <p>Alert is an inline component used for displaying different types of messages.</p>
+        <p>
+          Alert is an inline component used for displaying different types of messages. For
+          accessibility reasons, alert should appear close to the element that triggered it.
+        </p>
 
         <h2 class="mt-24 mb-16">Props</h2>
         <table class="w-full docs-table">
@@ -194,6 +197,7 @@
             document.getElementById('hide').addEventListener('click', () => {
               const negativeAlert = document.getElementById('negativeAlert');
               negativeAlert.show = false;
+              setTimeout(() => (negativeAlert.show = true), 2000);
             });
           </script>
         </div>
