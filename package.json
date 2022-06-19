@@ -80,7 +80,7 @@
   },
   "dependencies": {
     "@fabric-ds/core": "0.0.13",
-    "@open-wc/testing": "3.1.5",
+    "@open-wc/testing": "3.1.6",
     "html-format": "1.0.1"
   },
   "publishConfig": {
