@@ -1,6 +1,6 @@
 import { css, html } from 'lit';
 import { collapse, expand } from 'element-collapse';
-import { FabricElement, fclasses } from '.';
+import { FabricElement } from '.';
 
 class ExpandTransition extends FabricElement {
   static properties = {
@@ -46,15 +46,9 @@ class ExpandTransition extends FabricElement {
   `;
 
   render() {
-    return html`${this._fabricStylesheet}
-      <div
-        class="${fclasses({
-          'overflow-hidden': true,
-        })}"
-        aria-hidden=${!this.show}
-      >
-        <slot></slot>
-      </div>`;
+    return html`<div aria-hidden=${!this.show}>
+      <slot></slot>
+    </div>`;
   }
 }
 
