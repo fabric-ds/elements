@@ -19,143 +19,225 @@ teardown(async () => {
   browser.close();
 });
 
-test('Box component with no attributes is rendered on the page', async (t) => {
-  // GIVEN: A box component
+test('Alert component with no attributes is rendered on the page', async (t) => {
   const component = `
-    <f-box>
-      <p>This is a box</p>
-    </f-box>
+    <f-alert>
+      <p>This is an alert with no attributes</p>
+    </f-alert>
   `;
 
-  // WHEN: the component is added to the page
+  const errorLogs = [];
+  const registerErrorLogs = (exception) => {
+    errorLogs.push(exception);
+  };
+
+  // Before adding content to the page, subscribe to all uncaught errors emitted there
+  t.context.page.on('pageerror', registerErrorLogs);
+
   const page = await addContentToPage({
     page: t.context.page,
     content: component,
   });
 
-  // THEN: the component is visible in the DOM
-  const locator = await page.locator('f-box');
-  t.equal((await locator.innerHTML()).trim(), '<p>This is a box</p>', 'HTML should be rendered');
-  t.equal(await locator.getAttribute('bleed'), null, 'Bleed attribute should be null');
-  t.equal(await locator.getAttribute('bordered'), null, 'Bordered attribute should be null');
+  const locator = await page.locator('f-alert');
+  t.equal(
+    (await locator.innerHTML()).trim(),
+    '<p>This is an alert with no attributes</p>',
+    'HTML should be rendered',
+  );
+  t.equal(await locator.getAttribute('negative'), null, 'Negative attribute should be null');
+  t.equal(await locator.getAttribute('positive'), null, 'Positive attribute should be null');
+  t.equal(await locator.getAttribute('warning'), null, 'Warning attribute should be null');
   t.equal(await locator.getAttribute('info'), null, 'Info attribute should be null');
-  t.equal(await locator.getAttribute('neutral'), null, 'Neutral attribute should be null');
+  t.equal(await locator.getAttribute('show'), null, 'Show attribute should be null');
+  t.equal(await locator.evaluate((el) => el.show), false, 'Show property should default to false');
+  t.equal(await locator.getAttribute('role'), 'alert', 'Role attribute should be null');
+  t.equal(
+    await locator.evaluate((el) => el.role),
+    'alert',
+    'Role property should default to alert',
+  );
+
+  t.equal(
+    errorLogs[0].message,
+    'Alert attribute missing. Set it to one of the following:\nnegative, positive, warning, info.',
+    'Missing attribute error was thrown',
+  );
+
+  t.equal(
+    await page.evaluate(
+      'document.querySelector("f-alert").renderRoot.querySelector("f-expand-transition").renderRoot.querySelector("div").getAttribute("aria-hidden")',
+    ),
+    'true',
+    'Aria-hidden attribute is `true`',
+  );
+
+  page.removeListener('pageerror', registerErrorLogs);
 });
 
-test('Box component with bordered attribute', async (t) => {
-  // GIVEN: A box component
+test('Negative alert component with show attribute is rendered on the page', async (t) => {
   const component = `
-    <f-box bordered>
-      <p>This is a box</p>
-    </f-box>
+    <f-alert negative show>
+      <p>This is a negative alert that should be visible</p>
+    </f-alert>
   `;
 
-  // WHEN: the component is added to the page
+  const errorLogs = [];
+  const registerErrorLogs = (exception) => {
+    errorLogs.push(exception);
+  };
+
+  t.context.page.on('pageerror', registerErrorLogs);
+
   const page = await addContentToPage({
     page: t.context.page,
     content: component,
   });
 
-  // THEN: the component is visible in the DOM
-  const locator = await page.locator('f-box');
-  t.equal(await locator.evaluate((el) => el.bordered), true, 'Bordered property should be true');
-  t.equal(await locator.getAttribute('bordered'), '', 'Bordered attribute should be set');
-  t.equal(await locator.getAttribute('info'), null, 'Info attribute should be null');
-  t.equal(await locator.getAttribute('neutral'), null, 'Neutral attribute should be null');
-  t.equal(await locator.getAttribute('bleed'), null, 'Bleed attribute should be null');
+  const locator = await page.locator('f-alert');
+  t.equal(
+    (await locator.innerHTML()).trim(),
+    '<p>This is a negative alert that should be visible</p>',
+    'HTML should be rendered',
+  );
+  t.equal(await locator.evaluate((el) => el.negative), true, 'Negative attribute should be true');
+  t.equal(await locator.evaluate((el) => el.show), true, 'Show attribute should be true');
+
+  t.equal(errorLogs.length, 0, 'No errors should be thrown in the console');
+
+  t.equal(
+    await page.evaluate(
+      'document.querySelector("f-alert").renderRoot.querySelector("f-expand-transition").renderRoot.querySelector("div").getAttribute("aria-hidden")',
+    ),
+    'false',
+    'Aria-hidden attribute is `false`',
+  );
+
+  page.removeListener('pageerror', registerErrorLogs);
 });
 
-test('Box component with info attribute', async (t) => {
-  // GIVEN: A box component
+test('Info alert component with `status` role attribute is rendered on the page', async (t) => {
   const component = `
-    <f-box info>
-      <p>This is a box</p>
-    </f-box>
+    <f-alert info role="status">
+      <p>This is an info alert that should be invisible</p>
+    </f-alert>
   `;
 
-  // WHEN: the component is added to the page
   const page = await addContentToPage({
     page: t.context.page,
     content: component,
   });
 
-  // THEN: the component is visible in the DOM
-  const locator = await page.locator('f-box');
-  t.equal(await locator.evaluate((el) => el.info), true, 'Info property should be true');
-  t.equal(await locator.getAttribute('info'), '', 'Info attribute should be set');
+  const locator = await page.locator('f-alert');
+  t.equal(
+    (await locator.innerHTML()).trim(),
+    '<p>This is an info alert that should be invisible</p>',
+    'HTML should be rendered',
+  );
+  t.equal(await locator.evaluate((el) => el.info), true, 'Info attribute should be true');
+  t.equal(await locator.evaluate((el) => el.role), 'status', 'Role attribute should be `status`');
 });
 
-test('Box component with neutral attribute', async (t) => {
-  // GIVEN: A box component
+test('Positive alert component with `alert` role assigned to its child is rendered on the page', async (t) => {
+  // Sometimes we might want that only a particular descendant of the alert component is asigned an "alert" role,
+  // Which should result in accessibility tools only reading
   const component = `
-    <f-box neutral>
-      <p>This is a box</p>
-    </f-box>
+    <f-alert positive show role="">
+      <p role="alert">This is a positive alert that should have an "alert" role</p><p>This is less important text</p>
+    </f-alert>
   `;
 
-  // WHEN: the component is added to the page
   const page = await addContentToPage({
     page: t.context.page,
     content: component,
   });
 
-  // THEN: the component is visible in the DOM
-  const locator = await page.locator('f-box');
-  t.equal(await locator.evaluate((el) => el.neutral), true, 'Neutral property should be true');
-  t.equal(await locator.getAttribute('neutral'), '', 'Neutral attribute should be set');
+  const locator = await page.locator('f-alert');
+  t.equal(
+    (await locator.innerHTML()).trim(),
+    '<p role="alert">This is a positive alert that should have an "alert" role</p><p>This is less important text</p>',
+    'HTML should be rendered',
+  );
+  t.equal(await locator.evaluate((el) => el.positive), true, 'Positive attribute should be true');
+  t.equal(
+    await locator.evaluate((el) => el.role),
+    '',
+    'Role attribute of alert should be an empty string',
+  );
+
+  t.equal(
+    await locator.evaluate((el) => el.querySelector("[role='alert']").innerHTML),
+    'This is a positive alert that should have an "alert" role',
+    'Role attribute should be set on child',
+  );
 });
 
-test('Box component with bleed attribute', async (t) => {
-  // GIVEN: A box component
+test('Warning alert component with show-toggle button is rendered on the page', async (t) => {
   const component = `
-    <f-box bleed>
-      <p>This is a box</p>
-    </f-box>
+    <button id="alertShowToggle" class="button button--primary button--small">
+      Toggle show
+    </button>
+    <f-alert id="alert" warning show>
+      <p role="alert">This is a positive alert that should have an "alert" role</p><p>This is less important text</p>
+    </f-alert>
+
+    <script>
+      const alertEl = document.getElementById('alert');
+      document.getElementById('alertShowToggle').addEventListener('click', () => {
+        alertEl.show = !alertEl.show;
+      });
+    </script>
   `;
 
-  // WHEN: the component is added to the page
   const page = await addContentToPage({
     page: t.context.page,
     content: component,
   });
 
-  // THEN: the component is visible in the DOM
-  const locator = await page.locator('f-box');
-  t.equal(await locator.evaluate((el) => el.bleed), true, 'Bleed property should be true');
-  t.equal(await locator.getAttribute('bleed'), '', 'Bleed attribute should be set');
+  const locator = await page.locator('f-alert');
+
+  t.equal(await locator.evaluate((el) => el.warning), true, 'Warning attribute should be true');
+  t.equal(await locator.evaluate((el) => el.show), true, 'Show attribute should be true');
+
+  // CLICK "Toggle show" button to hide the alert
+  await page.locator('button', { hasText: 'Toggle show' }).click();
+
+  t.equal(await locator.evaluate((el) => el.show), false, 'Show attribute should be false');
+
+  // CLICK "Toggle show" button to show the alert again
+  await page.locator('button', { hasText: 'Toggle show' }).click();
+
+  t.equal(await locator.evaluate((el) => el.show), true, 'Show attribute should be true');
 });
 
-test('Box component with paragraph child elements', async (t) => {
-  // GIVEN: A component with 3 paragraphs
+test('Info Alert component with multiple paragraph child elements', async (t) => {
   const component = `
-    <f-box>
+    <f-alert>
       <p>Paragraph 1</p>
       <p id="second">Paragraph 2</p>
       <p id="last">Paragraph 3</p>
-    </f-box>
+    </f-alert>
   `;
 
-  // WHEN: the component is added to the page
   const page = await addContentToPage({
     page: t.context.page,
     content: component,
   });
 
-  // THEN: there should be three paragraphs in the DOM
-  t.equal(await page.locator('f-box p').count(), 3, '3 p tags should be present');
+  t.equal(await page.locator('f-alert p').count(), 3, '3 p tags should be present');
   t.match(
-    await page.innerText(':nth-match(f-box p, 1)'),
+    await page.innerText(':nth-match(f-alert p, 1)'),
     'Paragraph 1',
     'The first text should be "Paragraph 1"',
   );
   t.match(
-    await page.innerText(':nth-match(f-box p, 3)'),
+    await page.innerText(':nth-match(f-alert p, 3)'),
     'Paragraph 3',
     'The third text should be "Paragraph 3"',
   );
 
-  const secondElement = await page.locator('#second');
   const lastElement = await page.locator('#last');
+  const secondElement = await page.locator('#second');
 
   t.match(
     await lastElement.evaluate((el) => {
@@ -169,7 +251,7 @@ test('Box component with paragraph child elements', async (t) => {
     await secondElement.evaluate((el) => {
       return window.getComputedStyle(el).getPropertyValue('margin-bottom');
     }),
-    '16px',
-    'Bottom margin of second paragraph should be 16px',
+    '8px',
+    'Bottom margin of second paragraph should be 8px',
   );
 });

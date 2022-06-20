@@ -9,7 +9,7 @@ class FabricAlert extends FabricElement {
     warning: { type: Boolean },
     info: { type: Boolean },
     show: { type: Boolean, reflect: true },
-    role: { type: String },
+    role: { type: String, reflect: true },
   };
 
   constructor() {
@@ -20,6 +20,15 @@ class FabricAlert extends FabricElement {
     this.info = false;
     this.show = false;
     this.role = 'alert';
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    if (!this.negative && !this.positive && !this.warning && !this.info) {
+      throw new Error(
+        'Alert attribute missing. Set it to one of the following:\nnegative, positive, warning, info.',
+      );
+    }
   }
 
   // Slotted elements remain in lightDOM which allows for control of their style outside of shadowDOM.
@@ -56,7 +65,6 @@ class FabricAlert extends FabricElement {
         icon: warningSvg(),
       };
     }
-
     if (this.info) {
       return {
         color: 'aqua',
@@ -64,9 +72,7 @@ class FabricAlert extends FabricElement {
       };
     }
 
-    throw new Error(
-      'Alert attribute missing. Set it to one of the following:\nnegative, positive, warning, info.',
-    );
+    return {};
   }
 
   render() {
@@ -76,7 +82,7 @@ class FabricAlert extends FabricElement {
       ${this._fabricStylesheet}
       <f-expand-transition ?show=${this.show}>
         <div
-          role="${this.role}"
+          role=${this.role}
           class="${`flex p-16 border rounded-4 border-l-4 bg-${color}-50 border-${color}-300`}"
           style="border-left-color:var(--f-${color}-600)"
         >

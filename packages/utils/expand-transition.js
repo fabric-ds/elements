@@ -51,7 +51,7 @@ class ExpandTransition extends FabricElement {
         class="${fclasses({
           'overflow-hidden': true,
         })}"
-        aria-hidden="${!this.show}"
+        aria-hidden=${!this.show}
       >
         <slot></slot>
       </div>`;
