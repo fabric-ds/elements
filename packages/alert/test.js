@@ -45,10 +45,7 @@ test('Alert component with no attributes is rendered on the page', async (t) => 
     '<p>This is an alert with no attributes</p>',
     'HTML should be rendered',
   );
-  t.equal(await locator.getAttribute('negative'), null, 'Negative attribute should be null');
-  t.equal(await locator.getAttribute('positive'), null, 'Positive attribute should be null');
-  t.equal(await locator.getAttribute('warning'), null, 'Warning attribute should be null');
-  t.equal(await locator.getAttribute('info'), null, 'Info attribute should be null');
+  t.equal(await locator.getAttribute('variant'), null, 'Variant attribute should be null');
   t.equal(await locator.getAttribute('show'), null, 'Show attribute should be null');
   t.equal(await locator.evaluate((el) => el.show), false, 'Show property should default to false');
   t.equal(await locator.getAttribute('role'), 'alert', 'Role attribute should be null');
@@ -60,8 +57,8 @@ test('Alert component with no attributes is rendered on the page', async (t) => 
 
   t.equal(
     errorLogs[0].message,
-    'Alert attribute missing. Set it to one of the following:\nnegative, positive, warning, info.',
-    'Missing attribute error was thrown',
+    'Invalid "variant" attribute. Set its value to one of the following:\nnegative, positive, warning, info.',
+    'Invalid attribute error was thrown',
   );
 
   t.equal(
@@ -75,9 +72,38 @@ test('Alert component with no attributes is rendered on the page', async (t) => 
   page.removeListener('pageerror', registerErrorLogs);
 });
 
+test('Alert component with wrong "variant" attribute is rendered on the page', async (t) => {
+  const component = `
+    <f-alert variant="hello">
+      <p>This is an alert with no attributes</p>
+    </f-alert>
+  `;
+
+  const errorLogs = [];
+  const registerErrorLogs = (exception) => {
+    errorLogs.push(exception);
+  };
+
+  // Before adding content to the page, subscribe to all uncaught errors emitted there
+  t.context.page.on('pageerror', registerErrorLogs);
+
+  const page = await addContentToPage({
+    page: t.context.page,
+    content: component,
+  });
+
+  t.equal(
+    errorLogs[0].message,
+    'Invalid "variant" attribute. Set its value to one of the following:\nnegative, positive, warning, info.',
+    'Invalid attribute error was thrown',
+  );
+
+  page.removeListener('pageerror', registerErrorLogs);
+});
+
 test('Negative alert component with show attribute is rendered on the page', async (t) => {
   const component = `
-    <f-alert negative show>
+    <f-alert variant="negative" show>
       <p>This is a negative alert that should be visible</p>
     </f-alert>
   `;
@@ -100,7 +126,11 @@ test('Negative alert component with show attribute is rendered on the page', asy
     '<p>This is a negative alert that should be visible</p>',
     'HTML should be rendered',
   );
-  t.equal(await locator.evaluate((el) => el.negative), true, 'Negative attribute should be true');
+  t.equal(
+    await locator.evaluate((el) => el.variant),
+    'negative',
+    '"variant" attribute should be "negative"',
+  );
   t.equal(await locator.evaluate((el) => el.show), true, 'Show attribute should be true');
 
   t.equal(errorLogs.length, 0, 'No errors should be thrown in the console');
@@ -118,7 +148,7 @@ test('Negative alert component with show attribute is rendered on the page', asy
 
 test('Info alert component with `status` role attribute is rendered on the page', async (t) => {
   const component = `
-    <f-alert info role="status">
+    <f-alert variant="info" role="status">
       <p>This is an info alert that should be invisible</p>
     </f-alert>
   `;
@@ -134,7 +164,11 @@ test('Info alert component with `status` role attribute is rendered on the page'
     '<p>This is an info alert that should be invisible</p>',
     'HTML should be rendered',
   );
-  t.equal(await locator.evaluate((el) => el.info), true, 'Info attribute should be true');
+  t.equal(
+    await locator.evaluate((el) => el.variant),
+    'info',
+    '"variant" attribute should be "info"',
+  );
   t.equal(await locator.evaluate((el) => el.role), 'status', 'Role attribute should be `status`');
 });
 
@@ -142,7 +176,7 @@ test('Positive alert component with `alert` role assigned to its child is render
   // Sometimes we might want that only a particular descendant of the alert component is asigned an "alert" role,
   // Which should result in accessibility tools only reading
   const component = `
-    <f-alert positive show role="">
+    <f-alert variant="positive" show role="">
       <p role="alert">This is a positive alert that should have an "alert" role</p><p>This is less important text</p>
     </f-alert>
   `;
@@ -158,7 +192,11 @@ test('Positive alert component with `alert` role assigned to its child is render
     '<p role="alert">This is a positive alert that should have an "alert" role</p><p>This is less important text</p>',
     'HTML should be rendered',
   );
-  t.equal(await locator.evaluate((el) => el.positive), true, 'Positive attribute should be true');
+  t.equal(
+    await locator.evaluate((el) => el.variant),
+    'positive',
+    '"variant" attribute should be "positive"',
+  );
   t.equal(
     await locator.evaluate((el) => el.role),
     '',
@@ -177,7 +215,7 @@ test('Warning alert component with show-toggle button is rendered on the page', 
     <button id="alertShowToggle" class="button button--primary button--small">
       Toggle show
     </button>
-    <f-alert id="alert" warning show>
+    <f-alert id="alert" variant="warning" show>
       <p role="alert">This is a positive alert that should have an "alert" role</p><p>This is less important text</p>
     </f-alert>
 
@@ -196,7 +234,11 @@ test('Warning alert component with show-toggle button is rendered on the page', 
 
   const locator = await page.locator('f-alert');
 
-  t.equal(await locator.evaluate((el) => el.warning), true, 'Warning attribute should be true');
+  t.equal(
+    await locator.evaluate((el) => el.variant),
+    'warning',
+    '"variant" attribute should be "warning"',
+  );
   t.equal(await locator.evaluate((el) => el.show), true, 'Show attribute should be true');
 
   // CLICK "Toggle show" button to hide the alert
@@ -212,7 +254,7 @@ test('Warning alert component with show-toggle button is rendered on the page', 
 
 test('Info Alert component with multiple paragraph child elements', async (t) => {
   const component = `
-    <f-alert>
+    <f-alert variant="info" show>
       <p>Paragraph 1</p>
       <p id="second">Paragraph 2</p>
       <p id="last">Paragraph 3</p>

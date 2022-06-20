@@ -2,31 +2,43 @@ import { css, html } from 'lit';
 import { FabricElement } from '../utils';
 import { infoSvg, negativeSvg, positiveSvg, warningSvg } from './svgs';
 
+const variants = {
+  negative: {
+    color: 'red',
+    icon: negativeSvg(),
+  },
+  positive: {
+    color: 'green',
+    icon: positiveSvg(),
+  },
+  warning: {
+    color: 'yellow',
+    icon: warningSvg(),
+  },
+  info: {
+    color: 'aqua',
+    icon: infoSvg(),
+  },
+};
+
 class FabricAlert extends FabricElement {
   static properties = {
-    negative: { type: Boolean },
-    positive: { type: Boolean },
-    warning: { type: Boolean },
-    info: { type: Boolean },
+    variant: { type: String, reflect: true },
     show: { type: Boolean, reflect: true },
     role: { type: String, reflect: true },
   };
 
   constructor() {
     super();
-    this.negative = false;
-    this.positive = false;
-    this.warning = false;
-    this.info = false;
     this.show = false;
     this.role = 'alert';
   }
 
   connectedCallback() {
     super.connectedCallback();
-    if (!this.negative && !this.positive && !this.warning && !this.info) {
+    if (!this.variant || !Object.keys(variants).includes(this.variant)) {
       throw new Error(
-        'Alert attribute missing. Set it to one of the following:\nnegative, positive, warning, info.',
+        'Invalid "variant" attribute. Set its value to one of the following:\nnegative, positive, warning, info.',
       );
     }
   }
@@ -45,34 +57,7 @@ class FabricAlert extends FabricElement {
   `;
 
   get _style() {
-    if (this.negative) {
-      return {
-        color: 'red',
-        icon: negativeSvg(),
-      };
-    }
-
-    if (this.positive) {
-      return {
-        color: 'green',
-        icon: positiveSvg(),
-      };
-    }
-
-    if (this.warning) {
-      return {
-        color: 'yellow',
-        icon: warningSvg(),
-      };
-    }
-    if (this.info) {
-      return {
-        color: 'aqua',
-        icon: infoSvg(),
-      };
-    }
-
-    return {};
+    return this.variant ? variants[this.variant] : {};
   }
 
   render() {

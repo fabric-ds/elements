@@ -21,24 +21,9 @@
           </thead>
           <tbody class="align-top">
             <tr>
-              <td>negative</td>
-              <td>boolean</td>
-              <td>false</td>
-            </tr>
-            <tr>
-              <td>positive</td>
-              <td>boolean</td>
-              <td>false</td>
-            </tr>
-            <tr>
-              <td>warning</td>
-              <td>boolean</td>
-              <td>false</td>
-            </tr>
-            <tr>
-              <td>info</td>
-              <td>boolean</td>
-              <td>false</td>
+              <td>variant</td>
+              <td>"negative" | "positive" | "warning" | "info"</td>
+              <td>-</td>
             </tr>
             <tr>
               <td>show</td>
@@ -63,7 +48,7 @@
             <button class="button button--small">Warning alert</button>
             <button class="button button--small">Info alert</button>
           </div>
-          <f-alert info="true" show>
+          <f-alert variant="info" show>
             <p>This is the message text that can be short or a little bit long</p>
           </f-alert>
         </syntax-highlight>
@@ -83,18 +68,11 @@
             </button>
             <button name="info" class="alertTypeToggle button button--small">Info alert</button>
           </div>
-          <f-alert id="alert" info show>
+          <f-alert id="alert" variant="info" show>
             <p>This is the message text that can be short or a little bit long</p>
           </f-alert>
 
           <script>
-            function resetAlertTypes(alertElement) {
-              alertElement.negative = false;
-              alertElement.positive = false;
-              alertElement.info = false;
-              alertElement.warning = false;
-            }
-
             const alertEl = document.getElementById('alert');
 
             document.getElementById('alertShowToggle').addEventListener('click', () => {
@@ -102,35 +80,34 @@
             });
             document.querySelectorAll('.alertTypeToggle').forEach((el) => {
               el.addEventListener('click', (event) => {
-                resetAlertTypes(alertEl);
-                alertEl[event.target.name] = true;
+                alertEl.variant = event.target.name;
               });
             });
           </script>
         </div>
 
         <syntax-highlight>
-          <f-alert info="true" show>
+          <f-alert variant="info" show>
             <p class="font-bold">Title Caption-Strong</p>
             <p>This is the message text that can be short or a little bit long</p>
           </f-alert>
         </syntax-highlight>
         <div class="example">
-          <f-alert info show>
+          <f-alert variant="info" show>
             <p class="font-bold">Title Caption-Strong</p>
             <p>This is the message text that can be short or a little bit long</p>
           </f-alert>
         </div>
 
         <syntax-highlight>
-          <f-alert info="true" show>
+          <f-alert variant="info" show>
             <p class="font-bold">Title Caption-Strong</p>
             <p>This is the message text that can be short or a little bit long</p>
             <a title="Link to more information">Link to more information</a>
           </f-alert>
         </syntax-highlight>
         <div class="example">
-          <f-alert info show>
+          <f-alert variant="info" show>
             <p class="font-bold">Title Caption-Strong</p>
             <p>This is the message text that can be short or a little bit long</p>
             <a title="Link to more information">Link to more information</a>
@@ -138,7 +115,7 @@
         </div>
 
         <syntax-highlight>
-          <f-alert info="true" show>
+          <f-alert variant="info" show>
             <p class="font-bold">Title Caption-Strong</p>
             <p>This is the message text that can be short or a little bit long</p>
             <a title="Link to more information">Link to more information</a>
@@ -151,7 +128,7 @@
           </f-alert>
         </syntax-highlight>
         <div class="example">
-          <f-alert info show>
+          <f-alert variant="info" show>
             <p class="font-bold">Title Caption-Strong</p>
             <p>This is the message text that can be short or a little bit long</p>
             <a title="Link to more information">Link to more information</a>
@@ -181,14 +158,14 @@
         </p>
 
         <syntax-highlight>
-          <f-alert negative show role="">
+          <f-alert variant="negative" show role="">
             <p role="alert" class="font-bold">This is a warning!</p>
             <p>You see this warning because you did something wrong</p>
             <button class="button button--primary button--small">Close</button>
           </f-alert>
         </syntax-highlight>
         <div class="example">
-          <f-alert id="negativeAlert" negative show role="">
+          <f-alert id="negativeAlert" variant="negative" show role="">
             <p role="alert" class="font-bold">This is a warning!</p>
             <p>You see this warning because you did something wrong</p>
             <button id="hide" class="button button--primary button--small">Close</button>
