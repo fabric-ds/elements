@@ -1,5 +1,5 @@
 /* eslint-env node */
-import html from 'vite-plugin-html';
+import { createHtmlPlugin } from 'vite-plugin-html';
 import path from 'path';
 import glob from 'glob';
 // import postcss from 'postcss';
@@ -35,9 +35,11 @@ export default ({ mode }) => {
     // base: isProduction ? '/elements/' : '',
     plugins: [
       // litElementTailwindPlugin({ mode }),
-      html.default({
+      createHtmlPlugin({
         inject: {
-          injectOptions: { views: ['pages/includes'] },
+          ejsOptions: {
+            views: ['pages/includes']
+          }
         },
         minify: false,
       }),
