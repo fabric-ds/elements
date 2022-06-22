@@ -31,17 +31,55 @@ export default ({ mode }) => {
     }
   }
 
+  const injectOptions = {
+    ejsOptions: {
+      views: ['pages/includes']
+    }
+  };
+
   return {
     // base: isProduction ? '/elements/' : '',
     plugins: [
       // litElementTailwindPlugin({ mode }),
       createHtmlPlugin({
-        inject: {
-          ejsOptions: {
-            views: ['pages/includes']
-          }
-        },
         minify: false,
+        pages: [
+          {
+            filename: 'alert.html',
+            template: 'pages/components/alert.html',
+            injectOptions,
+          },
+          {
+            filename: 'box.html',
+            template: 'pages/components/box.html',
+            injectOptions,
+          },
+          {
+            filename: 'breadcrumbs.html',
+            template: 'pages/components/breadcrumbs.html',
+            injectOptions,
+          },
+          {
+            filename: 'broadcast.html',
+            template: 'pages/components/broadcast.html',
+            injectOptions,
+          },
+          {
+            filename: 'card.html',
+            template: 'pages/components/card.html',
+            injectOptions,
+          },
+          {
+            filename: 'toast.html',
+            template: 'pages/components/toast.html',
+            injectOptions,
+          },
+          {
+            filename: 'index.html',
+            template: 'index.html',
+            injectOptions,
+          },
+        ],
       }),
       isProduction && basePathFix(),
     ],
