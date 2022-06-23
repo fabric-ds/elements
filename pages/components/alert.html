@@ -53,37 +53,12 @@
           </f-alert>
         </syntax-highlight>
         <div class="example">
-          <div class="flex gap-8 flex-wrap mb-16">
-            <button id="alertShowToggle" class="button button--primary button--small">
-              Toggle show
-            </button>
-            <button name="negative" class="alertTypeToggle button button--small">
-              Negative alert
-            </button>
-            <button name="positive" class="alertTypeToggle button button--small">
-              Positive alert
-            </button>
-            <button name="warning" class="alertTypeToggle button button--small">
-              Warning alert
-            </button>
-            <button name="info" class="alertTypeToggle button button--small">Info alert</button>
+          <div id="defaultAlertControllers" class="flex gap-8 flex-wrap mb-16">
+            <%- include('alertControllers.html'); -%>
           </div>
-          <f-alert id="alert" variant="info" show>
+          <f-alert id="defaultAlert" variant="info" show>
             <p>This is the message text that can be short or a little bit long</p>
           </f-alert>
-
-          <script>
-            const alertEl = document.getElementById('alert');
-
-            document.getElementById('alertShowToggle').addEventListener('click', () => {
-              alertEl.show = !alertEl.show;
-            });
-            document.querySelectorAll('.alertTypeToggle').forEach((el) => {
-              el.addEventListener('click', (event) => {
-                alertEl.variant = event.target.name;
-              });
-            });
-          </script>
         </div>
 
         <syntax-highlight>
@@ -93,7 +68,10 @@
           </f-alert>
         </syntax-highlight>
         <div class="example">
-          <f-alert variant="info" show>
+          <div id="alertWithDescriptionControllers" class="flex gap-8 flex-wrap mb-16">
+            <%- include('alertControllers.html'); -%>
+          </div>
+          <f-alert id="alertWithDescription" variant="info" show>
             <p class="font-bold">Title Caption-Strong</p>
             <p>This is the message text that can be short or a little bit long</p>
           </f-alert>
@@ -107,7 +85,10 @@
           </f-alert>
         </syntax-highlight>
         <div class="example">
-          <f-alert variant="info" show>
+          <div id="alertWithLinkControllers" class="flex gap-8 flex-wrap mb-16">
+            <%- include('alertControllers.html'); -%>
+          </div>
+          <f-alert id="alertWithLink" variant="info" show>
             <p class="font-bold">Title Caption-Strong</p>
             <p>This is the message text that can be short or a little bit long</p>
             <a title="Link to more information">Link to more information</a>
@@ -128,7 +109,10 @@
           </f-alert>
         </syntax-highlight>
         <div class="example">
-          <f-alert variant="info" show>
+          <div id="alertWithButtonsControllers" class="flex gap-8 flex-wrap mb-16">
+            <%- include('alertControllers.html'); -%>
+          </div>
+          <f-alert id="alertWithButtons" variant="info" show>
             <p class="font-bold">Title Caption-Strong</p>
             <p>This is the message text that can be short or a little bit long</p>
             <a title="Link to more information">Link to more information</a>
@@ -181,7 +165,6 @@
       </main>
       <%- include('footer.html'); -%>
     </f-docs-template>
-
-    <%- include('scripts.html'); -%>
+    <%- include('alertControllersScripts.html'); -%> <%- include('scripts.html'); -%>
   </body>
 </html>

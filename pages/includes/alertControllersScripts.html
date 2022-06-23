@@ -1,0 +1,21 @@
+<script>
+  function addEventListenersToAlertControllers(alertId) {
+    const alertElement = document.getElementById(alertId);
+    const controllersWrapperId = `#${alertId}Controllers`;
+
+    document.querySelector(`${controllersWrapperId} > button`).addEventListener('click', () => {
+      alertElement.show = !alertElement.show;
+    });
+    document
+      .querySelectorAll(`${controllersWrapperId} > button:not(:first-child)`)
+      .forEach((el) => {
+        el.addEventListener('click', (event) => {
+          alertElement.variant = event.target.name;
+        });
+      });
+  }
+
+  const alertIds = ['defaultAlert', 'alertWithDescription', 'alertWithLink', 'alertWithButtons'];
+
+  alertIds.forEach((id) => addEventListenersToAlertControllers(id));
+</script>
