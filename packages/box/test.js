@@ -169,7 +169,7 @@ test('Box component with paragraph child elements', async (t) => {
     await secondElement.evaluate((el) => {
       return window.getComputedStyle(el).getPropertyValue('margin-bottom');
     }),
-    '16px',
-    'Bottom margin of second paragraph should be 16px',
+    '8px',
+    'Bottom margin of second paragraph should be 8px',
   );
 });
