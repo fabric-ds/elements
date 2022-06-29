@@ -6,6 +6,81 @@
       <main slot="content">
         <h1 class="mb-16">Attention</h1>
         <h2 class="mt-24 mb-16">Props</h2>
+        <table class="w-full docs-table">
+          <thead>
+            <tr class="text-left text-gray-400 uppercase">
+              <th>prop</th>
+              <th>type</th>
+              <th>default</th>
+            </tr>
+          </thead>
+          <tbody class="align-top">
+            <tr>
+              <td>isShowing</td>
+              <td>
+                <div>boolean</div>
+                <div class="annotation">Whether Attention element is shown.</div>
+              </td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>placement *</td>
+              <td>
+                <div>"top" | "right" | "bottom" | "left"</div>
+                <div class="annotation">
+                  Placement according to the target element. Arrow would be on the opposite side of
+                  this position.
+                </div>
+              </td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>targetElId *</td>
+              <td>
+                <div>string</div>
+                <div class="annotation">
+                  The id of element that the Attention component is rendered relatively to.
+                </div>
+              </td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>tooltip</td>
+              <td>
+                <div>boolean</div>
+                <div class="annotation">Whether Attention element is rendered as a tooltip.</div>
+              </td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>callout</td>
+              <td>
+                <div>boolean</div>
+                <div class="annotation">
+                  Whether Attention element is rendered as an inline callout.
+                </div>
+              </td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>popover</td>
+              <td>
+                <div>boolean</div>
+                <div class="annotation">Whether Attention element is rendered as a popover.</div>
+              </td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>noArrow</td>
+              <td>
+                <div>boolean</div>
+                <div class="annotation">Render Attention element without an arrow.</div>
+              </td>
+              <td>false</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 class="mt-24 mb-16">Visual Options</h2>
         <div class="flex gap-8 flex-wrap mt-16">
           <button
             id="tooltipTarget"
@@ -13,8 +88,8 @@
           >
             Click to toggle display of a tooltip element
           </button>
-          <f-attention placement="top" tooltip targetElId="#tooltipTarget">
-            <span>Tooltip: top is my position</span>
+          <f-attention placement="bottom" tooltip targetElId="#tooltipTarget">
+            <span>Tooltip: bottom is my position</span>
           </f-attention>
           <button
             id="popoverTarget"
@@ -28,12 +103,23 @@
         </div>
         <div class="flex items-center">
           <div
-            id="attention-anchor"
+            id="defaultAttentionTarget"
+            class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
+          >
+            <p>This is target element to a default attention element</p>
+          </div>
+          <f-attention placement="right" isShowing targetElId="#defaultAttentionTarget">
+            <span>I am a default attention element</span>
+          </f-attention>
+        </div>
+        <div class="flex items-center">
+          <div
+            id="calloutTarget"
             class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
           >
             <p>This is target element to callout attention element</p>
           </div>
-          <f-attention placement="right" isShowing callout targetElId="#attention-anchor">
+          <f-attention placement="right" isShowing callout targetElId="#calloutTarget">
             <span>Callout: I am used inline</span>
           </f-attention>
         </div>

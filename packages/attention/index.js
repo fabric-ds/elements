@@ -5,20 +5,21 @@ import { opposites, rotation, useRecompute as recompute } from '@fabric-ds/core/
 
 class FabricAttention extends FabricElement {
   static properties = {
-    // Render Attention element without arrow
-    noArrow: { type: Boolean, reflect: true },
-    // Whether Attention element is shown, used for tooltip
+    // Whether Attention element is shown
     isShowing: { type: Boolean, reflect: true },
     // Placement according to the target element
     // Arrow would be on the opposite side of this position
     placement: { type: String },
-    // Id of element the Attention component is rendered relatively to
+    // The id of element that the Attention component is rendered relatively to
     targetElId: { type: String },
-
-    // Arrow props
+    // Whether Attention element is rendered as a tooltip
     tooltip: { type: Boolean, reflect: true },
+    // Whether Attention element is rendered as an inline callout
     callout: { type: Boolean, reflect: true },
+    // Whether Attention element is rendered as a popover
     popover: { type: Boolean, reflect: true },
+    // Render Attention element without an arrow
+    noArrow: { type: Boolean, reflect: true },
   };
 
   static styles = css`
@@ -38,6 +39,16 @@ class FabricAttention extends FabricElement {
       margin-bottom: 0px !important;
     }
   `;
+
+  constructor() {
+    super();
+
+    this.isShowing = false;
+    this.tooltip = false;
+    this.callout = false;
+    this.popover = false;
+    this.noArrow = false;
+  }
 
   connectedCallback() {
     super.connectedCallback();
@@ -115,7 +126,7 @@ class FabricAttention extends FabricElement {
       targetEl: this._targetEl,
       noArrow: this._noArrow,
     };
-
+    console.log(this.attentionState.targetEl);
     // Recompute attention element position on property changes
     recompute(this.attentionState);
   }
