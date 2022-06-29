@@ -129,7 +129,7 @@ class FabricAttention extends FabricElement {
       targetEl: this._targetEl,
       noArrow: this._noArrow,
     };
-    console.log(this.attentionState.targetEl);
+
     // Recompute attention element position on property changes
     recompute(this.attentionState);
   }
