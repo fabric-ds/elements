@@ -61,6 +61,9 @@ class FabricAttention extends FabricElement {
       );
     }
 
+    // Fix FOUC effect issues
+    setTimeout(() => this.requestUpdate(), 0);
+
     // Attention of "callout" type should always be used inline
     if (this._isCallout) {
       this.style.position = 'relative';
