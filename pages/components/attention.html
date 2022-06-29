@@ -5,12 +5,51 @@
       <%- include('nav.html'); -%>
       <main slot="content">
         <h1 class="mb-16">Attention</h1>
-
         <h2 class="mt-24 mb-16">Props</h2>
-        <div id="attention-anchor">This is a div</div>
-        <f-attention top show tooltip targetEl="#attention-anchor">
-          <span>No idea whats going on</span>
-        </f-attention>
+        <div class="flex gap-8 flex-wrap mt-16">
+          <button
+            id="tooltipTarget"
+            class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
+          >
+            Click to toggle display of a tooltip element
+          </button>
+          <f-attention placement="top" tooltip targetElId="#tooltipTarget">
+            <span>Tooltip: top is my position</span>
+          </f-attention>
+          <button
+            id="popoverTarget"
+            class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
+          >
+            Click to toggle display of a popover element
+          </button>
+          <f-attention placement="top" popover targetElId="#popoverTarget">
+            <span>Popover: top is my position</span>
+          </f-attention>
+        </div>
+        <div class="flex items-center">
+          <div
+            id="attention-anchor"
+            class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
+          >
+            <p>This is target element to callout attention element</p>
+          </div>
+          <f-attention placement="right" isShowing callout targetElId="#attention-anchor">
+            <span>Callout: I am used inline</span>
+          </f-attention>
+        </div>
+        <script>
+          const tooltipTarget = document.getElementById('tooltipTarget');
+          const popoverTarget = document.getElementById('popoverTarget');
+          const tooltipEl = document.querySelector('[tooltip]');
+          const popoverEl = document.querySelector('[popover]');
+
+          tooltipTarget.addEventListener('click', () => {
+            tooltipEl.isShowing = !tooltipEl.isShowing;
+          });
+          popoverTarget.addEventListener('click', () => {
+            popoverEl.isShowing = !popoverEl.isShowing;
+          });
+        </script>
       </main>
       <%- include('footer.html'); -%>
     </f-docs-template>
