@@ -8,6 +8,7 @@ class ExpandTransition extends FabricElement {
       type: Boolean,
       reflect: true,
     },
+    _removeElement: { type: Boolean, state: true },
   };
 
   constructor() {
@@ -16,23 +17,30 @@ class ExpandTransition extends FabricElement {
     // Initialise fields
     this.show = false;
     this._mounted = false;
+    this._removeElement = this.show ? false : true;
   }
 
   willUpdate() {
-    if (!this._wrapper) return;
-
-    if (!this.show) {
-      collapse(this._wrapper);
+    if (this.show && this._removeElement) {
+      this._removeElement = false;
     }
+  }
+
+  updated() {
+    if (!this._wrapper) return;
 
     // If show is set to `true` by user, animate only after component is mount
     if (this._mounted && this.show) {
       expand(this._wrapper);
     }
-  }
 
-  updated() {
-    this._mounted = true;
+    if (this._mounted && !this.show && !this._removeElement) {
+      collapse(this._wrapper, () => (this._removeElement = true));
+    }
+
+    if (!this._mounted) {
+      this._mounted = true;
+    }
   }
 
   get _wrapper() {
@@ -47,7 +55,7 @@ class ExpandTransition extends FabricElement {
 
   render() {
     return html`<div aria-hidden=${!this.show}>
-      <slot></slot>
+      ${this._removeElement ? html`` : html`<slot></slot>`}
     </div>`;
   }
 }
