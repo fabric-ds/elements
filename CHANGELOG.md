@@ -1,3 +1,10 @@
+# [1.0.0-next.5](https://github.com/fabric-ds/elements/compare/v1.0.0-next.4...v1.0.0-next.5) (2022-07-07)
+
+
+### Bug Fixes
+
+* **expand-transition:** remove collapsed element from DOM ([#86](https://github.com/fabric-ds/elements/issues/86)) ([528618a](https://github.com/fabric-ds/elements/commit/528618adda0a111a30c9108ebbfd13dcdd9d6422))
+
 # [1.0.0-next.4](https://github.com/fabric-ds/elements/compare/v1.0.0-next.3...v1.0.0-next.4) (2022-06-22)
 
 
