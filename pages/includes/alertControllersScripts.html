@@ -3,19 +3,25 @@
     const alertElement = document.getElementById(alertId);
     const controllersWrapperId = `#${alertId}Controllers`;
 
-    document.querySelector(`${controllersWrapperId} > button`).addEventListener('click', () => {
-      alertElement.show = !alertElement.show;
-    });
-    document
-      .querySelectorAll(`${controllersWrapperId} > button:not(:first-child)`)
-      .forEach((el) => {
-        el.addEventListener('click', (event) => {
-          alertElement.variant = event.target.name;
-        });
+    document.querySelectorAll(`${controllersWrapperId} button`).forEach((el) => {
+      el.addEventListener('click', (event) => {
+        alertElement.show = false;
+        const name = event.target.name || 'info';
+
+        // update alert after hide transition ends
+        setTimeout(() => {
+          alertElement.variant = name;
+          alertElement.querySelector(
+            'p',
+          ).innerText = `This is "${name}" variant of the alert element`;
+          alertElement.show = true;
+        }, 500);
       });
+    });
   }
 
-  const alertIds = ['defaultAlert', 'alertWithDescription', 'alertWithLink', 'alertWithButtons'];
-
-  alertIds.forEach((id) => addEventListenersToAlertControllers(id));
+  document.querySelectorAll('.example f-alert').forEach((el) => {
+    const alertId = el.getAttribute('id');
+    addEventListenersToAlertControllers(alertId);
+  });
 </script>
