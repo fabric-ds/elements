@@ -80,57 +80,112 @@
             </tr>
           </tbody>
         </table>
+
         <h2 class="mt-24 mb-16">Visual Options</h2>
-        <div class="flex gap-8 flex-wrap mt-16">
+
+        <h3 class="mt-24 mb-16">Popover</h3>
+        <syntax-highlight>
           <button
-            id="tooltipTarget"
+            id="target"
             class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
+            onclick="toggleIsShowing()"
           >
-            Click to toggle display of a tooltip element
+            Click to toggle a popover on bottom
           </button>
-          <f-attention placement="bottom" tooltip targetElId="#tooltipTarget">
-            <span>Tooltip: bottom is my position</span>
+          <f-attention placement="bottom" popover targetElId="#target">
+            <span>I'm a popover on bottom</span>
           </f-attention>
+        </syntax-highlight>
+        <div class="example">
           <button
             id="popoverTarget"
             class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
           >
-            Click to toggle display of a popover element
+            Click to toggle a popover on bottom
           </button>
-          <f-attention placement="top" popover targetElId="#popoverTarget">
-            <span>Popover: top is my position</span>
+          <f-attention placement="bottom" popover targetElId="#popoverTarget">
+            <span>I'm a popover on bottom</span>
           </f-attention>
         </div>
-        <div class="flex items-center">
-          <div
-            id="defaultAttentionTarget"
-            class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
-          >
-            <p>This is target element to a default attention element</p>
+
+        <h3 class="mt-24 mb-16">Callout</h3>
+        <syntax-highlight>
+          <div class="flex items-center">
+            <div
+              id="target"
+              class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
+            >
+              <p>This is a target to callout attention element</p>
+            </div>
+            <f-attention placement="right" isShowing callout targetElId="#target">
+              <span>Callout on right</span>
+            </f-attention>
           </div>
-          <f-attention placement="right" isShowing targetElId="#defaultAttentionTarget">
-            <span>I am a default attention element</span>
-          </f-attention>
-        </div>
-        <div class="flex items-center">
+        </syntax-highlight>
+        <div class="example flex items-center">
           <div
             id="calloutTarget"
             class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
           >
-            <p>This is target element to callout attention element</p>
+            <p>This is a target to callout attention element</p>
           </div>
           <f-attention placement="right" isShowing callout targetElId="#calloutTarget">
-            <span>Callout: I am used inline</span>
+            <span>Callout on right</span>
           </f-attention>
         </div>
-        <script>
-          const tooltipTarget = document.getElementById('tooltipTarget');
-          const popoverTarget = document.getElementById('popoverTarget');
-          const tooltipEl = document.querySelector('[tooltip]');
-          const popoverEl = document.querySelector('[popover]');
 
-          tooltipTarget.addEventListener('click', () => {
-            tooltipEl.isShowing = !tooltipEl.isShowing;
+        <h3 class="mt-24 mb-16">Tooltip</h3>
+        <syntax-highlight>
+          <button
+            aria-describedby="tooltip"
+            id="target"
+            class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
+          >
+            Hover or focus to show a tooltip on top
+          </button>
+          <f-attention placement="top" tooltip targetElId="#tooltipTarget">
+            <span id="tooltip" role="tooltip">I'm a tooltip on top</span>
+          </f-attention>
+        </syntax-highlight>
+        <div class="example">
+          <button
+            aria-describedby="tooltip"
+            id="tooltipTarget"
+            class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
+          >
+            Hover or focus to show a tooltip on top
+          </button>
+          <f-attention placement="top" tooltip targetElId="#tooltipTarget">
+            <span id="tooltip" role="tooltip">I'm a tooltip on top</span>
+          </f-attention>
+        </div>
+
+        <h2 class="mt-24 mb-16">Accessibility</h2>
+        <p>
+          For assistive technologies to read contents of the displayed Attention element, set
+          `role="tooltip"` on the relevant text element nested in `f-attention`. Elements with the
+          tooltip role should be referenced through the use of `aria-describedby` before or when the
+          tooltip is displayed. The `aria-describedby` attribute is on the target element, not on
+          the Attention.
+        </p>
+
+        <script>
+          const tooltipTarget = document.querySelector('.example #tooltipTarget');
+          const popoverTarget = document.querySelector('.example #popoverTarget');
+          const tooltipEl = document.querySelector('.example [tooltip]');
+          const popoverEl = document.querySelector('.example [popover]');
+
+          tooltipTarget.addEventListener('mouseenter', () => {
+            tooltipEl.isShowing = true;
+          });
+          tooltipTarget.addEventListener('mouseleave', () => {
+            tooltipEl.isShowing = false;
+          });
+          tooltipTarget.addEventListener('focus', () => {
+            tooltipEl.isShowing = true;
+          });
+          tooltipTarget.addEventListener('blur', () => {
+            tooltipEl.isShowing = false;
           });
           popoverTarget.addEventListener('click', () => {
             popoverEl.isShowing = !popoverEl.isShowing;

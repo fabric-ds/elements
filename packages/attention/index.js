@@ -156,21 +156,20 @@ class FabricAttention extends FabricElement {
   render() {
     return html`
       ${this._fabricStylesheet}
-      <div class="">
-        <div class="${this._wrapperClasses}">
-          ${this._noArrow
-            ? ''
-            : html` <div
-                id="arrow"
-                class="${this._arrowClasses}"
-                style="transform:rotate(${rotation[this._arrowDirection]}deg); 
+
+      <div class="${this._wrapperClasses}">
+        ${this._noArrow
+          ? ''
+          : html` <div
+              id="arrow"
+              class="${this._arrowClasses}"
+              style="transform:rotate(${rotation[this._arrowDirection]}deg); 
                 margin-${
-                  // border alignment is off by a fraction of a pixel, this fixes it
-                  this._arrowDirection.charAt(0).toLowerCase() + this._arrowDirection.slice(1)
-                }:-0.5px;"
-              />`}
-          <slot></slot>
-        </div>
+                // border alignment is off by a fraction of a pixel, this fixes it
+                this._arrowDirection.charAt(0).toLowerCase() + this._arrowDirection.slice(1)
+              }:-0.5px;"
+            />`}
+        <slot></slot>
       </div>
     `;
   }
