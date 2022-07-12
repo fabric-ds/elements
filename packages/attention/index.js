@@ -1,12 +1,12 @@
 import { css, html } from 'lit';
-import { FabricElement, classes } from '../utils';
+import { FabricElement, classes, kebabCaseAttributes } from '../utils';
 import { attention as c } from '@fabric-ds/css/component-classes';
 import { opposites, rotation, useRecompute as recompute } from '@fabric-ds/core/attention';
 
-class FabricAttention extends FabricElement {
+class FabricAttention extends kebabCaseAttributes(FabricElement) {
   static properties = {
-    // Whether Attention element is shown
-    isShowing: { type: Boolean, reflect: true },
+    // Whether Attention element should be visible.
+    show: { type: Boolean, reflect: true },
     // Placement according to the target element
     // Arrow would be on the opposite side of this position
     placement: { type: String },
@@ -43,7 +43,7 @@ class FabricAttention extends FabricElement {
   constructor() {
     super();
 
-    this.isShowing = false;
+    this.show = false;
     this.tooltip = false;
     this.callout = false;
     this.popover = false;
@@ -71,7 +71,7 @@ class FabricAttention extends FabricElement {
   }
 
   get _isShowing() {
-    return this.isShowing;
+    return this.show;
   }
 
   get _isCallout() {

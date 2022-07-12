@@ -16,10 +16,10 @@
           </thead>
           <tbody class="align-top">
             <tr>
-              <td>isShowing</td>
+              <td>show</td>
               <td>
                 <div>boolean</div>
-                <div class="annotation">Whether Attention element is shown.</div>
+                <div class="annotation">Whether Attention element should be visible.</div>
               </td>
               <td>false</td>
             </tr>
@@ -35,7 +35,7 @@
               <td>-</td>
             </tr>
             <tr>
-              <td>targetSelector *</td>
+              <td>target-selector *</td>
               <td>
                 <div>string</div>
                 <div class="annotation">
@@ -71,7 +71,7 @@
               <td>false</td>
             </tr>
             <tr>
-              <td>noArrow</td>
+              <td>no-arrow</td>
               <td>
                 <div>boolean</div>
                 <div class="annotation">Render Attention element without an arrow.</div>
@@ -88,11 +88,11 @@
           <button
             id="target"
             class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
-            onclick="toggleIsShowing()"
+            onclick="toggleShow()"
           >
             Click to toggle a popover on bottom
           </button>
-          <f-attention placement="bottom" popover targetSelector="#target">
+          <f-attention placement="bottom" popover target-selector="#target">
             <span>I'm a popover on bottom</span>
           </f-attention>
         </syntax-highlight>
@@ -103,7 +103,7 @@
           >
             Click to toggle a popover on bottom
           </button>
-          <f-attention placement="bottom" popover targetSelector="#popoverTarget">
+          <f-attention placement="bottom" popover target-selector="#popoverTarget">
             <span>I'm a popover on bottom</span>
           </f-attention>
         </div>
@@ -117,7 +117,7 @@
             >
               <p>This is a target to callout attention element</p>
             </div>
-            <f-attention placement="right" isShowing callout targetSelector="#target">
+            <f-attention placement="right" show callout target-selector="#target">
               <span>Callout on right</span>
             </f-attention>
           </div>
@@ -129,7 +129,7 @@
           >
             <p>This is a target to callout attention element</p>
           </div>
-          <f-attention placement="right" isShowing callout targetSelector="#calloutTarget">
+          <f-attention placement="right" show callout target-selector="#calloutTarget">
             <span>Callout on right</span>
           </f-attention>
         </div>
@@ -143,7 +143,7 @@
           >
             Hover or focus to show a tooltip on top
           </button>
-          <f-attention placement="top" tooltip targetSelector="#tooltipTarget">
+          <f-attention placement="top" tooltip target-selector="#tooltipTarget">
             <span id="tooltip" role="tooltip">I'm a tooltip on top</span>
           </f-attention>
         </syntax-highlight>
@@ -155,7 +155,7 @@
           >
             Hover or focus to show a tooltip on top
           </button>
-          <f-attention placement="top" tooltip targetSelector="#tooltipTarget">
+          <f-attention placement="top" tooltip target-selector="#tooltipTarget">
             <span id="tooltip" role="tooltip">I'm a tooltip on top</span>
           </f-attention>
         </div>
@@ -176,19 +176,19 @@
           const popoverEl = document.querySelector('.example [popover]');
 
           tooltipTarget.addEventListener('mouseenter', () => {
-            tooltipEl.isShowing = true;
+            tooltipEl.show = true;
           });
           tooltipTarget.addEventListener('mouseleave', () => {
-            tooltipEl.isShowing = false;
+            tooltipEl.show = false;
           });
           tooltipTarget.addEventListener('focus', () => {
-            tooltipEl.isShowing = true;
+            tooltipEl.show = true;
           });
           tooltipTarget.addEventListener('blur', () => {
-            tooltipEl.isShowing = false;
+            tooltipEl.show = false;
           });
           popoverTarget.addEventListener('click', () => {
-            popoverEl.isShowing = !popoverEl.isShowing;
+            popoverEl.show = !popoverEl.show;
           });
         </script>
       </main>

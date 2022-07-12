@@ -45,13 +45,13 @@ test('Attention component with no attributes is rendered on the page', async (t)
     '<p>This is an attention</p>',
     'HTML should be rendered',
   );
-  t.equal(await locator.getAttribute('callout'), null, 'Callout attribute should be null');
+  t.equal(await locator.getAttribute('callout'), null, '"callout" attribute should be null');
   t.equal(
     await locator.evaluate((el) => el.callout),
     false,
     '"callout" property should default to false',
   );
-  t.equal(await locator.getAttribute('popover'), null, 'Popover attribute should be null');
+  t.equal(await locator.getAttribute('popover'), null, '"popover" attribute should be null');
   t.equal(
     await locator.evaluate((el) => el.popover),
     false,
@@ -62,15 +62,16 @@ test('Attention component with no attributes is rendered on the page', async (t)
     false,
     '"tooltip" property should default to false',
   );
+  t.equal(await locator.getAttribute('no-arrow'), null, '"no-arrow" attribute should be null');
   t.equal(
     await locator.evaluate((el) => el.noArrow),
     false,
     '"noArrow" property should default to false',
   );
   t.equal(
-    await locator.evaluate((el) => el.isShowing),
+    await locator.evaluate((el) => el.show),
     false,
-    '"isShowing" property should default to false',
+    '"show" property should default to false',
   );
 
   t.equal(
@@ -114,7 +115,7 @@ test('Attention component with invalid "position" attribute is rendered on the p
   page.removeListener('pageerror', registerErrorLogs);
 });
 
-test('Bottom placed tooltip attention component with isShowing attribute is rendered on the page', async (t) => {
+test('Bottom placed tooltip attention component with show attribute is rendered on the page', async (t) => {
   const component = `
     <div>
       <div
@@ -123,7 +124,7 @@ test('Bottom placed tooltip attention component with isShowing attribute is rend
       >
         Target element to tooltip attention
       </div>
-      <f-attention placement="bottom" isShowing tooltip targetSelector="#tooltipTarget">
+      <f-attention placement="bottom" show tooltip target-selector="#tooltipTarget">
         <p>This is a tooltip that should be visible on bottom</p>
       </f-attention>
     </div>
@@ -153,17 +154,13 @@ test('Bottom placed tooltip attention component with isShowing attribute is rend
     '"placement" property should be "bottom"',
   );
   t.equal(await locator.evaluate((el) => el.tooltip), true, '"tooltip" property should be true');
-  t.equal(
-    await locator.evaluate((el) => el.isShowing),
-    true,
-    '"isShowing" property should be true',
-  );
+  t.equal(await locator.evaluate((el) => el.show), true, '"show" property should be true');
   t.equal(errorLogs.length, 0, 'No errors should be thrown in the console');
 
   page.removeListener('pageerror', registerErrorLogs);
 });
 
-test('Right placed callout attention component with isShowing attribute is rendered on the page', async (t) => {
+test('Right placed callout attention component with show attribute is rendered on the page', async (t) => {
   const component = `
     <div class="flex items-center">
       <div
@@ -172,7 +169,7 @@ test('Right placed callout attention component with isShowing attribute is rende
       >
         Target element to callout attention
       </div>
-      <f-attention placement="right" isShowing callout targetSelector="#calloutTarget">
+      <f-attention placement="right" show callout target-selector="#calloutTarget">
         <p>This is a callout that should be visible on right</p>
       </f-attention>
     </div>
