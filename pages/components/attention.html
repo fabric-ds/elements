@@ -35,11 +35,11 @@
               <td>-</td>
             </tr>
             <tr>
-              <td>targetElId *</td>
+              <td>targetSelector *</td>
               <td>
                 <div>string</div>
                 <div class="annotation">
-                  The id of element that the Attention component is rendered relatively to.
+                  Selector of element that the Attention component is rendered relatively to.
                 </div>
               </td>
               <td>-</td>
@@ -92,7 +92,7 @@
           >
             Click to toggle a popover on bottom
           </button>
-          <f-attention placement="bottom" popover targetElId="#target">
+          <f-attention placement="bottom" popover targetSelector="#target">
             <span>I'm a popover on bottom</span>
           </f-attention>
         </syntax-highlight>
@@ -103,7 +103,7 @@
           >
             Click to toggle a popover on bottom
           </button>
-          <f-attention placement="bottom" popover targetElId="#popoverTarget">
+          <f-attention placement="bottom" popover targetSelector="#popoverTarget">
             <span>I'm a popover on bottom</span>
           </f-attention>
         </div>
@@ -117,7 +117,7 @@
             >
               <p>This is a target to callout attention element</p>
             </div>
-            <f-attention placement="right" isShowing callout targetElId="#target">
+            <f-attention placement="right" isShowing callout targetSelector="#target">
               <span>Callout on right</span>
             </f-attention>
           </div>
@@ -129,7 +129,7 @@
           >
             <p>This is a target to callout attention element</p>
           </div>
-          <f-attention placement="right" isShowing callout targetElId="#calloutTarget">
+          <f-attention placement="right" isShowing callout targetSelector="#calloutTarget">
             <span>Callout on right</span>
           </f-attention>
         </div>
@@ -143,7 +143,7 @@
           >
             Hover or focus to show a tooltip on top
           </button>
-          <f-attention placement="top" tooltip targetElId="#tooltipTarget">
+          <f-attention placement="top" tooltip targetSelector="#tooltipTarget">
             <span id="tooltip" role="tooltip">I'm a tooltip on top</span>
           </f-attention>
         </syntax-highlight>
@@ -155,7 +155,7 @@
           >
             Hover or focus to show a tooltip on top
           </button>
-          <f-attention placement="top" tooltip targetElId="#tooltipTarget">
+          <f-attention placement="top" tooltip targetSelector="#tooltipTarget">
             <span id="tooltip" role="tooltip">I'm a tooltip on top</span>
           </f-attention>
         </div>
@@ -166,7 +166,7 @@
           `role="tooltip"` on the relevant text element nested in `f-attention`. Elements with the
           tooltip role should be referenced through the use of `aria-describedby` before or when the
           tooltip is displayed. The `aria-describedby` attribute is on the target element, not on
-          the Attention.
+          `f-attention`.
         </p>
 
         <script>

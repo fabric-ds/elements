@@ -10,8 +10,8 @@ class FabricAttention extends FabricElement {
     // Placement according to the target element
     // Arrow would be on the opposite side of this position
     placement: { type: String },
-    // The id of element that the Attention component is rendered relatively to
-    targetElId: { type: String },
+    // Selector of element that the Attention component is rendered relatively to
+    targetSelector: { type: String },
     // Whether Attention element is rendered as a tooltip
     tooltip: { type: Boolean, reflect: true },
     // Whether Attention element is rendered as an inline callout
@@ -99,7 +99,7 @@ class FabricAttention extends FabricElement {
   }
 
   get _targetEl() {
-    return document.querySelector(this.targetElId);
+    return document.querySelector(this.targetSelector);
   }
 
   get _noArrow() {
