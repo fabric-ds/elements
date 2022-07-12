@@ -65,17 +65,9 @@ class FabricAttention extends kebabCaseAttributes(FabricElement) {
     setTimeout(() => this.requestUpdate(), 0);
 
     // Attention of "callout" type should always be used inline
-    if (this._isCallout) {
+    if (this.callout) {
       this.style.position = 'relative';
     }
-  }
-
-  get _isShowing() {
-    return this.show;
-  }
-
-  get _isCallout() {
-    return this.callout;
   }
 
   get _actualDirection() {
@@ -86,48 +78,28 @@ class FabricAttention extends kebabCaseAttributes(FabricElement) {
     this.placement = v;
   }
 
-  get _directionName() {
-    return this.placement;
-  }
-
-  get _arrowEl() {
-    return this.renderRoot.querySelector('#arrow');
-  }
-
-  get _attentionEl() {
-    return this;
-  }
-
-  get _targetEl() {
-    return document.querySelector(this.targetSelector);
-  }
-
-  get _noArrow() {
-    return this.noArrow;
-  }
-
   get _arrowDirection() {
     return opposites[this.placement];
   }
 
   updated() {
-    if (!this._isCallout) {
-      this.style.setProperty('--attention-visibility', this._isShowing ? '' : 'hidden');
+    if (!this.callout) {
+      this.style.setProperty('--attention-visibility', this.show ? '' : 'hidden');
     }
 
     if (!this.tooltip) {
-      this.style.setProperty('--attention-display', this._isShowing ? 'block' : 'none');
+      this.style.setProperty('--attention-display', this.show ? 'block' : 'none');
     }
 
     this.attentionState = {
-      isShowing: this._isShowing,
-      isCallout: this._isCallout,
+      isShowing: this.show,
+      isCallout: this.callout,
       actualDirection: this._actualDirection,
-      directionName: this._directionName,
-      arrowEl: this._arrowEl,
-      attentionEl: this._attentionEl,
-      targetEl: this._targetEl,
-      noArrow: this._noArrow,
+      directionName: this.placement,
+      arrowEl: this.renderRoot.querySelector('#arrow'),
+      attentionEl: this,
+      targetEl: document.querySelector(this.targetSelector),
+      noArrow: this.noArrow,
     };
 
     // Recompute attention element position on property changes
@@ -158,7 +130,7 @@ class FabricAttention extends kebabCaseAttributes(FabricElement) {
       ${this._fabricStylesheet}
 
       <div class="${this._wrapperClasses}">
-        ${this._noArrow
+        ${this.noArrow
           ? ''
           : html` <div
               id="arrow"

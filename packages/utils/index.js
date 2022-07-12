@@ -16,7 +16,6 @@ export function kebabCaseAttributes(constructor) {
         });
       }
 
-      // @ts-ignore
       super.createProperty(name, customOptions);
     }
   };
