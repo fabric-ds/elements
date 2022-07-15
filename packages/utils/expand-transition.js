@@ -26,6 +26,10 @@ class ExpandTransition extends FabricElement {
     }
   }
 
+  firstUpdated() {
+    this._mounted = true;
+  }
+
   updated() {
     if (!this._wrapper) return;
 
@@ -36,10 +40,6 @@ class ExpandTransition extends FabricElement {
 
     if (this._mounted && !this.show && !this._removeElement) {
       collapse(this._wrapper, () => (this._removeElement = true));
-    }
-
-    if (!this._mounted) {
-      this._mounted = true;
     }
   }
 
