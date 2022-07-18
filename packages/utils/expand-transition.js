@@ -1,6 +1,7 @@
 import { css, html } from 'lit';
 import { collapse, expand } from 'element-collapse';
 import { FabricElement } from '.';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 class ExpandTransition extends FabricElement {
   static properties = {
@@ -54,7 +55,7 @@ class ExpandTransition extends FabricElement {
   `;
 
   render() {
-    return html`<div aria-hidden=${!this.show}>
+    return html`<div aria-hidden=${ifDefined(!this.show ? 'true' : undefined)}>
       ${this._removeElement ? html`` : html`<slot></slot>`}
     </div>`;
   }
