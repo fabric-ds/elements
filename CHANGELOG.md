@@ -1,3 +1,10 @@
+# [1.0.0-next.6](https://github.com/fabric-ds/elements/compare/v1.0.0-next.5...v1.0.0-next.6) (2022-07-21)
+
+
+### Bug Fixes
+
+* **expand-transition:** don't set aria-hidden if value is false ([#90](https://github.com/fabric-ds/elements/issues/90)) ([7808f5d](https://github.com/fabric-ds/elements/commit/7808f5df32f3fcac90c4e93671a4fcd243ec269b))
+
 # [1.0.0-next.5](https://github.com/fabric-ds/elements/compare/v1.0.0-next.4...v1.0.0-next.5) (2022-07-07)
 
 
