@@ -139,8 +139,8 @@ test('Negative alert component with show attribute is rendered on the page', asy
     await page.evaluate(
       'document.querySelector("f-alert").renderRoot.querySelector("f-expand-transition").renderRoot.querySelector("div").getAttribute("aria-hidden")',
     ),
-    'false',
-    'Aria-hidden attribute is `false`',
+    null,
+    'Aria-hidden attribute is missing',
   );
 
   page.removeListener('pageerror', registerErrorLogs);
