@@ -76,15 +76,13 @@
 
         <h2 class="mt-24 mb-16">Visual Options</h2>
 
-        <h3>Default</h3>
+        <h3>Variants</h3>
 
         <syntax-highlight>
-          <div class="flex gap-8 flex-wrap mt-16">
-            <f-button variant="primary">Primary button</f-button>
-            <f-button>Secondary button</f-button>
-            <f-button variant="negative">Negative button</f-button>
-            <f-button variant="utility">Utility button</f-button>
-          </div>
+          <f-button variant="primary">Primary button</f-button>
+          <f-button>Secondary button</f-button>
+          <f-button variant="negative">Negative button</f-button>
+          <f-button variant="utility">Utility button</f-button>
           <f-button variant="link">Link button</f-button>
           <f-button variant="pill">Pill button</f-button>
         </syntax-highlight>
@@ -102,17 +100,13 @@
         <h3>Small</h3>
 
         <syntax-highlight>
-          <div class="example">
-            <div class="flex gap-8 flex-wrap mb-16">
-              <f-button variant="primary" small>Primary button</f-button>
-              <f-button small>Secondary button</f-button>
-              <f-button variant="negative" small>Negative button</f-button>
-              <f-button variant="utility" small>Utility button</f-button>
-            </div>
-            <f-button variant="link" small>Link button</f-button>
-            <f-button variant="pill" small>Pill button</f-button>
-          </div></syntax-highlight
-        >
+          <f-button variant="primary" small>Primary button</f-button>
+          <f-button small>Secondary button</f-button>
+          <f-button variant="negative" small>Negative button</f-button>
+          <f-button variant="utility" small>Utility button</f-button>
+          <f-button variant="link" small>Link button</f-button>
+          <f-button variant="pill" small>Pill button</f-button>
+        </syntax-highlight>
         <div class="example">
           <div class="flex gap-8 flex-wrap mb-16">
             <f-button variant="primary" small>Primary button</f-button>
@@ -126,14 +120,10 @@
 
         <h3>Quiet</h3>
 
-        <syntax-highlight
-          ><div class="example">
-            <div class="flex gap-8 flex-wrap mb-16">
-              <f-button quiet>Secondary button</f-button>
-              <f-button variant="negative" quiet>Negative button</f-button>
-            </div>
-          </div></syntax-highlight
-        >
+        <syntax-highlight>
+          <f-button quiet>Secondary button</f-button>
+          <f-button variant="negative" quiet>Negative button</f-button>
+        </syntax-highlight>
         <div class="example">
           <div class="flex gap-8 flex-wrap mb-16">
             <f-button quiet>Secondary button</f-button>
@@ -143,14 +133,10 @@
 
         <h3>Small & Quiet</h3>
 
-        <syntax-highlight
-          ><div class="example">
-            <div class="flex gap-8 flex-wrap mb-16">
-              <f-button small quiet>Secondary button</f-button>
-              <f-button variant="negative" small quiet>Negative button</f-button>
-            </div>
-          </div></syntax-highlight
-        >
+        <syntax-highlight>
+          <f-button small quiet>Secondary button</f-button>
+          <f-button variant="negative" small quiet>Negative button</f-button>
+        </syntax-highlight>
         <div class="example">
           <div class="flex gap-8 flex-wrap mb-16">
             <f-button small quiet>Secondary button</f-button>
@@ -158,20 +144,26 @@
           </div>
         </div>
 
+        <h3>Link</h3>
+        <p>Buttons will be rendered as an anchor (a tag) if they use an href attribute.</p>
+
+        <syntax-highlight>
+          <f-button href="https://google.no">Secondary button</f-button>
+        </syntax-highlight>
+        <div class="example">
+          <f-button href="https://google.no">Secondary button</f-button>
+        </div>
+
         <h3>Loading state</h3>
 
-        <syntax-highlight
-          ><div class="example">
-            <div class="flex gap-8 flex-wrap mb-16">
-              <f-button variant="primary" loading>Primary button</f-button>
-              <f-button loading>Secondary button</f-button>
-              <f-button variant="negative" loading>Negative button</f-button>
-              <f-button variant="utility" loading>Utility button</f-button>
-            </div>
-            <f-button variant="link" loading>Link button</f-button>
-            <f-button variant="pill" loading>Pill button</f-button>
-          </div></syntax-highlight
-        >
+        <syntax-highlight>
+          <f-button variant="primary" loading>Primary button</f-button>
+          <f-button loading>Secondary button</f-button>
+          <f-button variant="negative" loading>Negative button</f-button>
+          <f-button variant="utility" loading>Utility button</f-button>
+          <f-button variant="link" loading>Link button</f-button>
+          <f-button variant="pill" loading>Pill button</f-button>
+        </syntax-highlight>
         <div class="example">
           <div class="flex gap-8 flex-wrap mb-16">
             <f-button variant="primary" loading>Primary button</f-button>
@@ -182,6 +174,20 @@
           <f-button variant="link" loading>Link button</f-button>
           <f-button variant="pill" loading>Pill button</f-button>
         </div>
+
+        <h3>Disabled state</h3>
+
+        <p>
+          Disabled is an anti-pattern and is not supported. There will ALWAYS be users who don't
+          understand why an element is disabled, or users who can't even see that it is disabled
+          because of poor lighting conditions or other reasons.
+        </p>
+
+        <h2>Accessibility</h2>
+        <p>
+          If the button doesn't have visible text content, such as when used with only an icon, an
+          <code>aria-label</code> prop must be provided for accessibility.
+        </p>
       </main>
       <%- include('footer.html'); -%>
     </f-docs-template>
