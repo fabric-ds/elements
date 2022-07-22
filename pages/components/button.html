@@ -1,0 +1,190 @@
+<html lang="en">
+  <%- include('head.html'); -%>
+  <body>
+    <f-docs-template>
+      <%- include('nav.html'); -%>
+      <main slot="content">
+        <h1 class="mb-16">Button</h1>
+        <p>Buttons are used to perform actions, with different visuals for different needs.</p>
+
+        <h2 class="mt-24 mb-16">Props</h2>
+        <table class="w-full docs-table">
+          <thead>
+            <tr class="text-left text-gray-400 uppercase">
+              <th>prop</th>
+              <th>type</th>
+              <th>default</th>
+            </tr>
+          </thead>
+          <tbody class="align-top">
+            <tr>
+              <td>type</td>
+              <td>
+                <div>"button" | "submit" | "reset"</div>
+                <div>Button type, only applied when href is not set.</div>
+              </td>
+              <td>"button"</td>
+            </tr>
+            <tr>
+              <td>variant</td>
+              <td>"primary" | "secondary" | "negative" | "utility" | "link" | "pill"</td>
+              <td>"secondary"</td>
+            </tr>
+            <tr>
+              <td>quiet</td>
+              <td>boolean</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>small</td>
+              <td>boolean</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>loading</td>
+              <td>boolean</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>href</td>
+              <td>
+                <div>string</div>
+                <div>Set the href for the location where clicking the button will take you to.</div>
+              </td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>target</td>
+              <td>
+                <div>string</div>
+                <div>
+                  Anchor target, see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a.
+                </div>
+              </td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>rel</td>
+              <td>
+                <div>string</div>
+                <div>The relationship of the linked URL.</div>
+              </td>
+              <td>"noopener"</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 class="mt-24 mb-16">Visual Options</h2>
+
+        <h3>Default</h3>
+
+        <syntax-highlight>
+          <div class="flex gap-8 flex-wrap mt-16">
+            <f-button variant="primary">Primary button</f-button>
+            <f-button>Secondary button</f-button>
+            <f-button variant="negative">Negative button</f-button>
+            <f-button variant="utility">Utility button</f-button>
+          </div>
+          <f-button variant="link">Link button</f-button>
+          <f-button variant="pill">Pill button</f-button>
+        </syntax-highlight>
+        <div class="example">
+          <div class="flex gap-8 flex-wrap mb-16">
+            <f-button variant="primary">Primary button</f-button>
+            <f-button>Secondary button</f-button>
+            <f-button variant="negative">Negative button</f-button>
+            <f-button variant="utility">Utility button</f-button>
+          </div>
+          <f-button variant="link">Link button</f-button>
+          <f-button variant="pill">Pill button</f-button>
+        </div>
+
+        <h3>Small</h3>
+
+        <syntax-highlight>
+          <div class="example">
+            <div class="flex gap-8 flex-wrap mb-16">
+              <f-button variant="primary" small>Primary button</f-button>
+              <f-button small>Secondary button</f-button>
+              <f-button variant="negative" small>Negative button</f-button>
+              <f-button variant="utility" small>Utility button</f-button>
+            </div>
+            <f-button variant="link" small>Link button</f-button>
+            <f-button variant="pill" small>Pill button</f-button>
+          </div></syntax-highlight
+        >
+        <div class="example">
+          <div class="flex gap-8 flex-wrap mb-16">
+            <f-button variant="primary" small>Primary button</f-button>
+            <f-button small>Secondary button</f-button>
+            <f-button variant="negative" small>Negative button</f-button>
+            <f-button variant="utility" small>Utility button</f-button>
+          </div>
+          <f-button variant="link" small>Link button</f-button>
+          <f-button variant="pill" small>Pill button</f-button>
+        </div>
+
+        <h3>Quiet</h3>
+
+        <syntax-highlight
+          ><div class="example">
+            <div class="flex gap-8 flex-wrap mb-16">
+              <f-button quiet>Secondary button</f-button>
+              <f-button variant="negative" quiet>Negative button</f-button>
+            </div>
+          </div></syntax-highlight
+        >
+        <div class="example">
+          <div class="flex gap-8 flex-wrap mb-16">
+            <f-button quiet>Secondary button</f-button>
+            <f-button variant="negative" quiet>Negative button</f-button>
+          </div>
+        </div>
+
+        <h3>Small & Quiet</h3>
+
+        <syntax-highlight
+          ><div class="example">
+            <div class="flex gap-8 flex-wrap mb-16">
+              <f-button small quiet>Secondary button</f-button>
+              <f-button variant="negative" small quiet>Negative button</f-button>
+            </div>
+          </div></syntax-highlight
+        >
+        <div class="example">
+          <div class="flex gap-8 flex-wrap mb-16">
+            <f-button small quiet>Secondary button</f-button>
+            <f-button variant="negative" small quiet>Negative button</f-button>
+          </div>
+        </div>
+
+        <h3>Loading state</h3>
+
+        <syntax-highlight
+          ><div class="example">
+            <div class="flex gap-8 flex-wrap mb-16">
+              <f-button variant="primary" loading>Primary button</f-button>
+              <f-button loading>Secondary button</f-button>
+              <f-button variant="negative" loading>Negative button</f-button>
+              <f-button variant="utility" loading>Utility button</f-button>
+            </div>
+            <f-button variant="link" loading>Link button</f-button>
+            <f-button variant="pill" loading>Pill button</f-button>
+          </div></syntax-highlight
+        >
+        <div class="example">
+          <div class="flex gap-8 flex-wrap mb-16">
+            <f-button variant="primary" loading>Primary button</f-button>
+            <f-button loading>Secondary button</f-button>
+            <f-button variant="negative" loading>Negative button</f-button>
+            <f-button variant="utility" loading>Utility button</f-button>
+          </div>
+          <f-button variant="link" loading>Link button</f-button>
+          <f-button variant="pill" loading>Pill button</f-button>
+        </div>
+      </main>
+      <%- include('footer.html'); -%>
+    </f-docs-template>
+    <%- include('scripts.html'); -%>
+  </body>
+</html>

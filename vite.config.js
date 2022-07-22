@@ -33,8 +33,8 @@ export default ({ mode }) => {
 
   const injectOptions = {
     ejsOptions: {
-      views: ['pages/includes']
-    }
+      views: ['pages/includes'],
+    },
   };
 
   return {
@@ -44,6 +44,11 @@ export default ({ mode }) => {
       createHtmlPlugin({
         minify: false,
         pages: [
+          {
+            filename: 'button.html',
+            template: 'pages/components/button.html',
+            injectOptions,
+          },
           {
             filename: 'alert.html',
             template: 'pages/components/alert.html',
