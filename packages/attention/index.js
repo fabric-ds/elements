@@ -130,25 +130,30 @@ class FabricAttention extends kebabCaseAttributes(FabricElement) {
     });
   }
 
+  get _arrowHtml() {
+    return this.noArrow
+      ? ''
+      : html`<div
+          id="arrow"
+          role="img"
+          aria-label=${arrowLabels[this._arrowDirection]}
+          class="${this._arrowClasses}"
+          style="transform:rotate(${rotation[this._arrowDirection]}deg);
+          margin-${
+            // border alignment is off by a fraction of a pixel, this fixes it
+            this._arrowDirection.charAt(0).toLowerCase() + this._arrowDirection.slice(1)
+          }:-0.5px;"
+        />`;
+  }
+
   render() {
     return html`
       ${this._fabricStylesheet}
 
       <div class="${this._wrapperClasses}">
-        ${this.noArrow
-          ? ''
-          : html`<div
-              id="arrow"
-              role="img"
-              aria-label=${arrowLabels[this._arrowDirection]}
-              class="${this._arrowClasses}"
-              style="transform:rotate(${rotation[this._arrowDirection]}deg); 
-                margin-${
-                // border alignment is off by a fraction of a pixel, this fixes it
-                this._arrowDirection.charAt(0).toLowerCase() + this._arrowDirection.slice(1)
-              }:-0.5px;"
-            />`}
-        <slot></slot>
+        ${this._arrowDirection === 'left' || this._arrowDirection === 'top'
+          ? html`${this._arrowHtml} <slot></slot>` // Arrow's visual position should be reflected in the DOM respectively
+          : html`<slot></slot>${this._arrowHtml} `}
       </div>
     `;
   }
