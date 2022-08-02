@@ -8,6 +8,8 @@ import {
   useRecompute as recompute,
 } from '@fabric-ds/core/attention';
 
+const tooltipWrapperId = 'tooltipContent';
+
 class FabricAttention extends kebabCaseAttributes(FabricElement) {
   static properties = {
     // Whether Attention element should be visible.
@@ -103,12 +105,27 @@ class FabricAttention extends kebabCaseAttributes(FabricElement) {
       directionName: this.placement,
       arrowEl: this.renderRoot.querySelector('#arrow'),
       attentionEl: this,
-      targetEl: document.querySelector(this.targetSelector),
+      targetEl: this._targetEl,
       noArrow: this.noArrow,
     };
 
     // Recompute attention element position on property changes
     recompute(this.attentionState);
+  }
+
+  setAriaLabels() {
+    if (!this._targetEl.getAttribute('aria-describedby')) {
+      this._targetEl.setAttribute('aria-describedby', tooltipWrapperId);
+      this.shadowRoot.getElementById(tooltipWrapperId).setAttribute('role', 'tooltip');
+    }
+  }
+
+  firstUpdated() {
+    this.setAriaLabels();
+  }
+
+  get _targetEl() {
+    return document.querySelector(this.targetSelector);
   }
 
   get _wrapperClasses() {
@@ -146,14 +163,20 @@ class FabricAttention extends kebabCaseAttributes(FabricElement) {
         />`;
   }
 
+  get _content() {
+    return html`<div id=${tooltipWrapperId}><slot></slot></div>`;
+  }
+
   render() {
     return html`
       ${this._fabricStylesheet}
 
       <div class="${this._wrapperClasses}">
-        ${this._arrowDirection === 'left' || this._arrowDirection === 'top'
-          ? html`${this._arrowHtml} <slot></slot>` // Arrow's visual position should be reflected in the DOM respectively
-          : html`<slot></slot>${this._arrowHtml} `}
+        <div>
+          ${this._arrowDirection === 'left' || this._arrowDirection === 'top'
+            ? html`${this._arrowHtml}${this._content}` // Arrow's visual position should be reflected in the DOM respectively
+            : html`${this._content}${this._arrowHtml}`}
+        </div>
       </div>
     `;
   }

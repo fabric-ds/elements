@@ -136,28 +136,26 @@
 
         <h3 class="mt-24 mb-16">Tooltip</h3>
         <syntax-highlight>
-          <f-attention placement="top" tooltip target-selector="#tooltipTarget">
-            <span id="tooltip" role="tooltip">I'm a tooltip on top</span>
-          </f-attention>
           <button
-            aria-describedby="tooltip"
             id="target"
             class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
           >
-            Hover or focus to show a tooltip on top
+            Hover or focus to show a tooltip on right
           </button>
+          <f-attention placement="right" tooltip target-selector="#target">
+            <span>I'm a tooltip on right</span>
+          </f-attention>
         </syntax-highlight>
         <div class="example">
-          <f-attention placement="top" tooltip target-selector="#tooltipTarget">
-            <span id="tooltip" role="tooltip">I'm a tooltip on top</span>
-          </f-attention>
           <button
-            aria-describedby="tooltip"
             id="tooltipTarget"
             class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
           >
-            Hover or focus to show a tooltip on top
+            Hover or focus to show a tooltip on right
           </button>
+          <f-attention placement="right" tooltip target-selector="#tooltipTarget">
+            <span>I'm a tooltip on right</span>
+          </f-attention>
         </div>
 
         <h2 class="mt-24 mb-16">Accessibility</h2>
@@ -166,18 +164,52 @@
           target element in the DOM.
         </p>
         <p>
-          For assistive technologies to read contents of the displayed Attention element, set
-          `role="tooltip"` on the relevant text element nested in `f-attention`. Elements with the
-          tooltip role should be referenced through the use of `aria-describedby` before or when the
-          tooltip is displayed. The `aria-describedby` attribute is on the target element, not on
-          `f-attention`.
+          Attention element handles accessibility automatically by wrapping its slotted content with
+          a <code>div</code> with <code>role="tooltip"</code>, and setting an
+          <code>aria-describedby</code> attribute on the target element.
         </p>
+        <p>
+          It is possible to tell assistive technologies to recognize only a part of Attention's text
+          content. To do that set <code>role="tooltip"</code> on the relevant text element nested in
+          <code>f-attention</code> and reference it by id through the use of
+          <code>aria-describedby</code>. The <code>aria-describedby</code> attribute is on the
+          target element, not on <code>f-attention</code>.
+        </p>
+
+        <syntax-highlight>
+          <f-attention placement="top" popover target-selector="#target">
+            <p id="aria-content" role="tooltip">I'm a popover with ARIA "tooltip" role</p>
+            <p>(this text is less relevant)</p>
+          </f-attention>
+          <button
+            aria-describedby="aria-content"
+            id="target"
+            class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
+          >
+            Click to toggle a popover on top
+          </button>
+        </syntax-highlight>
+        <div id="accessibilityExample" class="example">
+          <f-attention placement="top" popover target-selector="#popoverTarget2">
+            <p id="aria-content" role="tooltip">I'm a popover with ARIA "tooltip" role</p>
+            <p>(this text is less relevant)</p>
+          </f-attention>
+          <button
+            aria-describedby="aria-content"
+            id="popoverTarget2"
+            class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
+          >
+            Click to toggle a popover on top
+          </button>
+        </div>
 
         <script>
           const tooltipTarget = document.querySelector('.example #tooltipTarget');
           const popoverTarget = document.querySelector('.example #popoverTarget');
+          const popoverTarget2 = document.querySelector('.example #popoverTarget2');
           const tooltipEl = document.querySelector('.example [tooltip]');
           const popoverEl = document.querySelector('.example [popover]');
+          const popoverEl2 = document.querySelector('#accessibilityExample [popover]');
 
           tooltipTarget.addEventListener('mouseenter', () => {
             tooltipEl.show = true;
@@ -193,6 +225,9 @@
           });
           popoverTarget.addEventListener('click', () => {
             popoverEl.show = !popoverEl.show;
+          });
+          popoverTarget2.addEventListener('click', () => {
+            popoverEl2.show = !popoverEl2.show;
           });
         </script>
       </main>
