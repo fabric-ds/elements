@@ -1,7 +1,12 @@
 import { css, html } from 'lit';
 import { FabricElement, classes, kebabCaseAttributes } from '../utils';
 import { attention as c } from '@fabric-ds/css/component-classes';
-import { opposites, rotation, useRecompute as recompute } from '@fabric-ds/core/attention';
+import {
+  opposites,
+  rotation,
+  arrowLabels,
+  useRecompute as recompute,
+} from '@fabric-ds/core/attention';
 
 class FabricAttention extends kebabCaseAttributes(FabricElement) {
   static properties = {
@@ -132,8 +137,10 @@ class FabricAttention extends kebabCaseAttributes(FabricElement) {
       <div class="${this._wrapperClasses}">
         ${this.noArrow
           ? ''
-          : html` <div
+          : html`<div
               id="arrow"
+              role="img"
+              aria-label=${arrowLabels[this._arrowDirection]}
               class="${this._arrowClasses}"
               style="transform:rotate(${rotation[this._arrowDirection]}deg); 
                 margin-${
