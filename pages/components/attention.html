@@ -136,6 +136,9 @@
 
         <h3 class="mt-24 mb-16">Tooltip</h3>
         <syntax-highlight>
+          <f-attention placement="top" tooltip target-selector="#tooltipTarget">
+            <span id="tooltip" role="tooltip">I'm a tooltip on top</span>
+          </f-attention>
           <button
             aria-describedby="tooltip"
             id="target"
@@ -143,11 +146,11 @@
           >
             Hover or focus to show a tooltip on top
           </button>
+        </syntax-highlight>
+        <div class="example">
           <f-attention placement="top" tooltip target-selector="#tooltipTarget">
             <span id="tooltip" role="tooltip">I'm a tooltip on top</span>
           </f-attention>
-        </syntax-highlight>
-        <div class="example">
           <button
             aria-describedby="tooltip"
             id="tooltipTarget"
@@ -155,12 +158,13 @@
           >
             Hover or focus to show a tooltip on top
           </button>
-          <f-attention placement="top" tooltip target-selector="#tooltipTarget">
-            <span id="tooltip" role="tooltip">I'm a tooltip on top</span>
-          </f-attention>
         </div>
 
         <h2 class="mt-24 mb-16">Accessibility</h2>
+        <p>
+          If the Attention element has "left" or "top" position, it should be placed before the
+          target element in the DOM.
+        </p>
         <p>
           For assistive technologies to read contents of the displayed Attention element, set
           `role="tooltip"` on the relevant text element nested in `f-attention`. Elements with the
