@@ -74,108 +74,153 @@
           </tbody>
         </table>
 
-        <h2 class="mt-24 mb-16">Visual Options</h2>
+        <h2 class="mt-24">Visual Options</h2>
 
-        <h3>Variants</h3>
+        <h3 class="pb-16 mt-32">Variants</h3>
 
-        <syntax-highlight>
-          <f-button variant="primary">Primary button</f-button>
-          <f-button>Secondary button</f-button>
-          <f-button variant="negative">Negative button</f-button>
-          <f-button variant="utility">Utility button</f-button>
-          <f-button variant="link">Link button</f-button>
-          <f-button variant="pill">Pill button</f-button>
-        </syntax-highlight>
-        <div class="example">
-          <div class="flex gap-8 flex-wrap mb-16">
+        <div class="example md:grid md:grid-cols-3">
+          <div class="col-span-2">
+            <h4>Primary button</h4>
+            The primary call to action button communicates strong emphasis and is reserved for
+            actions that are essential to an experience. There should only be one visible call to
+            action button per page. There is no quiet style for this button because it is meant to
+            be the most prominent element on the page.
+            <syntax-highlight>
+              <f-button variant="primary">Primary button</f-button>
+              <f-button variant="primary" small>Primary button small</f-button>
+            </syntax-highlight>
+          </div>
+          <div class="grid-example md:ml-48 col-span-2 md:col-span-1">
             <f-button variant="primary">Primary button</f-button>
+            <f-button variant="primary" small>Primary button small</f-button>
+          </div>
+        </div>
+        <div class="example md:grid md:grid-cols-3">
+          <div class="col-span-2">
+            <h4>Secondary button</h4>
+            The secondary button is for low emphasis. It is meant to be paired with other button
+            types to surface less prominent actions. On pages where there are more than one
+            important action, multiple secondary buttons can be used. If two buttons are equally
+            weighted, both should be secondary buttons (or quiet buttons).
+            <syntax-highlight>
+              <f-button>Secondary button</f-button>
+              <f-button small>Secondary button small</f-button>
+            </syntax-highlight>
+          </div>
+          <div class="grid-example md:ml-48 col-span-2 md:col-span-1">
             <f-button>Secondary button</f-button>
+            <f-button small>Secondary button small</f-button>
+          </div>
+        </div>
+        <div class="example md:grid md:grid-cols-3">
+          <div class="col-span-2">
+            <h4>Negative button</h4>
+            The negative button is for emphasizing actions that can be destructive or have negative
+            consequences if taken. It replaces the primary button in these destructive situations
+            and should be used sparingly. A negative button and a primary button should never appear
+            on the same screen. The negative button can also exist as a quiet button variant in
+            cases where the consequence of the action is still destructive, but less critical.
+            <syntax-highlight>
+              <f-button variant="negative">Negative button</f-button>
+              <f-button variant="negative" small>Negative button small</f-button>
+            </syntax-highlight>
+          </div>
+          <div class="grid-example md:ml-48 col-span-2 md:col-span-1">
             <f-button variant="negative">Negative button</f-button>
+            <f-button variant="negative" small>Negative button small</f-button>
+          </div>
+        </div>
+        <div class="example md:grid md:grid-cols-3">
+          <div class="col-span-2">
+            <h4>Utility button</h4>
+            <syntax-highlight>
+              <f-button variant="utility">Utility button</f-button>
+              <f-button variant="utility" small>Utility button small</f-button>
+            </syntax-highlight>
+          </div>
+          <div class="grid-example md:ml-48 col-span-2 md:col-span-1">
             <f-button variant="utility">Utility button</f-button>
+            <f-button variant="utility" small>Utility button small</f-button>
           </div>
-          <f-button variant="link">Link button</f-button>
-          <f-button variant="pill">Pill button</f-button>
         </div>
-
-        <h3>Small</h3>
-
-        <syntax-highlight>
-          <f-button variant="primary" small>Primary button</f-button>
-          <f-button small>Secondary button</f-button>
-          <f-button variant="negative" small>Negative button</f-button>
-          <f-button variant="utility" small>Utility button</f-button>
-          <f-button variant="link" small>Link button</f-button>
-          <f-button variant="pill" small>Pill button</f-button>
-        </syntax-highlight>
-        <div class="example">
-          <div class="flex gap-8 flex-wrap mb-16">
-            <f-button variant="primary" small>Primary button</f-button>
-            <f-button small>Secondary button</f-button>
-            <f-button variant="negative" small>Negative button</f-button>
-            <f-button variant="utility" small>Utility button</f-button>
+        <div class="example md:grid md:grid-cols-3">
+          <div class="col-span-2">
+            <h4>Link button</h4>
+            <syntax-highlight>
+              <f-button variant="link">Link button</f-button>
+              <f-button variant="link" small>Link button small</f-button>
+            </syntax-highlight>
           </div>
-          <f-button variant="link" small>Link button</f-button>
-          <f-button variant="pill" small>Pill button</f-button>
+          <div class="grid-example md:ml-48 col-span-2 md:col-span-1">
+            <f-button variant="link">Link button</f-button>
+            <f-button variant="link" small>Link button small</f-button>
+          </div>
         </div>
-
-        <h3>Quiet</h3>
-
-        <syntax-highlight>
-          <f-button quiet>Secondary button</f-button>
-          <f-button variant="negative" quiet>Negative button</f-button>
-        </syntax-highlight>
-        <div class="example">
-          <div class="flex gap-8 flex-wrap mb-16">
-            <f-button quiet>Secondary button</f-button>
-            <f-button variant="negative" quiet>Negative button</f-button>
+        <div class="example md:grid md:grid-cols-3">
+          <div class="col-span-2">
+            <h4>Pill button</h4>
+            <syntax-highlight>
+              <f-button variant="pill">💙</f-button>
+              <f-button variant="pill" small>💙</f-button>
+            </syntax-highlight>
+          </div>
+          <div class="grid-example md:ml-48 col-span-2 md:col-span-1">
+            <f-button variant="pill">💙</f-button>
+            <f-button variant="pill" small>💙</f-button>
           </div>
         </div>
 
-        <h3>Small & Quiet</h3>
+        <h3 class="pb-16 mt-32">Quiet</h3>
 
-        <syntax-highlight>
-          <f-button small quiet>Secondary button</f-button>
-          <f-button variant="negative" small quiet>Negative button</f-button>
-        </syntax-highlight>
-        <div class="example">
-          <div class="flex gap-8 flex-wrap mb-16">
-            <f-button small quiet>Secondary button</f-button>
-            <f-button variant="negative" small quiet>Negative button</f-button>
+        <div class="md:grid md:grid-cols-3">
+          <div class="col-span-2">
+            By default, buttons have a visible stroke and fill. Quiet buttons do not have this
+            visible stroke or fill and should only be used for secondary actions within a button
+            group. Quiet buttons have the same padding rules as other action buttons and reveal a
+            button-like background color when hovered.
+            <syntax-highlight>
+              <f-button quiet>Quiet secondary button</f-button>
+              <f-button quiet variant="negative">Quiet negative button</f-button>
+              <f-button quiet variant="utility">Quiet utility button</f-button>
+            </syntax-highlight>
+          </div>
+          <div class="grid-example md:ml-48 col-span-2 md:col-span-1">
+            <f-button quiet>Quiet secondary button</f-button>
+            <f-button quiet variant="negative">Quiet negative button</f-button>
+            <f-button quiet variant="utility">Quiet utility button</f-button>
           </div>
         </div>
 
-        <h3>Link</h3>
-        <p>Buttons will be rendered as an anchor (a tag) if they use an href attribute.</p>
+        <h3 class="pb-16 mt-32">Link</h3>
 
-        <syntax-highlight>
-          <f-button href="https://google.no">Secondary button</f-button>
-        </syntax-highlight>
-        <div class="example">
-          <f-button href="https://google.no">Secondary button</f-button>
-        </div>
-
-        <h3>Loading state</h3>
-
-        <syntax-highlight>
-          <f-button variant="primary" loading>Primary button</f-button>
-          <f-button loading>Secondary button</f-button>
-          <f-button variant="negative" loading>Negative button</f-button>
-          <f-button variant="utility" loading>Utility button</f-button>
-          <f-button variant="link" loading>Link button</f-button>
-          <f-button variant="pill" loading>Pill button</f-button>
-        </syntax-highlight>
-        <div class="example">
-          <div class="flex gap-8 flex-wrap mb-16">
-            <f-button variant="primary" loading>Primary button</f-button>
-            <f-button loading>Secondary button</f-button>
-            <f-button variant="negative" loading>Negative button</f-button>
-            <f-button variant="utility" loading>Utility button</f-button>
+        <div class="md:grid md:grid-cols-3">
+          <div class="col-span-2">
+            Buttons will be rendered as an anchor (a tag) if they use an href attribute.
+            <syntax-highlight>
+              <f-button href="https://google.no">Button as anchor</f-button>
+            </syntax-highlight>
           </div>
-          <f-button variant="link" loading>Link button</f-button>
-          <f-button variant="pill" loading>Pill button</f-button>
+          <div class="grid-example md:ml-48 col-span-2 md:col-span-1">
+            <f-button href="https://google.no">Button as anchor</f-button>
+          </div>
         </div>
 
-        <h3>Disabled state</h3>
+        <h3 class="pb-16 mt-32">Loading state</h3>
+
+        <div class="md:grid md:grid-cols-3">
+          <div class="col-span-2">
+            To show the user that the action they triggered has begun, buttons have an in progress
+            or loading state.
+            <syntax-highlight>
+              <f-button variant="primary" loading>Primary button loading</f-button>
+            </syntax-highlight>
+          </div>
+          <div class="grid-example md:ml-48 col-span-2 md:col-span-1">
+            <f-button variant="primary" loading>Button loading</f-button>
+          </div>
+        </div>
+
+        <h3 class="mt-32">Disabled state</h3>
 
         <p>
           Disabled is an anti-pattern and is not supported. There will ALWAYS be users who don't
