@@ -34,9 +34,8 @@ class FabricButton extends FabricElement {
     const availableVariants = Object.keys(variantClassMap);
     if (!availableVariants.includes(this.variant)) {
       throw new Error(
-        `Invalid "variant" attribute. Set its value to one of the following:\n${JSON.stringify(
-          availableVariants,
-        )},
+        `Invalid "variant" attribute. Set its value to one of the following:\n${availableVariants.join(
+          ', ',
         )}.`,
       );
     }
