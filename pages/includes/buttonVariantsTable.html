@@ -1,0 +1,75 @@
+<script>
+  const variants = [
+    {
+      name: 'primary',
+      description:
+        ' The primary call to action button communicates strong emphasis and is reserved for actions that are essential to an experience. There should only be one visible call to action button per page. There is no quiet style for this button because it is meant to be the most prominent element on the page.',
+    },
+    {
+      name: 'secondary',
+      description:
+        'The secondary button is for low emphasis. It is meant to be paired with other button types to surface less prominent actions. On pages where there are more than one important action, multiple secondary buttons can be used. If two buttons are equally weighted, both should be secondary buttons (or quiet buttons).',
+    },
+    {
+      name: 'negative',
+      description:
+        'The negative button is for emphasizing actions that can be destructive or have negative consequences if taken. It replaces the primary button in these destructive situations and should be used sparingly. A negative button and a primary button should never appear on the same screen. The negative button can also exist as a quiet button variant in cases where the consequence of the action is still destructive, but less critical.',
+    },
+    { name: 'utility', description: '' },
+    { name: 'link', description: '' },
+    { name: 'pill', description: '' },
+  ];
+
+  function renderButtonVariantsTable() {
+    const table = document.getElementById('variantsTable');
+
+    variants.forEach(({ name, description }) => {
+      const row = document.createElement('div');
+      row.classList.add('example', 'md:grid', 'md:grid-cols-3');
+
+      const descriptionWrapper = document.createElement('div');
+
+      const h4 = document.createElement('h4');
+      const p = document.createElement('p');
+      const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);
+      h4.innerText = capitalizedName;
+      p.innerText = description;
+
+      const buttonText = name === 'pill' ? '💙' : `${capitalizedName} button`;
+      const smallButtonText = name === 'pill' ? '💙' : `${capitalizedName} button small`;
+
+      const codeExample = document.createElement('syntax-highlight');
+      codeExample.append(
+        `<f-button variant=${name}>${buttonText}</f-button>`,
+        '\n',
+        `<f-button variant=${name} small>${smallButtonText}</f-button>`,
+      );
+
+      descriptionWrapper.classList.add('col-span-2');
+      descriptionWrapper.appendChild(h4);
+      descriptionWrapper.appendChild(p);
+      descriptionWrapper.appendChild(codeExample);
+
+      const buttonWrapper = document.createElement('div');
+
+      const buttonNode = document.createElement('f-button');
+      buttonNode.setAttribute('variant', name);
+      buttonNode.innerText = buttonText;
+
+      const smallButtonNode = document.createElement('f-button');
+      smallButtonNode.setAttribute('variant', name);
+      smallButtonNode.setAttribute('small', '');
+      smallButtonNode.innerText = smallButtonText;
+
+      buttonWrapper.classList.add('grid-example', 'md:ml-48', 'col-span-2', 'md:col-span-1');
+      buttonWrapper.appendChild(buttonNode);
+      buttonWrapper.appendChild(smallButtonNode);
+
+      row.appendChild(descriptionWrapper);
+      row.appendChild(buttonWrapper);
+      table.appendChild(row);
+    });
+  }
+
+  renderButtonVariantsTable();
+</script>

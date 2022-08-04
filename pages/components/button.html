@@ -78,99 +78,9 @@
 
         <h3 class="pb-16 mt-32">Variants</h3>
 
-        <div class="example md:grid md:grid-cols-3">
-          <div class="col-span-2">
-            <h4>Primary button</h4>
-            The primary call to action button communicates strong emphasis and is reserved for
-            actions that are essential to an experience. There should only be one visible call to
-            action button per page. There is no quiet style for this button because it is meant to
-            be the most prominent element on the page.
-            <syntax-highlight>
-              <f-button variant="primary">Primary button</f-button>
-              <f-button variant="primary" small>Primary button small</f-button>
-            </syntax-highlight>
-          </div>
-          <div class="grid-example md:ml-48 col-span-2 md:col-span-1">
-            <f-button variant="primary">Primary button</f-button>
-            <f-button variant="primary" small>Primary button small</f-button>
-          </div>
-        </div>
-        <div class="example md:grid md:grid-cols-3">
-          <div class="col-span-2">
-            <h4>Secondary button</h4>
-            The secondary button is for low emphasis. It is meant to be paired with other button
-            types to surface less prominent actions. On pages where there are more than one
-            important action, multiple secondary buttons can be used. If two buttons are equally
-            weighted, both should be secondary buttons (or quiet buttons).
-            <syntax-highlight>
-              <f-button>Secondary button</f-button>
-              <f-button small>Secondary button small</f-button>
-            </syntax-highlight>
-          </div>
-          <div class="grid-example md:ml-48 col-span-2 md:col-span-1">
-            <f-button>Secondary button</f-button>
-            <f-button small>Secondary button small</f-button>
-          </div>
-        </div>
-        <div class="example md:grid md:grid-cols-3">
-          <div class="col-span-2">
-            <h4>Negative button</h4>
-            The negative button is for emphasizing actions that can be destructive or have negative
-            consequences if taken. It replaces the primary button in these destructive situations
-            and should be used sparingly. A negative button and a primary button should never appear
-            on the same screen. The negative button can also exist as a quiet button variant in
-            cases where the consequence of the action is still destructive, but less critical.
-            <syntax-highlight>
-              <f-button variant="negative">Negative button</f-button>
-              <f-button variant="negative" small>Negative button small</f-button>
-            </syntax-highlight>
-          </div>
-          <div class="grid-example md:ml-48 col-span-2 md:col-span-1">
-            <f-button variant="negative">Negative button</f-button>
-            <f-button variant="negative" small>Negative button small</f-button>
-          </div>
-        </div>
-        <div class="example md:grid md:grid-cols-3">
-          <div class="col-span-2">
-            <h4>Utility button</h4>
-            <syntax-highlight>
-              <f-button variant="utility">Utility button</f-button>
-              <f-button variant="utility" small>Utility button small</f-button>
-            </syntax-highlight>
-          </div>
-          <div class="grid-example md:ml-48 col-span-2 md:col-span-1">
-            <f-button variant="utility">Utility button</f-button>
-            <f-button variant="utility" small>Utility button small</f-button>
-          </div>
-        </div>
-        <div class="example md:grid md:grid-cols-3">
-          <div class="col-span-2">
-            <h4>Link button</h4>
-            <syntax-highlight>
-              <f-button variant="link">Link button</f-button>
-              <f-button variant="link" small>Link button small</f-button>
-            </syntax-highlight>
-          </div>
-          <div class="grid-example md:ml-48 col-span-2 md:col-span-1">
-            <f-button variant="link">Link button</f-button>
-            <f-button variant="link" small>Link button small</f-button>
-          </div>
-        </div>
-        <div class="example md:grid md:grid-cols-3">
-          <div class="col-span-2">
-            <h4>Pill button</h4>
-            <syntax-highlight>
-              <f-button variant="pill">💙</f-button>
-              <f-button variant="pill" small>💙</f-button>
-            </syntax-highlight>
-          </div>
-          <div class="grid-example md:ml-48 col-span-2 md:col-span-1">
-            <f-button variant="pill">💙</f-button>
-            <f-button variant="pill" small>💙</f-button>
-          </div>
-        </div>
+        <div id="variantsTable"></div>
 
-        <h3 class="pb-16 mt-32">Quiet</h3>
+        <h3 class="mt-32">Quiet</h3>
 
         <div class="md:grid md:grid-cols-3">
           <div class="col-span-2">
@@ -191,7 +101,7 @@
           </div>
         </div>
 
-        <h3 class="pb-16 mt-32">Link</h3>
+        <h3 class="mt-32">Link</h3>
 
         <div class="md:grid md:grid-cols-3">
           <div class="col-span-2">
@@ -205,7 +115,7 @@
           </div>
         </div>
 
-        <h3 class="pb-16 mt-32">Loading state</h3>
+        <h3 class="mt-32">Loading state</h3>
 
         <div class="md:grid md:grid-cols-3">
           <div class="col-span-2">
@@ -236,6 +146,6 @@
       </main>
       <%- include('footer.html'); -%>
     </f-docs-template>
-    <%- include('scripts.html'); -%>
+    <%- include('buttonVariantsTable.html'); -%> <%- include('scripts.html'); -%>
   </body>
 </html>
