@@ -126,6 +126,31 @@ test('Button as an anchor', async (t) => {
   );
 });
 
+test('Button with autofocus', async (t) => {
+  const component = `
+    <f-button autofocus>
+      This button should be focused
+    </f-button>
+  `;
+
+  const page = await addContentToPage({
+    page: t.context.page,
+    content: component,
+  });
+
+  const locator = await page.locator('f-button');
+  t.equal(
+    (await locator.innerHTML()).trim(),
+    'This button should be focused',
+    'HTML should be rendered',
+  );
+  t.equal(
+    await locator.evaluate((el) => document.activeElement === el),
+    true,
+    'Button should be focused',
+  );
+});
+
 test('Button with invalid variant name', async (t) => {
   const component = `
     <f-button variant="foo" loading>

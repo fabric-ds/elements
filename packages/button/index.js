@@ -1,4 +1,4 @@
-import { html } from 'lit';
+import { html, LitElement } from 'lit';
 import { classNames } from '@chbphone55/classnames';
 import { FabricElement } from '../utils';
 
@@ -12,8 +12,11 @@ const variantClassMap = {
 };
 
 class FabricButton extends FabricElement {
+  static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+
   static properties = {
     type: { type: 'button' | 'submit' | 'reset', reflect: true },
+    autofocus: { type: Boolean, reflect: true },
     variant: { type: String, reflect: true },
     quiet: { type: Boolean, reflect: true },
     small: { type: Boolean, reflect: true },
@@ -38,6 +41,12 @@ class FabricButton extends FabricElement {
           ', ',
         )}.`,
       );
+    }
+  }
+
+  firstUpdated() {
+    if (this.autofocus) {
+      setTimeout(() => this.focus(), 0);
     }
   }
 
