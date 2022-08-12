@@ -1,4 +1,5 @@
 import { css, html } from 'lit';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { FabricElement, classes, kebabCaseAttributes } from '../utils';
 import { attention as c } from '@fabric-ds/css/component-classes';
 import {
@@ -8,8 +9,6 @@ import {
   useRecompute as recompute,
 } from '@fabric-ds/core/attention';
 
-const tooltipWrapperId = 'tooltipContent';
-
 class FabricAttention extends kebabCaseAttributes(FabricElement) {
   static properties = {
     // Whether Attention element should be visible.
@@ -17,8 +16,6 @@ class FabricAttention extends kebabCaseAttributes(FabricElement) {
     // Placement according to the target element
     // Arrow would be on the opposite side of this position
     placement: { type: String },
-    // Selector of element that the Attention component is rendered relatively to
-    targetSelector: { type: String },
     // Whether Attention element is rendered as a tooltip
     tooltip: { type: Boolean, reflect: true },
     // Whether Attention element is rendered as an inline callout
@@ -30,7 +27,7 @@ class FabricAttention extends kebabCaseAttributes(FabricElement) {
   };
 
   static styles = css`
-    :host {
+    #attention {
       position: absolute;
       z-index: 50;
       visibility: var(--attention-visibility);
@@ -40,10 +37,6 @@ class FabricAttention extends kebabCaseAttributes(FabricElement) {
     #arrow {
       border-top-left-radius: 4px;
       z-index: 1;
-    }
-
-    ::slotted(:last-child) {
-      margin-bottom: 0px !important;
     }
   `;
 
@@ -70,11 +63,6 @@ class FabricAttention extends kebabCaseAttributes(FabricElement) {
 
     // Fix FOUC effect issues
     setTimeout(() => this.requestUpdate(), 0);
-
-    // Attention of "callout" type should always be used inline
-    if (this.callout) {
-      this.style.position = 'relative';
-    }
   }
 
   get _actualDirection() {
@@ -91,11 +79,11 @@ class FabricAttention extends kebabCaseAttributes(FabricElement) {
 
   updated() {
     if (!this.callout) {
-      this.style.setProperty('--attention-visibility', this.show ? '' : 'hidden');
+      this._attentionEl.style.setProperty('--attention-visibility', this.show ? '' : 'hidden');
     }
 
     if (!this.tooltip) {
-      this.style.setProperty('--attention-display', this.show ? 'block' : 'none');
+      this._attentionEl.style.setProperty('--attention-display', this.show ? 'block' : 'none');
     }
 
     this.attentionState = {
@@ -104,7 +92,7 @@ class FabricAttention extends kebabCaseAttributes(FabricElement) {
       actualDirection: this._actualDirection,
       directionName: this.placement,
       arrowEl: this.renderRoot.querySelector('#arrow'),
-      attentionEl: this,
+      attentionEl: this._attentionEl,
       targetEl: this._targetEl,
       noArrow: this.noArrow,
     };
@@ -114,18 +102,33 @@ class FabricAttention extends kebabCaseAttributes(FabricElement) {
   }
 
   setAriaLabels() {
-    if (!this._targetEl.getAttribute('aria-describedby')) {
-      this._targetEl.setAttribute('aria-describedby', tooltipWrapperId);
-      this.shadowRoot.getElementById(tooltipWrapperId).setAttribute('role', 'tooltip');
+    if (this._targetEl && !this._targetEl.getAttribute('aria-describedby')) {
+      const attentionMessageId = Math.random();
+      this._targetEl.setAttribute('aria-describedby', attentionMessageId);
+      this._messageEl.setAttribute('id', attentionMessageId);
+      this._messageEl.setAttribute('role', 'tooltip');
     }
   }
 
   firstUpdated() {
     this.setAriaLabels();
+
+    // Attention of "callout" type should always be used inline
+    if (this.callout) {
+      this._attentionEl.style.position = 'relative';
+    }
+  }
+
+  get _attentionEl() {
+    return this.renderRoot.querySelector('#attention');
   }
 
   get _targetEl() {
-    return document.querySelector(this.targetSelector);
+    return this.renderRoot.querySelector("slot[name='target']").assignedNodes()[0];
+  }
+
+  get _messageEl() {
+    return this.renderRoot.querySelector("slot[name='message']").assignedNodes()[0];
   }
 
   get _wrapperClasses() {
@@ -163,20 +166,29 @@ class FabricAttention extends kebabCaseAttributes(FabricElement) {
         />`;
   }
 
-  get _content() {
-    return html`<div id=${tooltipWrapperId}><slot></slot></div>`;
-  }
-
   render() {
     return html`
       ${this._fabricStylesheet}
-
-      <div class="${this._wrapperClasses}">
-        <div>
-          ${this._arrowDirection === 'left' || this._arrowDirection === 'top'
-            ? html`${this._arrowHtml}${this._content}` // Arrow's visual position should be reflected in the DOM respectively
-            : html`${this._content}${this._arrowHtml}`}
-        </div>
+      <div class=${ifDefined(this.className ? this.className : undefined)}>
+        ${this.placement === 'right' || this.placement === 'bottom' // Attention's and its arrow's visual position should be reflected in the DOM
+          ? html`
+              <slot name="target"></slot>
+              <div id="attention" class="${this._wrapperClasses}">
+                <div>
+                  ${this._arrowHtml}
+                  <slot name="message"></slot>
+                </div>
+              </div>
+            `
+          : html`
+              <div id="attention" class="${this._wrapperClasses}">
+                <div>
+                  <slot name="message"></slot>
+                  ${this._arrowHtml}
+                </div>
+              </div>
+              <slot name="target"></slot>
+            `}
       </div>
     `;
   }

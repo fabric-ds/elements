@@ -85,76 +85,80 @@
 
         <h3 class="mt-24 mb-16">Popover</h3>
         <syntax-highlight>
-          <button
-            id="target"
-            class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
-            onclick="toggleShow()"
-          >
-            Click to toggle a popover on bottom
-          </button>
-          <f-attention placement="bottom" popover target-selector="#target">
-            <span>I'm a popover on bottom</span>
+          <f-attention placement="bottom" popover>
+            <button
+              id="target"
+              class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
+              onclick="toggleShow()"
+              slot="target"
+            >
+              Click to toggle a popover on bottom
+            </button>
+            <span slot="message">I'm a popover on bottom</span>
           </f-attention>
         </syntax-highlight>
         <div class="example">
-          <button
-            id="popoverTarget"
-            class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
-          >
-            Click to toggle a popover on bottom
-          </button>
-          <f-attention placement="bottom" popover target-selector="#popoverTarget">
-            <span>I'm a popover on bottom</span>
+          <f-attention placement="bottom" popover>
+            <button
+              id="popoverTarget"
+              class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
+              slot="target"
+            >
+              Click to toggle a popover on bottom
+            </button>
+            <span slot="message">I'm a popover on bottom</span>
           </f-attention>
         </div>
 
         <h3 class="mt-24 mb-16">Callout</h3>
         <syntax-highlight>
-          <div class="flex items-center">
+          <f-attention placement="right" show callout class="flex items-center">
             <div
               id="target"
               class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
+              slot="target"
             >
               <p>This is a target to callout attention element</p>
             </div>
-            <f-attention placement="right" show callout target-selector="#target">
-              <span>Callout on right</span>
-            </f-attention>
-          </div>
+            <span slot="message">Callout on right</span>
+          </f-attention>
         </syntax-highlight>
-        <div class="example flex items-center">
-          <div
-            id="calloutTarget"
-            class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
-          >
-            <p>This is a target to callout attention element</p>
-          </div>
-          <f-attention placement="right" show callout target-selector="#calloutTarget">
-            <span>Callout on right</span>
+        <div class="example">
+          <f-attention placement="right" show callout class="flex items-center">
+            <div
+              id="calloutTarget"
+              class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
+              slot="target"
+            >
+              <p>This is a target to callout attention element</p>
+            </div>
+            <span slot="message">Callout on right</span>
           </f-attention>
         </div>
 
         <h3 class="mt-24 mb-16">Tooltip</h3>
         <syntax-highlight>
-          <button
-            id="target"
-            class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
-          >
-            Hover or focus to show a tooltip on right
-          </button>
-          <f-attention placement="right" tooltip target-selector="#target">
-            <span>I'm a tooltip on right</span>
+          <f-attention placement="right" tooltip>
+            <button
+              id="target"
+              class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
+              slot="target"
+            >
+              Hover or focus to show a tooltip on right
+            </button>
+            <span slot="message">I'm a tooltip on right</span>
           </f-attention>
         </syntax-highlight>
         <div class="example">
-          <button
-            id="tooltipTarget"
-            class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
-          >
-            Hover or focus to show a tooltip on right
-          </button>
-          <f-attention placement="right" tooltip target-selector="#tooltipTarget">
-            <span>I'm a tooltip on right</span>
+          <f-attention placement="right" tooltip>
+            <button
+              id="tooltipTarget"
+              class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
+              slot="target"
+            >
+              Hover or focus to show a tooltip on right
+            </button>
+            <span slot="message">I'm a tooltip on right</span>
           </f-attention>
         </div>
 
@@ -177,30 +181,36 @@
         </p>
 
         <syntax-highlight>
-          <f-attention placement="top" popover target-selector="#target">
-            <p id="aria-content" role="tooltip">I'm a popover with ARIA "tooltip" role</p>
-            <p>(this text is less relevant)</p>
+          <f-attention placement="top" popover>
+            <div slot="message">
+              <p id="aria-content" role="tooltip">I'm a popover with ARIA "tooltip" role</p>
+              <p>(this text is less relevant)</p>
+            </div>
+            <button
+              aria-describedby="aria-content"
+              id="target"
+              class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
+              slot="target"
+            >
+              Click to toggle a popover on top
+            </button>
           </f-attention>
-          <button
-            aria-describedby="aria-content"
-            id="target"
-            class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
-          >
-            Click to toggle a popover on top
-          </button>
         </syntax-highlight>
         <div id="accessibilityExample" class="example">
-          <f-attention placement="top" popover target-selector="#popoverTarget2">
-            <p id="aria-content" role="tooltip">I'm a popover with ARIA "tooltip" role</p>
-            <p>(this text is less relevant)</p>
+          <f-attention placement="top" popover>
+            <div slot="message">
+              <p id="aria-content" role="tooltip">I'm a popover with ARIA "tooltip" role</p>
+              <p>(this text is less relevant)</p>
+            </div>
+            <button
+              aria-describedby="aria-content"
+              id="popoverTarget2"
+              class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
+              slot="target"
+            >
+              Click to toggle a popover on top
+            </button>
           </f-attention>
-          <button
-            aria-describedby="aria-content"
-            id="popoverTarget2"
-            class="group block relative break-words last-child:mb-0 p-16 rounded-8 bg-aqua-50"
-          >
-            Click to toggle a popover on top
-          </button>
         </div>
 
         <script>
