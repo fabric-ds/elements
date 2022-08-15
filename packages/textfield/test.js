@@ -35,3 +35,124 @@ test('Text field component with a value attribute is rendered on the page', asyn
   const locator = await page.locator('f-textfield');
   t.equal(await locator.getAttribute('value'), 'this is a textfield', 'value should be defined');
 });
+
+test('Text field number component with a min and max is rendered on the page', async (t) => {
+  // GIVEN: A box component
+  const component = `
+    <f-textfield min="10" max="20" value="15" type="number"></f-textfield>
+    <script>
+      const el = document.querySelector('f-textfield')
+      el.addEventListener('change', (e) => {
+        el.value = e.detail.value;
+      });
+    </script>
+  `;
+
+  // WHEN: the component is added to the page
+  const page = await addContentToPage({
+    page: t.context.page,
+    content: component,
+  });
+
+  // THEN: the component is visible in the DOM
+  let locator = await page.locator('input');
+  await locator.click();
+  await locator.fill('10');
+  await page.keyboard.press('Tab');
+  t.equal(await locator.inputValue(), '10', 'value should be 10');
+
+  await page.locator('f-textfield');
+  t.equal(await locator.getAttribute('value'), '10', 'value should be 10');
+});
+
+test('Text field component with a label is rendered on the page', async (t) => {
+  // GIVEN: A box component
+  const component = `
+    <f-textfield label="Name of a person"></f-textfield>
+  `;
+
+  // WHEN: the component is added to the page
+  const page = await addContentToPage({
+    page: t.context.page,
+    content: component,
+  });
+
+  // THEN: the component is visible in the DOM
+  let locator = await page.locator('text=Name of a person');
+  t.equal(await locator.isVisible(), true, 'Label should be visible');
+});
+
+test('Text field component with a label and help text is rendered on the page', async (t) => {
+  // GIVEN: A box component
+  const component = `
+    <f-textfield 
+      label="Telefonnummer"
+      help-text="Vil kun brukes til brukerverifisering">
+    </f-textfield>
+  `;
+
+  // WHEN: the component is added to the page
+  const page = await addContentToPage({
+    page: t.context.page,
+    content: component,
+  });
+
+  // THEN: the component is visible in the DOM
+  t.equal(await page.locator('text=Telefonnummer').isVisible(), true, 'Label should be visible')
+  t.equal(await page.locator('text=Vil kun brukes til brukerverifisering').isVisible(), true, 'Help text should be visible')
+});
+
+test('Invalid component with label and help text is rendered on the page', async (t) => {
+  // GIVEN: A box component
+  const component = `
+    <f-textfield 
+      label="E-post"
+      invalid
+      help-text="Ugyldig e-post">
+    </f-textfield>
+  `;
+
+  // WHEN: the component is added to the page
+  const page = await addContentToPage({
+    page: t.context.page,
+    content: component,
+  });
+
+  // THEN: the component is visible in the DOM
+  t.equal(await page.locator('text=Ugyldig e-post').isVisible(), true, 'Help text should be visible')
+  t.equal(await page.locator('input').getAttribute('aria-invalid'), 'true', 'Aria invalid should be set')
+});
+
+test('Invalid component with label and help text is rendered on the page', async (t) => {
+  // GIVEN: A box component
+  const component = `
+    <f-textfield label="E-post" placeholder="puse@finn.no"></f-textfield>
+  `;
+
+  // WHEN: the component is added to the page
+  const page = await addContentToPage({
+    page: t.context.page,
+    content: component,
+  });
+
+  // THEN: the component is visible in the DOM
+  t.equal(await page.locator('text=E-post').isVisible(), true, 'Help text should be visible')
+  t.equal(await page.locator('input').getAttribute('placeholder'), 'puse@finn.no', 'Placeholder text should be visible')
+});
+
+test('Disabled component with label and value is rendered on the page', async (t) => {
+  // GIVEN: A box component
+  const component = `
+    <f-textfield label="E-post" disabled value="puse@finn.no"></f-textfield>
+  `;
+
+  // WHEN: the component is added to the page
+  const page = await addContentToPage({
+    page: t.context.page,
+    content: component,
+  });
+
+  // THEN: the component is visible in the DOM
+  t.equal(await page.locator('text=E-post').isVisible(), true, 'Help text should be visible')
+  t.equal(await page.locator('input').getAttribute('disabled'), '', 'Disabled should be set on input')
+});

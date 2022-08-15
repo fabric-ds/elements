@@ -9,6 +9,7 @@ class FabricTextField extends FabricElement {
     id: { type: String },
     label: { type: String },
     helpText: { type: String, attribute: 'help-text' },
+    size: { type: String },
     max: { type: Number },
     min: { type: Number },
     minLength: { type: Number, attribute: 'min-length' },
@@ -74,16 +75,16 @@ class FabricTextField extends FabricElement {
     if (this.invalid && this._helpId) return this._helpId;
   }
 
-  blurHandler(e) {
-    this.dispatchEvent(new CustomEvent('blur'));
-  }
-
-  changeHandler(e) {
-    this.dispatchEvent(new CustomEvent('change'));
-  }
-
-  focusHandler(e) {
-    this.dispatchEvent(new CustomEvent('focus'));
+  handler(e) {
+    const { name, value } = e.target;
+    const event = new CustomEvent(e.type, {
+      detail: {
+        name,
+        value,
+        target: e.target,
+      }
+    })
+    this.dispatchEvent(event);
   }
 
   render() {
@@ -97,6 +98,7 @@ class FabricTextField extends FabricElement {
               type="${this.type}"
               min="${ifDefined(this.min)}"
               max="${ifDefined(this.max)}"
+              size="${ifDefined(this.size)}"
               minlength="${ifDefined(this.minLength)}"
               maxlength="${ifDefined(this.maxLength)}"
               name="${ifDefined(this.name)}"
@@ -110,9 +112,9 @@ class FabricTextField extends FabricElement {
               ?disabled="${this.disabled}"
               ?readonly="${this.readOnly}"
               ?required="${this.required}"
-              @onBlur=${this.blurHandler}
-              @onChange=${this.changeHandler}
-              @onFocus=${this.focusHandler}
+              @blur="${this.handler}"
+              @change="${this.handler}"
+              @focus="${this.handler}"
             />
             <slot></slot>
           </div>

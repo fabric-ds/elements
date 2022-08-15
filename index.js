@@ -6,4 +6,5 @@ export * from './packages/toast/toast';
 export * from './packages/toast/toast-container';
 export * from './packages/toast/api';
 export * from './packages/broadcast';
+export * from './packages/textfield';
 export * from './packages/utils/expand-transition';
