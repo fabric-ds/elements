@@ -21,6 +21,8 @@ class FabricTextField extends FabricElement {
     required: { type: Boolean },
     type: { type: String },
     value: { type: String },
+    _hasPrefix: { state: true },
+    _hasSuffix: { state: true },
   };
 
   // Slotted elements remain in lightDOM which allows for control of their style outside of shadowDOM.
@@ -43,8 +45,8 @@ class FabricTextField extends FabricElement {
 
   get _outerWrapperStyles() {
     return fclasses({
-      // 'has-suffix': hasSuffix,
-      // 'has-prefix': hasPrefix,
+      'has-suffix': this._hasSuffix,
+      'has-prefix': this._hasPrefix,
     });
   }
 
@@ -82,9 +84,31 @@ class FabricTextField extends FabricElement {
         name,
         value,
         target: e.target,
-      }
-    })
+      },
+    });
     this.dispatchEvent(event);
+  }
+
+  prefixSlotChange(e) {
+    const el = this.renderRoot.querySelector('slot[name=prefix]');
+    const affixes = el.assignedElements();
+    if (affixes.length) {
+      this._hasPrefix = true;
+      for (const affix of affixes) {
+        // tell the element that it is a prefix
+        affix.setAttribute('prefix', '');
+      }
+    }
+  }
+
+  suffixSlotChange(e) {
+    const el = this.renderRoot.querySelector('slot[name=suffix]');
+    const affixes = el.assignedElements();
+    if (affixes.length) this._hasSuffix = true;
+    for (const affix of affixes) {
+      // tell the element that it is a suffix
+      affix.setAttribute('suffix', '');
+    }
   }
 
   render() {
@@ -94,6 +118,7 @@ class FabricTextField extends FabricElement {
         <div class="${this._innerWrapperStyles}">
           ${this._label}
           <div class="relative">
+            <slot @slotchange="${this.prefixSlotChange}" name="prefix"></slot>
             <input
               type="${this.type}"
               min="${ifDefined(this.min)}"
@@ -116,7 +141,7 @@ class FabricTextField extends FabricElement {
               @change="${this.handler}"
               @focus="${this.handler}"
             />
-            <slot></slot>
+            <slot @slotchange="${this.suffixSlotChange}" name="suffix"></slot>
           </div>
           ${this.helpText &&
           html`<div class="input__sub-text" id="${this._helpId}">${this.helpText}</div>`}

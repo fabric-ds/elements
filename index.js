@@ -7,4 +7,5 @@ export * from './packages/toast/toast-container';
 export * from './packages/toast/api';
 export * from './packages/broadcast';
 export * from './packages/textfield';
+export * from './packages/affix';
 export * from './packages/utils/expand-transition';

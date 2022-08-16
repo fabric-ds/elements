@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+// /* eslint-disable no-undef */
 import tap, { test, beforeEach, teardown } from 'tap';
 import { chromium } from 'playwright';
 import { addContentToPage } from '../../tests/utils/index.js';
@@ -155,4 +155,78 @@ test('Disabled component with label and value is rendered on the page', async (t
   // THEN: the component is visible in the DOM
   t.equal(await page.locator('text=E-post').isVisible(), true, 'Help text should be visible')
   t.equal(await page.locator('input').getAttribute('disabled'), '', 'Disabled should be set on input')
+});
+
+test('Component with prefix is rendered on the page', async (t) => {
+  // GIVEN: A box component
+  const component = `
+    <f-textfield label="Price" placeholder="1 000 000">
+      <f-affix slot="prefix" label="kr"></f-affix>
+    </f-textfield>
+  `;
+
+  // WHEN: the component is added to the page
+  const page = await addContentToPage({
+    page: t.context.page,
+    content: component,
+  });
+
+  // THEN: the component is visible in the DOM
+  t.equal(await page.locator('text=kr').isVisible(), true, 'Prefix text should be visible')
+});
+
+test('Component with search suffix is rendered on the page', async (t) => {
+  // GIVEN: A box component
+  const component = `
+    <f-textfield label="Price" placeholder="1 000 000">
+      <f-affix slot="suffix" search></f-affix>
+    </f-textfield>
+  `;
+
+  // WHEN: the component is added to the page
+  const page = await addContentToPage({
+    page: t.context.page,
+    content: component,
+  });
+
+  // THEN: the component is visible in the DOM
+  t.equal(await page.locator('button[type=submit]').isVisible(), true, 'Suffix search button should be visible')
+});
+
+test('Component with clear suffix is rendered on the page', async (t) => {
+  // GIVEN: A box component
+  const component = `
+    <f-textfield label="Price" placeholder="1 000 000">
+      <f-affix slot="suffix" clear></f-affix>
+    </f-textfield>
+  `;
+
+  // WHEN: the component is added to the page
+  const page = await addContentToPage({
+    page: t.context.page,
+    content: component,
+  });
+
+  // THEN: the component is visible in the DOM
+  t.equal(await page.locator('button[type=reset]').isVisible(), true, 'Suffix clear button should be visible')
+});
+
+test('Component with prefix label and clear suffix is rendered on the page', async (t) => {
+  // GIVEN: A box component
+  const component = `
+    <f-textfield label="Price" placeholder="1 000 000">
+      <f-affix slot="prefix" label="kr"></f-affix>
+      <f-affix slot="suffix" clear></f-affix>
+    </f-textfield>
+  `;
+
+  // WHEN: the component is added to the page
+  const page = await addContentToPage({
+    page: t.context.page,
+    content: component,
+  });
+
+  // THEN: the component is visible in the DOM
+  t.equal(await page.locator('text=kr').isVisible(), true, 'Prefix text should be visible')
+  t.equal(await page.locator('button[type=reset]').isVisible(), true, 'Suffix clear button should be visible')
 });
