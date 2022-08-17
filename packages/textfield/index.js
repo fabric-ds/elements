@@ -92,23 +92,13 @@ class FabricTextField extends FabricElement {
   prefixSlotChange(e) {
     const el = this.renderRoot.querySelector('slot[name=prefix]');
     const affixes = el.assignedElements();
-    if (affixes.length) {
-      this._hasPrefix = true;
-      for (const affix of affixes) {
-        // tell the element that it is a prefix
-        affix.setAttribute('prefix', '');
-      }
-    }
+    if (affixes.length) this._hasPrefix = true;
   }
 
   suffixSlotChange(e) {
     const el = this.renderRoot.querySelector('slot[name=suffix]');
     const affixes = el.assignedElements();
     if (affixes.length) this._hasSuffix = true;
-    for (const affix of affixes) {
-      // tell the element that it is a suffix
-      affix.setAttribute('suffix', '');
-    }
   }
 
   render() {

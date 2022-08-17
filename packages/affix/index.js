@@ -7,15 +7,13 @@ import { fclasses, FabricElement } from '../utils';
 class FabricAffix extends FabricElement {
   static properties = {
     ariaLabel: { type: String, attribute: 'aria-label' },
-    prefix: { type: Boolean, reflect: true },
-    suffix: { type: Boolean, reflect: true },
     clear: { type: Boolean },
     search: { type: Boolean },
     label: { type: String },
   };
 
   get _classBase() {
-    return this.prefix ? prefix : suffix;
+    return this.slot === 'suffix' ? suffix : prefix;
   }
 
   get _classes() {
