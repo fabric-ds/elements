@@ -103,10 +103,9 @@ class FabricAttention extends kebabCaseAttributes(FabricElement) {
 
   setAriaLabels() {
     if (this._targetEl && !this._targetEl.getAttribute('aria-describedby')) {
-      const attentionMessageId = Math.random();
-      this._targetEl.setAttribute('aria-describedby', attentionMessageId);
-      this._messageEl.setAttribute('id', attentionMessageId);
+      const attentionMessageId = this._messageEl.id || (this._messageEl.id = `m${Math.random().toString(36).slice(2)}`);
       this._messageEl.setAttribute('role', 'tooltip');
+      this._targetEl.setAttribute('aria-describedby', attentionMessageId);
     }
   }
 
