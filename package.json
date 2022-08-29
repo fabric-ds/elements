@@ -79,9 +79,11 @@
     "vite-plugin-html": "3.2.0"
   },
   "dependencies": {
+    "@a11y/focus-trap": "^1.0.5",
     "@fabric-ds/core": "0.0.15",
     "@open-wc/testing": "3.1.6",
-    "html-format": "1.0.2"
+    "html-format": "1.0.2",
+    "scroll-doctor": "^1.0.1"
   },
   "publishConfig": {
     "access": "public"

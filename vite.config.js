@@ -75,6 +75,11 @@ export default ({ mode }) => {
             injectOptions,
           },
           {
+            filename: 'modal.html',
+            template: 'pages/components/modal.html',
+            injectOptions,
+          },
+          {
             filename: 'index.html',
             template: 'index.html',
             injectOptions,

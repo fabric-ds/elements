@@ -1,0 +1,68 @@
+<html lang="en">
+  <%- include('head.html'); -%>
+  <body>
+    <f-docs-template>
+      <%- include('nav.html'); -%>
+      <main slot="content">
+        <h1 class="mb-16">Modal</h1>
+        <p>Modal...</p>
+
+        <h2 class="mt-24 mb-16">Props</h2>
+        <table class="w-full docs-table">
+          <thead>
+            <tr class="text-left text-gray-400 uppercase">
+              <th>prop</th>
+              <th>type</th>
+              <th>default</th>
+            </tr>
+          </thead>
+          <tbody class="align-top">
+            <tr>
+              <td>open</td>
+              <td>
+                <div>boolean</div>
+                <div class="annotation">Opens the modal</div>
+              </td>
+              <td>false</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Examples</h2>
+        Left back button
+        <syntax-highlight>
+          <f-modal left>
+            This is the main content
+            <div slot="footer">
+              <button>submit</button>
+              <button>cancel</button>
+            </div>
+          </f-modal>
+        </syntax-highlight>
+        <div class="example">
+          <f-modal left id="modal1">
+            This is the main content
+            <div slot="footer">
+              <button>submit</button>
+              <button>cancel</button>
+            </div>
+          </f-modal>
+          <button id="button1">Open</button>
+          <script type="module">
+            const button = document.querySelector('#button1');
+            const modal = document.querySelector('#modal1');
+            button.addEventListener('click', () => {
+              modal.open = true;
+            });
+            modal.addEventListener('close', () => {
+              modal.open = false;
+            });
+          </script>
+        </div>
+      </main>
+      <%- include('footer.html'); -%>
+    </f-docs-template>
+
+    <%- include('scripts.html'); -%>
+  </body>
+</html>
