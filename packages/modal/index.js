@@ -3,7 +3,6 @@ import { fclasses, FabricElement } from '../utils';
 import { modal as c } from '@fabric-ds/css/component-classes';
 import { leftButtonSvg, rightButtonSvg } from './svgs';
 import { setup, teardown } from 'scroll-doctor';
-import '@a11y/focus-trap';
 
 class FabricModal extends FabricElement {
   static properties = {
@@ -46,8 +45,6 @@ class FabricModal extends FabricElement {
         this._scrollDoctorEnabled = true;
         // // take note of where the focus is for later
         this._activeEl = document.activeElement;
-        // // set focus inside the modal
-        this.shadowRoot.querySelector('focus-trap').focusFirstElement();
       }
     } else {
       if (this._scrollDoctorEnabled) {
@@ -96,35 +93,31 @@ class FabricModal extends FabricElement {
     if (!this.open) return html``;
     return html`
       ${this._fabricStylesheet}
-      <focus-trap>
-        <div @click="${this._dismiss}" class="${c.backdrop}">
-          <div
-            class="${c.modal}"
-            tabindex="-1"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="fabric_modal_id"
-            @click="${this._containerClick}"
-            @keydown="${this._containerKeyDown}"
-          >
-            <div class="${c.title}">
-              ${this.left ? this._leftButton : ''}
-              <div id="fabric_modal_id" class="${this._titleClasses}">
-                <p class="${c.titleText}">
-                  <slot name="title"></slot>
-                </p>
-              </div>
-              ${this.right ? this._rightButton : ''}
+      <dialog @click="${this._dismiss}">
+        <div
+          class="${c.modal}"
+          tabindex="-1"
+          aria-labelledby="fabric_modal_id"
+          @click="${this._containerClick}"
+          @keydown="${this._containerKeyDown}"
+        >
+          <div class="${c.title}">
+            ${this.left ? this._leftButton : ''}
+            <div id="fabric_modal_id" class="${this._titleClasses}">
+              <p class="${c.titleText}">
+                <slot name="title"></slot>
+              </p>
             </div>
-            <div class="${c.content}">
-              <slot></slot>
-            </div>
-            <div class="${c.footer}">
-              <slot name="footer"></slot>
-            </div>
+            ${this.right ? this._rightButton : ''}
+          </div>
+          <div class="${c.content}">
+            <slot></slot>
+          </div>
+          <div class="${c.footer}">
+            <slot name="footer"></slot>
           </div>
         </div>
-      </focus-trap>
+      </dialog>
     `;
   }
 }
