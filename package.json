@@ -40,6 +40,7 @@
   },
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.18.13",
     "@babel/eslint-parser": "7.18.9",
     "@chbphone55/classnames": "2.0.0",
     "@eik/cli": "2.0.22",
@@ -81,7 +82,9 @@
   "dependencies": {
     "@fabric-ds/core": "0.0.15",
     "@open-wc/testing": "3.1.6",
-    "html-format": "1.0.2"
+    "glob": "^8.0.3",
+    "html-format": "1.0.2",
+    "lit": "^2.3.1"
   },
   "publishConfig": {
     "access": "public"

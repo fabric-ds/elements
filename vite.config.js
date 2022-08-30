@@ -75,6 +75,11 @@ export default ({ mode }) => {
             injectOptions,
           },
           {
+            filename: 'textfield.html',
+            template: 'pages/components/textfield.html',
+            injectOptions,
+          },
+          {
             filename: 'index.html',
             template: 'index.html',
             injectOptions,
