@@ -34,8 +34,8 @@
           <f-modal left>
             This is the main content
             <div slot="footer">
-              <button>submit</button>
-              <button>cancel</button>
+              <button class="button button--primary">submit</button>
+              <button class="button button--primary">cancel</button>
             </div>
           </f-modal>
         </syntax-highlight>
@@ -43,25 +43,99 @@
           <f-modal left id="modal1">
             This is the main content
             <div slot="footer">
-              <button>submit</button>
-              <button>cancel</button>
+              <button class="button button--primary">submit</button>
+              <button class="button button--primary">cancel</button>
             </div>
           </f-modal>
           <button id="button1">Open</button>
-          <script type="module">
-            const button = document.querySelector('#button1');
-            const modal = document.querySelector('#modal1');
-            button.addEventListener('click', () => {
-              modal.open = true;
-            });
-            modal.addEventListener('close', () => {
-              modal.open = false;
-            });
-          </script>
+        </div>
+        Right close button
+        <syntax-highlight>
+          <f-modal right>
+            This is the main content
+            <div slot="footer">
+              <button class="button button--primary">submit</button>
+              <button class="button button--primary">cancel</button>
+            </div>
+          </f-modal>
+        </syntax-highlight>
+        <div class="example">
+          <f-modal right id="modal2">
+            This is the main content
+            <div slot="footer">
+              <button class="button button--primary">submit</button>
+              <button class="button button--primary">cancel</button>
+            </div>
+          </f-modal>
+          <button id="button2">Open</button>
+        </div>
+        Right close button with title
+        <syntax-highlight>
+          <f-modal right>
+            <h2 slot="title">This is a title</h2>
+            This is the main content
+            <div slot="footer">
+              <button class="button button--primary">submit</button>
+              <button class="button button--primary">cancel</button>
+            </div>
+          </f-modal>
+        </syntax-highlight>
+        <div class="example">
+          <f-modal right id="modal3">
+            <h2 slot="title">This is a title</h2>
+            This is the main content
+            <div slot="footer">
+              <button class="button button--primary">submit</button>
+              <button class="button button--primary">cancel</button>
+            </div>
+          </f-modal>
+          <button id="button3">Open</button>
+        </div>
+        Right close button with title and button in the default slot
+        <syntax-highlight>
+          <f-modal left right>
+            <h2 slot="title">This is a title</h2>
+            This is the main content
+            <button>call to action</button>
+            <div slot="footer">
+              <button class="button button--primary">submit</button>
+              <button class="button button--primary">cancel</button>
+            </div>
+          </f-modal>
+        </syntax-highlight>
+        <div class="example">
+          <f-modal left right id="modal4">
+            <h2 slot="title">This is a title</h2>
+            This is the main content
+            <button>call to action</button>
+            <div slot="footer">
+              <button class="button button--primary">Confirm</button>
+            </div>
+          </f-modal>
+          <button id="button4">Open</button>
         </div>
       </main>
       <%- include('footer.html'); -%>
     </f-docs-template>
+
+    <script type="module">
+      function setupModal(btnId, modalId) {
+        const button = document.querySelector(`#${btnId}`);
+        const modal = document.querySelector(`#${modalId}`);
+        button.addEventListener('click', () => {
+          modal.open = true;
+        });
+        modal.addEventListener('close', () => {
+          modal.open = false;
+        });
+      }
+
+      setupModal('button1', 'modal1');
+      setupModal('button2', 'modal2');
+      setupModal('button3', 'modal3');
+      setupModal('button4', 'modal4');
+      // setupModal('button5', 'modal5');
+    </script>
 
     <%- include('scripts.html'); -%>
   </body>

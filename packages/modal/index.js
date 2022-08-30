@@ -1,4 +1,4 @@
-import { html } from 'lit';
+import { html, css } from 'lit';
 import { fclasses, FabricElement } from '../utils';
 import { modal as c } from '@fabric-ds/css/component-classes';
 import { leftButtonSvg, rightButtonSvg } from './svgs';
@@ -10,6 +10,19 @@ class FabricModal extends FabricElement {
     left: { type: Boolean },
     right: { type: Boolean },
   };
+
+  static styles = css`
+    :host {
+      --f-modal-width: 640px;
+      --f-modal-max-height: 80%;
+    }
+    .modal {
+      width: var(--f-modal-width);
+    }
+    ::backdrop {
+      background-color: #00000059;
+    }
+  `;
 
   get _leftButtonClasses() {
     return fclasses({
@@ -39,19 +52,22 @@ class FabricModal extends FabricElement {
 
   updated() {
     super.updated();
-    if (this.open) {
-      if (!this._scrollDoctorEnabled) {
-        setup(this);
-        this._scrollDoctorEnabled = true;
-        // // take note of where the focus is for later
-        this._activeEl = document.activeElement;
-      }
-    } else {
-      if (this._scrollDoctorEnabled) {
-        teardown();
-        this._scrollDoctorEnabled = false;
-        this._activeEl.focus();
-      }
+    if (this.open && !this._scrollDoctorEnabled) {
+      // open dialog case
+      setup(this);
+      this._scrollDoctorEnabled = true;
+      // take note of where the focus is for later
+      this._activeEl = document.activeElement;
+      // set focus inside the modal
+      // this.shadowRoot.querySelector('focus-trap').focusFirstElement();
+
+      this.renderRoot.querySelector('dialog').showModal();
+    } else if (!this.open && this._scrollDoctorEnabled) {
+      // this.renderRoot.querySelector('dialog').close();
+      // close dialog case
+      teardown();
+      this._scrollDoctorEnabled = false;
+      this._activeEl.focus();
     }
   }
 
@@ -93,7 +109,7 @@ class FabricModal extends FabricElement {
     if (!this.open) return html``;
     return html`
       ${this._fabricStylesheet}
-      <dialog @click="${this._dismiss}">
+      <dialog @click="${this._dismiss}" class="overflow-hidden inset-0 bg-transparent">
         <div
           class="${c.modal}"
           tabindex="-1"
