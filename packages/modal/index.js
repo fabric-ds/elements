@@ -50,22 +50,26 @@ class FabricModal extends FabricElement {
     });
   }
 
+  willUpdate() {
+    if (!this.open && this._scrollDoctorEnabled) {
+      // this.renderRoot.querySelector('dialog').close();
+      // close dialog case
+      this.renderRoot.querySelector('dialog').close();
+      teardown();
+      this._removeSafariDialogHack();
+    }
+  }
+
   updated() {
-    super.updated();
     if (this.open && !this._scrollDoctorEnabled) {
       // open dialog case
       setup(this);
       this._scrollDoctorEnabled = true;
       // take note of where the focus is for later
       this._activeEl = document.activeElement;
-      // set focus inside the modal
-      // this.shadowRoot.querySelector('focus-trap').focusFirstElement();
-
       this.renderRoot.querySelector('dialog').showModal();
+      this._applySafariDialogHack();
     } else if (!this.open && this._scrollDoctorEnabled) {
-      // this.renderRoot.querySelector('dialog').close();
-      // close dialog case
-      teardown();
       this._scrollDoctorEnabled = false;
       this._activeEl.focus();
     }
@@ -103,6 +107,28 @@ class FabricModal extends FabricElement {
     >
       ${rightButtonSvg}
     </button>`;
+  }
+
+  _applySafariDialogHack() {
+    // Nasty workaround for Safari + VoiceOver to make sure surrounding content is not available for VoiceOver.
+    // Super important that these aria-hidden attributes are removed when the dialog is closed.
+    this._hiddenSurroundings = [];
+    ['previousElementSibling', 'nextElementSibling'].forEach((direction) => {
+      let el = this;
+      while (el !== document.body) {
+        if (el[direction]) {
+          el = el[direction];
+          if (el.getAttribute('aria-hidden') !== 'true') {
+            this._hiddenSurroundings.push(el);
+            el.setAttribute('aria-hidden', 'true');
+          }
+        } else el = el.parentNode;
+      }
+    });
+  }
+
+  _removeSafariDialogHack() {
+    this._hiddenSurroundings.forEach(el => el.removeAttribute('aria-hidden'));
   }
 
   render() {
