@@ -3,6 +3,7 @@ import { fclasses, FabricElement } from '../utils';
 import { modal as c } from '@fabric-ds/css/component-classes';
 import { leftButtonSvg, rightButtonSvg } from './svgs';
 import { setup, teardown } from 'scroll-doctor';
+import dialogPolyfill from 'dialog-polyfill';
 
 class FabricModal extends FabricElement {
   static properties = {
@@ -23,6 +24,12 @@ class FabricModal extends FabricElement {
       background-color: #00000059;
     }
   `;
+
+  connectedCallback() {
+    super.connectedCallback();
+    const dialog = this.renderRoot.querySelector('dialog');
+    dialogPolyfill.registerDialog(dialog);
+  }
 
   get _leftButtonClasses() {
     return fclasses({
@@ -128,7 +135,7 @@ class FabricModal extends FabricElement {
   }
 
   _removeSafariDialogHack() {
-    this._hiddenSurroundings.forEach(el => el.removeAttribute('aria-hidden'));
+    this._hiddenSurroundings.forEach((el) => el.removeAttribute('aria-hidden'));
   }
 
   render() {
