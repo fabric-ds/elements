@@ -20,6 +20,11 @@ class FabricModal extends FabricElement {
     .modal {
       width: var(--f-modal-width);
     }
+    dialog {
+      padding: 0;
+      border: none !important;
+      /* !important used here to override polyfill CSS, if loaded */
+    }
     ::backdrop {
       background-color: #00000059;
     }
@@ -78,7 +83,7 @@ class FabricModal extends FabricElement {
       this._applySafariDialogHack();
     } else if (!this.open && this._scrollDoctorEnabled) {
       this._scrollDoctorEnabled = false;
-      this._activeEl.focus();
+      this._activeEl?.focus();
     }
   }
 
@@ -139,7 +144,6 @@ class FabricModal extends FabricElement {
   }
 
   render() {
-    if (!this.open) return html``;
     return html`
       ${this._fabricStylesheet}
       <dialog @click="${this._dismiss}" class="overflow-hidden inset-0 bg-transparent">
