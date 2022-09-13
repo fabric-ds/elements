@@ -1,7 +1,7 @@
 {
   "name": "@fabric-ds/elements",
   "type": "module",
-  "version": "1.0.0-next.7",
+  "version": "1.0.0-next.8",
   "description": "Custom elements for Fabric",
   "exports": {
     ".": "./dist/index.js",
