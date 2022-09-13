@@ -33,8 +33,8 @@ export default ({ mode }) => {
 
   const injectOptions = {
     ejsOptions: {
-      views: ['pages/includes']
-    }
+      views: ['pages/includes'],
+    },
   };
 
   return {
@@ -47,6 +47,11 @@ export default ({ mode }) => {
           {
             filename: 'alert.html',
             template: 'pages/components/alert.html',
+            injectOptions,
+          },
+          {
+            filename: 'attention.html',
+            template: 'pages/components/attention.html',
             injectOptions,
           },
           {
