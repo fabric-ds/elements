@@ -1,3 +1,17 @@
+# [1.0.0-next.7](https://github.com/fabric-ds/elements/compare/v1.0.0-next.6...v1.0.0-next.7) (2022-08-30)
+
+
+### Features
+
+* add textfield custom element ([b2dd061](https://github.com/fabric-ds/elements/commit/b2dd061884b9d01eb0fe36835f155887dfa5ed50))
+
+# [1.0.0-next.6](https://github.com/fabric-ds/elements/compare/v1.0.0-next.5...v1.0.0-next.6) (2022-07-21)
+
+
+### Bug Fixes
+
+* **expand-transition:** don't set aria-hidden if value is false ([#90](https://github.com/fabric-ds/elements/issues/90)) ([7808f5d](https://github.com/fabric-ds/elements/commit/7808f5df32f3fcac90c4e93671a4fcd243ec269b))
+
 # [1.0.0-next.5](https://github.com/fabric-ds/elements/compare/v1.0.0-next.4...v1.0.0-next.5) (2022-07-07)
 
 
