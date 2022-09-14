@@ -1,3 +1,17 @@
+# [1.0.0-next.8](https://github.com/fabric-ds/elements/compare/v1.0.0-next.7...v1.0.0-next.8) (2022-09-13)
+
+
+### Features
+
+* **packages:** add Attention component ([#71](https://github.com/fabric-ds/elements/issues/71)) ([f376a74](https://github.com/fabric-ds/elements/commit/f376a742101e3944cf79351a96b81a0edd458d6c))
+
+# [1.0.0-next.7](https://github.com/fabric-ds/elements/compare/v1.0.0-next.6...v1.0.0-next.7) (2022-08-30)
+
+
+### Features
+
+* add textfield custom element ([b2dd061](https://github.com/fabric-ds/elements/commit/b2dd061884b9d01eb0fe36835f155887dfa5ed50))
+
 # [1.0.0-next.6](https://github.com/fabric-ds/elements/compare/v1.0.0-next.5...v1.0.0-next.6) (2022-07-21)
 
 

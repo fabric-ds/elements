@@ -48,7 +48,7 @@ test('Alert component with no attributes is rendered on the page', async (t) => 
   t.equal(await locator.getAttribute('variant'), null, 'Variant attribute should be null');
   t.equal(await locator.getAttribute('show'), null, 'Show attribute should be null');
   t.equal(await locator.evaluate((el) => el.show), false, 'Show property should default to false');
-  t.equal(await locator.getAttribute('role'), 'alert', 'Role attribute should be null');
+  t.equal(await locator.getAttribute('role'), 'alert', 'Role attribute should default to "alert"');
   t.equal(
     await locator.evaluate((el) => el.role),
     'alert',
@@ -72,10 +72,10 @@ test('Alert component with no attributes is rendered on the page', async (t) => 
   page.removeListener('pageerror', registerErrorLogs);
 });
 
-test('Alert component with wrong "variant" attribute is rendered on the page', async (t) => {
+test('Alert component with invalid "variant" attribute is rendered on the page', async (t) => {
   const component = `
     <f-alert variant="hello">
-      <p>This is an alert with no attributes</p>
+      <p>This is an alert with invalid "variant" attribute</p>
     </f-alert>
   `;
 

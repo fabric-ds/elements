@@ -55,6 +55,11 @@ export default ({ mode }) => {
             injectOptions,
           },
           {
+            filename: 'attention.html',
+            template: 'pages/components/attention.html',
+            injectOptions,
+          },
+          {
             filename: 'box.html',
             template: 'pages/components/box.html',
             injectOptions,
@@ -77,6 +82,11 @@ export default ({ mode }) => {
           {
             filename: 'toast.html',
             template: 'pages/components/toast.html',
+            injectOptions,
+          },
+          {
+            filename: 'textfield.html',
+            template: 'pages/components/textfield.html',
             injectOptions,
           },
           {
