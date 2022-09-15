@@ -24,7 +24,6 @@ class FabricButton extends FabricElement {
     href: { type: String, reflect: true },
     target: { type: String, reflect: true },
     rel: { type: String, reflect: true },
-    className: { type: String, reflect: true },
   };
 
   constructor() {
@@ -52,19 +51,15 @@ class FabricButton extends FabricElement {
   }
 
   get _classes() {
-    return classNames(
-      variantClassMap[this.variant],
-      {
-        // quiet
-        'button--flat': this.variant === 'secondary' && this.quiet,
-        'button--destructive-flat': this.variant === 'negative' && this.quiet,
-        'button--utility-flat': this.variant === 'utility' && this.quiet,
-        // others
-        'button--small': this.small,
-        'button--in-progress': this.loading,
-      },
-      this.className,
-    );
+    return classNames(variantClassMap[this.variant], {
+      // quiet
+      'button--flat': this.variant === 'secondary' && this.quiet,
+      'button--destructive-flat': this.variant === 'negative' && this.quiet,
+      'button--utility-flat': this.variant === 'utility' && this.quiet,
+      // others
+      'button--small': this.small,
+      'button--in-progress': this.loading,
+    });
   }
 
   render() {
