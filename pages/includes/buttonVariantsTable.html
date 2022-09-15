@@ -26,6 +26,7 @@
     variants.forEach(({ name, description }) => {
       const row = document.createElement('div');
       row.classList.add('example', 'md:grid', 'md:grid-cols-3');
+      row.setAttribute('id', `variant_row_${name}`);
 
       const descriptionWrapper = document.createElement('div');
 
