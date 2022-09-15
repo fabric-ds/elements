@@ -45,6 +45,11 @@ export default ({ mode }) => {
         minify: false,
         pages: [
           {
+            filename: 'button.html',
+            template: 'pages/components/button.html',
+            injectOptions,
+          },
+          {
             filename: 'alert.html',
             template: 'pages/components/alert.html',
             injectOptions,
