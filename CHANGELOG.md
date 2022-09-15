@@ -1,3 +1,10 @@
+# [1.0.0-next.9](https://github.com/fabric-ds/elements/compare/v1.0.0-next.8...v1.0.0-next.9) (2022-09-15)
+
+
+### Features
+
+* **packages:** Add Button component ([#95](https://github.com/fabric-ds/elements/issues/95)) ([a9c76a5](https://github.com/fabric-ds/elements/commit/a9c76a54b2c8307271ad540a639e9a378d352777))
+
 # [1.0.0-next.8](https://github.com/fabric-ds/elements/compare/v1.0.0-next.7...v1.0.0-next.8) (2022-09-13)
 
 
