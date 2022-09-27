@@ -90,6 +90,11 @@ export default ({ mode }) => {
             injectOptions,
           },
           {
+            filename: 'expandable.html',
+            template: 'pages/components/expandable.html',
+            injectOptions,
+          },
+          {
             filename: 'index.html',
             template: 'index.html',
             injectOptions,
