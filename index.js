@@ -11,3 +11,4 @@ export * from './packages/attention';
 export * from './packages/textfield';
 export * from './packages/affix';
 export * from './packages/utils/expand-transition';
+export * from './packages/utils/unstyled-heading';
