@@ -15,31 +15,36 @@ class ExpandTransition extends FabricElement {
   constructor() {
     super();
 
-    // Initialise fields
     this.show = false;
     this._mounted = false;
-    this._removeElement = this.show ? false : true;
+    this._removeElement = false;
   }
 
   willUpdate() {
+    // Initialise state property with public property value
+    if (!this._mounted) {
+      this._removeElement = !this.show;
+    }
+
     if (this.show && this._removeElement) {
       this._removeElement = false;
     }
   }
 
-  firstUpdated() {
-    this._mounted = true;
-  }
-
   updated() {
     if (!this._wrapper) return;
 
+    if (!this._mounted) {
+      this._mounted = true;
+      return;
+    }
+
     // If show is set to `true` by user, animate only after component is mount
-    if (this._mounted && this.show) {
+    if (this.show) {
       expand(this._wrapper);
     }
 
-    if (this._mounted && !this.show && !this._removeElement) {
+    if (!this.show && !this._removeElement) {
       collapse(this._wrapper, () => (this._removeElement = true));
     }
   }
