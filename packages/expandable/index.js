@@ -1,11 +1,12 @@
 import { css, html } from 'lit';
 import { fclasses, kebabCaseAttributes, FabricElement } from '../utils';
 import { box as boxClasses, buttonReset } from '@fabric-ds/css/component-classes';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import '@fabric-ds/icons/elements/chevron-down-16';
 
 class FabricExpandable extends kebabCaseAttributes(FabricElement) {
   static properties = {
-    expanded: { type: Boolean },
+    expanded: { type: Boolean, reflect: true },
     title: { type: String },
     info: { type: Boolean },
     box: { type: Boolean },
@@ -15,7 +16,6 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
     chevron: { type: Boolean },
     animated: { type: Boolean },
     headingLevel: { type: Number },
-    _stateExpanded: { type: Boolean, state: true },
   };
 
   constructor() {
@@ -30,8 +30,6 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
     this.buttonClass = '';
     this.contentClass = '';
     this.chevron = true;
-    this._stateExpanded = false;
-    this._mounted = false;
   }
 
   // Slotted elements remain in lightDOM which allows for control of their style outside of shadowDOM.
@@ -58,26 +56,6 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
     </div>`;
   }
 
-  willUpdate() {
-    // Initialise state property with public property value
-    if (!this._mounted && this.expanded) {
-      this._stateExpanded = this.expanded;
-      this._mounted = true;
-    }
-  }
-
-  toggleExpanded() {
-    const newState = !this._stateExpanded;
-    const event = new CustomEvent('change', {
-      detail: {
-        expanded: newState,
-      },
-    });
-
-    this._stateExpanded = newState;
-    this.dispatchEvent(event);
-  }
-
   render() {
     return html`${this._fabricStylesheet}
       <div
@@ -90,14 +68,14 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
         <f-unstyled-heading level=${this.headingLevel}>
           <button
             type="button"
-            aria-expanded="${this._stateExpanded}"
+            aria-expanded="${this.expanded}"
             class=${fclasses({
               [this.buttonClass || '']: true,
               [buttonReset + ' hover:underline focus:underline']: true,
               ['w-full text-left relative ' + boxClasses.box]: this.box,
               'hover:text-aqua-700 active:text-aqua-800': this.info,
             })}
-            @click=${this.toggleExpanded}
+            @click=${() => (this.expanded = !this.expanded)}
           >
             <div class="flex justify-between align-center">
               <slot name="title"><span class="h4">${this.title}</span></slot>
@@ -105,7 +83,7 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
               html`<div
                 class=${fclasses({
                   'self-center transform transition-transform': true,
-                  '-rotate-180': this._stateExpanded,
+                  '-rotate-180': this.expanded,
                   'relative left-8': !this.box,
                   'box-chevron': this.box,
                 })}
@@ -116,15 +94,15 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
           </button>
         </f-unstyled-heading>
         ${this.animated
-          ? html`<f-expand-transition ?show=${this._stateExpanded}>
+          ? html`<f-expand-transition ?show=${this.expanded}>
               ${this._expandableSlot}
             </f-expand-transition>`
           : html`<div
               class=${fclasses({
                 'overflow-hidden': true,
-                'h-0 invisible': !this._stateExpanded,
+                'h-0 invisible': !this.expanded,
               })}
-              aria-hidden=${!this._stateExpanded ? true : undefined}
+              aria-hidden=${ifDefined(!this.expanded ? true : undefined)}
             >
               ${this._expandableSlot}
             </div>`}
