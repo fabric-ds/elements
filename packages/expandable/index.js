@@ -47,7 +47,7 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
     }
   `;
 
-  get _slottedContent() {
+  get _expandableSlot() {
     return html`<div
       class=${fclasses({
         [this.contentClass || '']: true,
@@ -88,9 +88,7 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
             @click=${() => (this._stateExpanded = !this._stateExpanded)}
           >
             <div class="flex justify-between align-center">
-              ${typeof title === 'string'
-                ? html`<span class="h4">${this.title}</span>`
-                : this.title}
+              <slot name="title"><span class="h4">${this.title}</span></slot>
               ${this.chevron &&
               html`<div
                 class=${fclasses({
@@ -107,7 +105,7 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
         </f-unstyled-heading>
         ${this.animated
           ? html`<f-expand-transition ?show=${this._stateExpanded}>
-              ${this._slottedContent}
+              ${this._expandableSlot}
             </f-expand-transition>`
           : html`<div
               class=${fclasses({
@@ -116,7 +114,7 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
               })}
               aria-hidden=${!this._stateExpanded ? true : undefined}
             >
-              ${this._slottedContent}
+              ${this._expandableSlot}
             </div>`}
       </div>`;
   }
