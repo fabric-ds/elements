@@ -78,7 +78,9 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
             @click=${() => (this.expanded = !this.expanded)}
           >
             <div class="flex justify-between align-center">
-              <slot name="title"><span class="h4">${this.title}</span></slot>
+              ${this.title
+                ? html`<span class="h4">${this.title}</span>`
+                : html`<slot name="title"></slot>`}
               ${this.chevron &&
               html`<div
                 class=${fclasses({
