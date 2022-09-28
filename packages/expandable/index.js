@@ -23,12 +23,9 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
 
     this.expanded = false;
     this.animated = false;
-    this.title = '';
     this.info = false;
     this.box = false;
     this.bleed = false;
-    this.buttonClass = '';
-    this.contentClass = '';
     this.chevron = true;
   }
 
@@ -49,7 +46,7 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
     return html`<div
       class=${fclasses({
         [this.contentClass || '']: true,
-        [boxClasses.box + (this.title ? ' pt-0' : '')]: this.box,
+        [boxClasses.box + ' pt-0']: this.box,
       })}
     >
       <slot></slot>
@@ -81,17 +78,18 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
               ${this.title
                 ? html`<span class="h4">${this.title}</span>`
                 : html`<slot name="title"></slot>`}
-              ${this.chevron &&
-              html`<div
-                class=${fclasses({
-                  'self-center transform transition-transform': true,
-                  '-rotate-180': this.expanded,
-                  'relative left-8': !this.box,
-                  'box-chevron': this.box,
-                })}
-              >
-                <f-icon-chevron-down16></f-icon-chevron-down16>
-              </div>`}
+              ${this.chevron
+                ? html`<div
+                    class=${fclasses({
+                      'self-center transform transition-transform': true,
+                      '-rotate-180': this.expanded,
+                      'relative left-8': !this.box,
+                      'box-chevron': this.box,
+                    })}
+                  >
+                    <f-icon-chevron-down16></f-icon-chevron-down16>
+                  </div>`
+                : ''}
             </div>
           </button>
         </f-unstyled-heading>

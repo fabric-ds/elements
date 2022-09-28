@@ -1,0 +1,26 @@
+<script>
+  function addEventListenersToExpandableControllers(expandableId) {
+    const expandableElement = document.getElementById(expandableId);
+    const controllersWrapperId = `#${expandableId}Controllers`;
+
+    document.querySelectorAll(`${controllersWrapperId} button`).forEach((el) => {
+      el.addEventListener('click', (event) => {
+        const name = event.target.name || 'info';
+        expandableElement[name] = !expandableElement[name];
+
+        if (expandableElement[name]) {
+          el.classList.add('bg-gray-200', 'hover:bg-gray-300', 'active:bg-gray-400');
+          expandableElement.title = expandableElement.title + ` ${name}`;
+        } else {
+          el.classList.remove('bg-gray-200', 'hover:bg-gray-300', 'active:bg-gray-400');
+          expandableElement.title = expandableElement.title.replace(` ${name}`, '');
+        }
+      });
+    });
+  }
+
+  document.querySelectorAll('.example f-expandable').forEach((el) => {
+    const expandableId = el.getAttribute('id');
+    addEventListenersToExpandableControllers(expandableId);
+  });
+</script>
