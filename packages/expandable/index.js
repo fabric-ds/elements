@@ -66,6 +66,18 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
     }
   }
 
+  toggleExpanded() {
+    const newState = !this._stateExpanded;
+    const event = new CustomEvent('change', {
+      detail: {
+        expanded: newState,
+      },
+    });
+
+    this._stateExpanded = newState;
+    this.dispatchEvent(event);
+  }
+
   render() {
     return html`${this._fabricStylesheet}
       <div
@@ -85,7 +97,7 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
               ['w-full text-left relative ' + boxClasses.box]: this.box,
               'hover:text-aqua-700 active:text-aqua-800': this.info,
             })}
-            @click=${() => (this._stateExpanded = !this._stateExpanded)}
+            @click=${this.toggleExpanded}
           >
             <div class="flex justify-between align-center">
               <slot name="title"><span class="h4">${this.title}</span></slot>
