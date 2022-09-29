@@ -13,7 +13,7 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
     bleed: { type: Boolean },
     buttonClass: { type: String },
     contentClass: { type: String },
-    chevron: { type: Boolean },
+    noChevron: { type: Boolean },
     animated: { type: Boolean },
     headingLevel: { type: Number },
   };
@@ -26,7 +26,7 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
     this.info = false;
     this.box = false;
     this.bleed = false;
-    this.chevron = true;
+    this.noChevron = false;
   }
 
   // Slotted elements remain in lightDOM which allows for control of their style outside of shadowDOM.
@@ -78,8 +78,9 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
               ${this.title
                 ? html`<span class="h4">${this.title}</span>`
                 : html`<slot name="title"></slot>`}
-              ${this.chevron
-                ? html`<div
+              ${this.noChevron
+                ? ''
+                : html`<div
                     class=${fclasses({
                       'self-center transform transition-transform': true,
                       '-rotate-180': this.expanded,
@@ -88,8 +89,7 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
                     })}
                   >
                     <f-icon-chevron-down16></f-icon-chevron-down16>
-                  </div>`
-                : ''}
+                  </div>`}
             </div>
           </button>
         </f-unstyled-heading>
