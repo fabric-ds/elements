@@ -10,9 +10,11 @@
 
         if (expandableElement[name]) {
           el.classList.add('bg-gray-200', 'hover:bg-gray-300', 'active:bg-gray-400');
+          el.ariaPressed = true;
           expandableElement.title = expandableElement.title + ` ${name}`;
         } else {
           el.classList.remove('bg-gray-200', 'hover:bg-gray-300', 'active:bg-gray-400');
+          el.ariaPressed = false;
           expandableElement.title = expandableElement.title.replace(` ${name}`, '');
         }
       });
