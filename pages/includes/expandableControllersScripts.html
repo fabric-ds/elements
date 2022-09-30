@@ -23,4 +23,9 @@
     const expandableId = el.getAttribute('id');
     addEventListenersToExpandableControllers(expandableId);
   });
+
+  document.querySelector('.noTitle f-button').addEventListener('click', (event) => {
+    const expandable = document.querySelector('.noTitle f-expandable');
+    expandable.expanded = !expandable.expanded;
+  });
 </script>

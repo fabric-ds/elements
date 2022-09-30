@@ -16,6 +16,7 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
     noChevron: { type: Boolean },
     animated: { type: Boolean },
     headingLevel: { type: Number },
+    _hasTitle: { type: Boolean, state: true },
   };
 
   constructor() {
@@ -27,6 +28,7 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
     this.box = false;
     this.bleed = false;
     this.noChevron = false;
+    this._hasTitle = true;
   }
 
   // Slotted elements remain in lightDOM which allows for control of their style outside of shadowDOM.
@@ -42,11 +44,17 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
     }
   `;
 
+  firstUpdated() {
+    this._hasTitle =
+      !!this.title ||
+      this.renderRoot.querySelector("slot[name='title']").assignedNodes().length > 0;
+  }
+
   get _expandableSlot() {
     return html`<div
       class=${fclasses({
         [this.contentClass || '']: true,
-        [boxClasses.box + ' pt-0']: this.box,
+        [boxClasses.box + (this._hasTitle ? ' pt-0' : '')]: this.box,
       })}
     >
       <slot></slot>
@@ -62,37 +70,39 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
           [boxClasses.bleed]: this.bleed,
         })}
       >
-        <f-unstyled-heading level=${this.headingLevel}>
-          <button
-            type="button"
-            aria-expanded="${this.expanded}"
-            class=${fclasses({
-              [this.buttonClass || '']: true,
-              [buttonReset + ' hover:underline focus:underline']: true,
-              ['w-full text-left relative ' + boxClasses.box]: this.box,
-              'hover:text-aqua-700 active:text-aqua-800': this.info,
-            })}
-            @click=${() => (this.expanded = !this.expanded)}
-          >
-            <div class="flex justify-between align-center">
-              ${this.title
-                ? html`<span class="h4">${this.title}</span>`
-                : html`<slot name="title"></slot>`}
-              ${this.noChevron
-                ? ''
-                : html`<div
-                    class=${fclasses({
-                      'self-center transform transition-transform': true,
-                      '-rotate-180': this.expanded,
-                      'relative left-8': !this.box,
-                      'box-chevron': this.box,
-                    })}
-                  >
-                    <f-icon-chevron-down16></f-icon-chevron-down16>
-                  </div>`}
-            </div>
-          </button>
-        </f-unstyled-heading>
+        ${this._hasTitle
+          ? html`<f-unstyled-heading level=${this.headingLevel}>
+              <button
+                type="button"
+                aria-expanded="${this.expanded}"
+                class=${fclasses({
+                  [this.buttonClass || '']: true,
+                  [buttonReset + ' hover:underline focus:underline']: true,
+                  ['w-full text-left relative ' + boxClasses.box]: this.box,
+                  'hover:text-aqua-700 active:text-aqua-800': this.info,
+                })}
+                @click=${() => (this.expanded = !this.expanded)}
+              >
+                <div class="flex justify-between align-center">
+                  ${this.title
+                    ? html`<span class="h4">${this.title}</span>`
+                    : html`<slot name="title"></slot>`}
+                  ${this.noChevron
+                    ? ''
+                    : html`<div
+                        class=${fclasses({
+                          'self-center transform transition-transform': true,
+                          '-rotate-180': this.expanded,
+                          'relative left-8': !this.box,
+                          'box-chevron': this.box,
+                        })}
+                      >
+                        <f-icon-chevron-down16></f-icon-chevron-down16>
+                      </div>`}
+                </div>
+              </button>
+            </f-unstyled-heading>`
+          : ''}
         ${this.animated
           ? html`<f-expand-transition ?show=${this.expanded}>
               ${this._expandableSlot}
