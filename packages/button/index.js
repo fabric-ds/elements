@@ -1,6 +1,6 @@
 import { html, LitElement } from 'lit';
 import { classNames } from '@chbphone55/classnames';
-import { FabricElement } from '../utils';
+import { kebabCaseAttributes, FabricElement } from '../utils';
 
 const variantClassMap = {
   primary: 'button button--primary',
@@ -11,7 +11,7 @@ const variantClassMap = {
   pill: 'button button--pill',
 };
 
-class FabricButton extends FabricElement {
+class FabricButton extends kebabCaseAttributes(FabricElement) {
   static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 
   static properties = {
@@ -24,6 +24,7 @@ class FabricButton extends FabricElement {
     href: { type: String, reflect: true },
     target: { type: String, reflect: true },
     rel: { type: String, reflect: true },
+    buttonClass: { type: String, reflect: true },
   };
 
   constructor() {
@@ -51,15 +52,19 @@ class FabricButton extends FabricElement {
   }
 
   get _classes() {
-    return classNames(variantClassMap[this.variant], {
-      // quiet
-      'button--flat': this.variant === 'secondary' && this.quiet,
-      'button--destructive-flat': this.variant === 'negative' && this.quiet,
-      'button--utility-flat': this.variant === 'utility' && this.quiet,
-      // others
-      'button--small': this.small,
-      'button--in-progress': this.loading,
-    });
+    return classNames(
+      variantClassMap[this.variant],
+      {
+        // quiet
+        'button--flat': this.variant === 'secondary' && this.quiet,
+        'button--destructive-flat': this.variant === 'negative' && this.quiet,
+        'button--utility-flat': this.variant === 'utility' && this.quiet,
+        // others
+        'button--small': this.small,
+        'button--in-progress': this.loading,
+      },
+      this.buttonClass,
+    );
   }
 
   render() {

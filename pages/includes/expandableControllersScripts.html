@@ -3,17 +3,17 @@
     const expandableElement = document.getElementById(expandableId);
     const controllersWrapperId = `#${expandableId}Controllers`;
 
-    document.querySelectorAll(`${controllersWrapperId} button`).forEach((el) => {
+    document.querySelectorAll(`${controllersWrapperId} f-button`).forEach((el) => {
       el.addEventListener('click', (event) => {
-        const name = event.target.name || 'info';
+        const name = event.target.getAttribute('name') || 'info';
         expandableElement[name] = !expandableElement[name];
 
         if (expandableElement[name]) {
-          el.classList.add('bg-gray-200', 'hover:bg-gray-300', 'active:bg-gray-400');
+          el.buttonClass = 'bg-gray-200 hover:bg-gray-300 active:bg-gray-400';
           el.ariaPressed = true;
           expandableElement.title = expandableElement.title + ` ${name}`;
         } else {
-          el.classList.remove('bg-gray-200', 'hover:bg-gray-300', 'active:bg-gray-400');
+          el.buttonClass = undefined;
           el.ariaPressed = false;
           expandableElement.title = expandableElement.title.replace(` ${name}`, '');
         }
