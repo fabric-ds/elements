@@ -1,3 +1,10 @@
+# [1.0.0-next.10](https://github.com/fabric-ds/elements/compare/v1.0.0-next.9...v1.0.0-next.10) (2022-10-03)
+
+
+### Features
+
+* **packages:** Add Expandable component ([#102](https://github.com/fabric-ds/elements/issues/102)) ([c97bf89](https://github.com/fabric-ds/elements/commit/c97bf8955c0d49564931d351adb029bacc8b1967))
+
 # [1.0.0-next.9](https://github.com/fabric-ds/elements/compare/v1.0.0-next.8...v1.0.0-next.9) (2022-09-15)
 
 
