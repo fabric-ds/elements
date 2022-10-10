@@ -4,8 +4,7 @@ import '../../dist/index.js';
 import { updateToast, removeToast, toast } from '../../dist/api.js';
 
 const test = it;
-const wait = (duration = 0) =>
-  new Promise((resolve) => setTimeout(resolve, duration));
+const wait = (duration = 0) => new Promise((resolve) => setTimeout(resolve, duration));
 
 afterEach(() => {
   document.body.innerHTML = '';
@@ -21,9 +20,7 @@ test('API: first call to toast adds toast container to the dom', async () => {
   expect(el.text).to.equal('This is a toast');
   await wait();
   expect(
-    document
-      .querySelector('f-toast-container')
-      .renderRoot.querySelectorAll('f-toast').length,
+    document.querySelector('f-toast-container').renderRoot.querySelectorAll('f-toast').length,
   ).to.equal(1);
 });
 
@@ -31,15 +28,11 @@ test('API: toast method: options: duration is set correctly', async () => {
   toast('This is a toast', { duration: 50 });
   await wait();
   expect(
-    document
-      .querySelector('f-toast-container')
-      .renderRoot.querySelectorAll('f-toast').length,
+    document.querySelector('f-toast-container').renderRoot.querySelectorAll('f-toast').length,
   ).to.equal(1);
   await wait(1000);
   expect(
-    document
-      .querySelector('f-toast-container')
-      .renderRoot.querySelectorAll('f-toast').length,
+    document.querySelector('f-toast-container').renderRoot.querySelectorAll('f-toast').length,
   ).to.equal(0);
 });
 
@@ -85,15 +78,11 @@ test('API: remove toast removes existing toast', async () => {
   expect(!!el.id).to.equal(true);
   await wait();
   expect(
-    document
-      .querySelector('f-toast-container')
-      .renderRoot.querySelectorAll('f-toast').length,
+    document.querySelector('f-toast-container').renderRoot.querySelectorAll('f-toast').length,
   ).to.equal(1);
   removeToast(el.id);
   await wait();
   expect(
-    document
-      .querySelector('f-toast-container')
-      .renderRoot.querySelectorAll('f-toast').length,
+    document.querySelector('f-toast-container').renderRoot.querySelectorAll('f-toast').length,
   ).to.equal(0);
 });

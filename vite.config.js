@@ -1,5 +1,5 @@
 /* eslint-env node */
-import html from 'vite-plugin-html';
+import { createHtmlPlugin } from 'vite-plugin-html';
 import path from 'path';
 import glob from 'glob';
 // import postcss from 'postcss';
@@ -31,15 +31,75 @@ export default ({ mode }) => {
     }
   }
 
+  const injectOptions = {
+    ejsOptions: {
+      views: ['pages/includes'],
+    },
+  };
+
   return {
     // base: isProduction ? '/elements/' : '',
     plugins: [
       // litElementTailwindPlugin({ mode }),
-      html.default({
-        inject: {
-          injectOptions: { views: ['pages/includes'] },
-        },
+      createHtmlPlugin({
         minify: false,
+        pages: [
+          {
+            filename: 'button.html',
+            template: 'pages/components/button.html',
+            injectOptions,
+          },
+          {
+            filename: 'alert.html',
+            template: 'pages/components/alert.html',
+            injectOptions,
+          },
+          {
+            filename: 'attention.html',
+            template: 'pages/components/attention.html',
+            injectOptions,
+          },
+          {
+            filename: 'box.html',
+            template: 'pages/components/box.html',
+            injectOptions,
+          },
+          {
+            filename: 'breadcrumbs.html',
+            template: 'pages/components/breadcrumbs.html',
+            injectOptions,
+          },
+          {
+            filename: 'broadcast.html',
+            template: 'pages/components/broadcast.html',
+            injectOptions,
+          },
+          {
+            filename: 'card.html',
+            template: 'pages/components/card.html',
+            injectOptions,
+          },
+          {
+            filename: 'toast.html',
+            template: 'pages/components/toast.html',
+            injectOptions,
+          },
+          {
+            filename: 'textfield.html',
+            template: 'pages/components/textfield.html',
+            injectOptions,
+          },
+          {
+            filename: 'expandable.html',
+            template: 'pages/components/expandable.html',
+            injectOptions,
+          },
+          {
+            filename: 'index.html',
+            template: 'index.html',
+            injectOptions,
+          },
+        ],
       }),
       isProduction && basePathFix(),
     ],

@@ -3,8 +3,7 @@ import { html, fixture, expect } from '@open-wc/testing';
 import { FabricToastContainer } from '../../dist/index.js';
 
 const test = it;
-const wait = (duration = 0) =>
-  new Promise((resolve) => setTimeout(resolve, duration));
+const wait = (duration = 0) => new Promise((resolve) => setTimeout(resolve, duration));
 
 afterEach(() => {
   document.body.innerHTML = '';
@@ -49,15 +48,11 @@ test('API: set method: toast element created from given data', async () => {
   const container = await FabricToastContainer.init();
   container.set({ id: 'abc', text: 'This is a toast' });
   await wait();
+  expect(!!document.querySelector('f-toast-container').renderRoot.querySelector('#abc')).to.equal(
+    true,
+  );
   expect(
-    !!document
-      .querySelector('f-toast-container')
-      .renderRoot.querySelector('#abc'),
-  ).to.equal(true);
-  expect(
-    document
-      .querySelector('f-toast-container')
-      .renderRoot.querySelectorAll('f-toast').length,
+    document.querySelector('f-toast-container').renderRoot.querySelectorAll('f-toast').length,
   ).to.equal(1);
 });
 
@@ -107,11 +102,9 @@ test('API: del method: toast element deleted and removed from dom by given id', 
   await wait();
   const result = await container.del('abc');
   expect(result).to.equal(true);
-  expect(
-    !!document
-      .querySelector('f-toast-container')
-      .renderRoot.querySelector('#abc'),
-  ).to.equal(false);
+  expect(!!document.querySelector('f-toast-container').renderRoot.querySelector('#abc')).to.equal(
+    false,
+  );
 });
 
 test('API: scheduling: toasts automatically deleted after duration', async () => {
@@ -122,15 +115,11 @@ test('API: scheduling: toasts automatically deleted after duration', async () =>
   container.set({ id: 'ddd', text: 'This is a toast' });
   await wait();
   expect(
-    document
-      .querySelector('f-toast-container')
-      .renderRoot.querySelectorAll('f-toast').length,
+    document.querySelector('f-toast-container').renderRoot.querySelectorAll('f-toast').length,
   ).to.equal(4);
   await wait(1000);
   expect(
-    document
-      .querySelector('f-toast-container')
-      .renderRoot.querySelectorAll('f-toast').length,
+    document.querySelector('f-toast-container').renderRoot.querySelectorAll('f-toast').length,
   ).to.equal(1);
 });
 
@@ -141,8 +130,6 @@ test('API: updating toast type', async () => {
   container.set({ id: 'aaa', text: 'This is a toast', type: 'error' });
   await wait();
   expect(
-    document
-      .querySelector('f-toast-container')
-      .renderRoot.querySelector('f-toast').type,
+    document.querySelector('f-toast-container').renderRoot.querySelector('f-toast').type,
   ).to.equal('error');
 });
