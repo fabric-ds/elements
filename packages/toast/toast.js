@@ -139,7 +139,6 @@ export class FabricToast extends LitElement {
             this.canclose === true,
             () =>
               html`<button class="${c.toastClose}" @click="${this.close}">${closeSVG()}</button>`,
-            () => html``,
           )}
         </div>
       </section>`;
