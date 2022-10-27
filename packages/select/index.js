@@ -68,9 +68,9 @@ export class FabricSelect extends kebabCaseAttributes(FabricElement) {
         <div class="input--select__wrap">
           <select
             id="${this.#id}"
-            autofocus="${ifDefined(this.autoFocus)}"
-            aria-invalid="${ifDefined(this.#helpId)}"
+            ?autofocus=${this.autoFocus}
             aria-describedby="${ifDefined(this.#helpId)}"
+            aria-invalid="${ifDefined(this.invalid && this.#helpId)}"
             aria-errormessage="${ifDefined(this.invalid && this.#helpId)}"
           >
             ${unsafeHTML(this.#options)}
