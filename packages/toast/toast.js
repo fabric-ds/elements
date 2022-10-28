@@ -129,7 +129,7 @@ export class FabricToast extends LitElement {
         type="text/css"
         href="https://assets.finn.no/pkg/@fabric-ds/css/v1/fabric.min.css"
       />
-      <section class="${c.toastWrapper}" aria-label="${this._typeLabel}">
+      <section class="relative ${c.toastWrapper}" aria-label="${this._typeLabel}">
         <div class="${this._primaryClasses}">
           <div class="${this._iconClasses}">${this._iconMarkup}</div>
           <div role="${this._role}" class="${c.toastContent}">

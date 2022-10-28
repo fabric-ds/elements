@@ -68,7 +68,7 @@ class FabricButton extends kebabCaseAttributes(FabricElement) {
   }
 
   render() {
-    return html`${this._fabricStylesheet}
+    return html`
     ${this.href
       ? html`<a
           href=${this.href}

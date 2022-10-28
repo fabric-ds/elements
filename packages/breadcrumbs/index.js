@@ -14,7 +14,6 @@ class FabricBreadcrumbs extends FabricElement {
 
   render() {
     return html`
-      ${this._fabricStylesheet}
       <nav aria-label="Her er du" class="flex space-x-8">
         <h2 class="sr-only">Her er du</h2>
         ${this._children}

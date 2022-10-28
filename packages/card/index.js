@@ -9,7 +9,7 @@ const keys = {
 };
 
 class FabricCard extends FabricElement {
-  static styles = css`
+  static styles = [super.styles, css`
     a::after {
       content: '';
       position: absolute;
@@ -21,7 +21,7 @@ class FabricCard extends FabricElement {
     :host {
       display: block;
     }
-  `;
+  `];
 
   static properties = {
     selected: { type: Boolean, reflect: true },

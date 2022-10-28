@@ -1,0 +1,9 @@
+
+@import "./node_modules/@fabric-ds/css/src/base.css";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "./node_modules/@fabric-ds/css/src/components.css";
+@import "tailwindcss/utilities";
+@import "./node_modules/@fabric-ds/css/src/utilities.css";
+@import "./node_modules/@fabric-ds/css/src/theme.css";
+

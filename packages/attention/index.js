@@ -26,19 +26,22 @@ class FabricAttention extends kebabCaseAttributes(FabricElement) {
     noArrow: { type: Boolean, reflect: true },
   };
 
-  static styles = css`
-    #attention {
-      position: absolute;
-      z-index: 50;
-      visibility: var(--attention-visibility);
-      display: var(--attention-display);
-    }
+  static styles = [
+    super.styles,
+    css`
+      #attention {
+        position: absolute;
+        z-index: 50;
+        visibility: var(--attention-visibility);
+        display: var(--attention-display);
+      }
 
-    #arrow {
-      border-top-left-radius: 4px;
-      z-index: 1;
-    }
-  `;
+      #arrow {
+        border-top-left-radius: 4px;
+        z-index: 1;
+      }
+      `
+  ];
 
   constructor() {
     super();
@@ -140,9 +143,24 @@ class FabricAttention extends kebabCaseAttributes(FabricElement) {
   }
 
   get _arrowClasses() {
+    let directionClass = '';
+    switch (this._arrowDirection) {
+      case 'left':
+        directionClass = '-left-8';
+        break;
+      case 'right':
+        directionClass = '-right-8';
+        break;
+      case 'top':
+        directionClass = '-top-8';
+        break;
+      case 'bottom':
+        directionClass = '-bottom-8';
+        break;
+    }
     return classes({
       [c.arrowBase]: true,
-      [`-${this._arrowDirection}-8`]: true,
+      [directionClass]: true,
       [c.arrowTooltip]: this.tooltip,
       [c.arrowCallout]: this.callout,
       [c.arrowPopover]: this.popover,
@@ -167,7 +185,6 @@ class FabricAttention extends kebabCaseAttributes(FabricElement) {
 
   render() {
     return html`
-      ${this._fabricStylesheet}
       <div class=${ifDefined(this.className ? this.className : undefined)}>
         ${this.placement === 'right' || this.placement === 'bottom' // Attention's and its arrow's visual position should be reflected in the DOM
           ? html`

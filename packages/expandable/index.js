@@ -35,14 +35,16 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
   // ::slotted([Simple Selector]) confirms to Specificity rules, but (being simple) does not add weight to lightDOM skin selectors,
   // so never gets higher Specificity. Thus in order to overwrite style linked within shadowDOM, we need to use !important.
   // https://stackoverflow.com/a/61631668
-  static styles = css`
+  static styles = [
+    super.styles,
+    css`
     :host {
       display: block;
     }
     ::slotted(:last-child) {
       margin-bottom: 0px !important;
     }
-  `;
+  `];
 
   firstUpdated() {
     this._hasTitle =
@@ -62,7 +64,7 @@ class FabricExpandable extends kebabCaseAttributes(FabricElement) {
   }
 
   render() {
-    return html`${this._fabricStylesheet}
+    return html`
       <div
         class=${fclasses({
           'bg-aqua-50': this.info,
