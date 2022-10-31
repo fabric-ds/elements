@@ -27,6 +27,8 @@ export class FabricSelect extends kebabCaseAttributes(FabricElement) {
 
     // Whether to show optional text
     optional: { type: Boolean, reflect: true },
+
+    _options: { state: true },
   };
 
   get #classes() {
@@ -43,11 +45,9 @@ export class FabricSelect extends kebabCaseAttributes(FabricElement) {
     return this.hint ? `${this.#id}__hint` : undefined;
   }
 
-  #options = '';
-
   constructor() {
     super();
-    this.#options = this.innerHTML;
+    this._options = this.innerHTML;
   }
 
   render() {
@@ -73,7 +73,7 @@ export class FabricSelect extends kebabCaseAttributes(FabricElement) {
             aria-invalid="${ifDefined(this.invalid && this.#helpId)}"
             aria-errormessage="${ifDefined(this.invalid && this.#helpId)}"
           >
-            ${unsafeHTML(this.#options)}
+            ${unsafeHTML(this._options)}
           </select>
         </div>
         ${when(

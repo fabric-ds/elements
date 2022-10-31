@@ -5,9 +5,6 @@ import { addContentToPage } from '../../tests/utils/index.js';
 const formatHTML = (string) =>
   string
     .trim()
-    // remove html whitespace
-    .replace(/>\s+</g, '><')
-    .replace(/[\r\n]/gm, '')
     // remove html comments
     .replace(/<!--.*?-->/g, '');
 
@@ -43,7 +40,7 @@ test('Select component with no attributes is rendered on the page', async (t) =>
   });
 
   // THEN: the component is visible in the DOM
-  const locator = await page.locator('f-select');
+  const locator = await page.locator('f-select select');
 
   t.matchSnapshot(formatHTML(await locator.innerHTML()));
 });
