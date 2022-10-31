@@ -1,6 +1,6 @@
 import { css, html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { FabricElement, classes, kebabCaseAttributes } from '../utils';
+import { FabricElement, classes, kebabCaseAttributes, generateRandomId } from '../utils';
 import { attention as c } from '@fabric-ds/css/component-classes';
 import {
   opposites,
@@ -103,7 +103,7 @@ class FabricAttention extends kebabCaseAttributes(FabricElement) {
 
   setAriaLabels() {
     if (this._targetEl && !this._targetEl.getAttribute('aria-describedby')) {
-      const attentionMessageId = this._messageEl.id || (this._messageEl.id = `m${Math.random().toString(36).slice(2)}`);
+      const attentionMessageId = this._messageEl.id || (this._messageEl.id = generateRandomId());
       this._messageEl.setAttribute('role', 'tooltip');
       this._targetEl.setAttribute('aria-describedby', attentionMessageId);
     }

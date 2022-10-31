@@ -55,6 +55,11 @@ export default ({ mode }) => {
             injectOptions,
           },
           {
+            filename: 'select.html',
+            template: 'pages/components/select.html',
+            injectOptions,
+          },
+          {
             filename: 'attention.html',
             template: 'pages/components/attention.html',
             injectOptions,

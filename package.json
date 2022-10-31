@@ -31,6 +31,7 @@
     "test:run-once": "web-test-runner tests/**/*.test.js --node-resolve --static-logging",
     "test:run-watch": "web-test-runner tests/**/*.test.js --node-resolve --watch",
     "test": "npm run test:run-once && tap ./packages/**/test.js --no-check-coverage",
+    "test:snapshot": "TAP_SNAPSHOT=1 tap ./packages/**/test.js --no-check-coverage",
     "watch:test": "npm run test:run-watch",
     "semantic-release": "semantic-release"
   },
