@@ -2,7 +2,7 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { when } from 'lit/directives/when.js';
 import { classNames } from '@chbphone55/classnames';
-import { kebabCaseAttributes, FabricElement } from '../utils';
+import { kebabCaseAttributes, FabricElement, generateRandomId } from '../utils';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 
 export class FabricSelect extends kebabCaseAttributes(FabricElement) {
@@ -38,7 +38,7 @@ export class FabricSelect extends kebabCaseAttributes(FabricElement) {
   }
 
   get #id() {
-    return this.id || `m${Math.random().toString(36).slice(2)}`;
+    return this.id || generateRandomId();
   }
 
   get #helpId() {
