@@ -1,6 +1,7 @@
 export * from './packages/alert';
 export * from './packages/button';
 export * from './packages/card';
+export * from './packages/select';
 export * from './packages/box';
 export * from './packages/breadcrumbs';
 export * from './packages/toast/toast';

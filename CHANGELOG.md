@@ -1,3 +1,10 @@
+# [1.1.0-next.1](https://github.com/fabric-ds/elements/compare/v1.0.0...v1.1.0-next.1) (2022-10-31)
+
+
+### Features
+
+* add select custom element + docs ([6dfad74](https://github.com/fabric-ds/elements/commit/6dfad74f809b87f5540a876de03bf4001a09aea6))
+
 # [1.0.0](https://github.com/fabric-ds/elements/compare/v0.1.2...v1.0.0) (2022-10-10)
 
 

@@ -68,3 +68,7 @@ export function fclasses(definition) {
   }
   return classMap(defn);
 }
+
+export function generateRandomId() {
+  return `m${Math.random().toString(36).slice(2)}`;
+}
