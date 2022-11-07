@@ -1,0 +1,464 @@
+<html lang="en">
+  <head>
+  <title>Fabric Elements</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <style>
+    f-docs-template {
+      visibility: hidden;
+    }
+    f-docs-template:defined {
+      visibility: visible;
+    }
+  </style>
+  <link href="https://assets.finn.no/pkg/@fabric-ds/css/v0/fabric.min.css" rel="stylesheet" />
+  <link href="https://assets.finn.no/pkg/@fabric-ds/css/v1/fabric.min.css" rel="stylesheet" />
+  <link href="https://assets.finn.no/pkg/@fabric-ds/common/v1/css/markdown.css" rel="stylesheet" />
+  <link
+    href="https://assets.finn.no/pkg/@fabric-ds/common/v1/template/index.js?a=1"
+    rel="modulepreload"
+  />
+  <link
+    href="https://assets.finn.no/pkg/@fabric-ds/common/v1/asset-links/index.js"
+    rel="modulepreload"
+  />
+  <link
+    href="https://assets.finn.no/pkg/@fabric-ds/common/v1/highlight-box/index.js"
+    rel="modulepreload"
+  />
+
+  <style>
+    .tabledoc {
+      border-collapse: collapse;
+      font-size: 14px;
+      margin-top: 2rem;
+      margin-bottom: 56px;
+      width: 100%;
+    }
+
+    .tabledoc tr {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .tabledoc th {
+      text-transform: uppercase;
+      font-size: 11px;
+      text-align: left;
+      color: #767676;
+    }
+
+    .tabledoc th,
+    .tabledoc td {
+      padding: 10px 16px;
+      vertical-align: top;
+    }
+
+    .doc-advanced {
+      border-collapse: collapse;
+      font-size: 14px;
+      margin-top: 2rem;
+      margin-bottom: 56px;
+      width: 100%;
+    }
+
+    .doc-advanced tr {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .doc-advanced thead th {
+      font-size: 20px;
+      text-align: left;
+      padding: 24px 16px;
+      font-weight: normal;
+    }
+
+    .doc-advanced tbody th {
+      text-transform: uppercase;
+      font-size: 11px;
+      text-align: left;
+      color: #767676;
+    }
+
+    .doc-advanced tbody th,
+    .doc-advanced tbody td {
+      padding: 10px 16px;
+      vertical-align: top;
+    }
+    .example {
+      padding: 30px;
+      border: 3px solid rgb(246, 248, 250);
+      margin-bottom: 16px;
+      margin-top: -20px;
+    }
+    .grid-example {
+      padding: 16px;
+      border: 1px solid rgb(246, 248, 250);
+      margin-bottom: 16px;
+      background-color: #fafafa;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+
+  
+  
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"
+    integrity="sha512-YBk7HhgDZvBxmtOfUdvX0z8IH2d10Hp3aEygaMNhtF8fSOvBZ16D/1bXZTJV6ndk/L/DlXxYStP8jrF77v2MIg=="
+    crossorigin="anonymous"
+  ></script>
+  <script type="module" crossorigin src="/assets/scripts.7553de30.js"></script>
+</head>
+  <body>
+    <f-docs-template>
+      <script data-for="sidebar" type="application/json">
+  {
+    "category": "Elements",
+    "items": [
+      {
+        "title": "Action",
+        "open": true,
+        "items": [
+          {
+            "title": "Button",
+            "href": "button.html"
+          }
+        ]
+      },
+      {
+        "title": "Feedback Indicators",
+        "open": true,
+        "items": [
+          {
+            "title": "Alert",
+            "href": "alert.html"
+          }
+        ]
+      },
+      {
+        "title": "Forms",
+        "open": true,
+        "items": [
+          {
+            "title": "Select",
+            "href": "/pages/components/select.html"
+          },
+          {
+            "title": "Textfield",
+            "href": "textfield.html"
+          }
+        ]
+      },
+      {
+        "title": "Layout",
+        "open": true,
+        "items": [
+          {
+            "title": "Broadcast",
+            "href": "broadcast.html"
+          },
+          {
+            "title": "Box",
+            "href": "box.html"
+          },
+          {
+            "title": "Card",
+            "href": "card.html"
+          },
+          {
+            "title": "Expandable",
+            "href": "expandable.html"
+          },
+          {
+            "title": "Toast",
+            "href": "toast.html"
+          }
+        ]
+      },
+      {
+        "title": "Navigation",
+        "open": true,
+        "items": [
+          {
+            "title": "Breadcrumbs",
+            "href": "breadcrumbs.html"
+          }
+        ]
+      },
+      {
+        "title": "Overlays",
+        "open": true,
+        "items": [
+          {
+            "title": "Attention",
+            "href": "attention.html"
+          }
+        ]
+      }
+    ]
+  }
+</script>
+      <main slot="content">
+        <h1 class="mb-16">Expandable</h1>
+        <p>Expandable is a layout component used for creating expandable content areas on a page.</p>
+
+        <h2 class="mt-24 mb-16">Props</h2>
+        <table class="w-full docs-table">
+          <thead>
+            <tr class="text-left text-gray-400 uppercase">
+              <th>prop</th>
+              <th>type</th>
+              <th>default</th>
+            </tr>
+          </thead>
+          <tbody class="align-top">
+            <tr>
+              <td>expanded</td>
+              <td>
+                <div>boolean</div>
+                <div class="annotation">Controls component's expanded state</div>
+              </td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>bleed</td>
+              <td>
+                <div>boolean</div>
+                <div class="annotation">Makes the box full-width on mobile</div>
+              </td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>info</td>
+              <td>
+                <div>boolean</div>
+                <div class="annotation">Styles the box with light blue color</div>
+              </td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>box</td>
+              <td>
+                <div>boolean</div>
+                <div class="annotation">Whether to display the component as a padded box or not</div>
+                <td>false</td>
+              </td>
+            </tr>
+            <tr>
+              <td>animated</td>
+              <td>
+                <div>boolean</div>
+                <div class="annotation">Animate open and close</div>
+                <td>false</td>
+              </td>
+            </tr>
+            <tr>
+              <td>no-chevron</td>
+              <td>
+                <div>boolean</div>
+                <div class="annotation">Whether to hide the chevron on the button part of the component</div>
+                <td>false</td>
+              </td>
+            </tr>
+            <tr>
+              <td>title</td>
+              <td>
+                <div>string</div>
+                <div class="annotation">
+                  Component title. Used to display the title value which is always present
+                  regardless of whether the component is open or closed.
+                </div>
+                <td></td>
+              </td>
+            </tr>
+            <tr>
+              <td>heading-level</td>
+              <td>
+                <div>number</div>
+                <div class="annotation">
+                  Wrap the toggle button in a heading element with the specified level. If
+                  headingLevel is not specified, the button will not be wrapped by a heading element
+                </div>
+                <td></td>
+              </td>
+            </tr>
+            <tr>
+              <td>button-class</td>
+              <td>
+                <div>string</div>
+                <div class="annotation">
+                  Additional CSS classes to include on the button part of the component
+                </div>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>content-class</td>
+              <td>
+                <div>string</div>
+                <div class="annotation">
+                  Additional CSS classes to include on the content part of the component
+                </div>
+              </td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 class="mt-24 mb-16">Visual Options</h2>
+
+        <h3>With style modifiers</h3>
+
+        <syntax-highlight>
+          <div class="flex gap-8 flex-wrap mt-16">
+            <button class="button button--small">box</button>
+            <button class="button button--small">bleed</button>
+            <button class="button button--small">info</button>
+            <button class="button button--small">animated</button>
+          </div>
+          <f-expandable title="I'm expandable">
+            <p>with expanded content</p>
+          </f-expandable>
+        </syntax-highlight>
+        <div class="example">
+          <div id="expandableControllers" class="flex gap-8 flex-wrap mb-16" aria-controls="expandable">
+            <f-button name="box" small aria-pressed="false">box</f-button>
+<f-button name="bleed" small aria-pressed="false">bleed</f-button>
+<f-button name="info" small aria-pressed="false">info</f-button>
+<f-button name="animated" small aria-pressed="false">animated</f-button>
+          </div>
+          <f-expandable id="expandable" title="I'm expandable">
+            <p>with expanded content</p>
+          </f-expandable>
+        </div>
+
+        <h3>With a heading wrapping the toggle button</h3>
+        <p>This can be used to wrap the toggle button in a heading for navigational and structural purposes. It's a feature that is needed typically in scenarios where multiple consecutive Expandable components are used.</p>
+
+        <syntax-highlight>
+          <f-expandable box info title="I'm expanded with h2 wrapper" heading-level="2">
+            <p>with expanded content</p> 
+          </f-expandable>
+        </syntax-highlight>
+        <div class="example">
+          <f-expandable box info title="I'm expanded with h2 wrapper" heading-level="2">
+            <p>with expanded content</p>
+          </f-expandable>
+        </div>
+
+        <h3>With custom title</h3>
+        <p>This can be used if more control over styling is needed than the <code>title</code> prop allows</p>
+
+        <syntax-highlight>
+          <f-expandable box info>
+            <div slot="title" class="flex flex-row items-center">
+              <f-icon-bag16></f-icon-bag16>
+              <p class="ml-8 mb-0">This is a title with an icon</p>
+            </div>
+            <p>with expanded content</p> 
+          </f-expandable>
+        </syntax-highlight>
+        <div class="example">
+          <f-expandable box info>
+            <div slot="title" class="flex flex-row items-center">
+              <f-icon-bag16></f-icon-bag16>
+              <p class="ml-8 mb-0">This is a title with an icon</p>
+            </div>
+            <p>with expanded content</p>
+          </f-expandable>
+        </div>
+
+
+        <h3>Without title</h3>
+         
+        <syntax-highlight>
+          <f-button variant="primary" aria-label="Toggle expandable content without title" aria-controls="expandableWithoutTitle">Toggle</f-button>
+          <f-expandable box info expanded animated id="expandableWithoutTitle">
+            <p>with expanded content</p> 
+          </f-expandable>
+        </syntax-highlight>
+        <div class="example noTitle">
+          <f-button variant="primary" aria-label="Toggle expandable content without title" aria-controls="expandableWithoutTitle">Toggle</f-button>
+          <f-expandable box info expanded animated class="mt-16" id="expandableWithoutTitle">
+            <p>Expandable content</p>
+          </f-expandable>
+        </div>
+
+
+        <h3>With expanded prop</h3>
+
+        <syntax-highlight>
+          <f-expandable box info title="I'm expanded by default" expanded>
+            <p>content should be visible</p> 
+          </f-expandable>
+        </syntax-highlight>
+        <div class="example">
+          <f-expandable box info title="I'm expanded by default" expanded>
+            <p>content should be visible</p>
+          </f-expandable>
+        </div>
+      </main>
+      <script data-for="footer" type="application/json">
+  {
+    "github": {
+      "name": "Github",
+      "href": "https://github.com/fabric-ds/elements"
+    },
+    "slack": {
+      "name": "#finn-fabric",
+      "href": "https://sch-chat.slack.com/archives/C01GYKPJVFT"
+    }
+  }
+</script>
+    </f-docs-template>
+
+    <script>
+  function addEventListenersToExpandableControllers(expandableId) {
+    const expandableElement = document.getElementById(expandableId);
+    const controllersWrapperId = `#${expandableId}Controllers`;
+
+    document.querySelectorAll(`${controllersWrapperId} f-button`).forEach((el) => {
+      el.addEventListener('click', (event) => {
+        const name = event.target.getAttribute('name') || 'info';
+        expandableElement[name] = !expandableElement[name];
+
+        if (expandableElement[name]) {
+          el.buttonClass = 'bg-gray-200 hover:bg-gray-300 active:bg-gray-400';
+          el.ariaPressed = true;
+          expandableElement.title = expandableElement.title + ` ${name}`;
+        } else {
+          el.buttonClass = undefined;
+          el.ariaPressed = false;
+          expandableElement.title = expandableElement.title.replace(` ${name}`, '');
+        }
+      });
+    });
+  }
+
+  document.querySelectorAll('.example f-expandable').forEach((el) => {
+    const expandableId = el.getAttribute('id');
+    addEventListenersToExpandableControllers(expandableId);
+  });
+
+  document.querySelector('.noTitle f-button').addEventListener('click', (event) => {
+    const expandable = document.querySelector('.noTitle f-expandable');
+    expandable.expanded = !expandable.expanded;
+  });
+</script>
+ <script
+  src="https://assets.finn.no/pkg/@fabric-ds/common/v1/template/index.js"
+  type="module"
+></script>
+<script
+  src="https://assets.finn.no/pkg/@fabric-ds/common/v1/asset-links/index.js"
+  type="module"
+></script>
+<script
+  src="https://assets.finn.no/pkg/@fabric-ds/common/v1/highlight-box/index.js"
+  type="module"
+></script>
+  </body>
+</html>

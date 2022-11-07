@@ -1,0 +1,384 @@
+<html lang="en">
+  <head>
+  <title>Fabric Elements</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <style>
+    f-docs-template {
+      visibility: hidden;
+    }
+    f-docs-template:defined {
+      visibility: visible;
+    }
+  </style>
+  <link href="https://assets.finn.no/pkg/@fabric-ds/css/v0/fabric.min.css" rel="stylesheet" />
+  <link href="https://assets.finn.no/pkg/@fabric-ds/css/v1/fabric.min.css" rel="stylesheet" />
+  <link href="https://assets.finn.no/pkg/@fabric-ds/common/v1/css/markdown.css" rel="stylesheet" />
+  <link
+    href="https://assets.finn.no/pkg/@fabric-ds/common/v1/template/index.js?a=1"
+    rel="modulepreload"
+  />
+  <link
+    href="https://assets.finn.no/pkg/@fabric-ds/common/v1/asset-links/index.js"
+    rel="modulepreload"
+  />
+  <link
+    href="https://assets.finn.no/pkg/@fabric-ds/common/v1/highlight-box/index.js"
+    rel="modulepreload"
+  />
+
+  <style>
+    .tabledoc {
+      border-collapse: collapse;
+      font-size: 14px;
+      margin-top: 2rem;
+      margin-bottom: 56px;
+      width: 100%;
+    }
+
+    .tabledoc tr {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .tabledoc th {
+      text-transform: uppercase;
+      font-size: 11px;
+      text-align: left;
+      color: #767676;
+    }
+
+    .tabledoc th,
+    .tabledoc td {
+      padding: 10px 16px;
+      vertical-align: top;
+    }
+
+    .doc-advanced {
+      border-collapse: collapse;
+      font-size: 14px;
+      margin-top: 2rem;
+      margin-bottom: 56px;
+      width: 100%;
+    }
+
+    .doc-advanced tr {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .doc-advanced thead th {
+      font-size: 20px;
+      text-align: left;
+      padding: 24px 16px;
+      font-weight: normal;
+    }
+
+    .doc-advanced tbody th {
+      text-transform: uppercase;
+      font-size: 11px;
+      text-align: left;
+      color: #767676;
+    }
+
+    .doc-advanced tbody th,
+    .doc-advanced tbody td {
+      padding: 10px 16px;
+      vertical-align: top;
+    }
+    .example {
+      padding: 30px;
+      border: 3px solid rgb(246, 248, 250);
+      margin-bottom: 16px;
+      margin-top: -20px;
+    }
+    .grid-example {
+      padding: 16px;
+      border: 1px solid rgb(246, 248, 250);
+      margin-bottom: 16px;
+      background-color: #fafafa;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+
+  
+  
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"
+    integrity="sha512-YBk7HhgDZvBxmtOfUdvX0z8IH2d10Hp3aEygaMNhtF8fSOvBZ16D/1bXZTJV6ndk/L/DlXxYStP8jrF77v2MIg=="
+    crossorigin="anonymous"
+  ></script>
+  <script type="module" crossorigin src="/assets/scripts.7553de30.js"></script>
+</head>
+  <body>
+    <f-docs-template>
+      <script data-for="sidebar" type="application/json">
+  {
+    "category": "Elements",
+    "items": [
+      {
+        "title": "Action",
+        "open": true,
+        "items": [
+          {
+            "title": "Button",
+            "href": "button.html"
+          }
+        ]
+      },
+      {
+        "title": "Feedback Indicators",
+        "open": true,
+        "items": [
+          {
+            "title": "Alert",
+            "href": "alert.html"
+          }
+        ]
+      },
+      {
+        "title": "Forms",
+        "open": true,
+        "items": [
+          {
+            "title": "Select",
+            "href": "/pages/components/select.html"
+          },
+          {
+            "title": "Textfield",
+            "href": "textfield.html"
+          }
+        ]
+      },
+      {
+        "title": "Layout",
+        "open": true,
+        "items": [
+          {
+            "title": "Broadcast",
+            "href": "broadcast.html"
+          },
+          {
+            "title": "Box",
+            "href": "box.html"
+          },
+          {
+            "title": "Card",
+            "href": "card.html"
+          },
+          {
+            "title": "Expandable",
+            "href": "expandable.html"
+          },
+          {
+            "title": "Toast",
+            "href": "toast.html"
+          }
+        ]
+      },
+      {
+        "title": "Navigation",
+        "open": true,
+        "items": [
+          {
+            "title": "Breadcrumbs",
+            "href": "breadcrumbs.html"
+          }
+        ]
+      },
+      {
+        "title": "Overlays",
+        "open": true,
+        "items": [
+          {
+            "title": "Attention",
+            "href": "attention.html"
+          }
+        ]
+      }
+    ]
+  }
+</script>
+      <main slot="content">
+        <h1 class="mb-16">Box</h1>
+        <p>Box is a layout component used for separating content areas on a page.</p>
+
+        <h2 class="mt-24 mb-16">Props</h2>
+        <table class="w-full docs-table">
+          <thead>
+            <tr class="text-left text-gray-400 uppercase">
+              <th>prop</th>
+              <th>type</th>
+              <th>default</th>
+            </tr>
+          </thead>
+          <tbody class="align-top">
+            <tr>
+              <td>bleed</td>
+              <td>
+                <div>boolean</div>
+                <div class="annotation">Will make a box full-width on mobile</div>
+              </td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>bordered</td>
+              <td>boolean</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>info</td>
+              <td>
+                <div>boolean</div>
+                <div class="annotation">Will style the box with light blue colors</div>
+              </td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>neutral</td>
+              <td>
+                <div>boolean</div>
+                <div class="annotation">Will style the box with light gray colors</div>
+              </td>
+              <td>false</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 class="mt-24 mb-16">Visual Options</h2>
+
+        <syntax-highlight>
+          <f-box>
+            <h3>I have default styles</h3>
+          </f-box>
+        </syntax-highlight>
+        <div class="example">
+          <f-box>
+            <h3>I have default styles</h3>
+          </f-box>
+        </div>
+
+        <syntax-highlight>
+          <f-box info="true">
+            <h3>I am an info box</h3>
+          </f-box>
+        </syntax-highlight>
+        <div class="example">
+          <f-box info>
+            <h3>I am an info box</h3>
+          </f-box>
+        </div>
+
+        <syntax-highlight>
+          <f-box bordered="true">
+            <h3>I am a bordered box</h3>
+          </f-box>
+        </syntax-highlight>
+        <div class="example">
+          <f-box bordered="true">
+            <h3>I am a bordered box</h3>
+          </f-box>
+        </div>
+
+        <syntax-highlight>
+          <f-box neutral="true">
+            <h3>I am a neutral colour</h3>
+          </f-box>
+        </syntax-highlight>
+        <div class="example">
+          <f-box neutral>
+            <h3>I am a neutral colour</h3>
+          </f-box>
+        </div>
+
+        <syntax-highlight>
+          <f-box neutral="true" bleed="true">
+            <h3>I am full width on mobile</h3>
+          </f-box>
+        </syntax-highlight>
+        <div class="example">
+          <f-box neutral bleed>
+            <h3>I am full width on mobile</h3>
+          </f-box>
+        </div>
+
+        <syntax-highlight>
+          <f-box info class="w-full lg:w-2/4 md:w-2/4">
+            <h3 class="mb-16">Info box</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi malesuada dui in
+              commodo dapibus.
+            </p>
+            <div class="my-16">
+              <a title="This is a link">This is a link</a>
+            </div>
+            <button class="button button--small" onclick="alert('clicked!');">Button</button>
+          </f-box>
+        </syntax-highlight>
+        <div class="example">
+          <f-box info class="w-full lg:w-2/4 md:w-2/4">
+            <h3 class="mb-16">Info box</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi malesuada dui in
+              commodo dapibus.
+            </p>
+            <div class="my-16">
+              <a title="This is a link">This is a link</a>
+            </div>
+            <button class="button button--small" onclick="alert('clicked!');">Button</button>
+          </f-box>
+        </div>
+        <h2 class="mt-24 mb-16">Accessibility</h2>
+        <p>
+          Use the ARIA <code>role</code> attribute to provide semantic meaning to a box element.
+          Read more about <code>role</code> types
+          <a
+            target="_blank"
+            title="Read more about ARIA role types on MDN"
+            class="text-current hover:no-underline focus:no-underline"
+            href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles#aria_role_types"
+            ><u> on MDN</u></a
+          >.
+        </p>
+
+        <syntax-highlight>
+          <f-box bordered="true" role="section">
+            <h3>I am treated as a section element by screen readers and other tools</h3>
+          </f-box>
+        </syntax-highlight>
+        <div class="example">
+          <f-box bordered role="section">
+            <h3>I am treated as a section element by screen readers and other tools</h3>
+          </f-box>
+        </div>
+      </main>
+      <script data-for="footer" type="application/json">
+  {
+    "github": {
+      "name": "Github",
+      "href": "https://github.com/fabric-ds/elements"
+    },
+    "slack": {
+      "name": "#finn-fabric",
+      "href": "https://sch-chat.slack.com/archives/C01GYKPJVFT"
+    }
+  }
+</script>
+    </f-docs-template>
+
+    <script
+  src="https://assets.finn.no/pkg/@fabric-ds/common/v1/template/index.js"
+  type="module"
+></script>
+<script
+  src="https://assets.finn.no/pkg/@fabric-ds/common/v1/asset-links/index.js"
+  type="module"
+></script>
+<script
+  src="https://assets.finn.no/pkg/@fabric-ds/common/v1/highlight-box/index.js"
+  type="module"
+></script>
+  </body>
+</html>

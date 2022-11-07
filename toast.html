@@ -1,0 +1,346 @@
+<html lang="en">
+  <head>
+  <title>Fabric Elements</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <style>
+    f-docs-template {
+      visibility: hidden;
+    }
+    f-docs-template:defined {
+      visibility: visible;
+    }
+  </style>
+  <link href="https://assets.finn.no/pkg/@fabric-ds/css/v0/fabric.min.css" rel="stylesheet" />
+  <link href="https://assets.finn.no/pkg/@fabric-ds/css/v1/fabric.min.css" rel="stylesheet" />
+  <link href="https://assets.finn.no/pkg/@fabric-ds/common/v1/css/markdown.css" rel="stylesheet" />
+  <link
+    href="https://assets.finn.no/pkg/@fabric-ds/common/v1/template/index.js?a=1"
+    rel="modulepreload"
+  />
+  <link
+    href="https://assets.finn.no/pkg/@fabric-ds/common/v1/asset-links/index.js"
+    rel="modulepreload"
+  />
+  <link
+    href="https://assets.finn.no/pkg/@fabric-ds/common/v1/highlight-box/index.js"
+    rel="modulepreload"
+  />
+
+  <style>
+    .tabledoc {
+      border-collapse: collapse;
+      font-size: 14px;
+      margin-top: 2rem;
+      margin-bottom: 56px;
+      width: 100%;
+    }
+
+    .tabledoc tr {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .tabledoc th {
+      text-transform: uppercase;
+      font-size: 11px;
+      text-align: left;
+      color: #767676;
+    }
+
+    .tabledoc th,
+    .tabledoc td {
+      padding: 10px 16px;
+      vertical-align: top;
+    }
+
+    .doc-advanced {
+      border-collapse: collapse;
+      font-size: 14px;
+      margin-top: 2rem;
+      margin-bottom: 56px;
+      width: 100%;
+    }
+
+    .doc-advanced tr {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .doc-advanced thead th {
+      font-size: 20px;
+      text-align: left;
+      padding: 24px 16px;
+      font-weight: normal;
+    }
+
+    .doc-advanced tbody th {
+      text-transform: uppercase;
+      font-size: 11px;
+      text-align: left;
+      color: #767676;
+    }
+
+    .doc-advanced tbody th,
+    .doc-advanced tbody td {
+      padding: 10px 16px;
+      vertical-align: top;
+    }
+    .example {
+      padding: 30px;
+      border: 3px solid rgb(246, 248, 250);
+      margin-bottom: 16px;
+      margin-top: -20px;
+    }
+    .grid-example {
+      padding: 16px;
+      border: 1px solid rgb(246, 248, 250);
+      margin-bottom: 16px;
+      background-color: #fafafa;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+
+  
+  
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"
+    integrity="sha512-YBk7HhgDZvBxmtOfUdvX0z8IH2d10Hp3aEygaMNhtF8fSOvBZ16D/1bXZTJV6ndk/L/DlXxYStP8jrF77v2MIg=="
+    crossorigin="anonymous"
+  ></script>
+  <script type="module" crossorigin src="/assets/scripts.7553de30.js"></script>
+</head>
+  <body>
+    <f-docs-template>
+      <script data-for="sidebar" type="application/json">
+  {
+    "category": "Elements",
+    "items": [
+      {
+        "title": "Action",
+        "open": true,
+        "items": [
+          {
+            "title": "Button",
+            "href": "button.html"
+          }
+        ]
+      },
+      {
+        "title": "Feedback Indicators",
+        "open": true,
+        "items": [
+          {
+            "title": "Alert",
+            "href": "alert.html"
+          }
+        ]
+      },
+      {
+        "title": "Forms",
+        "open": true,
+        "items": [
+          {
+            "title": "Select",
+            "href": "/pages/components/select.html"
+          },
+          {
+            "title": "Textfield",
+            "href": "textfield.html"
+          }
+        ]
+      },
+      {
+        "title": "Layout",
+        "open": true,
+        "items": [
+          {
+            "title": "Broadcast",
+            "href": "broadcast.html"
+          },
+          {
+            "title": "Box",
+            "href": "box.html"
+          },
+          {
+            "title": "Card",
+            "href": "card.html"
+          },
+          {
+            "title": "Expandable",
+            "href": "expandable.html"
+          },
+          {
+            "title": "Toast",
+            "href": "toast.html"
+          }
+        ]
+      },
+      {
+        "title": "Navigation",
+        "open": true,
+        "items": [
+          {
+            "title": "Breadcrumbs",
+            "href": "breadcrumbs.html"
+          }
+        ]
+      },
+      {
+        "title": "Overlays",
+        "open": true,
+        "items": [
+          {
+            "title": "Attention",
+            "href": "attention.html"
+          }
+        ]
+      }
+    ]
+  }
+</script>
+      <main slot="content">
+        <h1 class="mb-16">Toast</h1>
+
+        <p>
+          Toasts display small snippets of information to the user and then disappear after a set
+          time. The Fabric toast appears at the bottom of the screen but will normally be triggered
+          by a user interaction somewhere else on the page.
+        </p>
+
+        <h2>Accessibility</h2>
+        <p>
+          For accessibility reasons, toasts should never contain interactive elements as interactive
+          elements should always occur in the same location as the action that triggered it. Because
+          of this limitation, we consider the use of toasts to be somewhat of an antipattern and
+          recommend that another approach be found wherever possible. The Fabric team will be
+          investigating potentially better approaches for specific use cases in near future. That
+          being said, you are free to use toast so long as you avoid using interactive elements such
+          as links or a close button.
+        </p>
+
+        <h2>Usage</h2>
+        <p>
+          The toast is intended to be used programmatically. JavaScript APIs are provided to create,
+          update and remove toasts from a page while managing things like placement on the page for
+          you.
+        </p>
+
+        <p>
+          Toast is a bit different from other packages in Fabric Elements. You need to import
+          functions from the package and call them as needed.
+        </p>
+
+        <p>Import functions for working with toasts:</p>
+
+        Be sure to import the elements package first as the toast APIs depend on this package.
+
+        <syntax-highlight> import from '@fabric-ds/elements' </syntax-highlight>
+
+        Once you have imported the elements package, import the toast api package.
+
+        <syntax-highlight>
+          import { toast, removeToast, updateToast } from '@fabric-ds/elements/toast';
+        </syntax-highlight>
+
+        Then you can create a new toast giving it a message:
+        <syntax-highlight> toast('This is a toast'); </syntax-highlight>
+
+        <div class="example">
+          <button class="button button--small" onclick="window.toast('This is a toast');">
+            See Example
+          </button>
+        </div>
+
+        Create a new toast giving it a message and some options and then get back an id that can be
+        used later to remove or edit the toast:
+        <syntax-highlight>
+          const id = toast('This is a toast', { type: 'warning' });
+        </syntax-highlight>
+
+        Update an existing toast by id:
+        <syntax-highlight> updateToast(id, { text: 'This is a toast' }); </syntax-highlight>
+
+        <h2 class="mt-24 mb-16">Options</h2>
+        <p>
+          Type of toast: <strong>type</strong> — default success (success, warning, error, info)
+        </p>
+
+        <syntax-highlight> toast('message goes here', { type: 'warning' }) </syntax-highlight>
+
+        <div class="example">
+          <button
+            class="button button--small"
+            onclick="window.toast('message goes here', { type: 'error' })"
+          >
+            See Error Example
+          </button>
+          <button
+            class="button button--small"
+            onclick="window.toast('message goes here', { type: 'warning' })"
+          >
+            See Warning Example
+          </button>
+          <button
+            class="button button--small"
+            onclick="window.toast('message goes here', { type: 'info' })"
+          >
+            See Info Example
+          </button>
+          <button
+            class="button button--small"
+            onclick="window.toast('message goes here', { type: 'success' })"
+          >
+            See Success Example
+          </button>
+        </div>
+
+        <p>Text content: <strong>text</strong> — default undefined</p>
+
+        <syntax-highlight>
+          const id = toast('message goes here'); updateToast({ id, text: 'change the message' });
+        </syntax-highlight>
+
+        <p>Auto removal: <strong>duration</strong> — default 5000ms</p>
+
+        <syntax-highlight> toast('message goes here', { duration: 2500 }) </syntax-highlight>
+
+        <div class="example">
+          <button
+            class="button button--small"
+            onclick="window.toast('message goes here', { duration: 2500 })"
+          >
+            See Example
+          </button>
+        </div>
+      </main>
+      <script data-for="footer" type="application/json">
+  {
+    "github": {
+      "name": "Github",
+      "href": "https://github.com/fabric-ds/elements"
+    },
+    "slack": {
+      "name": "#finn-fabric",
+      "href": "https://sch-chat.slack.com/archives/C01GYKPJVFT"
+    }
+  }
+</script>
+    </f-docs-template>
+
+    <script
+  src="https://assets.finn.no/pkg/@fabric-ds/common/v1/template/index.js"
+  type="module"
+></script>
+<script
+  src="https://assets.finn.no/pkg/@fabric-ds/common/v1/asset-links/index.js"
+  type="module"
+></script>
+<script
+  src="https://assets.finn.no/pkg/@fabric-ds/common/v1/highlight-box/index.js"
+  type="module"
+></script>
+  </body>
+</html>

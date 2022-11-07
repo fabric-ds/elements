@@ -1,0 +1,324 @@
+<html lang="en">
+  <head>
+  <title>Fabric Elements</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <style>
+    f-docs-template {
+      visibility: hidden;
+    }
+    f-docs-template:defined {
+      visibility: visible;
+    }
+  </style>
+  <link href="https://assets.finn.no/pkg/@fabric-ds/css/v0/fabric.min.css" rel="stylesheet" />
+  <link href="https://assets.finn.no/pkg/@fabric-ds/css/v1/fabric.min.css" rel="stylesheet" />
+  <link href="https://assets.finn.no/pkg/@fabric-ds/common/v1/css/markdown.css" rel="stylesheet" />
+  <link
+    href="https://assets.finn.no/pkg/@fabric-ds/common/v1/template/index.js?a=1"
+    rel="modulepreload"
+  />
+  <link
+    href="https://assets.finn.no/pkg/@fabric-ds/common/v1/asset-links/index.js"
+    rel="modulepreload"
+  />
+  <link
+    href="https://assets.finn.no/pkg/@fabric-ds/common/v1/highlight-box/index.js"
+    rel="modulepreload"
+  />
+
+  <style>
+    .tabledoc {
+      border-collapse: collapse;
+      font-size: 14px;
+      margin-top: 2rem;
+      margin-bottom: 56px;
+      width: 100%;
+    }
+
+    .tabledoc tr {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .tabledoc th {
+      text-transform: uppercase;
+      font-size: 11px;
+      text-align: left;
+      color: #767676;
+    }
+
+    .tabledoc th,
+    .tabledoc td {
+      padding: 10px 16px;
+      vertical-align: top;
+    }
+
+    .doc-advanced {
+      border-collapse: collapse;
+      font-size: 14px;
+      margin-top: 2rem;
+      margin-bottom: 56px;
+      width: 100%;
+    }
+
+    .doc-advanced tr {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .doc-advanced thead th {
+      font-size: 20px;
+      text-align: left;
+      padding: 24px 16px;
+      font-weight: normal;
+    }
+
+    .doc-advanced tbody th {
+      text-transform: uppercase;
+      font-size: 11px;
+      text-align: left;
+      color: #767676;
+    }
+
+    .doc-advanced tbody th,
+    .doc-advanced tbody td {
+      padding: 10px 16px;
+      vertical-align: top;
+    }
+    .example {
+      padding: 30px;
+      border: 3px solid rgb(246, 248, 250);
+      margin-bottom: 16px;
+      margin-top: -20px;
+    }
+    .grid-example {
+      padding: 16px;
+      border: 1px solid rgb(246, 248, 250);
+      margin-bottom: 16px;
+      background-color: #fafafa;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+
+  
+  
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"
+    integrity="sha512-YBk7HhgDZvBxmtOfUdvX0z8IH2d10Hp3aEygaMNhtF8fSOvBZ16D/1bXZTJV6ndk/L/DlXxYStP8jrF77v2MIg=="
+    crossorigin="anonymous"
+  ></script>
+  <script type="module" crossorigin src="/assets/scripts.7553de30.js"></script>
+</head>
+  <body>
+    <f-docs-template>
+      <script data-for="sidebar" type="application/json">
+  {
+    "category": "Elements",
+    "items": [
+      {
+        "title": "Action",
+        "open": true,
+        "items": [
+          {
+            "title": "Button",
+            "href": "button.html"
+          }
+        ]
+      },
+      {
+        "title": "Feedback Indicators",
+        "open": true,
+        "items": [
+          {
+            "title": "Alert",
+            "href": "alert.html"
+          }
+        ]
+      },
+      {
+        "title": "Forms",
+        "open": true,
+        "items": [
+          {
+            "title": "Select",
+            "href": "/pages/components/select.html"
+          },
+          {
+            "title": "Textfield",
+            "href": "textfield.html"
+          }
+        ]
+      },
+      {
+        "title": "Layout",
+        "open": true,
+        "items": [
+          {
+            "title": "Broadcast",
+            "href": "broadcast.html"
+          },
+          {
+            "title": "Box",
+            "href": "box.html"
+          },
+          {
+            "title": "Card",
+            "href": "card.html"
+          },
+          {
+            "title": "Expandable",
+            "href": "expandable.html"
+          },
+          {
+            "title": "Toast",
+            "href": "toast.html"
+          }
+        ]
+      },
+      {
+        "title": "Navigation",
+        "open": true,
+        "items": [
+          {
+            "title": "Breadcrumbs",
+            "href": "breadcrumbs.html"
+          }
+        ]
+      },
+      {
+        "title": "Overlays",
+        "open": true,
+        "items": [
+          {
+            "title": "Attention",
+            "href": "attention.html"
+          }
+        ]
+      }
+    ]
+  }
+</script>
+
+      <div slot="banner" class="mx-auto p-32" style="max-width: 1024">
+        <div class="md:grid md:grid-cols-3">
+          <div class="md:col-span-2">
+            <h1 style="font-size: 48px; line-height: 56px" class="text-white mb-16">
+              Fabric Elements
+            </h1>
+            <p style="font-size: 22px; line-height: 28px" class="text-white">
+              The home of the web component, or custom elements, implementation of Fabric, FINN's
+              design system.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <main slot="content">
+        <div class="grid lg:grid-cols-3 gap-16">
+          <div class="lg:col-span-2">
+            <h2 class="mb-16">Installation</h2>
+
+            <p>
+              All the Fabric Elements code is provided as a single package and each component can be
+              imported from this package.
+            </p>
+
+            <h3 class="mt-24 mb-16">Install from NPM</h3>
+
+            <p>The Fabric Elements package can be installed from NPM.</p>
+
+            <syntax-highlight>npm install @fabric-ds/elements</syntax-highlight>
+
+            <h3 class="mt-24 mb-16">Install from Eik</h3>
+
+            <p>The same package is also available via our Eik CDN server</p>
+
+            <syntax-highlight
+              >https://assets.finn.no/pkg/@fabric-ds/elements/v1/index.js</syntax-highlight
+            >
+
+            <h2 class="mt-32 mb-16">Using Components</h2>
+
+            <p>Once installed, components can be used in your HTML markup.</p>
+            <syntax-highlight>
+              <f-breadcrumbs class="mt-10">
+                <a href="#/url/1">Eiendom</a>
+                <a href="#/url/2">Bolig til salgs</a>
+                <a href="#/url/3" aria-current="page"> Oslo </a>
+              </f-breadcrumbs>
+            </syntax-highlight>
+
+            <f-breadcrumbs class="mt-10">
+              <a href="#/url/1">Eiendom</a>
+              <a href="#/url/2">Bolig til salgs</a>
+              <a href="#/url/3" aria-current="page"> Oslo </a>
+            </f-breadcrumbs>
+
+            <br />
+
+            <h4 class="mt-24 mb-16">Importing from the NPM package</h4>
+
+            👉
+            <strong><i>This is the most common method and should be used in most cases</i></strong>
+
+            When importing from NPM you will need to ensure you have build tooling in place. If you
+            are working with Podium podlets or layouts which is the most common use case at Finn,
+            you likely already have Eik in place with Rollup or Esbuild in which case no further
+            action should be needed.
+
+            <i>Example</i>
+            <syntax-highlight>import '@fabric-ds/elements';</syntax-highlight>
+
+            <h4 class="mt-24 mb-16">Importing directly from Eik</h4>
+
+            👉
+            <strong><i>This is great for prototyping (can also be used in production)</i></strong>
+
+            <p>
+              It is also possible to import components directly from the URL on our Eik server.
+              While not common, it should be possible to write Elements code without the need for a
+              build setup. You might find this useful for rapid prototyping something on a hack day
+              for example!
+            </p>
+
+            <i>Example</i>
+            <syntax-highlight>
+              import 'https://assets.finn.no/pkg/@fabric-ds/elements/v0/index.js';
+            </syntax-highlight>
+          </div>
+          <div>
+            <f-docs-highlight-box></f-docs-highlight-box>
+          </div>
+        </div>
+      </main>
+      <script data-for="footer" type="application/json">
+  {
+    "github": {
+      "name": "Github",
+      "href": "https://github.com/fabric-ds/elements"
+    },
+    "slack": {
+      "name": "#finn-fabric",
+      "href": "https://sch-chat.slack.com/archives/C01GYKPJVFT"
+    }
+  }
+</script>
+    </f-docs-template>
+
+    <script
+  src="https://assets.finn.no/pkg/@fabric-ds/common/v1/template/index.js"
+  type="module"
+></script>
+<script
+  src="https://assets.finn.no/pkg/@fabric-ds/common/v1/asset-links/index.js"
+  type="module"
+></script>
+<script
+  src="https://assets.finn.no/pkg/@fabric-ds/common/v1/highlight-box/index.js"
+  type="module"
+></script>
+  </body>
+</html>

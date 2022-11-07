@@ -1,0 +1,427 @@
+<html lang="en">
+  <head>
+  <title>Fabric Elements</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <style>
+    f-docs-template {
+      visibility: hidden;
+    }
+    f-docs-template:defined {
+      visibility: visible;
+    }
+  </style>
+  <link href="https://assets.finn.no/pkg/@fabric-ds/css/v0/fabric.min.css" rel="stylesheet" />
+  <link href="https://assets.finn.no/pkg/@fabric-ds/css/v1/fabric.min.css" rel="stylesheet" />
+  <link href="https://assets.finn.no/pkg/@fabric-ds/common/v1/css/markdown.css" rel="stylesheet" />
+  <link
+    href="https://assets.finn.no/pkg/@fabric-ds/common/v1/template/index.js?a=1"
+    rel="modulepreload"
+  />
+  <link
+    href="https://assets.finn.no/pkg/@fabric-ds/common/v1/asset-links/index.js"
+    rel="modulepreload"
+  />
+  <link
+    href="https://assets.finn.no/pkg/@fabric-ds/common/v1/highlight-box/index.js"
+    rel="modulepreload"
+  />
+
+  <style>
+    .tabledoc {
+      border-collapse: collapse;
+      font-size: 14px;
+      margin-top: 2rem;
+      margin-bottom: 56px;
+      width: 100%;
+    }
+
+    .tabledoc tr {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .tabledoc th {
+      text-transform: uppercase;
+      font-size: 11px;
+      text-align: left;
+      color: #767676;
+    }
+
+    .tabledoc th,
+    .tabledoc td {
+      padding: 10px 16px;
+      vertical-align: top;
+    }
+
+    .doc-advanced {
+      border-collapse: collapse;
+      font-size: 14px;
+      margin-top: 2rem;
+      margin-bottom: 56px;
+      width: 100%;
+    }
+
+    .doc-advanced tr {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .doc-advanced thead th {
+      font-size: 20px;
+      text-align: left;
+      padding: 24px 16px;
+      font-weight: normal;
+    }
+
+    .doc-advanced tbody th {
+      text-transform: uppercase;
+      font-size: 11px;
+      text-align: left;
+      color: #767676;
+    }
+
+    .doc-advanced tbody th,
+    .doc-advanced tbody td {
+      padding: 10px 16px;
+      vertical-align: top;
+    }
+    .example {
+      padding: 30px;
+      border: 3px solid rgb(246, 248, 250);
+      margin-bottom: 16px;
+      margin-top: -20px;
+    }
+    .grid-example {
+      padding: 16px;
+      border: 1px solid rgb(246, 248, 250);
+      margin-bottom: 16px;
+      background-color: #fafafa;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+
+  
+  
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"
+    integrity="sha512-YBk7HhgDZvBxmtOfUdvX0z8IH2d10Hp3aEygaMNhtF8fSOvBZ16D/1bXZTJV6ndk/L/DlXxYStP8jrF77v2MIg=="
+    crossorigin="anonymous"
+  ></script>
+  <script type="module" crossorigin src="/assets/scripts.7553de30.js"></script>
+</head>
+  <body>
+    <f-docs-template>
+      <script data-for="sidebar" type="application/json">
+  {
+    "category": "Elements",
+    "items": [
+      {
+        "title": "Action",
+        "open": true,
+        "items": [
+          {
+            "title": "Button",
+            "href": "button.html"
+          }
+        ]
+      },
+      {
+        "title": "Feedback Indicators",
+        "open": true,
+        "items": [
+          {
+            "title": "Alert",
+            "href": "alert.html"
+          }
+        ]
+      },
+      {
+        "title": "Forms",
+        "open": true,
+        "items": [
+          {
+            "title": "Select",
+            "href": "/pages/components/select.html"
+          },
+          {
+            "title": "Textfield",
+            "href": "textfield.html"
+          }
+        ]
+      },
+      {
+        "title": "Layout",
+        "open": true,
+        "items": [
+          {
+            "title": "Broadcast",
+            "href": "broadcast.html"
+          },
+          {
+            "title": "Box",
+            "href": "box.html"
+          },
+          {
+            "title": "Card",
+            "href": "card.html"
+          },
+          {
+            "title": "Expandable",
+            "href": "expandable.html"
+          },
+          {
+            "title": "Toast",
+            "href": "toast.html"
+          }
+        ]
+      },
+      {
+        "title": "Navigation",
+        "open": true,
+        "items": [
+          {
+            "title": "Breadcrumbs",
+            "href": "breadcrumbs.html"
+          }
+        ]
+      },
+      {
+        "title": "Overlays",
+        "open": true,
+        "items": [
+          {
+            "title": "Attention",
+            "href": "attention.html"
+          }
+        ]
+      }
+    ]
+  }
+</script>
+      <main slot="content">
+        <h1 class="mb-16">Alert</h1>
+        <p>
+          Alert is an inline component used for displaying different types of messages. For
+          accessibility reasons, alert should appear close to the element that triggered it.
+        </p>
+
+        <h2 class="mt-24 mb-16">Props</h2>
+        <table class="w-full docs-table">
+          <thead>
+            <tr class="text-left text-gray-400 uppercase">
+              <th>prop</th>
+              <th>type</th>
+              <th>default</th>
+            </tr>
+          </thead>
+          <tbody class="align-top">
+            <tr>
+              <td>variant</td>
+              <td>"negative" | "positive" | "warning" | "info"</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>show</td>
+              <td>boolean</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>role</td>
+              <td>string</td>
+              <td>"alert"</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 class="mt-24 mb-16">Visual Options</h2>
+
+        <syntax-highlight>
+          <div class="flex gap-8 flex-wrap mt-16">
+            <button class="button button--small">Hide and show "info" variant</button>
+            <button class="button button--small">Hide and show "negative" variant</button>
+            <button class="button button--small">Hide and show "positive" variant</button>
+            <button class="button button--small">Hide and show "warning" variant</button>
+          </div>
+          <f-alert variant="info" show>
+            <p>This is "info" variant of the alert element</p>
+          </f-alert>
+        </syntax-highlight>
+        <div class="example">
+          <div id="defaultAlertControllers" class="flex gap-8 flex-wrap mb-16">
+            <button name="info" class="button button--small">Hide and show "info" variant</button>
+<button name="negative" class="button button--small">Hide and show "negative" variant</button>
+<button name="positive" class="button button--small">Hide and show "positive" variant</button>
+<button name="warning" class="button button--small">Hide and show "warning" variant</button>
+          </div>
+          <f-alert id="defaultAlert" variant="info" show>
+            <p>This is "info" variant of the alert element</p>
+          </f-alert>
+        </div>
+
+        <syntax-highlight>
+          <f-alert variant="info" show>
+            <p class="font-bold">This is "info" variant of the alert element</p>
+            <p>With an additional description</p>
+          </f-alert>
+        </syntax-highlight>
+        <div class="example">
+          <div id="alertWithDescriptionControllers" class="flex gap-8 flex-wrap mb-16">
+            <button name="info" class="button button--small">Hide and show "info" variant</button>
+<button name="negative" class="button button--small">Hide and show "negative" variant</button>
+<button name="positive" class="button button--small">Hide and show "positive" variant</button>
+<button name="warning" class="button button--small">Hide and show "warning" variant</button>
+          </div>
+          <f-alert id="alertWithDescription" variant="info" show>
+            <p class="font-bold">This is "info" variant of the alert element</p>
+            <p>With an additional description</p>
+          </f-alert>
+        </div>
+
+        <syntax-highlight>
+          <f-alert variant="info" show>
+            <p class="font-bold">This is "info" variant of the alert element</p>
+            <p>With an additional description</p>
+            <a title="Link to more information">And a link to more information</a>
+          </f-alert>
+        </syntax-highlight>
+        <div class="example">
+          <div id="alertWithLinkControllers" class="flex gap-8 flex-wrap mb-16">
+            <button name="info" class="button button--small">Hide and show "info" variant</button>
+<button name="negative" class="button button--small">Hide and show "negative" variant</button>
+<button name="positive" class="button button--small">Hide and show "positive" variant</button>
+<button name="warning" class="button button--small">Hide and show "warning" variant</button>
+          </div>
+          <f-alert id="alertWithLink" variant="info" show>
+            <p class="font-bold">This is "info" variant of the alert element</p>
+            <p>With an additional description</p>
+            <a title="Link to more information">And a link to more information</a>
+          </f-alert>
+        </div>
+
+        <syntax-highlight>
+          <f-alert variant="info" show>
+            <p class="font-bold">This is "info" variant of the alert element</p>
+            <p>With an additional description</p>
+            <a title="Link to more information">And a link to more information</a>
+            <div class="mt-8 space-x-8">
+              <button class="button button--small" onclick="alert('clicked!');">
+                Primary button
+              </button>
+              <button class="button button--small button--flat" onclick="alert('clicked!');">
+                Secondary button
+              </button>
+            </div>
+          </f-alert>
+        </syntax-highlight>
+        <div class="example">
+          <div id="alertWithButtonsControllers" class="flex gap-8 flex-wrap mb-16">
+            <button name="info" class="button button--small">Hide and show "info" variant</button>
+<button name="negative" class="button button--small">Hide and show "negative" variant</button>
+<button name="positive" class="button button--small">Hide and show "positive" variant</button>
+<button name="warning" class="button button--small">Hide and show "warning" variant</button>
+          </div>
+          <f-alert id="alertWithButtons" variant="info" show>
+            <p class="font-bold">This is "info" variant of the alert element</p>
+            <p>With an additional description</p>
+            <a title="Link to more information">And a link to more information</a>
+            <div class="mt-8 space-x-8">
+              <button class="button button--small" onclick="alert('clicked!');">
+                Primary button
+              </button>
+              <button class="button button--small button--flat" onclick="alert('clicked!');">
+                Secondary button
+              </button>
+            </div>
+          </f-alert>
+        </div>
+        <h2 class="mt-24 mb-16">Accessibility</h2>
+        <p>
+          Use the ARIA live region <code>role</code> attribute to provide meaning to the alert
+          element (defaults to "alert"). If you want to remove the role from the alert and assign it
+          to its particular child (e.g. title), you can do so by setting <code>role</code> attribute
+          to an empty string on <code>f-alert</code> element and assigning a respective
+          <code>role</code> on the child element. Read more about live region
+          <code>role</code> attribute
+          <a
+            target="_blank"
+            title="Read more about ARIA live region role attribute"
+            class="text-current hover:no-underline focus:no-underline"
+            href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions#roles_with_implicit_live_region_attributes"
+            ><u> on MDN</u></a
+          >.
+        </p>
+
+        <syntax-highlight>
+          <f-alert variant="info" show role="">
+            <p role="alert" class="font-bold">This is a "info" variant of the alert element</p>
+            <p>You see this warning because you did something wrong</p>
+            <button class="button button--primary button--small">Hide and show alert</button>
+          </f-alert>
+        </syntax-highlight>
+        <div class="example">
+          <f-alert id="selfHidingAlert" variant="info" show role="">
+            <p role="alert" class="font-bold">This is "info" variant of the alert element</p>
+            <p>With an additional description</p>
+            <div id="selfHidingAlertControllers">
+              <button class="button button--primary button--small">Hide and show alert</button>
+            </div>
+          </f-alert>
+        </div>
+      </main>
+      <script data-for="footer" type="application/json">
+  {
+    "github": {
+      "name": "Github",
+      "href": "https://github.com/fabric-ds/elements"
+    },
+    "slack": {
+      "name": "#finn-fabric",
+      "href": "https://sch-chat.slack.com/archives/C01GYKPJVFT"
+    }
+  }
+</script>
+    </f-docs-template>
+    <script>
+  function addEventListenersToAlertControllers(alertId) {
+    const alertElement = document.getElementById(alertId);
+    const controllersWrapperId = `#${alertId}Controllers`;
+
+    document.querySelectorAll(`${controllersWrapperId} button`).forEach((el) => {
+      el.addEventListener('click', (event) => {
+        alertElement.show = false;
+        const name = event.target.name || 'info';
+
+        // update alert after hide transition ends
+        setTimeout(() => {
+          alertElement.variant = name;
+          alertElement.querySelector(
+            'p',
+          ).innerText = `This is "${name}" variant of the alert element`;
+          alertElement.show = true;
+        }, 500);
+      });
+    });
+  }
+
+  document.querySelectorAll('.example f-alert').forEach((el) => {
+    const alertId = el.getAttribute('id');
+    addEventListenersToAlertControllers(alertId);
+  });
+</script>
+ <script
+  src="https://assets.finn.no/pkg/@fabric-ds/common/v1/template/index.js"
+  type="module"
+></script>
+<script
+  src="https://assets.finn.no/pkg/@fabric-ds/common/v1/asset-links/index.js"
+  type="module"
+></script>
+<script
+  src="https://assets.finn.no/pkg/@fabric-ds/common/v1/highlight-box/index.js"
+  type="module"
+></script>
+  </body>
+</html>
