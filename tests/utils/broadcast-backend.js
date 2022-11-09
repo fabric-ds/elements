@@ -15,4 +15,12 @@ app.get('/multiple-broadcasts', (req, res) => {
   ]);
 });
 
+app.get('/scripts/index.js', (req, res) => {
+  res.sendFile(new URL('../../dist/index.js', import.meta.url).pathname);
+});
+
+app.get('/scripts/api.js', (req, res) => {
+  res.sendFile(new URL('../../dist/api.js', import.meta.url).pathname);
+});
+
 app.listen(4053);
