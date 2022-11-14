@@ -19,9 +19,6 @@ export class FabricSelect extends kebabCaseAttributes(FabricElement) {
     // The content displayed as the help text
     hint: { type: String, reflect: true },
 
-    // The element's unique identifier
-    id: { type: String, reflect: true },
-
     // The content to disply as the label
     label: { type: String, reflect: true },
 
