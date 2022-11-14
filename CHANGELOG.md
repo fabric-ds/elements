@@ -1,3 +1,10 @@
+## [1.1.1-next.1](https://github.com/fabric-ds/elements/compare/v1.1.0...v1.1.1-next.1) (2022-11-14)
+
+
+### Bug Fixes
+
+* **select:** fix docs path and invalid attributes ([#121](https://github.com/fabric-ds/elements/issues/121)) ([821d995](https://github.com/fabric-ds/elements/commit/821d995ddb3fb917a765adedd8b6c8106c0e7bee))
+
 # [1.1.0](https://github.com/fabric-ds/elements/compare/v1.0.0...v1.1.0) (2022-11-07)
 
 

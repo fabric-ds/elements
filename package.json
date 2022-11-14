@@ -1,7 +1,7 @@
 {
   "name": "@fabric-ds/elements",
   "type": "module",
-  "version": "1.1.0",
+  "version": "1.1.1-next.1",
   "description": "Custom elements for Fabric",
   "exports": {
     ".": "./dist/index.js",
@@ -77,8 +77,8 @@
   },
   "dependencies": {
     "@fabric-ds/core": "0.0.15",
-    "@fabric-ds/icons": "0.6.2",
-    "@open-wc/testing": "3.1.6",
+    "@fabric-ds/icons": "0.6.4",
+    "@open-wc/testing": "3.1.7",
     "glob": "8.0.3",
     "html-format": "1.0.2",
     "lit": "2.4.1"

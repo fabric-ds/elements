@@ -2,7 +2,7 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { when } from 'lit/directives/when.js';
 import { classNames } from '@chbphone55/classnames';
-import { kebabCaseAttributes, FabricElement, generateRandomId } from '../utils';
+import { kebabCaseAttributes, FabricElement } from '../utils';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 
 export class FabricSelect extends kebabCaseAttributes(FabricElement) {
@@ -18,9 +18,6 @@ export class FabricSelect extends kebabCaseAttributes(FabricElement) {
 
     // The content displayed as the help text
     hint: { type: String, reflect: true },
-
-    // The element's unique identifier
-    id: { type: String, reflect: true },
 
     // The content to disply as the label
     label: { type: String, reflect: true },
@@ -38,7 +35,7 @@ export class FabricSelect extends kebabCaseAttributes(FabricElement) {
   }
 
   get #id() {
-    return this.id || generateRandomId();
+    return 'select_id';
   }
 
   get #helpId() {
@@ -70,7 +67,7 @@ export class FabricSelect extends kebabCaseAttributes(FabricElement) {
             id="${this.#id}"
             ?autofocus=${this.autoFocus}
             aria-describedby="${ifDefined(this.#helpId)}"
-            aria-invalid="${ifDefined(this.invalid && this.#helpId)}"
+            aria-invalid="${ifDefined(this.invalid)}"
             aria-errormessage="${ifDefined(this.invalid && this.#helpId)}"
           >
             ${unsafeHTML(this._options)}
