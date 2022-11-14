@@ -410,6 +410,7 @@ test('Collapse method collapses markup', async (t) => {
     page: t.context.page,
     content: '<f-toast text="This is my toast" canclose></f-toast>',
   });
+  await wait(2000);
 
   // WHEN:
   const locator = await page.locator('f-toast');
