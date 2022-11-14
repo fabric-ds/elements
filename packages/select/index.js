@@ -70,7 +70,7 @@ export class FabricSelect extends kebabCaseAttributes(FabricElement) {
             id="${this.#id}"
             ?autofocus=${this.autoFocus}
             aria-describedby="${ifDefined(this.#helpId)}"
-            aria-invalid="${ifDefined(this.invalid && this.#helpId)}"
+            aria-invalid="${ifDefined(this.invalid)}"
             aria-errormessage="${ifDefined(this.invalid && this.#helpId)}"
           >
             ${unsafeHTML(this._options)}
