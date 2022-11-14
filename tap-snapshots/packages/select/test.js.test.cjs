@@ -12,11 +12,11 @@ exports[`packages/select/test.js TAP Select component with no attributes is rend
 `
 
 exports[`packages/select/test.js TAP Select renders label > must match snapshot 1`] = `
-<label for="withlabel">
+<label for="select_id">
               Options
               </label>
         <div class="input--select__wrap">
-          <select id="withlabel">
+          <select id="select_id">
             
       <option>First option</option>
       <option>Second option</option>
@@ -29,25 +29,25 @@ exports[`packages/select/test.js TAP Select renders label > must match snapshot 
 exports[`packages/select/test.js TAP Select renders with error > must match snapshot 1`] = `
 
         <div class="input--select__wrap">
-          <select id="hello" aria-describedby="hello__hint" aria-invalid="true" aria-errormessage="hello__hint">
+          <select id="select_id" aria-describedby="select_id__hint" aria-invalid="true" aria-errormessage="select_id__hint">
             
           <option>First option</option>
           <option>Second option</option>
         
           </select>
         </div>
-        <div class="input__sub-text" id="hello__hint">Something went wrong</div>
+        <div class="input__sub-text" id="select_id__hint">Something went wrong</div>
 `
 
 exports[`packages/select/test.js TAP Select renders with hint > must match snapshot 1`] = `
 
         <div class="input--select__wrap">
-          <select id="hello" aria-describedby="hello__hint">
+          <select id="select_id" aria-describedby="select_id__hint">
             
         <option>First option</option>
         <option>Second option</option>
       
           </select>
         </div>
-        <div class="input__sub-text" id="hello__hint">Hello</div>
+        <div class="input__sub-text" id="select_id__hint">Hello</div>
 `
