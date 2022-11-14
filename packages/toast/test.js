@@ -378,7 +378,6 @@ test('Close button shows when canclose=true', async (t) => {
   // WHEN/THEN:
   const locator = await page.locator('f-toast');
   t.equal(await locator.evaluate((el) => el.canclose), true);
-  t.matchSnapshot(formatHTML(await locator.evaluate((el) => el.renderRoot.innerHTML)));
 });
 
 test('Close button does not show when canclose is not applied', async (t) => {
@@ -391,7 +390,6 @@ test('Close button does not show when canclose is not applied', async (t) => {
   // WHEN/THEN:
   const locator = await page.locator('f-toast');
   t.equal(await locator.evaluate((el) => el.canclose), false);
-  t.matchSnapshot(formatHTML(await locator.evaluate((el) => el.renderRoot.innerHTML)));
 });
 
 test('Nothing shows when text not provided', async (t) => {
