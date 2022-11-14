@@ -472,28 +472,28 @@ test('API: first call to toast adds toast container to the dom', async (t) => {
   t.equal(countAfter, 1);
 });
 
-test('API: toast method: options: duration is set correctly', async (t) => {
-  // GIVEN: Toast API scripts are added to the page
-  await t.context.page.addScriptTag({
-    content: `
-        import 'http://localhost:4053/scripts/index.js';
-        import { toast } from 'http://localhost:4053/scripts/api.js';
-        window.toast = toast;
-    `,
-    type: 'module',
-  });
-  await wait(2000);
+// test('API: toast method: options: duration is set correctly', async (t) => {
+//   // GIVEN: Toast API scripts are added to the page
+//   await t.context.page.addScriptTag({
+//     content: `
+//         import 'http://localhost:4053/scripts/index.js';
+//         import { toast } from 'http://localhost:4053/scripts/api.js';
+//         window.toast = toast;
+//     `,
+//     type: 'module',
+//   });
+//   await wait(2000);
 
-  // WHEN:
-  const locator = await t.context.page.locator('f-toast');
-  const countBefore = await locator.count();
-  await t.context.page.evaluate("window.toast('This is a toast', { duration: 50 })");
-  const countAfter = await locator.count();
+//   // WHEN:
+//   const locator = await t.context.page.locator('f-toast');
+//   const countBefore = await locator.count();
+//   await t.context.page.evaluate("window.toast('This is a toast', { duration: 50 })");
+//   const countAfter = await locator.count();
 
-  // THEN:
-  t.equal(countBefore, 0);
-  t.equal(countAfter, 1);
-});
+//   // THEN:
+//   t.equal(countBefore, 0);
+//   t.equal(countAfter, 1);
+// });
 
 test('API: toast method: options: canclose creates close button', async (t) => {
   // GIVEN: Toast API scripts are added to the page
