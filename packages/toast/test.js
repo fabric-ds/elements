@@ -482,6 +482,7 @@ test('API: toast method: options: duration is set correctly', async (t) => {
     `,
     type: 'module',
   });
+  await wait(2000);
 
   // WHEN:
   const locator = await t.context.page.locator('f-toast');
