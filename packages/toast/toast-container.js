@@ -101,13 +101,14 @@ export class FabricToastContainer extends LitElement {
   /**
    *
    * @param {String|Number} id
-   * @returns {ToastOptions}
+   * @returns {ToastOptions | false}
    */
   async del(id) {
     if (!id) throw new Error('undefined "id" given when attempting to retrieve toast');
     if (typeof id !== 'string' && !Number.isInteger(id))
       throw new Error('"id" must be number or string when attempting to retrieve toast');
     const el = this.renderRoot.querySelector(`#${id}`);
+    if (!this._toasts.has(id)) return false;
     await el.collapse();
     const result = this._toasts.delete(id);
     this._toasts = new Map(Array.from(this._toasts));
