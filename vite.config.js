@@ -155,16 +155,12 @@ export default ({ mode }) => {
 //         },
 //     };
 // }
-/**
- * Since we deploy the site to github pages we need to prefix all the interal links with a base path
- * We do this with a simple regex
- */
 function basePathFix() {
   return {
     name: 'base-path-fix',
     transformIndexHtml(html) {
-      // Regex matches href=", followed by a /, then any combination of \w, / or -, ending with .html
-      return html.replace(/href="\/([\w/-]*)\.html/g, 'href="/$1.html');
+      // Replace pages/components with '' for production build.
+      return html.replace(/pages\/components\//g, '');
     },
   };
 }
