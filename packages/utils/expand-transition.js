@@ -1,9 +1,9 @@
-import { css, html } from 'lit';
+import { css, html, LitElement } from 'lit';
 import { collapse, expand } from 'element-collapse';
-import { FabricElement } from '.';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { styles } from '../../dist/elements.min.js';
 
-class ExpandTransition extends FabricElement {
+class ExpandTransition extends LitElement {
   static properties = {
     show: {
       type: Boolean,
@@ -53,11 +53,14 @@ class ExpandTransition extends FabricElement {
     return this ?? null;
   }
 
-  static styles = css`
-    :host {
-      display: block;
-    }
-  `;
+  static styles = [
+    styles,
+    css`
+      :host {
+        display: block;
+      }
+    `,
+  ];
 
   render() {
     return html`<div aria-hidden=${ifDefined(!this.show ? 'true' : undefined)}>
