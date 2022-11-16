@@ -534,7 +534,7 @@ test('API: toast method: options: type changes visual appearance', async (t) => 
 
   // THEN:
   t.ok(classList.includes('bg-red-50'));
-  t.ok(classList.includes('border-red-200'));
+  t.ok(classList.includes('border-red-300'));
   t.ok(classList.includes('text-red-800'));
 });
 
