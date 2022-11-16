@@ -1,6 +1,7 @@
 import { LitElement, css, html } from 'lit';
 import { toaster as c } from '@fabric-ds/css/component-classes';
 import { repeat } from 'lit/directives/repeat.js';
+import { styles } from '../../dist/elements.min.js';
 
 /**
  * Toast helper function options
@@ -13,11 +14,14 @@ import { repeat } from 'lit/directives/repeat.js';
  */
 
 export class FabricToastContainer extends LitElement {
-  static styles = css`
-    :host {
-      display: block;
-    }
-  `;
+  static styles = [
+    styles,
+    css`
+      :host {
+        display: block;
+      }
+    `,
+  ];
 
   static properties = {
     _toasts: { state: true },
@@ -117,11 +121,6 @@ export class FabricToastContainer extends LitElement {
 
   render() {
     return html`
-      <link
-        rel="stylesheet"
-        type="text/css"
-        href="https://assets.finn.no/pkg/@fabric-ds/css/v1/fabric.min.css"
-      />
       <aside class="${c.toasterContainer}">
         <div class="${c.toaster}" id="f-toast-container-list">
           ${repeat(
