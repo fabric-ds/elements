@@ -45,7 +45,7 @@ const plugins = [
     cssnano({ preset: 'default' }),
 ];
 const result = await postcss(plugins).process(css, { from, to });
-const replaced = result.css.replaceAll('\\:', '\\\\:');
+const replaced = result.css.replaceAll('\\:', '\\\\:').replaceAll('--tw-', '--f-');
 const constructedStylesheet = `import {css} from 'lit';
 export const styles = css\`
 ${replaced}
