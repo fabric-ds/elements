@@ -1,8 +1,9 @@
-import { css, html } from 'lit';
-import { fclasses, FabricElement } from '../utils';
+import { css, html, LitElement } from 'lit';
+import { fclasses } from '../utils';
 import { box as boxClasses } from '@fabric-ds/css/component-classes';
+import { styles } from '../../dist/elements.min.js';
 
-class FabricBox extends FabricElement {
+class FabricBox extends LitElement {
   static properties = {
     bleed: { type: Boolean },
     bordered: { type: Boolean },
@@ -14,14 +15,17 @@ class FabricBox extends FabricElement {
   // ::slotted([Simple Selector]) confirms to Specificity rules, but (being simple) does not add weight to lightDOM skin selectors,
   // so never gets higher Specificity. Thus in order to overwrite style linked within shadowDOM, we need to use !important.
   // https://stackoverflow.com/a/61631668
-  static styles = css`
-    :host {
-      display: block;
-    }
-    ::slotted(:last-child) {
-      margin-bottom: 0px !important;
-    }
-  `;
+  static styles = [
+    styles,
+    css`
+      :host {
+        display: block;
+      }
+      ::slotted(:last-child) {
+        margin-bottom: 0px !important;
+      }
+    `,
+  ];
 
   get _class() {
     return fclasses({
@@ -35,7 +39,6 @@ class FabricBox extends FabricElement {
 
   render() {
     return html`
-      ${this._fabricStylesheet}
       <div class="${this._class}">
         <slot></slot>
       </div>
