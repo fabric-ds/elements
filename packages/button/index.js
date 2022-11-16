@@ -1,6 +1,7 @@
 import { html, LitElement } from 'lit';
 import { classNames } from '@chbphone55/classnames';
-import { kebabCaseAttributes, FabricElement } from '../utils';
+import { kebabCaseAttributes } from '../utils';
+import { styles } from '../../dist/elements.min.js';
 
 const variantClassMap = {
   primary: 'button button--primary',
@@ -11,7 +12,7 @@ const variantClassMap = {
   pill: 'button button--pill',
 };
 
-class FabricButton extends kebabCaseAttributes(FabricElement) {
+class FabricButton extends kebabCaseAttributes(LitElement) {
   static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 
   static properties = {
@@ -26,6 +27,8 @@ class FabricButton extends kebabCaseAttributes(FabricElement) {
     rel: { type: String, reflect: true },
     buttonClass: { type: String, reflect: true },
   };
+
+  static styles = [styles];
 
   constructor() {
     super();
@@ -68,7 +71,7 @@ class FabricButton extends kebabCaseAttributes(FabricElement) {
   }
 
   render() {
-    return html`${this._fabricStylesheet}
+    return html`
     ${this.href
       ? html`<a
           href=${this.href}
