@@ -1,3 +1,10 @@
+# [1.2.0-next.1](https://github.com/fabric-ds/elements/compare/v1.1.1-next.1...v1.2.0-next.1) (2022-11-16)
+
+
+### Features
+
+* add build script that produces constructed stylesheet ([f77f081](https://github.com/fabric-ds/elements/commit/f77f081eb40d9f811d5fbcc6060c33996450d0cd))
+
 ## [1.1.1-next.1](https://github.com/fabric-ds/elements/compare/v1.1.0...v1.1.1-next.1) (2022-11-14)
 
 
