@@ -1,6 +1,6 @@
-import { css, html } from 'lit';
+import { css, html, LitElement } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { FabricElement, classes, kebabCaseAttributes, generateRandomId } from '../utils';
+import { classes, kebabCaseAttributes, generateRandomId } from '../utils';
 import { attention as c } from '@fabric-ds/css/component-classes';
 import {
   opposites,
@@ -8,8 +8,9 @@ import {
   arrowLabels,
   useRecompute as recompute,
 } from '@fabric-ds/core/attention';
+import { styles } from '../../dist/elements.min.js';
 
-class FabricAttention extends kebabCaseAttributes(FabricElement) {
+class FabricAttention extends kebabCaseAttributes(LitElement) {
   static properties = {
     // Whether Attention element should be visible.
     show: { type: Boolean, reflect: true },
@@ -26,19 +27,22 @@ class FabricAttention extends kebabCaseAttributes(FabricElement) {
     noArrow: { type: Boolean, reflect: true },
   };
 
-  static styles = css`
-    #attention {
-      position: absolute;
-      z-index: 50;
-      visibility: var(--attention-visibility);
-      display: var(--attention-display);
-    }
+  static styles = [
+    styles,
+    css`
+      #attention {
+        position: absolute;
+        z-index: 50;
+        visibility: var(--attention-visibility);
+        display: var(--attention-display);
+      }
 
-    #arrow {
-      border-top-left-radius: 4px;
-      z-index: 1;
-    }
-  `;
+      #arrow {
+        border-top-left-radius: 4px;
+        z-index: 1;
+      }
+    `,
+  ];
 
   constructor() {
     super();
@@ -142,7 +146,10 @@ class FabricAttention extends kebabCaseAttributes(FabricElement) {
   get _arrowClasses() {
     return classes({
       [c.arrowBase]: true,
-      [`-${this._arrowDirection}-8`]: true,
+      [`-top-8`]: this._arrowDirection === 'top',
+      [`-right-8`]: this._arrowDirection === 'right',
+      [`-bottom-8`]: this._arrowDirection === 'bottom',
+      [`-left-8`]: this._arrowDirection === 'left',
       [c.arrowTooltip]: this.tooltip,
       [c.arrowCallout]: this.callout,
       [c.arrowPopover]: this.popover,
@@ -167,7 +174,6 @@ class FabricAttention extends kebabCaseAttributes(FabricElement) {
 
   render() {
     return html`
-      ${this._fabricStylesheet}
       <div class=${ifDefined(this.className ? this.className : undefined)}>
         ${this.placement === 'right' || this.placement === 'bottom' // Attention's and its arrow's visual position should be reflected in the DOM
           ? html`
