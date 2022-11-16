@@ -1,10 +1,13 @@
-import { html } from 'lit';
+import { html, LitElement } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { suffix, prefix } from '@fabric-ds/css/component-classes';
 import { search, clear } from './icons';
-import { fclasses, FabricElement } from '../utils';
+import { fclasses } from '../utils';
+import { styles } from '../../dist/elements.min.js';
 
-class FabricAffix extends FabricElement {
+class FabricAffix extends LitElement {
+  static styles = [styles];
+
   static properties = {
     ariaLabel: { type: String, attribute: 'aria-label' },
     clear: { type: Boolean },
@@ -59,7 +62,7 @@ class FabricAffix extends FabricElement {
   }
 
   render() {
-    return html`${this._fabricStylesheet}${this._markup}`;
+    return html`${this._markup}`;
   }
 }
 
