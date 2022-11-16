@@ -7,7 +7,6 @@
 'use strict'
 exports[`packages/toast/test.js TAP Initialization adds toast container to the dom > must match snapshot 1`] = `
 
-      <link rel="stylesheet" type="text/css" href="https://assets.finn.no/pkg/@fabric-ds/css/v1/fabric.min.css">
       <aside class="fixed fixed-ios-fix bottom-16 left-0 right-0 mx-8 sm:mx-16 z-50 pointer-events-none">
         <div id="f-toast-container-list" class="f-toaster grid f-grid auto-rows-auto justify-items-center justify-center mx-auto pointer-events-none">
           
@@ -17,7 +16,6 @@ exports[`packages/toast/test.js TAP Initialization adds toast container to the d
 
 exports[`packages/toast/test.js TAP Initially no toasts are present > must match snapshot 1`] = `
 
-      <link rel="stylesheet" type="text/css" href="https://assets.finn.no/pkg/@fabric-ds/css/v1/fabric.min.css">
       <aside class="fixed fixed-ios-fix bottom-16 left-0 right-0 mx-8 sm:mx-16 z-50 pointer-events-none">
         <div id="f-toast-container-list" class="f-toaster grid f-grid auto-rows-auto justify-items-center justify-center mx-auto pointer-events-none">
           
@@ -31,7 +29,6 @@ exports[`packages/toast/test.js TAP Nothing shows when text not provided > must 
 
 exports[`packages/toast/test.js TAP set method: toast element created from given data > must match snapshot 1`] = `
 
-      <link rel="stylesheet" type="text/css" href="https://assets.finn.no/pkg/@fabric-ds/css/v1/fabric.min.css">
       <aside class="fixed fixed-ios-fix bottom-16 left-0 right-0 mx-8 sm:mx-16 z-50 pointer-events-none">
         <div id="f-toast-container-list" class="f-toaster grid f-grid auto-rows-auto justify-items-center justify-center mx-auto pointer-events-none">
            <f-toast class="w-full" id="abc" type="" text="This is a toast">
@@ -42,7 +39,6 @@ exports[`packages/toast/test.js TAP set method: toast element created from given
 
 exports[`packages/toast/test.js TAP set/del methods: set a toast then delete it > must match snapshot 1`] = `
 
-      <link rel="stylesheet" type="text/css" href="https://assets.finn.no/pkg/@fabric-ds/css/v1/fabric.min.css">
       <aside class="fixed fixed-ios-fix bottom-16 left-0 right-0 mx-8 sm:mx-16 z-50 pointer-events-none">
         <div id="f-toast-container-list" class="f-toaster grid f-grid auto-rows-auto justify-items-center justify-center mx-auto pointer-events-none">
           
