@@ -1,8 +1,9 @@
-import { css, html } from 'lit';
+import { css, html, LitElement } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { fclasses, FabricElement } from '../utils';
+import { fclasses } from '../utils';
+import { styles } from '../../dist/elements.min.js';
 
-class FabricTextField extends FabricElement {
+class FabricTextField extends LitElement {
   static properties = {
     disabled: { type: Boolean },
     invalid: { type: Boolean },
@@ -29,14 +30,17 @@ class FabricTextField extends FabricElement {
   // ::slotted([Simple Selector]) confirms to Specificity rules, but (being simple) does not add weight to lightDOM skin selectors,
   // so never gets higher Specificity. Thus in order to overwrite style linked within shadowDOM, we need to use !important.
   // https://stackoverflow.com/a/61631668
-  static styles = css`
-    :host {
-      display: block;
-    }
-    ::slotted(:last-child) {
-      margin-bottom: 0px !important;
-    }
-  `;
+  static styles = [
+    styles,
+    css`
+      :host {
+        display: block;
+      }
+      ::slotted(:last-child) {
+        margin-bottom: 0px !important;
+      }
+    `,
+  ];
 
   constructor() {
     super();
