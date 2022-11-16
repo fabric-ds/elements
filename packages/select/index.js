@@ -1,11 +1,12 @@
-import { html } from 'lit';
+import { html, LitElement } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { when } from 'lit/directives/when.js';
 import { classNames } from '@chbphone55/classnames';
-import { kebabCaseAttributes, FabricElement } from '../utils';
+import { kebabCaseAttributes } from '../utils';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
+import { styles } from '../../dist/elements.min.js';
 
-export class FabricSelect extends kebabCaseAttributes(FabricElement) {
+export class FabricSelect extends kebabCaseAttributes(LitElement) {
   static properties = {
     // Whether the element should receive focus on render
     autoFocus: { type: Boolean, reflect: true },
@@ -28,6 +29,8 @@ export class FabricSelect extends kebabCaseAttributes(FabricElement) {
     _options: { state: true },
   };
 
+  static styles = [styles];
+
   get #classes() {
     return classNames('input mb-0', {
       'input--is-invalid': this.invalid,
@@ -48,36 +51,35 @@ export class FabricSelect extends kebabCaseAttributes(FabricElement) {
   }
 
   render() {
-    return html`${this._fabricStylesheet}
-      <div class="${this.#classes}">
-        ${when(
-          this.label,
-          () =>
-            html`<label for="${this.#id}">
-              ${this.label}
-              ${when(
-                this.optional,
-                () =>
-                  html`<span className="pl-8 font-normal text-14 text-gray-500">(valgfritt)</span>`,
-              )}</label
-            >`,
-        )}
-        <div class="input--select__wrap">
-          <select
-            id="${this.#id}"
-            ?autofocus=${this.autoFocus}
-            aria-describedby="${ifDefined(this.#helpId)}"
-            aria-invalid="${ifDefined(this.invalid)}"
-            aria-errormessage="${ifDefined(this.invalid && this.#helpId)}"
-          >
-            ${unsafeHTML(this._options)}
-          </select>
-        </div>
-        ${when(
-          this.always || this.invalid,
-          () => html`<div id="${this.#helpId}" class="input__sub-text">${this.hint}</div>`,
-        )}
-      </div>`;
+    return html`<div class="${this.#classes}">
+      ${when(
+        this.label,
+        () =>
+          html`<label for="${this.#id}">
+            ${this.label}
+            ${when(
+              this.optional,
+              () =>
+                html`<span className="pl-8 font-normal text-14 text-gray-500">(valgfritt)</span>`,
+            )}</label
+          >`,
+      )}
+      <div class="input--select__wrap">
+        <select
+          id="${this.#id}"
+          ?autofocus=${this.autoFocus}
+          aria-describedby="${ifDefined(this.#helpId)}"
+          aria-invalid="${ifDefined(this.invalid)}"
+          aria-errormessage="${ifDefined(this.invalid && this.#helpId)}"
+        >
+          ${unsafeHTML(this._options)}
+        </select>
+      </div>
+      ${when(
+        this.always || this.invalid,
+        () => html`<div id="${this.#helpId}" class="input__sub-text">${this.hint}</div>`,
+      )}
+    </div>`;
   }
 }
 
