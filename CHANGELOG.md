@@ -1,3 +1,20 @@
+# [1.2.0-next.2](https://github.com/fabric-ds/elements/compare/v1.2.0-next.1...v1.2.0-next.2) (2022-11-17)
+
+
+### Features
+
+* use constructed stylesheet for affix element ([d27201f](https://github.com/fabric-ds/elements/commit/d27201f784f12e5ef6b0df6537be5861b3037958))
+* use constructed stylesheet for alert element ([415225d](https://github.com/fabric-ds/elements/commit/415225dfcb11c060905b94743420c2eb8202acd4))
+* use constructed stylesheet for attention element ([dc38b1a](https://github.com/fabric-ds/elements/commit/dc38b1a052c8469910e9891d32558212f388c87d))
+* use constructed stylesheet for box element ([49d3201](https://github.com/fabric-ds/elements/commit/49d32017ac231727d3c9799207145c28da3ed8f6))
+* use constructed stylesheet for breadcrumbs element ([97daa41](https://github.com/fabric-ds/elements/commit/97daa413345b442edbdd50b2782ff43aaa7f1224))
+* use constructed stylesheet for broadcast element ([972bb41](https://github.com/fabric-ds/elements/commit/972bb4146acd7f115e81d4831be26bde37a3caf8))
+* use constructed stylesheet for card element ([2ea241e](https://github.com/fabric-ds/elements/commit/2ea241e215bdf41a606bd55d3b0b534fdc3bbded))
+* use constructed stylesheet for expandable element ([258d06a](https://github.com/fabric-ds/elements/commit/258d06ad448e9084cad49ccf3e9470349531142b))
+* use constructed stylesheet for select element ([c93bff4](https://github.com/fabric-ds/elements/commit/c93bff46abe1c52ce313b3d4882a68957a9a0eb6))
+* use constructed stylesheet for textfield element ([9283ac8](https://github.com/fabric-ds/elements/commit/9283ac861e2271d8d720c14ff81df6dbaa918577))
+* use constructed stylesheet for toast element ([1969957](https://github.com/fabric-ds/elements/commit/1969957b28216f9f0d7a407a7570b80bb1af517a))
+
 # [1.2.0-next.1](https://github.com/fabric-ds/elements/compare/v1.1.1-next.1...v1.2.0-next.1) (2022-11-16)
 
 
