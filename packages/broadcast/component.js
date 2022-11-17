@@ -1,6 +1,7 @@
 import { LitElement, html } from 'lit';
 import { repeat } from 'lit/directives/repeat.js';
 import { windowExists } from '../utils';
+import { styles } from '../../dist/elements.min.js';
 
 export class FabricBroadcast extends LitElement {
   static properties = {
@@ -21,6 +22,8 @@ export class FabricBroadcast extends LitElement {
     url: { type: String, attribute: true, reflect: true },
     api: { type: String, attribute: true, reflect: true },
   };
+
+  static styles = [styles];
 
   constructor() {
     super();
@@ -62,11 +65,6 @@ export class FabricBroadcast extends LitElement {
     const messages = this._messages.filter((item) => !this._hiddenMessageIds.includes(item.id));
 
     return html`
-      <link
-        rel="stylesheet"
-        type="text/css"
-        href="https://assets.finn.no/pkg/@fabric-ds/css/v1/fabric.min.css"
-      />
       <aside class=${`${messages.length === 0 ? 'hidden' : 'mb-16'}`}>
         ${repeat(
           messages,

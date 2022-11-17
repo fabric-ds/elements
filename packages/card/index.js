@@ -1,27 +1,31 @@
-import { html, css } from 'lit';
+import { LitElement, html, css } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { card as c } from '@fabric-ds/css/component-classes';
-import { FabricElement, fclasses } from '../utils';
+import { fclasses } from '../utils';
+import { styles } from '../../dist/elements.min.js';
 
 const keys = {
   ENTER: 'Enter',
   SPACE: ' ',
 };
 
-class FabricCard extends FabricElement {
-  static styles = css`
-    a::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-    }
-    :host {
-      display: block;
-    }
-  `;
+class FabricCard extends LitElement {
+  static styles = [
+    styles,
+    css`
+      a::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+      :host {
+        display: block;
+      }
+    `,
+  ];
 
   static properties = {
     selected: { type: Boolean, reflect: true },
@@ -73,7 +77,6 @@ class FabricCard extends FabricElement {
 
   render() {
     return html`
-      ${this._fabricStylesheet}
       <div
         tabindex=${ifDefined(this.clickable ? '0' : undefined)}
         class="${this._outerClasses}"

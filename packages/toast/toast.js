@@ -4,6 +4,7 @@ import { when } from 'lit/directives/when.js';
 import { toast as c } from '@fabric-ds/css/component-classes';
 import { expand, collapse } from 'element-collapse';
 import { closeSVG, successSVG, failureSVG } from './svgs';
+import { styles } from '../../dist/elements.min.js';
 
 const classes = (definition) => {
   const defn = {};
@@ -16,11 +17,14 @@ const classes = (definition) => {
 };
 
 export class FabricToast extends LitElement {
-  static styles = css`
-    :host {
-      display: block;
-    }
-  `;
+  static styles = [
+    styles,
+    css`
+      :host {
+        display: block;
+      }
+    `,
+  ];
 
   static properties = {
     id: { type: String, attribute: true, reflect: true },
@@ -124,24 +128,18 @@ export class FabricToast extends LitElement {
 
   render() {
     if (!this.text) return html``;
-    return html`<link
-        rel="stylesheet"
-        type="text/css"
-        href="https://assets.finn.no/pkg/@fabric-ds/css/v1/fabric.min.css"
-      />
-      <section class="${c.toastWrapper}" aria-label="${this._typeLabel}">
-        <div class="${this._primaryClasses}">
-          <div class="${this._iconClasses}">${this._iconMarkup}</div>
-          <div role="${this._role}" class="${c.toastContent}">
-            <p>${this.text}</p>
-          </div>
-          ${when(
-            this.canclose === true,
-            () =>
-              html`<button class="${c.toastClose}" @click="${this.close}">${closeSVG()}</button>`,
-          )}
+    return html` <section class="${c.toastWrapper}" aria-label="${this._typeLabel}">
+      <div class="${this._primaryClasses}">
+        <div class="${this._iconClasses}">${this._iconMarkup}</div>
+        <div role="${this._role}" class="${c.toastContent}">
+          <p>${this.text}</p>
         </div>
-      </section>`;
+        ${when(
+          this.canclose === true,
+          () => html`<button class="${c.toastClose}" @click="${this.close}">${closeSVG()}</button>`,
+        )}
+      </div>
+    </section>`;
   }
 }
 

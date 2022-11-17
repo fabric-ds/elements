@@ -7,7 +7,6 @@
 'use strict'
 exports[`packages/broadcast/test.js TAP Multiple broadcasts > must match snapshot 1`] = `
 
-      <link rel="stylesheet" type="text/css" href="https://assets.finn.no/pkg/@fabric-ds/css/v1/fabric.min.css">
       <aside class="mb-16">
         <f-toast class="w-full" type="warning" canclose="" id="broadcast-100383" text="Testing 1">
             </f-toast><f-toast class="w-full" type="warning" canclose="" id="broadcast-100384" text="Testing 2">
@@ -17,7 +16,6 @@ exports[`packages/broadcast/test.js TAP Multiple broadcasts > must match snapsho
 
 exports[`packages/broadcast/test.js TAP Single broadcast > must match snapshot 1`] = `
 
-      <link rel="stylesheet" type="text/css" href="https://assets.finn.no/pkg/@fabric-ds/css/v1/fabric.min.css">
       <aside class="mb-16">
         <f-toast class="w-full" type="warning" canclose="" id="broadcast-100383" text="Testing">
             </f-toast>

@@ -1,11 +1,13 @@
-import { html } from 'lit';
+import { html, LitElement } from 'lit';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
-import { FabricElement } from '../utils';
+import { styles } from '../../dist/elements.min.js';
 
-class UnstyledHeading extends FabricElement {
+class UnstyledHeading extends LitElement {
   static properties = {
     level: { type: Number },
   };
+
+  static styles = [styles];
 
   get _markup() {
     return `<h${this.level}

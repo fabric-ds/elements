@@ -1,10 +1,12 @@
-import { html } from 'lit';
+import { html, LitElement } from 'lit';
 import { interleave } from '@fabric-ds/core/breadcrumbs';
-import { FabricElement } from '../utils';
+import { styles } from '../../dist/elements.min.js';
 
 const separator = html`<span class="select-none" aria-hidden="true">/</span>`;
 
-class FabricBreadcrumbs extends FabricElement {
+class FabricBreadcrumbs extends LitElement {
+  static styles = [styles];
+
   connectedCallback() {
     super.connectedCallback();
     // Grab existing children at the point that the component is added to the page
@@ -14,7 +16,6 @@ class FabricBreadcrumbs extends FabricElement {
 
   render() {
     return html`
-      ${this._fabricStylesheet}
       <nav aria-label="Her er du" class="flex space-x-8">
         <h2 class="sr-only">Her er du</h2>
         ${this._children}
