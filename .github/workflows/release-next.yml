@@ -1,12 +1,22 @@
-name: Release
+name: NPM and Eik Pre-release
 
 on:
   push:
     branches:
-      - main
       - next
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Dependencies
+        run: npm install
+      - name: Build Packages
+        run: npm run build
+      - name: Run Tests
+        run: npm run test:mock-backend:ci && npm run test
   release:
     name: Release
     needs: test
