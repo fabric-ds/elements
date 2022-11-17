@@ -48,6 +48,7 @@
     "@semantic-release/changelog": "6.0.1",
     "@semantic-release/git": "10.0.1",
     "@stylelint/postcss-css-in-js": "0.38.0",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
     "autoprefixer": "^10.4.13",
     "cors": "2.8.5",
     "cssnano": "^5.1.14",
