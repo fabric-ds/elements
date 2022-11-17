@@ -10,7 +10,7 @@ import atImport from 'postcss-import';
 import presetEnv from 'postcss-preset-env';
 import importSvg from 'postcss-import-svg';
 import { breakpoints as customMedia } from '@fabric-ds/css/colors.js';
-import tailwindConfig from '@fabric-ds/tailwind-config';
+import tailwindConfig from '@fabric-ds/css/tailwind-config';
 import { createRequire } from 'module';
 import { classes } from '@fabric-ds/css/component-classes/list.js';
 
