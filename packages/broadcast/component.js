@@ -51,7 +51,7 @@ export class FabricBroadcast extends LitElement {
       const res = await (await fetch(url)).json();
       this._messages = res.length ? res : [];
     } catch (err) {
-      console.error(`failed to fetch broadcasts from given url (${url})`);
+      console.error(`failed to fetch broadcasts from given url (${url})`, err);
     }
   }
 
