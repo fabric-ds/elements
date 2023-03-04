@@ -1,3 +1,10 @@
+# [1.2.0-next.3](https://github.com/fabric-ds/elements/compare/v1.2.0-next.2...v1.2.0-next.3) (2023-03-04)
+
+
+### Bug Fixes
+
+* log actual errors in broadcast requests ([9d125e2](https://github.com/fabric-ds/elements/commit/9d125e2bcbd8f7b9a20995d2dcb4c065c1d59d20))
+
 # [1.2.0-next.2](https://github.com/fabric-ds/elements/compare/v1.2.0-next.1...v1.2.0-next.2) (2022-11-17)
 
 
