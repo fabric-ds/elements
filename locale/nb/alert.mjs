@@ -1,0 +1,1 @@
+/*eslint-disable*/export const messages=JSON.parse("{\"alert.positive.svg.aria-label\":\"Grønn hake\",\"alert.info.svg.aria-label\":\"Info\",\"alert.negative.svg.aria-label\":\"Rødt utropstegn\",\"alert.warning.svg.aria-label\":\"Gult utropstegn\"}");

@@ -1,0 +1,24 @@
+{
+   "catalogs": [{
+       "path": "locale/{locale}/{name}",
+       "include": ["packages/{name}/"],
+         "exclude": [
+            "packages/affix",
+            "packages/attention",
+            "packages/box",
+            "packages/breadcrumbs",
+            "packages/broadcast",
+            "packages/button",
+            "packages/card",
+            "packages/expandable",
+            "packages/select",
+            "packages/textfield",
+            "packages/toast",
+            "packages/utils"
+         ]
+   }],
+   "compileNamespace": "es",
+   "format": "po",
+   "locales": ["en","nb","fi"],
+   "sourceLocale": "en"
+}
