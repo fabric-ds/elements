@@ -1,0 +1,10 @@
+{
+   "catalogs": [{
+       "path": "locale/{locale}/{name}",
+       "include": ["packages/{name}/"]
+   }],
+   "compileNamespace": "es",
+   "format": "po",
+   "locales": ["en","nb","fi"],
+   "sourceLocale": "en"
+}

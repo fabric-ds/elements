@@ -1,7 +1,22 @@
 import { html, svg } from 'lit';
+import { i18n } from '@lingui/core';
+import { initLocale } from '../utils/locale.js';
+
+await initLocale('alert');
+
+const negativeAria = i18n._(
+  /*i18n*/ { message: 'Red exclamation mark', id: 'alert.negative.svg.aria-label' },
+);
+const positiveAria = i18n._(
+  /*i18n*/ { message: 'Green checkmark', id: 'alert.positive.svg.aria-label' },
+);
+const warningAria = i18n._(
+  /*i18n*/ { message: 'Yellow exclamation mark', id: 'alert.warning.svg.aria-label' },
+);
+const infoAria = i18n._(/*i18n*/ { message: 'Info', id: 'alert.info.svg.aria-label' });
 
 export const negativeSvg = () => html`<svg
-  aria-label="Rødt utropstegn"
+  aria-label="${negativeAria}"
   role="img"
   xmlns="http://www.w3.org/2000/svg"
   width="16"
@@ -12,7 +27,7 @@ export const negativeSvg = () => html`<svg
 </svg>`;
 
 export const positiveSvg = () => html`<svg
-  aria-label="Grønt hake"
+  aria-label="${positiveAria}"
   role="img"
   width="16"
   height="16"
@@ -23,7 +38,7 @@ export const positiveSvg = () => html`<svg
 </svg> `;
 
 export const warningSvg = () => html`<svg
-  aria-label="Gult utropstegn"
+  aria-label="${warningAria}"
   role="img"
   width="16"
   height="16"
@@ -34,7 +49,7 @@ export const warningSvg = () => html`<svg
 </svg> `;
 
 export const infoSvg = () => html`<svg
-  aria-label="Info"
+  aria-label="${infoAria}"
   role="img"
   width="16"
   height="16"
