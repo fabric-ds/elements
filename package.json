@@ -87,7 +87,7 @@
     "@open-wc/testing": "3.2.0",
     "glob": "8.1.0",
     "html-format": "1.1.2",
-    "lit": "2.7.6"
+    "lit": "2.8.0"
   },
   "publishConfig": {
     "access": "public"
