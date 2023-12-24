@@ -86,7 +86,7 @@
     "@fabric-ds/icons": "0.6.7",
     "@open-wc/testing": "3.2.2",
     "glob": "8.1.0",
-    "html-format": "1.1.2",
+    "html-format": "1.1.5",
     "lit": "2.8.0"
   },
   "publishConfig": {
