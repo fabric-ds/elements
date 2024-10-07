@@ -84,10 +84,10 @@
   "dependencies": {
     "@fabric-ds/core": "0.0.15",
     "@fabric-ds/icons": "0.6.8",
-    "@open-wc/testing": "3.2.2",
-    "glob": "8.1.0",
+    "@open-wc/testing": "4.0.0",
+    "glob": "11.0.0",
     "html-format": "1.1.7",
-    "lit": "2.8.0"
+    "lit": "3.2.1"
   },
   "publishConfig": {
     "access": "public"
