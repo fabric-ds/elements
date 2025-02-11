@@ -54,7 +54,7 @@
     "cssnano": "5.1.15",
     "cz-conventional-changelog": "3.3.0",
     "element-collapse": "1.1.0",
-    "esbuild": "0.19.2",
+    "esbuild": "0.25.0",
     "eslint": "8.48.0",
     "express": "4.20.0",
     "fastify": "4.22.1",
